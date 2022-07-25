@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div>
         <div id="pdp-nav" class="pdp__nav" role="navigation">
             <div id="pdp-tabs" class="tabs pdp__tabs">
@@ -457,4 +457,4 @@ export default {
 
 <style>
 
-</style> -->
+</style>

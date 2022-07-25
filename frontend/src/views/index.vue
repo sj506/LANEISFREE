@@ -1,15 +1,10 @@
 <template>
   <div>
-    <h1>homme</h1>
+    <h1>index</h1>
   </div>
 </template>
 
 <script>
-export default {
-
-}
 </script>
 
-<style>
-
-</style>
+<style></style>
