@@ -2,16 +2,7 @@
   <div class="column-center">
     <div>
       <div class="logo">
-        <nav>
-          <router-link to="/">
-            <img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
-          </router-link>
-          <router-link to="/homme">옴므</router-link>
-          <router-link class="nav-link" to="/">index</router-link>
-          <router-link class="nav-link" to="/intro">팀 소개</router-link>
-          <router-link class="nav-link active" to="/best">베스트</router-link>
-          <router-link class="nav-link" to="/new">신상품</router-link>
-        </nav>
+        <img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
       </div>
     </div>
   </div>
