@@ -3,13 +3,13 @@
 
 :root {
   /* ====== Background Colors ====== */
-  --main-pink: #ff6464;
-  --main-green: #10b981;
-  --star-yellow: #fcd34d; /*별점과 그래프에 쓰이는 노랑*/
-  --gray-bg: #9ca3af;
-  --border-color: #c4c4c4;
-  --white-bg: #fdfdfd;
-  --light-gray-bg: #f3f4f6;
+  --bg-main: #79a3dc;
+  --bg-point: #4477be;
+  --bg-white: #fdfdfd;
+  --bg-light-gray: #aaaaaa;
+  --bg-gray: #5f5f5f;
+  --bg-dark-gray: #2b2b2b;
+  --bg-black: #000;
 
   /* ====== Text Colors ====== */
   --text-main: #79a3dc;
@@ -17,7 +17,11 @@
   --text-white: #fdfdfd;
   --text-light-gray: #aaaaaa;
   --text-gray: #5f5f5f;
-  --text-dark-gray: #1f2937;
+  --text-dark-gray: #2b2b2b;
+  --text-black: #000;
+  --text-brown: #a2640c;
+  --text-marine: #487371;
+  --text-purple: #5e55d7;
 
   /* ====== Transition ====== */
   --tran-02: all 0.2s ease;
@@ -35,4 +39,23 @@
   --font-sm: 0.875rem; /* 14px */
   /* ====== Shadow ====== */
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+body {
+  font-family: 'Arita', sans-serif;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.d-none {
+  display: none;
 }
