@@ -1,8 +1,13 @@
 <template>
-  <div class="flex">
-    <img class="logo" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
-    <hr />
+  <div class="column-center">
+    <div>
+      <img class="logo" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
+    </div>
+    <nav>
+      <!-- 자기 라우터여기에 하나씩 추가하면 됨 -->
+    </nav>
   </div>
+  <hr />
 </template>
 
 <script>
