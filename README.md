@@ -1,3 +1,24 @@
-# LANEIGFREE
+# LANEIGFREE 설치
 
-conf 파일에서 "${SRVROOT}/LANEIGFREE/backend" 바꾸기
+# 백앤드 경로 변경
+
+conf 파일에서
+DocumentRoot "${SRVROOT}/LANEIGFREE/backEnd"
+<Directory "${SRVROOT}/LANEIGFREE/backEnd">
+로 바꾸기
+
+# 파일 받아오기 및 vue 설치
+
+git clone https://github.com/sj506/LANEIGFREE.git
+
+frontend 폴더에 들어가서
+
+npm i --s vue
+
+vue add router
+
+vue add vuex
+
+npm i --s axios
+
+실행 , 중간에 나오는 것들은 다 y
