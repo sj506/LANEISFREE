@@ -2,28 +2,18 @@
   <div>
     <hommeBanner />
     <div class="flexDiv">
+      <!-- Large button groups (default and split) -->
+      <div class="btn-group">
+        <button @click="clickToggle" class="cateBtn toggle flexBtn" type="button" data-bs-toggle="dropdown">
+          카테고리
+          <i v-if="dNone" class="fa-solid fa-angle-down btni"></i>
+          <i v-if="!dNone" class="fa-solid fa-bars btni"></i>
+        </button>
+        <div class="dropdown-menu">...</div>
+      </div>
       <select>
         <option value="">신상품 순</option>
       </select>
-    </div>
-    <div class="dropdown show">
-      <a
-        class="btn btn-secondary dropdown-toggle"
-        href="#"
-        role="button"
-        id="dropdownMenuLink"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Dropdown link
-      </a>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
     </div>
   </div>
 </template>
@@ -32,7 +22,27 @@
 import hommeBanner from './hommeBanner';
 
 export default {
+  name: '',
   components: { hommeBanner },
+  data() {
+    return {
+      example: '',
+      dNone: true,
+    };
+  },
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  beforeUnmount() {},
+  unmounted() {},
+  methods: {
+    clickToggle() {
+      this.dNone = !this.dNone;
+    },
+  },
 };
 </script>
 
@@ -43,5 +53,24 @@ export default {
   flex-direction: row;
   align-content: center;
   margin-left: 3rem;
+}
+
+.cateBtn {
+  border: 1px solid gray;
+  font-size: 0.8rem;
+  padding: 10px;
+  border-radius: 0;
+  padding-right: 3rem;
+}
+
+.flexBtn {
+  display: flex;
+  flex-direction: row;
+  padding-right: 1rem;
+  background-color: #ffffff;
+}
+
+.btni {
+  padding-left: 2.5rem;
 }
 </style>
