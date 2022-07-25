@@ -1,5 +1,21 @@
 <template>
-  <router-view />
+  <div>
+    <Header />
+    <router-view/>
+    <Footer />
+  </div>
 </template>
+
+<script>
+  import Header from './layout/Header';
+  import Footer from './layout/Footer';
+
+  export default {
+    components: { Header, Footer },
+    computed: {
+
+    }
+  }
+</script>
 
 <style></style>
