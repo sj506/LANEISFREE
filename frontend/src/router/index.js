@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import hommeDetail from '../views/homme/hommeDetail';
 import index from '../views/index.vue';
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // }
+  {
+    path: '/detail',
+    name: 'hommeDetail',    
+    component: hommeDetail
+  }
 ];
 
 const router = createRouter({
