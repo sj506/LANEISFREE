@@ -8,7 +8,7 @@
             </div>
         </div>
         <section id="feature" class="pdp__section pdp__section--feature">
-      <h2 class="a11y">상품 특징</h2>
+      <h2 class="a11y red">상품 특징</h2>
   <div class="ft-recommend-wrap">
     <dl class="ft-recommend">
     <dt class="ft-recommend__t h4">이런 피부 고민에 추천해요!</dt>
