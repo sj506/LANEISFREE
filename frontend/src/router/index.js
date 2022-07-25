@@ -28,10 +28,15 @@ const routes = [
     component: newProduct,
   },
   {
+    path: '/homme',
+    name: 'homme',
+    component: homme,
+  },
+  {
     path: '/detail',
-    name: 'hommeDetail',    
-    component: hommeDetail
-  }
+    name: 'hommeDetail',
+    component: hommeDetail,
+  },
   // {
   //   path: '/',
   //   name: 'home',
@@ -45,17 +50,6 @@ const routes = [
   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // }
-  {
-    path: '/detail',
-    name: 'hommeDetail',
-    component: hommeDetail,
-  },
-
-  {
-    path: '/homme',
-    name: 'homme',
-    component: homme,
-  },
 ];
 
 const router = createRouter({
