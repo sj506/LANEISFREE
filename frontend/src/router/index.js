@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import hommeDetail from '../views/homme/hommeDetail';
+import homme from '../views/homme/homme';
 import index from '../views/index.vue';
 
 const routes = [
@@ -23,9 +24,15 @@ const routes = [
   // }
   {
     path: '/detail',
-    name: 'hommeDetail',    
-    component: hommeDetail
-  }
+    name: 'hommeDetail',
+    component: hommeDetail,
+  },
+
+  {
+    path: '/homme',
+    name: 'homme',
+    component: homme,
+  },
 ];
 
 const router = createRouter({

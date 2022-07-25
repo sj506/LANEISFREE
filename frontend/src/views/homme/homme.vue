@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1>homme</h1>
+    <HommeBanner />
   </div>
 </template>
 
 <script>
-export default {
+import HommeBanner from './hommeBanner.vue';
 
-}
+export default {
+  components: { HommeBanner },
+};
 </script>
 
-<style>
-
-</style>
+<style scoped></style>

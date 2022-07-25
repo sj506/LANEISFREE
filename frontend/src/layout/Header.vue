@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="column-center logo-margin">
-      <img class="logo" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
+    <div class="logo">
+      <router-link to="/">
+        <img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
+      </router-link>
+      <nav>
+        <router-link to="/homme">옴므</router-link>
+      </nav>
     </div>
-    <nav>
-      <!-- 자기 라우터여기에 하나씩 추가하면 됨 -->
-    </nav>
   </div>
   <hr />
 </template>
@@ -31,14 +33,18 @@ export default {
 };
 </script>
 
-<style>
-.logo {
+<style scoped>
+.logo-img {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 130px;
+  margin-left: 50px;
+  margin-right: 100px;
 }
-.logo-margin {
+.logo {
+  display: flex;
+  flex-direction: row;
   margin: 20px;
 }
 </style>
