@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div id="pdp-nav" class="pdp__nav" role="navigation">
-            <div id="pdp-tabs" class="tabs pdp__tabs">
-                <a href="#feature" class="tab-link tab-link--active">상품 특징</a>
-                <a href="#review" class="tab-link xreview-tab-link">사용 리뷰(479)</a>
-                <a href="#info" class="tab-link">전성분/주의사항</a>
+        <div class="nav-box">
+            <div class="justify-content-center d-flex">
+                <a href="#feature" class="nav-item">상품 특징</a>
+                <a href="#review" class="nav-item">사용 리뷰(479)</a>
+                <a href="#info" class="nav-item">전성분/주의사항</a>
             </div>
         </div>
         <section id="feature" class="pdp__section pdp__section--feature">
-      <h2 class="a11y red">상품 특징</h2>
+      <h2 class="a11y">상품 특징</h2>
   <div class="ft-recommend-wrap">
     <dl class="ft-recommend">
     <dt class="ft-recommend__t h4">이런 피부 고민에 추천해요!</dt>
@@ -456,5 +456,17 @@ export default {
 </script>
 
 <style>
-
+.nav-box{
+  border-bottom: 1px solid #ccc;
+}
+.nav{
+  text-align: center;
+}
+.nav-item{
+  margin: 0 20px;
+  height: 30px;
+}
+.nav-item:active{
+  border-bottom: 2px solid black;
+}
 </style>
