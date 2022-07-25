@@ -4,9 +4,25 @@
       <div class="logo">
         <img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
       </div>
+      <div>
+        <nav>
+          <ul>
+            <li>브랜드</li>
+            <li>소개</li>
+            <li>미츠 아트</li>
+            <li>베스트</li>
+            <li>신상품</li>
+            <li>옴므</li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
-  <hr />
 </template>
 
 <script>
