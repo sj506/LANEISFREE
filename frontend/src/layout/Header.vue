@@ -7,7 +7,6 @@
       <!-- 자기 라우터여기에 하나씩 추가하면 됨 -->
     </nav>
   </div>
-  <hr />
 </template>
 
 <script>
