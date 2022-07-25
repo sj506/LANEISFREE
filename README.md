@@ -3,8 +3,8 @@
 # 백앤드 경로 변경
 
 conf 파일에서
-DocumentRoot "${SRVROOT}/LANEIGFREE/backEnd"
-<Directory "${SRVROOT}/LANEIGFREE/backEnd">
+DocumentRoot "${SRVROOT}/LANEISFREE/backend"
+<Directory "${SRVROOT}/LANEISFREE/backend">
 로 바꾸기
 
 # 파일 받아오기 및 vue 설치
