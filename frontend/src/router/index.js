@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import hommeDetail from '../views/homme/hommeDetail';
 import index from '../views/index.vue';
+import signIn from '../views/user/signIn';
 
 const routes = [
   {
@@ -23,9 +24,14 @@ const routes = [
   // }
   {
     path: '/detail',
-    name: 'hommeDetail',    
-    component: hommeDetail
-  }
+    name: 'hommeDetail',
+    component: hommeDetail,
+  },
+  {
+    path: '/signin',
+    name: 'signIn',
+    component: signIn,
+  },
 ];
 
 const router = createRouter({
