@@ -2,9 +2,9 @@
   <div>
     <div class="nav-box">
       <div class="justify-content-center d-flex">
-        <a href="#feature" class="nav-item">상품 특징</a>
-        <a href="#review" class="nav-item">사용 리뷰(479)</a>
-        <a href="#info" class="nav-item">전성분/주의사항</a>
+        <a  v-bind:class="{bottomLine: this.geturl() == 'feature'}" href="#feature" class="nav-item">상품 특징</a>
+        <a v-bind:class="{bottomLine: this.geturl() == 'review'}" href="#review" class="nav-item">사용 리뷰(479)</a>
+        <a v-bind:class="{bottomLine: this.geturl() == 'info'}" href="#info" class="nav-item">전성분/주의사항</a>
       </div>
     </div>
     <section id="feature" class="pdp__section pdp__section--feature">
@@ -596,7 +596,25 @@
 </template>
 
 <script>
-export default {};
+import { computed } from '@vue/reactivity';
+
+export default {
+  data() {
+    return {
+      navurl: this.geturl()
+    };
+  },
+  methods: {
+   geturl() {
+      return window.location.href.split('#')[1];
+   }
+  },
+  created() {
+  },
+  computed: {
+
+  }
+};
 </script>
 
 <style>
@@ -607,10 +625,13 @@ export default {};
   text-align: center;
 }
 .nav-item {
-  margin: 0 20px;
   height: 30px;
+  padding: 0 20px;
 }
-.nav-item:active {
-  border-bottom: 2px solid black;
+.nav-item:hover {
+  border-bottom: 1px solid #ccc;
+}
+.bottomLine {
+  border-bottom: 2px solid rgb(2, 2, 2) !important;
 }
 </style>
