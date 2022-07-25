@@ -4,4 +4,4 @@ import router from './router';
 import store from './store';
 import mixins from './mixins';
 
-createApp(App).mixin(mixins).use(store).use(router).mount('#app');
+createApp(App).use(store).use(router).mixin(mixins).use(store).use(router).mount('#app');
