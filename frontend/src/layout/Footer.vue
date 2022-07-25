@@ -2,7 +2,6 @@
   <div>
     <hr />
     <div>footer</div>
-    <div>testing</div>
   </div>
 </template>
 
