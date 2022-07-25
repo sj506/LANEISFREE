@@ -1,6 +1,6 @@
 <template>
-  <div class="column-center">
-    <div>
+  <div>
+    <div class="column-center logo-margin">
       <img class="logo" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
     </div>
     <nav>
@@ -37,5 +37,8 @@ export default {
   align-items: center;
   justify-content: center;
   width: 130px;
+}
+.logo-margin {
+  margin: 20px;
 }
 </style>
