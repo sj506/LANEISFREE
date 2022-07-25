@@ -2,7 +2,7 @@
   <div>
     <hr />
     <div>footer</div>
-    <div>testd</div>
+    <div>testds</div>
   </div>
 </template>
 
