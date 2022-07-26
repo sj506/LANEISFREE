@@ -9,13 +9,12 @@
   <div class="cateFlex">
     <div class="cateDetails" v-for="(cateList, idx) in cateList" :key="idx">
       <div class="bigCate">{{ idx }}</div>
-      <div class="cateList" v-for="(cateList, i) in cateList" :key="i">
+      <div class="cateList" v-for="(cateList, idx) in cateList" :key="idx">
         <li class="cateText">{{ cateList }}</li>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: '',
@@ -39,41 +38,11 @@ export default {
   updated() {},
   beforeUnmount() {},
   unmounted() {},
-  methods: {
-    clickToggle1() {
-      this.dNone1 = !this.dNone1;
-    },
-    clickToggle2() {
-      this.dNone2 = !this.dNone2;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style scoped>
-.flexBtn {
-  display: flex;
-  flex-direction: row;
-  padding-right: 1rem;
-  background-color: #ffffff;
-}
-
-.btni {
-  padding-left: 2.5rem;
-}
-
-.cateBox {
-  width: 55rem;
-  /* width 값 조절필요 */
-  border: 1px solid #cacaca;
-  padding: 10px;
-  border-radius: 0;
-  font-size: 0.8rem;
-  padding: 3rem;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
 .viewAllBox {
   padding-left: 2rem;
 }
