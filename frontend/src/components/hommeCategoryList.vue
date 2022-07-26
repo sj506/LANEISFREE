@@ -87,10 +87,6 @@ a {
   margin-right: 5rem;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 .cateText {
   color: #666;
   display: inline-block;

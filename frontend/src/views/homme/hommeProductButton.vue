@@ -7,10 +7,10 @@
     </button>
     <div class="dropdown-menu dropDownBox cate2Box">
       <div>
-        <span class="active" ref="new" @click="addActive1">신상품순</span>
+        <span class="active pointer" ref="new" @click="addActive1">신상품순</span>
       </div>
       <div>
-        <span ref="best" @click="addActive2">베스트순</span>
+        <span ref="best" class="pointer" @click="addActive2">베스트순</span>
       </div>
     </div>
   </div>
