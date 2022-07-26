@@ -43,7 +43,10 @@
 body {
   font-family: 'Arita', sans-serif;
 }
-
+::selection {
+  color: var(--text-white);
+  background-color: var(--text-main);
+}
 .flex-center {
   display: flex;
   justify-content: center;
