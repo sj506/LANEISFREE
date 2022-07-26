@@ -1,18 +1,18 @@
 <template>
   <div>
     <hommeBanner />
-    <hommeCategoryButton />
+    <hommeButton />
   </div>
   bu
 </template>
 
 <script>
 import hommeBanner from './hommeBanner';
-import hommeCategoryButton from './hommeCategoryButton';
+import hommeButton from './hommeButton';
 
 export default {
   name: '',
-  components: { hommeBanner, hommeCategoryButton },
+  components: { hommeBanner, hommeButton },
   data() {
     return {
       example: '',

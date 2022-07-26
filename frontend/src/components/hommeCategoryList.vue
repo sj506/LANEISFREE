@@ -2,7 +2,9 @@
 
 <template>
   <div class="viewAllBox">
-    <router-link to="/homme" class="viewAll">전체보기</router-link>
+    <router-link to="/homme">
+      <span ref="viewAll" class="active" @click="addActive">전체보기</span>
+    </router-link>
     <!-- 카테고리 x 이미지 -->
     <i class="fa-solid fa-xmark toggle pointer" data-bs-toggle="dropdown"></i>
   </div>
@@ -10,7 +12,7 @@
     <div class="cateDetails" v-for="(cateList, idx) in cateList" :key="idx">
       <div class="bigCate">{{ idx }}</div>
       <div class="cateList" v-for="(cateList, idx) in cateList" :key="idx">
-        <li class="cateText">{{ cateList }}</li>
+        <li ref="cateText" class="cateText" @click="addActive">{{ cateList }}</li>
       </div>
     </div>
   </div>
@@ -26,8 +28,6 @@ export default {
         고민별: ['전체보기', '주름/탄력/보습', '수분/보습'],
         라인별: ['전체보기', '블루에너지', '크림 스킨', '액티브워터', '기타'],
       },
-      dNone1: true,
-      dNone2: true,
     };
   },
   beforeCreate() {},
@@ -38,11 +38,24 @@ export default {
   updated() {},
   beforeUnmount() {},
   unmounted() {},
-  methods: {},
+  methods: {
+    addActive(e) {
+      this.$refs.viewAll.classList.remove('active');
+      //맨 처음에 active가 전체보기에 되어있기에 없애줌
+      this.$refs.cateText.forEach((ele) => {
+        ele.classList.remove('active');
+        //전에 클릭한 기록을 지우기위해 cateText안에 classList를 반복해서 active 클래스를 다 지워줌
+      });
+      e.target.classList.add('active');
+    },
+  },
 };
 </script>
 
 <style scoped>
+a {
+  color: #666;
+}
 .viewAllBox {
   padding-left: 2rem;
 }
@@ -53,11 +66,10 @@ export default {
   top: 20px;
   right: 1.8rem;
 }
-.viewAll {
+.active {
   border-bottom: 1px solid;
-  color: #4477be;
+  color: #4477be !important;
 }
-
 .cateFlex {
   display: flex;
 }
