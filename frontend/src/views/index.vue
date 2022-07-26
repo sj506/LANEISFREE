@@ -1,9 +1,21 @@
 <template>
-  <div>
-    <h1>index</h1>
-  </div>
+  <div class="container"></div>
 </template>
 
-<script></script>
+<script>
+export default {
+  components: {},
+  data() {
+    return {
+      sampleData: '',
+    };
+  },
+  setup() {},
+  created() {},
+  mounted() {},
+  unmounted() {},
+  methods: {},
+};
+</script>
 
-<style></style>
+<style scoped></style>
