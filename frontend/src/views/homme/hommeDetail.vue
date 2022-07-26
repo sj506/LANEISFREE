@@ -75,12 +75,12 @@
               </div>
               <div class="proof__inner">
                 <p class="proof__desc">크림 한 통을 그대로 녹여낸 스킨 제형으로 로션, 크림이 따로 필요 없는 즉각 수분 충전되는 제품입니다.</p>
-                <div class="proof__cnt">
+                <div class="proof__cont">
                   <em class="proof__cap">SECRET 1.</em>
                   <span class="proof__t">스킨+로션+크림을 한 단계로! <br />
                     간편한 올인원 스킨
-                    <div class="plus-minus-toggle collapsed"></div>
                   </span>
+                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
                 </div>
               </div>
             </li>
@@ -90,21 +90,19 @@
                   src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"></video>
               </div>
               <div class="proof__inner">
-                <p class="proof__desc">
-                  끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.
-                </p>
+                <p class="proof__desc">끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
                   <span class="proof__t">물 스킨 제형으로 <br />
                     번들거림 없이 빠르게
-                    <div class="plus-minus-toggle collapsed"></div>
                   </span>
+                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
                 </div>
               </div>
             </li>
             <li class="proof col">
               <div class="proof__bg">
-                <img
+                <img class="proof_img"
                   src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg"/>
               </div>
               <div class="proof__inner">
@@ -113,8 +111,8 @@
                   <em class="proof__cap">SECRET 3.</em>
                   <span class="proof__t">어성초 성분으로 <br />
                     과다 분비된 피지 조절 및 모공케어
-                    <div class="plus-minus-toggle collapsed"></div>
                   </span>
+                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
                 </div>
               </div>
             </li>
@@ -126,17 +124,20 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity';
 
 export default {
   data() {
     return {
-      navurl: this.geturl()
+      navurl: this.geturl(),
+
     };
   },
   methods: {
     geturl() {
       return window.location.href.split('#')[1];
+    },
+    collapsedToggle(e) {
+      e.target.classList.toggle('collapsed');
     }
   },
   created() {
@@ -380,35 +381,54 @@ video {
   max-width: 100%;
 }
 
-@media (max-width: 575.98px) {
-  .proof__bg {
-    width: 370px;
-    height: 420px;
-  }
-}
-
 button {
   border: 0;
   outline: 0;
   background: none;
 }
 
+
+.proof{
+  position: relative;
+}
+.proof__bg{
+
+}
+.proof__inner{
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+}
+.proof__desc{
+  position: absolute;
+  bottom: 0;
+
+}
+.proof__cont {
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 10px;
+  width: 85%;
+}
+.proof__t{
+}
 .plus-minus-toggle {
   cursor: pointer;
   height: 21px;
-  position: relative;
   width: 21px;
+  right: 0;
 }
 
 .plus-minus-toggle:before,
 .plus-minus-toggle:after {
-  background: #000;
+  background: #fff;
   content: "";
   height: 5px;
-  left: 0;
+  right: 0;
+  bottom: 42px;
   position: absolute;
-  top: 0;
-  width: 21px;
+  width: 41px;
   transition: transform 500ms ease;
 }
 
@@ -423,7 +443,12 @@ button {
 .plus-minus-toggle.collapsed:before {
   transform: rotate(180deg);
 }
-
+@media (max-width: 575.98px) {
+  .proof__bg {
+    width: 370px;
+    height: 420px;
+  }
+}
 @media (max-width: 958.98px) {}
 
 @media (max-width: 991.98px) {}
