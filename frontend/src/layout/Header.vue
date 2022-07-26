@@ -5,11 +5,11 @@
         <img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" />
       </div>
       <ul class="navbar__menu" :class="{ active: isActive }">
-        <li>브랜드</li>
-        <li>미츠아트</li>
-        <li>베스트</li>
-        <li>신상품</li>
-        <li>옴므</li>
+        <li><router-link class="router-link" to=""> 브랜드</router-link></li>
+        <li><router-link class="router-link" to="">미츠아트</router-link></li>
+        <li><router-link class="router-link" to="">베스트</router-link></li>
+        <li><router-link class="router-link" to="">신상품</router-link></li>
+        <li><router-link class="router-link" to="">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li>
@@ -53,8 +53,17 @@ export default {
   },
 };
 </script>
-
 <style scoped>
+header {
+  height: 80px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 99;
+  border-bottom: 1px solid var(--text-light-gray);
+  top: 0;
+  left: 0;
+  right: 0;
+}
 .logo-img {
   display: flex;
   align-items: center;
@@ -72,12 +81,15 @@ ul {
   padding-left: 0;
   list-style: none;
 }
+.router-link {
+  color: var(--text-gray);
+}
 .navbar {
+  margin: 0px 20px;
   display: flex;
   justify-content: space-between;
-  padding: 8px 12px;
   align-items: center;
-  color: var(--text-light-gray);
+  font-size: var(--text-lg);
 }
 .navbar__menu {
   display: flex;
@@ -87,14 +99,18 @@ ul {
   padding: 8px 12px;
 }
 .navbar__menu li:hover {
-  background-color: var(--main-color);
+  color: red;
   border-radius: 4px;
 }
 .navbar__icons {
   display: flex;
 }
 .navbar__icons li {
+  height: 100%;
   padding: 8px 12px;
+}
+.navbar__icons i {
+  color: var(--text-main);
 }
 .navbar__icons i:hover {
   color: var(--text-point);
