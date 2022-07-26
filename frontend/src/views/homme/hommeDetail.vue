@@ -1,24 +1,23 @@
 <template>
   <div>
     <div class="nav-box">
-      <div class="justify-content-center d-flex">
-        <a  v-bind:class="{bottomLine: this.geturl() == 'feature'}" href="#feature" class="nav-item">상품 특징</a>
+      <div class="nav justify-content-center d-flex">
+        <a v-bind:class="{bottomLine: this.geturl() == 'feature'}" href="#feature" class="nav-item">상품 특징</a>
         <a v-bind:class="{bottomLine: this.geturl() == 'review'}" href="#review" class="nav-item">사용 리뷰(479)</a>
         <a v-bind:class="{bottomLine: this.geturl() == 'info'}" href="#info" class="nav-item">전성분/주의사항</a>
       </div>
     </div>
-    <section id="feature" class="pdp__section pdp__section--feature">
-      <h2 class="a11y">상품 특징</h2>
-      <div class="ft-recommend-wrap">
-        <dl class="ft-recommend">
-          <dt class="ft-recommend__t h4">이런 피부 고민에 추천해요!</dt>
-          <dd class="ft-recommend__d">
-            <ul class="ft-recommend__list">
-              <li class="ft-recommend__item">#건성피부</li>
-              <li class="ft-recommend__item">#지성피부</li>
-              <li class="ft-recommend__item">#면도 후 연약해진 피부</li>
-              <li class="ft-recommend__item">#피지</li>
-              <li class="ft-recommend__item">#모공</li>
+    <section id="main" class="">
+      <div class="c_recommend">
+        <dl class="frecommend">
+          <dt class="recommend_t">이런 피부 고민에 추천해요!</dt>
+          <dd class="recommend_d">
+            <ul class="recommend__list">
+              <li class="recommend__item">#건성피부</li>
+              <li class="recommend__item">#지성피부</li>
+              <li class="recommend__item">#면도 후 연약해진 피부</li>
+              <li class="recommend__item">#피지</li>
+              <li class="recommend__item">#모공</li>
             </ul>
           </dd>
         </dl>
@@ -618,20 +617,83 @@ export default {
 </script>
 
 <style>
-.nav-box {
-  border-bottom: 1px solid #ccc;
+.nav-box{
+   position: sticky;
+   top: 0;
+   background-color: white;
 }
+
 .nav {
-  text-align: center;
+  position: relative;
+  display: flex;
+  height: 54px;
+  font-size: 1.0625rem;
+  justify-content: center;
+  color: #ddd;
+  border-top: 1px solid;
 }
+
+.nav::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid;
+}
+
 .nav-item {
-  height: 30px;
-  padding: 0 20px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding: 0 3em;
+  color: #5f5f5f;
+  font-weight: 700;
+  line-height: 54px;
 }
+
 .nav-item:hover {
+  color: #5f5f5f;
+}
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid;
+  transform: translateY(2px);
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.nav-item:hover::before {
   border-bottom: 1px solid #ccc;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid;
+  transform: translateY(2px);
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
-.bottomLine {
-  border-bottom: 2px solid rgb(2, 2, 2) !important;
+
+.nav-item:hover::before, nav-item:focus::before{
+    transform: translateY(0); 
 }
+
+.bottomLine::before {
+  transform: translateY(0);
+  color: #000;
+}
+
+.c_recommend {
+  display: flex;
+  justify-content: center;
+}
+
 </style>
