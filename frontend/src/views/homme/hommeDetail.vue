@@ -27,38 +27,23 @@
         <div class="ft-quote__deco">
           <span class="icon icon-quotes" aria-hidden="true"></span>
         </div>
-        <p class="ft-quote__msg">
-          수분은 부족하고 피지량은 많은 남자 피부를 위한 진화, <br />스킨만으로도 로션, 크림을 따로 바를 필요 없이 바로 촉촉해지는 <br />남자만의
-          스킨케어 - 올인원 스킨으로 쉽고 간편하게 사용할수 있어요!
-        </p>
+        <p class="ft-quote__msg">수분은 부족하고 피지량은 많은 남자 피부를 위한 진화, <br />스킨만으로도 로션, 크림을 따로 바를 필요 없이 바로 촉촉해지는 <br />남자만의 스킨케어 - 올인원 스킨으로 쉽고 간편하게 사용할수 있어요!</p>
         <footer class="ft-quote__footer">라네즈 크림 스킨 옴므 올인원 상품개발 담당자</footer>
       </blockquote>
       <div class="ft-viral">
         <div class="ft-viral__title">라네즈 크림 스킨 옴므 올인원</div>
         <div class="ft-viral__sub">[HOMME] CREAM SKIN REFINER ALL IN ONE</div>
         <div class="ft-viral__box">
-          <img
-            src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_top-visuals-banner_pc.jpg"
-            class="ft-viral__img"
-            alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지"
-          />
+          <img src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_top-visuals-banner_pc.jpg" class="ft-viral__img" alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지" />
         </div>
       </div>
       <div class="ft-mood" role="presentation">
         <div class="ft-mood__pad">
           <div class="ft-mood__box">
-            <img
-              src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg"
-              class="ft-mood__img"
-              alt=""
-            />
+            <img src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg" class="ft-mood__img" alt="" />
           </div>
           <div class="ft-mood__box">
-            <img
-              src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg"
-              class="ft-mood__img"
-              alt=""
-            />
+            <img src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg" class="ft-mood__img" alt="" />
           </div>
         </div>
       </div>
@@ -94,19 +79,10 @@
             </li>
             <li class="proof">
               <div class="proof__bg">
-                <video
-                  src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"
-                  class="proof-bg-video"
-                  loop=""
-                  autoplay=""
-                  muted=""
-                  playsinline=""
-                ></video>
+                <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4" class="proof-bg-video" loop="" autoplay="" muted="" playsinline=""></video>
               </div>
               <div class="proof__inner">
-                <p class="proof__desc">
-                  끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.
-                </p>
+                <p class="proof__desc">끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
                   <span class="proof__t"
@@ -181,14 +157,7 @@
                   </div>
                   <div>
                     <strong>"바르는 즉시 촉촉해져서, 각질과 건조함을 잠재워줘요"</strong>
-                    <video
-                      src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
-                      class="viral-pdp__video"
-                      loop=""
-                      autoplay=""
-                      muted=""
-                      playsinline=""
-                    ></video>
+                    <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" class="viral-pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
                   </div>
                   <div>
                     <p>라네즈의 제형기술인 Cream Blending TechnologyTM로 '크림'과 '스킨'을 혼합하고 작게 쪼개어 하나의 워터로 안정화시켰습니다.</p>
@@ -229,9 +198,7 @@
                     <p>매일 아침 면도와 각종 외부 자극등 으로 인해 남자 피부도 연약해집니다.</p>
                     <p>보습에 꼭 필요한 성분을 담은 착한 처방의 스킨으로 피부 장벽을 건강하게 가꿔주세요.</p>
                     <ul>
-                      <li>
-                        POINT 1. 보습에 필요한 성분을 담은 착한 포뮬러의 스킨이에요! 향, 합성색소, PEG계면활성제, 동물성원료, 트리에탄올아민 무첨가
-                      </li>
+                      <li>POINT 1. 보습에 필요한 성분을 담은 착한 포뮬러의 스킨이에요! 향, 합성색소, PEG계면활성제, 동물성원료, 트리에탄올아민 무첨가</li>
                       <li>POINT 2. 피부과 테스트 완료 / 하이포 알러지 테스트 완료한 처방으로 연약해진 남성 피부에 저자극</li>
                       <li>PIONT 3. 아미노산이 풍부한 White Leaf Tea Water 함유로 거칠어진 피부 장벽 강화</li>
                     </ul>
@@ -251,16 +218,14 @@
                 <span class="bg__tag">#로션크림스킵케어</span>
                 <span class="bg__tag">#유수분밸런스</span>
                 <span class="bg__tag">#건성피부보습</span>
-                <span class="bg__tag">#피부진정</span><span class="bg__tag">#로션크림스킵케어</span><span class="bg__tag">#유수분밸런스</span
-                ><span class="bg__tag">#건성피부보습</span></span
+                <span class="bg__tag">#피부진정</span><span class="bg__tag">#로션크림스킵케어</span><span class="bg__tag">#유수분밸런스</span><span class="bg__tag">#건성피부보습</span></span
               >
               <span class="bg__marquee">
                 <span class="bg__tag">#피부진정</span>
                 <span class="bg__tag">#로션크림스킵케어</span>
                 <span class="bg__tag">#유수분밸런스</span>
                 <span class="bg__tag">#건성피부보습</span>
-                <span class="bg__tag">#피부진정</span><span class="bg__tag">#로션크림스킵케어</span><span class="bg__tag">#유수분밸런스</span
-                ><span class="bg__tag">#건성피부보습</span></span
+                <span class="bg__tag">#피부진정</span><span class="bg__tag">#로션크림스킵케어</span><span class="bg__tag">#유수분밸런스</span><span class="bg__tag">#건성피부보습</span></span
               >
             </div>
           </div>
@@ -271,11 +236,7 @@
             <h3 class="h4 pdp__sub-heading">2주의 기적 - 크림 스킨 옴므 올인원 사용 만족도</h3>
           </header>
           <div class="ft-data__cont">
-            <img
-              src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png"
-              class="ft-data__center"
-              alt="크림 스킨 옴므 올인원"
-            />
+            <img src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png" class="ft-data__center" alt="크림 스킨 옴므 올인원" />
             <div class="speech">
               <span class="speech__text">
                 <span class="u-br">바를 때 피부에</span>
@@ -337,26 +298,12 @@
             <h3 class="h4 pdp__sub-header">우윳빛 물 타입의 스킨</h3>
           </header>
           <div class="u-tc" style="">
-            <video
-              src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
-              class="pdp__video"
-              loop=""
-              autoplay=""
-              muted=""
-              playsinline=""
-            ></video>
+            <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
             <p>촉촉하고는 싶지만 번들거림은 부담스러웠던 남자 피부를 위해, <br />물 같은 스킨 제형이라 번들거림 없이 바르는 즉시 흡수돼요!</p>
           </div>
           <div class="u-tc" style="">
             <strong>&lt;자사 올인원 제품과 끈적임 비교 TEST&gt;</strong>
-            <video
-              src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4"
-              class="pdp__video"
-              loop=""
-              autoplay=""
-              muted=""
-              playsinline=""
-            ></video>
+            <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
             <p>올인원이지만 스킨 제형이라 <br />피부에 끈적임은 남지 않아 산뜻해요!</p>
           </div>
         </div>
@@ -372,14 +319,7 @@
           <ol class="ft-how-to__list">
             <li class="ft-how-to__item">
               <div class="ft-how-to__box">
-                <video
-                  src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4"
-                  class="pdp__video"
-                  loop=""
-                  autoplay=""
-                  muted=""
-                  playsinline=""
-                ></video>
+                <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
               </div>
               <div class="ft-how-to__cont">
                 <b class="h">Step 1.</b>
@@ -388,14 +328,7 @@
             </li>
             <li class="ft-how-to__item">
               <div class="ft-how-to__box">
-                <video
-                  src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4"
-                  class="pdp__video"
-                  loop=""
-                  autoplay=""
-                  muted=""
-                  playsinline=""
-                ></video>
+                <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
               </div>
               <div class="ft-how-to__cont">
                 <b class="h">Step 2.</b>
@@ -417,24 +350,11 @@
         <div class="swiper-container ft-step__carousel swiper-container-initialized swiper-container-horizontal" data-initial-step="1">
           <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms">
             <div class="swiper-slide swiper-slide-active" style="width: 302px">
-              <a
-                href="/kr/ko/homme/active-water-foam-cleanser.html"
-                class="ft-step__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="스텝_액티브 워터 폼 클렌저"
-              >
+              <a href="/kr/ko/homme/active-water-foam-cleanser.html" class="ft-step__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="스텝_액티브 워터 폼 클렌저">
                 <div class="ft-step__thumb">
-                  <img
-                    src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/bs-active-water-foam-cleanser-200427.png"
-                    class="ft-step__img"
-                    alt="액티브 워터 폼 클렌저"
-                  />
+                  <img src="/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/bs-active-water-foam-cleanser-200427.png" class="ft-step__img" alt="액티브 워터 폼 클렌저" />
                   <div class="item-deco">
-                    <div class="item-deco-bubble">
-                      <span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span
-                      ><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span>
-                    </div>
+                    <div class="item-deco-bubble"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div>
                   </div>
                 </div>
                 <b class="ft-step__cap">Step 1</b>
@@ -443,39 +363,13 @@
               </a>
             </div>
             <div class="swiper-slide swiper-slide-next" style="width: 302px">
-              <a
-                href="/kr/ko/homme/cream-skin-homme-all-in-one.html"
-                class="ft-step__link is-current"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="스텝_크림 스킨 옴므 올인원"
-              >
+              <a href="/kr/ko/homme/cream-skin-homme-all-in-one.html" class="ft-step__link is-current" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="스텝_크림 스킨 옴므 올인원">
                 <div class="ft-step__thumb">
-                  <img
-                    src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/20200427_final_cream-skin-refiner-all-in-one_best-step_pc.png"
-                    class="ft-step__img"
-                    alt="크림 스킨 옴므 올인원"
-                  />
+                  <img src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/20200427_final_cream-skin-refiner-all-in-one_best-step_pc.png" class="ft-step__img" alt="크림 스킨 옴므 올인원" />
                   <div class="item-deco">
                     <div class="item-deco-bubble">
-                      <span
-                        class="bubble"
-                        style="visibility: inherit; opacity: 0.736489; transform: translate3d(7.77028px, -15.0247px, 0px) scale(0.76284, 0.76284)"
-                      ></span
-                      ><span
-                        class="bubble"
-                        style="visibility: hidden; opacity: 0; transform: translate3d(-0.119717px, -120px, 0px) scale(0.1, 0.1)"
-                      ></span
-                      ><span
-                        class="bubble"
-                        style="visibility: inherit; opacity: 0.0316049; transform: translate3d(-5.31459px, -119.743px, 0px) scale(0.128444, 0.128444)"
-                      ></span
-                      ><span
-                        class="bubble"
-                        style="visibility: inherit; opacity: 0.459383; transform: translate3d(-3.2426px, -116.268px, 0px) scale(0.513444, 0.513444)"
-                      ></span
-                      ><span class="bubble" style="visibility: inherit; opacity: 1; transform: translate3d(2.33763px, -108.729px, 0px)"></span
-                      ><span class="bubble" style="visibility: inherit; opacity: 1; transform: translate3d(3.23362px, -97.1286px, 0px)"></span
+                      <span class="bubble" style="visibility: inherit; opacity: 0.736489; transform: translate3d(7.77028px, -15.0247px, 0px) scale(0.76284, 0.76284)"></span><span class="bubble" style="visibility: hidden; opacity: 0; transform: translate3d(-0.119717px, -120px, 0px) scale(0.1, 0.1)"></span><span class="bubble" style="visibility: inherit; opacity: 0.0316049; transform: translate3d(-5.31459px, -119.743px, 0px) scale(0.128444, 0.128444)"></span
+                      ><span class="bubble" style="visibility: inherit; opacity: 0.459383; transform: translate3d(-3.2426px, -116.268px, 0px) scale(0.513444, 0.513444)"></span><span class="bubble" style="visibility: inherit; opacity: 1; transform: translate3d(2.33763px, -108.729px, 0px)"></span><span class="bubble" style="visibility: inherit; opacity: 1; transform: translate3d(3.23362px, -97.1286px, 0px)"></span
                       ><span class="bubble" style="visibility: inherit; opacity: 1; transform: translate3d(-3.60971px, -81.4654px, 0px)"></span>
                     </div>
                   </div>
@@ -486,24 +380,11 @@
               </a>
             </div>
             <div class="swiper-slide" style="width: 302px">
-              <a
-                href="/kr/ko/homme/homme-air-light-sun-stick.html"
-                class="ft-step__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="스텝_옴므 에어라이트 선 스틱"
-              >
+              <a href="/kr/ko/homme/homme-air-light-sun-stick.html" class="ft-step__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="스텝_옴므 에어라이트 선 스틱">
                 <div class="ft-step__thumb">
-                  <img
-                    src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/bs-homme-air-light-sun-stick-200427.png"
-                    class="ft-step__img"
-                    alt="옴므 에어라이트 선 스틱"
-                  />
+                  <img src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/bs-homme-air-light-sun-stick-200427.png" class="ft-step__img" alt="옴므 에어라이트 선 스틱" />
                   <div class="item-deco">
-                    <div class="item-deco-bubble">
-                      <span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span
-                      ><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span>
-                    </div>
+                    <div class="item-deco-bubble"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div>
                   </div>
                 </div>
                 <b class="ft-step__cap">Step 3</b>
@@ -512,24 +393,11 @@
               </a>
             </div>
             <div class="swiper-slide" style="width: 302px">
-              <a
-                href="/kr/ko/skincare/cream-skin-quick-skin-pack.html"
-                class="ft-step__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="스텝_크림 스킨 퀵 스킨 팩"
-              >
+              <a href="/kr/ko/skincare/cream-skin-quick-skin-pack.html" class="ft-step__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="스텝_크림 스킨 퀵 스킨 팩">
                 <div class="ft-step__thumb">
-                  <img
-                    src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/cs-qsp-best-step-01_1.png"
-                    class="ft-step__img"
-                    alt="크림 스킨 퀵 스킨 팩"
-                  />
+                  <img src="/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/cs-qsp-best-step-01_1.png" class="ft-step__img" alt="크림 스킨 퀵 스킨 팩" />
                   <div class="item-deco">
-                    <div class="item-deco-bubble">
-                      <span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span
-                      ><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span>
-                    </div>
+                    <div class="item-deco-bubble"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div>
                   </div>
                 </div>
                 <b class="ft-step__cap">Step 4</b>
@@ -553,22 +421,8 @@
               <div class="ft-tip__box">
                 <p><b>#닦토로 사용</b>지성 피부이거나 더 산뜻한 사용감을 원한다면 <br />토너로 사용하는 것 처럼 화장솜으로 #닦토 해보세요!</p>
                 <div class="ft-tip__imgarea">
-                  <video
-                    src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_01_pc.mp4"
-                    class="bt_pdp__video"
-                    loop=""
-                    autoplay=""
-                    muted=""
-                    playsinline=""
-                  ></video>
-                  <video
-                    src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_02_pc.mp4"
-                    class="bt_pdp__video"
-                    loop=""
-                    autoplay=""
-                    muted=""
-                    playsinline=""
-                  ></video>
+                  <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_01_pc.mp4" class="bt_pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+                  <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_02_pc.mp4" class="bt_pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
                 </div>
               </div>
             </li>
@@ -576,14 +430,7 @@
               <div class="ft-tip__box">
                 <p><b>#스킨팩으로 사용</b>건성 피부 혹은 즉각적인 피부 진정이 필요할 때 <br />화장솜에 듬뿍 적셔 #스킨팩 해보세요!</p>
                 <div class="ft-tip__imgarea">
-                  <video
-                    src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_03_pc.mp4"
-                    class="bt_pdp__video"
-                    loop=""
-                    autoplay=""
-                    muted=""
-                    playsinline=""
-                  ></video>
+                  <video src="/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_03_pc.mp4" class="bt_pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
                 </div>
               </div>
             </li>
