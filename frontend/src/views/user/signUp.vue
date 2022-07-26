@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div style="margin-top: 75px;">
 
-    <h1>회원가입을 해야됩니다!!! 작업중</h1>
+    <div>
+      <h1>회원가입을 해야됩니다!!! 작업중</h1>
+    </div>
 
     <form action="">
       <table>
@@ -72,21 +74,31 @@
         </tr>
       </table>
     </form>
-
+   
   </div>
+
 </template>
 
 <script>
+import obj from '../../assets/js/addr.js';
+
 export default {
+  
   data() {
     return {
 
     }
   },
+  methods: {
+    execPostCode() {
+      obj.execPostCode();
+    }
+  },  
+  created() {
 
+  }
 }
 </script>
 
 <style scoped>
-
 </style>
