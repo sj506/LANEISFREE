@@ -1,16 +1,16 @@
 <template>
   <div class="btn-group">
     <button @click="clickToggle" class="cateBtn flexBtn toggle" type="button" data-bs-toggle="dropdown">
-      신상품순
+      {{ productCateNm }}
       <i v-if="dNone" class="fa-solid fa-angle-down btni"></i>
       <i v-if="!dNone" class="fa-solid fa-angle-up btni"></i>
     </button>
     <div class="dropdown-menu dropDownBox cate2Box">
       <div>
-        <span ref="cateText" @click="addActive">신상품순</span>
+        <span class="active" ref="new" @click="addActive1">신상품순</span>
       </div>
       <div>
-        <span ref="cateText" @click="addActive">베스트순</span>
+        <span ref="best" @click="addActive2">베스트순</span>
       </div>
     </div>
   </div>
@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       example: '',
+      productCateNm: '신상품순',
       dNone: true,
     };
   },
@@ -38,10 +39,15 @@ export default {
     clickToggle() {
       this.dNone = !this.dNone;
     },
-    addActive(e) {
-      console.log(this.$refs.cateText);
-      this.$refs.cateText.classList.remove('active');
-      e.target.classList.add('active');
+    addActive1(e) {
+      this.productCateNm = e.target.innerText;
+      this.$refs.best.classList.remove('active');
+      this.$refs.new.classList.add('active');
+    },
+    addActive2(e) {
+      this.productCateNm = e.target.innerText;
+      this.$refs.best.classList.add('active');
+      this.$refs.new.classList.remove('active');
     },
   },
 };
@@ -99,7 +105,7 @@ export default {
   font-size: 0.9rem;
 }
 
-.cate2Box ul li {
+.cate2Box div {
   margin-top: 0.5rem;
   margin-bottom: 0.7rem;
   padding: 0;

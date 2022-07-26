@@ -12,7 +12,9 @@
     <div class="cateDetails" v-for="(cateList, idx) in cateList" :key="idx">
       <div class="bigCate">{{ idx }}</div>
       <div class="cateList" v-for="(cateList, idx) in cateList" :key="idx">
-        <li ref="cateText" class="cateText" @click="addActive">{{ cateList }}</li>
+        <router-link to="/homme">
+          <span ref="cateText" class="cateText" @click="addActive">{{ cateList }}</span>
+        </router-link>
       </div>
     </div>
   </div>
@@ -30,14 +32,6 @@ export default {
       },
     };
   },
-  beforeCreate() {},
-  created() {},
-  beforeMount() {},
-  mounted() {},
-  beforeUpdate() {},
-  updated() {},
-  beforeUnmount() {},
-  unmounted() {},
   methods: {
     addActive(e) {
       this.$refs.viewAll.classList.remove('active');
@@ -47,6 +41,7 @@ export default {
         //전에 클릭한 기록을 지우기위해 cateText안에 classList를 반복해서 active 클래스를 다 지워줌
       });
       e.target.classList.add('active');
+      this.$emit('changeCateNm', e.target.innerText);
     },
   },
 };

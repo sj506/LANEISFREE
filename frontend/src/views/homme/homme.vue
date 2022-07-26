@@ -31,6 +31,9 @@ export default {
 </script>
 
 <style scoped>
+div {
+  margin-top: 60px;
+}
 @media (max-width: 59.99em) {
   .mobile {
     display: block;

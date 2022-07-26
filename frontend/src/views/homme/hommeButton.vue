@@ -4,12 +4,12 @@
     <div class="flexDiv">
       <div class="btn-group">
         <button @click="clickToggle" class="cateBtn toggle flexBtn" type="button" data-bs-toggle="dropdown">
-          카테고리
+          {{ CateNm }}
           <i v-if="dNone" class="fa-solid fa-angle-down btni"></i>
           <i v-if="!dNone" class="fa-solid fa-minus btni"></i>
         </button>
         <div class="dropdown-menu dropDownBox cateBox">
-          <hommeCategoryList />
+          <hommeCategoryList @changeCateNm="changeCateNm" />
         </div>
       </div>
       <hommeProductButton />
@@ -28,20 +28,16 @@ export default {
   data() {
     return {
       example: '',
+      CateNm: '카테고리',
       dNone: true,
     };
   },
-  beforeCreate() {},
-  created() {},
-  beforeMount() {},
-  mounted() {},
-  beforeUpdate() {},
-  updated() {},
-  beforeUnmount() {},
-  unmounted() {},
   methods: {
     clickToggle() {
       this.dNone = !this.dNone;
+    },
+    changeCateNm(val) {
+      this.CateNm = val;
     },
   },
 };
