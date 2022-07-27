@@ -45,7 +45,7 @@
       <div class="flex-center contents-link-box">
         <router-link to="" class="contents-link"> {{ content }} </router-link>
       </div>
-      <hommeCategoryList />
+      <hommeCategoryList v-show="isShow" />
     </div>
     <div v-show="isShow" class="transparent-box"></div>
   </header>
