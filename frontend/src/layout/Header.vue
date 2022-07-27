@@ -2,9 +2,7 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li @mouseover="showContentsBox('브랜드 스토리')" @mouseout="closeContentsBox()">
@@ -18,7 +16,7 @@
           <router-link class="router-link" to="">베스트</router-link>
         </li>
         <li @mouseover="showContentsBox('NEW 신상품')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">신상품</router-link></li>
-        <li @mouseover="showContentsBox()" @mouseout="closeContentsBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
+        <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li>
@@ -45,7 +43,11 @@
       <div class="flex-center contents-link-box">
         <router-link to="" class="contents-link"> {{ content }} </router-link>
       </div>
-      <hommeCategoryList v-show="isShow" />
+    </div>
+    <div class="contents" v-show="hommeShow" @mouseover="showHommeBox()">
+      <div class="hommeBox column-center">
+        <hommeCategoryList />
+      </div>
     </div>
     <div v-show="isShow" class="transparent-box"></div>
   </header>
@@ -61,6 +63,7 @@ export default {
     return {
       isActive: false,
       isShow: false,
+      hommeShow: false,
       content: '',
     };
   },
@@ -75,6 +78,12 @@ export default {
     closeContentsBox() {
       this.isShow = false;
     },
+    showHommeBox() {
+      this.hommeShow = true;
+    },
+    closeHommeBox() {
+      this.hommeShow = false;
+    },
   },
 };
 </script>
@@ -88,6 +97,9 @@ header {
   top: 0;
   left: 0;
   right: 0;
+}
+.hommeBox {
+  padding-top: 20px;
 }
 
 .logo-img {
