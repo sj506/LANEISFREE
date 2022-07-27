@@ -54,7 +54,7 @@
       <div class="prod_box">
         <div class="product_item">
           <div class="product-item__badge-wrap">
-            <span class="product-item__badge badge badge--new">new</span>
+            <span class="product-item__badge badge badge--new"><NEW></NEW></span>
           </div>
           <a href="#" class="product-item__link">
             <div class="product-item__thumb">
@@ -73,7 +73,7 @@
         </div>
         <div class="product_item">
           <div class="product-item__badge-wrap">
-            <span class="product-item__badge badge badge--new">new</span>
+            <span class="product-item__badge badge badge--new"><NEW></NEW></span>
           </div>
           <a
             href="/kr/ko/makeup/neo-foundation-brush.html"
@@ -106,7 +106,12 @@
 </template>
 
 <script>
-export default {};
+import NEW from "../components/NEW.vue";
+export default {
+  components: {
+    NEW
+  }
+};
 </script>
 
 <style>
@@ -155,17 +160,6 @@ main {
   height: 100%;
   margin: 5px;
   padding: 5px;
-}
-.product-item__badge {
-  position: absolute;
-  z-index: 1;
-  color: var(--text-white);
-  font-size: large;
-  font-weight: 100;
-  background-color: var(--bg-point);
-  padding-top: 3px;
-  padding: 0 5px;
-  padding-bottom: 5px;
 }
 .product-item__hash-wrap,
 .product-item__name {
