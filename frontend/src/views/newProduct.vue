@@ -67,6 +67,4 @@ li {
 main {
   margin-top: 60px;
 }
-.container {
-}
 </style>
