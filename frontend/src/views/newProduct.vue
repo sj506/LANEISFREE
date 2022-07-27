@@ -1,6 +1,6 @@
 <template>
   <main id="main" class="main">
-    <ol>
+    <ol class="breadcrumb">
       <li>
         <router-link to="/index">
           <!-- 링크주소 넣기-->
@@ -16,8 +16,8 @@
       </li>
     </ol>
     <div class="mainTitle">
-      <header>
-        <h1>신상품</h1>
+      <header class="page-header">
+        <h1 class="page_heading">신상품</h1>
       </header>
     </div>
 
@@ -38,7 +38,7 @@
             <br />
             풀 리페어 보습을 해주는 크림
           </p>
-          <span class="btn btn_line">
+          <span>
             <span class="btn_text">자세히 보기</span>
           </span>
         </div>
@@ -51,55 +51,113 @@
         </div>
       </router-link>
 
-      <div class="prod_box">
-        <div class="product_item">
-          <div class="product-item__badge-wrap">
-            <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+      <div class="prod_box column-center">
+        <div class="prod_box1 flex-center">
+          <div class="product_item">
+            <div class="product-item__badge-wrap">
+              <span class="product-item__badge badge badge--new"
+                ><NEW></NEW
+              ></span>
+            </div>
+            <a href="#" class="product-item__link">
+              <!-- 링크연결 -->
+              <div class="product-item__thumb">
+                <img
+                  class="product-item__img"
+                  src="../newImage/크림스킨.jpg"
+                  alt="크림 스킨 옴므 올인원"
+                />
+              </div>
+              <div class="product-item__hash-wrap">
+                <span class="product-item__hash">남자 올인원</span>
+                <div></div>
+                <span class="product-item__name">크림 스킨 옴므 올인원</span>
+              </div>
+            </a>
           </div>
-          <a href="#" class="product-item__link">
-            <div class="product-item__thumb">
-              <img
-                class="product-item__img"
-                src="../newImage/크림스킨.jpg"
-                alt="크림 스킨 옴므 올인원"
-              />
+          <div class="product_item">
+            <div class="product-item__badge-wrap">
+              <span class="product-item__badge badge badge--new"
+                ><NEW></NEW
+              ></span>
             </div>
-            <div class="product-item__hash-wrap">
-              <span class="product-item__hash">남자 올인원</span>
-              <span class="product-item__hash">원샷원킬수분공급</span>
-            </div>
-            <strong class="product-item__name">크림 스킨 옴므 올인원</strong>
-          </a>
-        </div>
-        <div class="product_item">
-          <div class="product-item__badge-wrap">
-            <span class="product-item__badge badge badge--new"><NEW></NEW></span>
-          </div>
-          <a
-            href="/kr/ko/makeup/neo-foundation-brush.html"
-            class="product-item__link"
-            ap-click-area="Product"
-            ap-click-name="Click - Product Detail Link"
-            ap-click-data="신제품_Neo Foundation Brush"
-          >
-            <div class="product-item__thumb">
-              <img
-                class="product-item__img"
-                src="../newImage/모이스처.jpg"
-                alt="모이스처"
-              />
-            </div>
-            <div class="product-item__hash-wrap">
-              <span class="product-item__hash">남자수분로션</span>
-              <span class="product-item__hash">남자수부지</span>
-            </div>
-            <strong class="product-item__name"
-              >액티브 워터 모이스처라이저</strong
+            <a
+              href="#"
+              class="product-item__link"
+              ap-click-area="Product"
+              ap-click-name="Click - Product Detail Link"
+              ap-click-data="신제품_Neo Foundation Brush"
             >
-          </a>
+              <div class="product-item__thumb">
+                <img
+                  class="product-item__img"
+                  src="../newImage/모이스처.jpg"
+                  alt="모이스처"
+                />
+              </div>
+              <div class="product-item__hash-wrap">
+                <span class="product-item__hash">남자수분로션</span>
+                <div></div>
+                <span class="product-item__name">액티브 워터 모이스처라이저</span>
+              </div>
+            </a>
+          </div>
         </div>
-        <div class="product_item"></div>
-        <div class="product_item"></div>
+
+        <div class="prod_box2 flex-center">
+          <div class="product_item">
+            <div class="product-item__badge-wrap">
+              <span class="product-item__badge badge badge--new"
+                ><NEW></NEW
+              ></span>
+            </div>
+            <a
+              href="#"
+              class="product-item__link"
+              ap-click-area="Product"
+              ap-click-name="Click - Product Detail Link"
+              ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom"
+            >
+              <div class="product-item__thumb">
+                <img
+                  class="product-item__img"
+                  src="../newImage/워터스킨.jpg"
+                  alt="워터스킨"
+                />
+              </div>
+              <div class="product-item__hash-wrap">
+                <span class="product-item__hash">남자수분스킨</span>
+                <div></div>
+                <span class="product-item__name">액티브 워터 스킨</span>
+              </div>
+            </a>
+          </div>
+          <div class="product_item">
+            <div class="product-item__badge-wrap">
+              <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+            </div>
+            <a
+              href="#"
+              class="product-item__link"
+              ap-click-area="Product"
+              ap-click-name="Click - Product Detail Link"
+              ap-click-data="신제품_water-bank-blue-hyaluronic-serum"
+            >
+              <div class="product-item__thumb">
+                <img
+                  class="product-item__img"
+                  src="../newImage/워터폼클렌저.jpg"
+                  alt="래디언-C 어드밴스드 이팩"
+                />
+              </div>
+              <div class="product-item__hash-wrap">
+                <span class="product-item__hash">촉촉클렌저</span>
+                <div></div>
+                <span class="product-item__name">액티브 워터 폼 클렌저</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -109,31 +167,49 @@
 import NEW from "../components/NEW.vue";
 export default {
   components: {
-    NEW
-  }
+    NEW,
+  },
 };
 </script>
 
 <style>
-h1 {
+.page_heading {
   text-align: center;
-  margin: 35px;
+  margin-bottom: 35px;
+}
+.page-header {
+  padding-top: 50px;
+  margin-bottom: 40px;
+}
+.breadcrumb {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 30px;
 }
 li {
   display: inline;
+  color: var(--text-black);
 }
 main {
   margin-top: 60px;
+  line-height: 1.6;
 }
 .newProd_box {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0 50px;
 }
 .prod_wide {
   position: relative;
   width: 45%;
-  height: 45%;
+  height: 50%;
   margin-left: 10px;
+}
+.prodWide_desc{
+  margin-bottom: 16px;
+}
+.btn_text{
+  text-decoration-line: underline;
 }
 .prodWide_img {
   width: 100%;
@@ -141,28 +217,30 @@ main {
 }
 .prodWide_cont {
   position: absolute;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  padding: 10% 9%;
+  z-index: 2;
   color: var(--text-black);
 }
 .prod_box {
   display: flex;
-  justify-content: center;
-  width: 45%;
-  height: 45%;
+  justify-content: space-between;
+  width: 50%;
+  height: 50%;
 }
 .product-item {
   position: relative;
-  width: 45%;
-  height: 45%;
+  width: 50%;
+  height: 50%;
 }
-.product-item__img{
+.product-item__img {
   width: 100%;
   height: 100%;
   margin: 5px;
   padding: 5px;
 }
-.product-item__hash-wrap,
-.product-item__name {
+.product-item__hash-wrap{
   text-align: center;
   color: var(--text-black);
 }
