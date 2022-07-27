@@ -5,6 +5,8 @@ import index from '../views/index.vue';
 import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
+import signIn from '../views/user/signIn.vue';
+import signUp from '../views/user/signUp.vue';
 
 const routes = [
   {
@@ -36,6 +38,16 @@ const routes = [
     path: '/detail',
     name: 'hommeDetail',
     component: hommeDetail,
+  },
+  {
+    path: '/signin',
+    name: 'signIn',
+    component: signIn,
+  },
+  {
+    path: '/signup',
+    name: 'signUp',
+    component: signUp,
   },
   // {
   //   path: '/',
