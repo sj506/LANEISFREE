@@ -138,15 +138,17 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  top: 40%;
+  top: 30%;
   left: 10%;
 }
 .swiper-slide .title {
   font-size: 41px;
+  margin-top: 10px;
   font-weight: 300;
 }
 
 .swiper-slide .subtitle {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -155,6 +157,7 @@ export default {
 }
 
 .swiper-slide .text {
+  margin-top: 20px;
   font-size: 14px;
   max-width: 400px;
   line-height: 1.3;

@@ -1,13 +1,17 @@
 <template>
-  <div class="container">
-    <list-item></list-item>
+  <div>
+    <main class="index-main">
+      <list-item></list-item>
+      <best-seller></best-seller>
+    </main>
   </div>
 </template>
 
 <script>
 import ListItem from '../components/ListItem.vue';
+import BestSeller from '@/components/BestSeller.vue';
 export default {
-  components: { ListItem },
+  components: { ListItem, BestSeller },
   data() {
     return {};
   },
@@ -20,8 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  width: 100vw;
+main {
   margin-top: 60px;
 }
 </style>
