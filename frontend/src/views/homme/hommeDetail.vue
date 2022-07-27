@@ -73,14 +73,16 @@
                 <img
                   src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_01_pc.jpg" />
               </div>
-              <div class="proof__inner">
+              <div class="proof__inner" :class="{isactive :isActive1}">
                 <p class="proof__desc">크림 한 통을 그대로 녹여낸 스킨 제형으로 로션, 크림이 따로 필요 없는 즉각 수분 충전되는 제품입니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 1.</em>
                   <span class="proof__t">스킨+로션+크림을 한 단계로! <br />
                     간편한 올인원 스킨
                   </span>
-                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
+                    <button class="proofBtn">
+                      <div @click="collapsedToggle($event.target, 'isActive1')" class="plus-minus-toggle collapsed"></div>
+                    </button>
                 </div>
               </div>
             </li>
@@ -89,14 +91,14 @@
                 <video
                   src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"></video>
               </div>
-              <div class="proof__inner">
+              <div class="proof__inner" :class="{isactive :isActive2}">
                 <p class="proof__desc">끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
                   <span class="proof__t">물 스킨 제형으로 <br />
                     번들거림 없이 빠르게
                   </span>
-                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
+                  <button @click="collapsedToggle($event.target, 'isActive2')" class="plus-minus-toggle collapsed"></button>
                 </div>
               </div>
             </li>
@@ -105,20 +107,31 @@
                 <img class="proof_img"
                   src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg"/>
               </div>
-              <div class="proof__inner">
+              <div class="proof__inner" v-bind:class="{isactive :isActive3}">
                 <p class="proof__desc">과다 분비된 피지 조절 효능이 있는 어성초 성분으로 모공 및 피지를 컨트롤해줍니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 3.</em>
                   <span class="proof__t">어성초 성분으로 <br />
                     과다 분비된 피지 조절 및 모공케어
                   </span>
-                    <div @click="collapsedToggle" class="plus-minus-toggle collapsed"></div>
+                  <button class="proofBtn">
+                    <div @click="collapsedToggle($event.target, 'isActive3')" class="plus-minus-toggle collapsed"></div>
+                  </button>
                 </div>
               </div>
             </li>
           </ul>
         </div>
       </div>
+      <div class="mainImgBox">
+        <div>
+          <img class="longImg" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_detail-PDP_pc.jpg">
+        </div>
+        <div>
+          <video class="longVideo" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" loop="" autoplay="" muted="" playsinline=""></video>
+        </div>
+      </div>
+
     </section>
   </div>
 </template>
@@ -129,31 +142,47 @@ export default {
   data() {
     return {
       navurl: this.geturl(),
-
+      isActive1: false,
+      isActive2: false,
+      isActive3: false
     };
   },
   methods: {
     geturl() {
       return window.location.href.split('#')[1];
     },
-    collapsedToggle(e) {
-      e.target.classList.toggle('collapsed');
+    collapsedToggle(ele, activeNm) {
+      this[activeNm] = !this[activeNm];      
+      ele.classList.toggle('collapsed');
     }
   },
   created() {
   },
-  computed: {
-
-  }
+  // computed: {
+  //   isactive: function(n) {
+  //     return this.n;
+  //   }
+  // }
 };
 </script>
 
 <style>
+html, body {
+  letter-spacing: -0.025em;
+  font-family: "Arita", sans-serif;
+}
+.container {
+  padding: 0;
+}
+button{
+  border: none;
+  background: none;
+}
 .nav-box {
   position: sticky;
   top: 0;
   background-color: white;
-
+  margin-top: 60px;
 }
 
 .nav {
@@ -347,6 +376,8 @@ svg {
 
 img {
   max-width: 100%;
+  height: auto;
+  vertical-align: top;
 }
 
 .c_c_mood_img {
@@ -374,44 +405,84 @@ img {
 
 .proof-list {
   display: flex;
-  flex-grow: 1 1 1;
+  justify-content: center;
 }
 
 video {
-  max-width: 100%;
+    display: block;
+    width: 100%;
 }
-
-button {
-  border: 0;
-  outline: 0;
-  background: none;
-}
-
 
 .proof{
   position: relative;
+  max-width: 370px;
+  color: #fff;
+  padding: 0;
+}
+.proof:not(:first-child){
+  margin: 0 0 0 33px;
 }
 .proof__bg{
 
 }
 .proof__inner{
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 60px 30px 110px;
+  line-height: 1.6;
+  letter-spacing: -0.05em;
+  word-spacing: -0.05em;
+
+}
+.proof__inner::before, .proof__inner::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.proof__inner::before{
+  top: 30%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+.proof__inner::after{
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.4s;
+}
+.proof__inner.isactive::after {
+  background-color: rgba(0, 0, 0, 0.6); }
+.proof__inner.isactive .proof__desc {
+  opacity: 1;
+  transform: translateY(0); 
 }
 .proof__desc{
-  position: absolute;
-  bottom: 0;
-
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  font-size: 1rem;
+  transform: translateY(20px);
+  transition: 0.4s;
+  transition: 0.4s; 
 }
 .proof__cont {
   position: absolute;
-  bottom: 10%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 10px;
-  width: 85%;
+  z-index: 2;
+  left: 8%;
+  right: 8%;
+  bottom: 4%;
 }
 .proof__t{
+  display: block;
+  max-width: 75%;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+.proofBtn{
 }
 .plus-minus-toggle {
   cursor: pointer;
@@ -443,10 +514,46 @@ button {
 .plus-minus-toggle.collapsed:before {
   transform: rotate(180deg);
 }
+.mainImgBox{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.longVideo{
+    list-style: none;
+    position: absolute;
+    top: 42%;
+    left: 0;
+    width: 62%;
+    margin: 0 19%;
+}
+
+
+
+
 @media (max-width: 575.98px) {
   .proof__bg {
     width: 370px;
     height: 420px;
+  }
+}
+@media (max-width: 758.98px) {
+  .c_c_mood_img {
+    display: flex;
+    flex-direction: column;
+  }
+  .img_box1, .img_box2 {
+    padding: 30px;
+    margin: 0;
+  }
+  .proof-list {
+    flex-direction: column;
+    align-content: center;
+  }
+  .proof{
+    margin: 20px 0px !important;
   }
 }
 @media (max-width: 958.98px) {}
