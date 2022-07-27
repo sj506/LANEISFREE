@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <h1>asdfsdf</h1>
+    <h1>asdfsdf</h1>
+    <h1>asdfsdf</h1>
+    <h1>asdfsdf</h1>
+    <h1>asdfsdf</h1>
+    <h1>asdfsdf</h1>
     <div class="nav-box">
       <div class="nav justify-content-center d-flex">
         <a v-bind:class="{ bottomLine: this.geturl() == 'feature' }" href="#feature" class="nav-item">상품 특징</a>
@@ -131,6 +137,18 @@
           <video class="longVideo" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" loop="" autoplay="" muted="" playsinline=""></video>
         </div>
       </div>
+      <div class="c_data">
+        <div class="data_header">
+          <em class="data_title">CLINICAL DATA</em>
+          <h3 class="h4 data_title2">2주의 기적 - 크림 스킨 옴므 올인원 사용 만족도</h3>
+        </div>
+        <div class="bg">
+          <MARQUEE behavior="scroll" scrollamount=10>#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습</MARQUEE>
+        </div>
+        <div class="data">
+          <img src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png">
+        </div>
+      </div>
 
     </section>
   </div>
@@ -180,9 +198,10 @@ button{
 }
 .nav-box {
   position: sticky;
-  top: 0;
+  top: 60px;
   background-color: white;
   margin-top: 60px;
+  z-index: 4;
 }
 
 .nav {
@@ -529,8 +548,51 @@ video {
     width: 62%;
     margin: 0 19%;
 }
+.c_data{
+  height: 768.98px;
+  background-color: #e6ecf8 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px 0 0 0;
 
+}
+.data_header{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.data_title{
+  color: #2b2b2b;
+  font-family: "brandon-grotesque", "Arita", sans-serif;
+  font-weight: bold;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+.data_title2{
+  font-weight: 400;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0.2em;
+  margin-bottom: 1.875rem;
+  font-size: 1.8125rem;
+}
+MARQUEE{
+  font-weight: 700;
+  color: var(--text-point);
+  font-size: 3.5rem;
+  text-shadow: #fff;
+}
+.bg{
 
+}
+.data > img {
+  max-height: 100%;
+  position: relative;
+  top: -7%;
+}
 
 
 @media (max-width: 575.98px) {
