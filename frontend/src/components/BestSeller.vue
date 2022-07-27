@@ -7,12 +7,14 @@
       <video autoplay preload muted loop src="https://www.laneige.com/kr/ko/assets/video/index/bestseller-bg.mp4"></video>
     </div>
     <div class="swiper-box">
-      <swiper :slidesPerView="3" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper" v-for="{ item, idx } in items" :key="idx">
-        <swiper-slide
-          ><img :src="`@/assets/img/bestSeller/${idx}.png`" alt="" />
-          <div class="product-info">
-            <div>{{ item }}</div>
-            <div class="engName">{{ item.engName[idx] }}</div>
+      <swiper :slidesPerView="3" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper">
+        <swiper-slide v-for="(product, idx) in productList" :key="idx">
+          <div data-aos="fade-up" :data-aos-duration="`${idx}000`">
+            <img :src="require(`../assets/img/bestSeller/${idx + 1}.png`)" alt="" />
+            <div class="product-info">
+              <div class="engName">{{ product.engName }}</div>
+              <div class="name">{{ product.name }}</div>
+            </div>
           </div>
         </swiper-slide>
       </swiper>
@@ -33,10 +35,7 @@ import { Navigation } from 'swiper';
 export default {
   data() {
     return {
-      items: [
-        // name: ['크림 스킨', '네오 쿠션', '래디언-C 크림', '워터 스리핑 마스크 EX', '립 슬리핑 마스크 EX', '워터뱅크 블루 히알루로닉 크림'],
-        // EngName: ['Cream Skin Refiner', 'NEO CUSHION', 'RADIAN-C CREAM', 'Water Sleeping Mask EX', 'Lip Sleeping Mask EX', 'WATER BANK BLUE HYALURONIC CREAM  '],
-        // length: 6,
+      productList: [
         {
           name: '크림 스킨',
           engName: 'Cream Skin Refiner',
@@ -62,6 +61,7 @@ export default {
           engName: 'WATER BANK BLUE HYALURONIC CREAM',
         },
       ],
+      cars: ['hyundai', 'kia', 'bmw', 'volvo', 'benz'],
     };
   },
   components: {
@@ -73,12 +73,15 @@ export default {
       modules: [Navigation],
     };
   },
+  mounted() {
+    AOS.init();
+  },
 };
 </script>
 
 <style scoped>
 .swiper-box {
-  margin-top: 50px;
+  margin-top: 180px;
 }
 .swiper {
   width: 100%;
@@ -124,5 +127,10 @@ export default {
   object-fit: cover;
   width: 100vw;
   height: 460px;
+}
+.product-info .engName {
+  margin: 10px 0;
+  color: var(--text-point);
+  font-weight: bold;
 }
 </style>

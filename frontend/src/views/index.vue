@@ -25,6 +25,7 @@ export default {
 
 <style scoped>
 main {
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  margin: 200px 0;
 }
 </style>

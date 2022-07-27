@@ -176,6 +176,7 @@ ul {
 }
 @media screen and (max-width: 975px) {
   .navbar {
+    background-color: var(--bg-white);
     flex-direction: column;
     align-items: flex-start;
   }
