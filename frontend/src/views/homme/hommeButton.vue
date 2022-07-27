@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="buttonBox">
     <!-- 카테고리 buttton -->
     <div class="flexDiv">
       <div class="btn-group">
         <button @click="clickToggle" class="cateBtn toggle flexBtn" type="button" data-bs-toggle="dropdown">
-          {{ CateNm }}
+          {{ cateBtnNm }}
           <i v-if="dNone" class="fa-solid fa-angle-down btni"></i>
           <i v-if="!dNone" class="fa-solid fa-minus btni"></i>
         </button>
@@ -15,6 +15,7 @@
       <hommeProductButton />
     </div>
     <!-- 카테고리 buttton -->
+    <p class="hommeProductCount">{{ cateNm }} {{ puductCount }}개 상품</p>
   </div>
 </template>
 
@@ -28,8 +29,10 @@ export default {
   data() {
     return {
       example: '',
-      CateNm: '카테고리',
+      cateBtnNm: '카테고리',
       dNone: true,
+      cateNm: '옴므',
+      puductCount: 8,
     };
   },
   methods: {
@@ -37,19 +40,31 @@ export default {
       this.dNone = !this.dNone;
     },
     changeCateNm(val) {
-      this.CateNm = val;
+      this.cateBtnNm = val;
+      this.cateNm = val;
     },
   },
 };
 </script>
 
 <style scoped>
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.hommeProductCount {
+  margin-right: 5rem;
+  color: #767676;
+  font-size: 0.8rem;
+}
 .flexDiv {
   margin: 2rem;
   display: flex;
   flex-direction: row;
   align-content: center;
-  margin-left: 3rem;
+  margin-left: 5rem;
 }
 
 .cateBtn {
