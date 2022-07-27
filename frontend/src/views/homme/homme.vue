@@ -1,8 +1,10 @@
 <template>
   <div class="mt-60">
     <hommeBanner />
-    <hommeButton />
-    <productList />
+    <div class="productMain">
+      <hommeButton />
+      <productList />
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,7 @@ export default {
     return {
       example: '',
       categoryList: {},
+      productList: {},
     };
   },
   beforeCreate() {},
@@ -44,6 +47,11 @@ export default {
 <style scoped>
 .mt-60 {
   margin-top: 60px;
+}
+.productMain {
+  margin-bottom: 10rem;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 @media (max-width: 59.99em) {
   .mobile {

@@ -9,13 +9,13 @@
           <i v-if="!dNone" class="fa-solid fa-minus btni"></i>
         </button>
         <div class="dropdown-menu dropDownBox cateBox">
-          <hommeCategoryList @changeCateNm="changeCateNm" />
+          <hommeCategoryList @changeCateNm="changeCateNm" @productCount="productCount" />
         </div>
       </div>
       <hommeProductButton />
     </div>
     <!-- 카테고리 buttton -->
-    <p class="hommeProductCount">{{ cateNm }} {{ puductCount }}개 상품</p>
+    <p class="hommeProductCount">{{ cateNm }} {{ proCount }}개 상품</p>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
       cateBtnNm: '카테고리',
       dNone: true,
       cateNm: '옴므',
-      puductCount: 8,
+      proCount: 8,
     };
   },
   methods: {
@@ -42,6 +42,9 @@ export default {
     changeCateNm(val) {
       this.cateBtnNm = val;
       this.cateNm = val;
+    },
+    productCount(val) {
+      this.proCount = val;
     },
   },
 };
@@ -64,7 +67,6 @@ export default {
   display: flex;
   flex-direction: row;
   align-content: center;
-  margin-left: 5rem;
 }
 
 .cateBtn {
@@ -72,7 +74,6 @@ export default {
   font-size: 0.9rem;
   padding: 10px;
   border-radius: 0;
-  padding-right: 3rem;
 }
 
 .flexBtn {

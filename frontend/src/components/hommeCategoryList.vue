@@ -9,11 +9,11 @@
     <i class="fa-solid fa-xmark toggle pointer" data-bs-toggle="dropdown"></i>
   </div>
   <div class="cateFlex">
-    <div class="cateDetails" v-for="(cateList, idx) in cateList" :key="idx">
-      <div class="bigCate">{{ idx }}</div>
+    <div class="cateDetails" v-for="(cateList, i) in cateList" :key="i">
+      <div class="bigCate">{{ i }}</div>
       <div class="cateList" v-for="(cateList, idx) in cateList" :key="idx">
         <router-link to="/homme">
-          <span ref="cateText" class="cateText" @click="addActive">{{ cateList }}</span>
+          <span ref="cateText" class="cateText" @click="addActive" :data-catetype="i" :data-cateclass="cateList">{{ cateList }}</span>
         </router-link>
       </div>
     </div>
@@ -26,6 +26,10 @@ export default {
     return {
       example: '',
       cateList: {},
+      selectProductNum: [],
+      selectProduct: [],
+      productCate: {},
+      productList: {},
     };
   },
   created() {
@@ -33,6 +37,12 @@ export default {
   },
   methods: {
     addActive(e) {
+      this.selectProductNum = [];
+      this.selectProduct = [];
+      this.productCate = this.$store.state.getCategoryList;
+      this.productList = this.$store.state.getProductList;
+
+      console.log(this.productList);
       this.$refs.viewAll.classList.remove('active');
       //맨 처음에 active가 전체보기에 되어있기에 없애줌
       this.$refs.cateText.forEach((ele) => {
@@ -41,6 +51,83 @@ export default {
       });
       e.target.classList.add('active');
       this.$emit('changeCateNm', e.target.innerText);
+
+      this.productCate.forEach((productCate) => {
+        if (!e.target.dataset.catetype) {
+          this.selectProductNum.push(productCate.pro_num);
+        } else {
+          switch (productCate.cate_type) {
+            case 1:
+              if (e.target.dataset.catetype === '유형별') {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                  // 로션/에멀전
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  // 클렌징
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  // 스킨/미스트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  // 기프트 세트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '전체보기') {
+                  this.selectProductNum.push(productCate.pro_num);
+                }
+              }
+              break;
+            case 2:
+              if (e.target.dataset.catetype === '고민별') {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                  // 로션/에멀전
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  // 클렌징
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  // 스킨/미스트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  // 기프트 세트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '전체보기') {
+                  this.selectProductNum.push(productCate.pro_num);
+                }
+              }
+              break;
+            case 3:
+              if (e.target.dataset.catetype === '라인별') {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                  // 로션/에멀전
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  // 클렌징
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  // 스킨/미스트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  // 기프트 세트
+                  this.selectProductNum.push(productCate.pro_num);
+                } else if (e.target.dataset.cateclass === '전체보기') {
+                  this.selectProductNum.push(productCate.pro_num);
+                }
+              }
+              break;
+          }
+        }
+      });
+
+      this.productList.forEach((product) => {
+        this.selectProductNum.forEach((productNum) => {
+          if (product.pro_num === productNum) {
+            this.selectProduct.push(product);
+          }
+        });
+      });
+
+      this.$store.commit('selectProduct', this.selectProduct);
+      this.$emit('productCount', this.selectProduct.length);
     },
   },
 };
