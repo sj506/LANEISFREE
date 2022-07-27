@@ -70,7 +70,7 @@ export default {
 <style scoped>
 header {
   height: 60px;
-  background-color: #fff;
+  background-color: var(--bg-white);
   position: fixed;
   z-index: 99;
   border-bottom: 1px solid var(--text-light-gray);
@@ -152,6 +152,7 @@ ul {
   transform: scaleX(1);
 }
 .navbar__icons {
+  background-color: var(--bg-white);
   display: flex;
 }
 .navbar__icons li {

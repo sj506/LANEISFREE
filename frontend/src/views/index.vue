@@ -1,14 +1,15 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <list-item></list-item>
+  </div>
 </template>
 
 <script>
+import ListItem from '../components/ListItem.vue';
 export default {
-  components: {},
+  components: { ListItem },
   data() {
-    return {
-      sampleData: '',
-    };
+    return {};
   },
   setup() {},
   created() {},
@@ -18,4 +19,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  width: 100vw;
+  margin-top: 60px;
+}
+</style>
