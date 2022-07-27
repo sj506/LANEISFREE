@@ -2,15 +2,23 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <router-link to="" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
+        <router-link to="/" class="flex-center"
+          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
+        /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
-        <li @mouseover="showContentsBox('브랜드 스토리')" @mouseout="closeContentsBox()"><router-link class="router-link" to=""> 브랜드</router-link></li>
+        <li @mouseover="showContentsBox('브랜드 스토리')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to=""> 브랜드</router-link>
+        </li>
         <li @mouseover="showContentsBox('소개')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">팀소개</router-link></li>
-        <li @mouseover="showContentsBox('사그마이스터 앤 월시')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">미츠아트</router-link></li>
-        <li @mouseover="showContentsBox('베스트 상품')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">베스트</router-link></li>
+        <li @mouseover="showContentsBox('사그마이스터 앤 월시')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="">미츠아트</router-link>
+        </li>
+        <li @mouseover="showContentsBox('베스트 상품')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="">베스트</router-link>
+        </li>
         <li @mouseover="showContentsBox('NEW 신상품')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">신상품</router-link></li>
-        <li @mouseover="showContentsBox()" @mouseout="closeContentsBox()"><router-link class="router-link" to="">옴므</router-link></li>
+        <li @mouseover="showContentsBox()" @mouseout="closeContentsBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li>
@@ -37,15 +45,18 @@
       <div class="flex-center contents-link-box">
         <router-link to="" class="contents-link"> {{ content }} </router-link>
       </div>
+      <hommeCategoryList v-show="isShow" />
     </div>
     <div v-show="isShow" class="transparent-box"></div>
   </header>
 </template>
 
 <script>
+import hommeCategoryList from '@/components/hommeCategoryList.vue';
+
 export default {
   name: '',
-  components: {},
+  components: { hommeCategoryList },
   data() {
     return {
       isActive: false,
@@ -176,6 +187,7 @@ ul {
 }
 @media screen and (max-width: 975px) {
   .navbar {
+    background-color: var(--bg-white);
     flex-direction: column;
     align-items: flex-start;
   }
