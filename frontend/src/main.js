@@ -11,6 +11,7 @@ import 'aos/dist/aos.css';
 
 createApp(App).use(store).use(router).mixin(mixins).mount('#app').use(css).use(swipe).use(addr);
 window.Kakao.init('61b4bcbd93b6e2039a3f7f7d46cbbe45');
+
 new Vue({
   render: (h) => h(App),
   mounted() {
