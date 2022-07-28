@@ -191,13 +191,17 @@
         <div class="texture_title1">
           <div class="h4 texture_stitle">TEXTURE</div>
           <div class="h2 texture_stitle2">우윳빛 물 타입의 스킨</div>
-          <video class="texture_video1" src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" loop="" autoplay="" muted="" playsinline=""></video>
+          <video class="texture_video1"
+            src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
+            loop="" autoplay="" muted="" playsinline=""></video>
           <div class="texture_ctnt">촉촉하고는 싶지만 번들거림은 부담스러웠던 남자 피부를 위해,</div>
           <div class="texture_ctnt">물 같은 스킨 제형이라 번들거림 없이 바르는 즉시 흡수돼요!</div>
         </div>
         <div class="texture_title2">
           <div class="texture_stitle3"> &lt 자사 올인원 제품과 끈적임 비교 TEST &gt</div>
-          <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+          <video
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4"
+            class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
           <div class="texture_stitle4">
             <div>올인원이지만 스킨 제형이라</div>
             <div>피부에 끈적임은 남지 않아 산뜻해요!</div>
@@ -209,10 +213,12 @@
         <div class="how-header1">
           <div class="h4">HOW TO</div>
           <div class="h2 how-subcnt">크림 스킨 옴므 올인원 기본 사용법</div>
-      </div>
-      <ol class="d-flex justify-content-center">
+        </div>
+        <ol class="d-flex justify-content-center">
           <li>
-            <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+            <video
+              src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4"
+              class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 1.</div>
               <div class="how-cnt">
@@ -222,7 +228,9 @@
             </div>
           </li>
           <li>
-            <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+            <video
+              src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4"
+              class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 2.</div>
               <div class="how-cnt">
@@ -236,7 +244,20 @@
           </li>
         </ol>
       </div>
-
+      <div class="c_step">
+        <div class="step1">
+        </div>
+        <div class="step2">
+          <div class="h4">BEST STEP</div>
+          <div class="h2">라네즈가 추천하는 남성 피부 수분 충전 스텝</div>
+        </div>
+        <div class="step3">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -894,6 +915,115 @@ MARQUEE {
   color: var(--text-gray);
 
 }
+.bubbles{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index:3;
+    top:0;
+    left:0;
+    margin-bottom: 100px;
+  }
+  .bubble{
+    position: absolute;
+    bottom:0;
+    width:40px;
+    height: 40px;
+    background: rgb(0, 0, 0);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: flying 15s infinite ease-in-out;
+  }
+  .bubble:nth-child(1){
+    width:40px;
+    height: 40px;
+    left:10%;
+    animation-duration: 15s;
+  }
+  .bubble:nth-child(2){
+    width:20px;
+    height: 20px;
+    left:20%;
+    animation-duration: 15s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(3){
+    width:50px;
+    height: 50px;
+    left:35%;
+    animation-duration: 17s;
+    animation-delay:2s;
+  }
+  .bubble:nth-child(4){
+    width:80px;
+    height: 80px;
+    left:50%;
+    animation-duration: 14s;
+    animation-delay:0s;
+  }
+  .bubble:nth-child(5){
+    width:35px;
+    height: 35px;
+    left:55%;
+    animation-duration: 13s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(6){
+    width:45px;
+    height: 45px;
+    left:65%;
+    animation-duration: 15s;
+    animation-delay:3s;
+  }
+  .bubble:nth-child(7){
+    width:25px;
+    height: 25px;
+    left:75%;
+    animation-duration: 14s;
+    animation-delay:2s;
+  }
+  .bubble:nth-child(8){
+    width:80px;
+    height: 80px;
+    left:80%;
+    animation-duration: 13s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(9){
+    width:15px;
+    height: 15px;
+    left:70%;
+    animation-duration: 16s;
+    animation-delay:0s;
+  }
+  .bubble:nth-child(10){
+    width:50px;
+    height: 50px;
+    left:85%;
+    animation-duration: 12s;
+    animation-delay:3s;
+  }
+  .c_step{
+    margin: 60px 0 30px 0;
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+    background-image: url("https://www.laneige.com/kr/ko/assets/pdp/beststep-bg.jpg");
+  }
+  .step1{
+    width: 100%;
+    height: 100%;
+  }
+
+  .centerCol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .centerRow{
+    display: flex;
+    justify-content: center;
+  }
 @media (max-width: 575.98px) {
   .proof__bg {
     width: 370px;
