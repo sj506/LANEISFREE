@@ -1,5 +1,4 @@
 <template>
-  <!-- 스와이프에 기능을 추가하려면 속성에 추가를 해줘야 함 -->
   <swiper
     :slidesPerView="1"
     :spaceBetween="30"
