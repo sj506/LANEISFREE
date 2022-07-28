@@ -412,12 +412,6 @@ main {
   justify-content: space-between;
   width: 45%;
 }
-.prod_box1 {
-  border-bottom: 1px solid gray;
-}
-.prod_box2 {
-  border-bottom: 1px solid gray;
-}
 .product-item {
   position: relative;
   width: 45%;
