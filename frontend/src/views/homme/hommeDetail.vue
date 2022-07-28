@@ -1,11 +1,5 @@
 <template>
   <div class="container">
-    <h1>asdfsdf</h1>
-    <h1>asdfsdf</h1>
-    <h1>asdfsdf</h1>
-    <h1>asdfsdf</h1>
-    <h1>asdfsdf</h1>
-    <h1>asdfsdf</h1>
     <div class="nav-box">
       <div class="nav justify-content-center d-flex">
         <a v-bind:class="{ bottomLine: this.geturl() == 'feature' }" href="#feature" class="nav-item">상품 특징</a>
@@ -146,7 +140,38 @@
           <MARQUEE behavior="scroll" scrollamount=10>#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습</MARQUEE>
         </div>
         <div class="data">
-          <img src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png">
+          <img class="data_img" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png">
+            <div class="data_cnt_box1 data_cnt_box">
+              <div>사용 후 피부가 촉촉해진 느낌이다.</div>
+              <div>96.6%</div>
+            </div>
+            <div class="data_cnt_box2 data_cnt_box">
+              <div>사용 후 피부가 진정된 느낌이다.</div>
+              <div>90.0%</div>
+            </div>
+            <div class="data_cnt_box3 data_cnt_box">
+              <div>사용 후 피부 답답함이 느껴지지 않는다.</div>
+              <div>86.6%</div>
+            </div>
+            <div class="data_cnt_box4 data_cnt_box">
+              <div>바를 때 피부에</div>
+              <div>흡수가 잘되는 느낌이다.</div>
+              <div>100%</div>
+            </div>
+            <div class="data_cnt_box5 data_cnt_box">
+              <div>일반 옴므 스킨 대비</div>
+              <div>더 촉촉한 느낌이다.</div>
+              <div>86.6%</div>
+            </div>
+            <div class="data_cnt_box6 data_cnt_box">
+              <div>사용 후 피부에 자극이 덜한 느낌이다.</div>
+              <div>86.6%</div>
+            </div>
+            <div class="data_cnt_box7 data_cnt_box">
+              <div>에센스, 크림 등 사용하는</div>
+              <div>제품 단계를 축소할 수 있다.</div>
+              <div>83.3%</div>
+            </div>
         </div>
       </div>
 
@@ -588,10 +613,27 @@ MARQUEE{
 .bg{
 
 }
-.data > img {
+.data {
+  position: relative;
+}
+.data_img {
   max-height: 100%;
   position: relative;
   top: -7%;
+}
+.data_cnt_box{
+  position: absolute;
+  padding: 30px;
+  background-color: var(--bg-white);
+}
+.data_cnt_box1 {
+  position: absolute;
+  top: 10px;
+  left: -55%;
+  border-radius: 10px;
+}
+.data_cnt_box1::after{
+  
 }
 
 
