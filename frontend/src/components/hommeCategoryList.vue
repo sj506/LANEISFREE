@@ -34,13 +34,16 @@ export default {
   },
   created() {
     this.cateList = this.$store.state.cateList;
+    // 전체 카테고리 종류를 가져옴
   },
   methods: {
     addActive(e) {
       this.selectProductNum = [];
       this.selectProduct = [];
       this.productCate = this.$store.state.getCategoryList;
+      // 상품의 카테고리 정보를 가져옴
       this.productList = this.$store.state.getProductList;
+      // 상품정보를 가져옴
 
       console.log(this.productList);
       this.$refs.viewAll.classList.remove('active');
