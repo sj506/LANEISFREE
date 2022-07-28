@@ -5,22 +5,22 @@
         <router-link to="/" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
-        <li @mouseover="showContentsBox('브랜드 스토리')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to=""> 브랜드</router-link>
+        <li @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="/story"> 브랜드</router-link>
         </li>
-        <li @mouseover="showContentsBox('소개')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">팀소개</router-link></li>
-        <li @mouseover="showContentsBox('사그마이스터 앤 월시')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="">미츠아트</router-link>
+        <li @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()"><router-link class="router-link" to="/intro">팀소개</router-link></li>
+        <li @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="/meetsart">미츠아트</router-link>
         </li>
-        <li @mouseover="showContentsBox('베스트 상품')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="">베스트</router-link>
+        <li @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="/best">베스트</router-link>
         </li>
-        <li @mouseover="showContentsBox('NEW 신상품')" @mouseout="closeContentsBox()"><router-link class="router-link" to="">신상품</router-link></li>
+        <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()"><router-link class="router-link" to="/new">신상품</router-link></li>
         <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li>
-          <router-link to="">
+          <router-link to="/signin">
             <i class="fa-solid fa-user"></i>
           </router-link>
         </li>
@@ -39,12 +39,12 @@
         <i class="fa-solid fa-bars"></i>
       </a>
     </nav>
-    <div v-show="isShow" @mouseover="showContentsBox(content)" @mouseout="closeContentsBox()" class="contents">
+    <div v-show="isShow" @mouseover="showContentsBox(content, url)" @mouseout="closeContentsBox()" class="contents">
       <div class="flex-center contents-link-box">
-        <router-link to="" class="contents-link"> {{ content }} </router-link>
+        <router-link :to="`${url}`" class="contents-link"> {{ content }} </router-link>
       </div>
     </div>
-    <div class="contents" v-show="hommeShow" @mouseover="showHommeBox()">
+    <div class="contents" v-show="hommeShow" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">
       <div class="hommeBox column-center">
         <hommeCategoryList />
       </div>
@@ -65,15 +65,17 @@ export default {
       isShow: false,
       hommeShow: false,
       content: '',
+      url: '',
     };
   },
   methods: {
     toggleNav() {
       this.isActive = !this.isActive;
     },
-    showContentsBox(content) {
+    showContentsBox(content, url) {
       this.isShow = true;
       this.content = content;
+      this.url = url;
     },
     closeContentsBox() {
       this.isShow = false;
