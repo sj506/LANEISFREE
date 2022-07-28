@@ -2,7 +2,13 @@
   <ul class="productBox">
     <li class="und-border" v-for="product in selectProduct" :key="product.pro_num">
       <div class="column-center">
-        <img :src="getSrc(product.pro_mainimg)" alt="" />
+        <img
+          @mouseover="changeImg"
+          @mouseout="reChangeImg($event.target, product.pro_mainimg)"
+          :src="getSrc(product.pro_mainimg)"
+          :data-category="product.cate_class"
+        />
+
         <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
         <div class="pro_name">{{ product.pro_name }}</div>
       </div>
@@ -43,6 +49,19 @@ export default {
     getSrc(mainImg) {
       return require('@/assets/img' + mainImg);
     },
+    changeImg(e) {
+      if (e.target.dataset.category === '1') {
+        e.target.src = 'https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2019/11/17/Active_Water_Skin_Toner_thumb_list.png';
+      } else if (e.target.dataset.category === '2') {
+        e.target.src =
+          'https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/20200427_final_cream-skin-refiner-all-in-one_thumbnails_02_pc.png';
+      } else {
+        e.target.src = 'https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/09/30/Blue_Energy_Skin_Toner_EX_thumb_list.jpg';
+      }
+    },
+    reChangeImg(target, mainImg) {
+      target.src = require('@/assets/img' + mainImg);
+    },
   },
 };
 </script>
@@ -75,5 +94,31 @@ img {
 .und-border {
   margin-bottom: 3rem;
   border-bottom: 1px solid #eaeaea;
+}
+
+img:hover {
+  animation: blink-effect 0.4s;
+}
+
+img:not(:hover) {
+  animation: blink-effect2 0.4s;
+}
+
+@keyframes blink-effect {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-effect2 {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

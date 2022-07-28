@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-60">
+  <div>
     <hommeBanner />
     <div class="productMain">
       <hommeButton />
@@ -24,30 +24,18 @@ export default {
     };
   },
   beforeCreate() {},
-  created() {
-    this.getCategoryList();
-  },
+  created() {},
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
   updated() {},
   beforeUnmount() {},
   unmounted() {},
-  methods: {
-    async getCategoryList() {
-      const getCategoryList = await this.$get('/product/getCategoryList', {});
-      this.categoryList = getCategoryList;
-      this.$store.commit('getCategoryList', getCategoryList);
-      //카테고리 가져오는 통신
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style scoped>
-.mt-60 {
-  margin-top: 60px;
-}
 .productMain {
   margin-bottom: 10rem;
   margin-left: 20%;
