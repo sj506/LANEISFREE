@@ -1,33 +1,61 @@
 <template>
-  <div>
+  <div class="mt-60">
     <hommeBanner />
-    <div class="flexDiv">
-      <select>
-        <option value="">신상품 순</option>
-      </select>
-    </div>
-    <div class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown link </a>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+    <div class="productMain">
+      <hommeButton />
+      <productList />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import hommeBanner from './hommeBanner';
+import hommeButton from './hommeButton';
+import productList from './productList.vue';
+
+export default {
+  name: '',
+  components: { hommeBanner, hommeButton, productList },
+  data() {
+    return {
+      example: '',
+      categoryList: {},
+      productList: {},
+    };
+  },
+  beforeCreate() {},
+  created() {
+    this.getCategoryList();
+  },
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  beforeUnmount() {},
+  unmounted() {},
+  methods: {
+    async getCategoryList() {
+      const getCategoryList = await this.$get('/product/getCategoryList', {});
+      this.categoryList = getCategoryList;
+      this.$store.commit('getCategoryList', getCategoryList);
+      //카테고리 가져오는 통신
+    },
+  },
+};
 </script>
 
 <style scoped>
-.flexDiv {
-  margin: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  margin-left: 3rem;
+.mt-60 {
+  margin-top: 60px;
+}
+.productMain {
+  margin-bottom: 10rem;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+@media (max-width: 59.99em) {
+  .mobile {
+    display: block;
+  }
 }
 </style>
