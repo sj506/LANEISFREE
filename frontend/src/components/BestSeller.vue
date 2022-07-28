@@ -135,6 +135,7 @@ export default {
   position: absolute;
   z-index: -1;
   object-fit: cover;
+  left: -20px;
   width: 100vw;
   height: 460px;
 }

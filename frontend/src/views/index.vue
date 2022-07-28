@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="index-container column-center">
     <list-item></list-item>
-    <best-seller></best-seller>
-    <middle-banner></middle-banner>
+    <div class="index-main column-center">
+      <best-seller></best-seller>
+      <middle-banner></middle-banner>
+    </div>
   </div>
 </template>
 
@@ -25,4 +27,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.index-container {
+  width: 100vw;
+}
+.index-main {
+  max-width: 1180px;
+}
+</style>
