@@ -24,23 +24,14 @@ export default {
     };
   },
   beforeCreate() {},
-  created() {
-    this.getCategoryList();
-  },
+  created() {},
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
   updated() {},
   beforeUnmount() {},
   unmounted() {},
-  methods: {
-    async getCategoryList() {
-      const getCategoryList = await this.$get('/product/getCategoryList', {});
-      this.categoryList = getCategoryList;
-      this.$store.commit('getCategoryList', getCategoryList);
-      //카테고리 가져오는 통신
-    },
-  },
+  methods: {},
 };
 </script>
 

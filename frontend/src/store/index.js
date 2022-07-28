@@ -2,7 +2,6 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    getCategoryList: {},
     getProductList: {},
     selectProduct: [],
     cateList: {
@@ -13,9 +12,6 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    getCategoryList: (state, data) => {
-      state.getCategoryList = data;
-    },
     getProductList: (state, data) => {
       state.getProductList = data;
     },

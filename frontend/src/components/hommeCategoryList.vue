@@ -1,5 +1,3 @@
-<!-- homme 카테고리 들어가있음 , 후에 data에서 통신으로 받아오면 됨 -->
-
 <template>
   <div class="viewAllBox">
     <router-link to="/homme">
@@ -28,7 +26,6 @@ export default {
       cateList: {},
       selectProductNum: [],
       selectProduct: [],
-      productCate: {},
       productList: {},
     };
   },
@@ -40,8 +37,6 @@ export default {
     addActive(e) {
       this.selectProductNum = [];
       this.selectProduct = [];
-      this.productCate = this.$store.state.getCategoryList;
-      // 상품의 카테고리 정보를 가져옴
       this.productList = this.$store.state.getProductList;
       // 상품정보를 가져옴
 
@@ -55,65 +50,65 @@ export default {
       e.target.classList.add('active');
       this.$emit('changeCateNm', e.target.innerText);
 
-      this.productCate.forEach((productCate) => {
+      this.productList.forEach((productList) => {
         if (!e.target.dataset.catetype) {
-          this.selectProductNum.push(productCate.pro_num);
+          this.selectProductNum.push(productList.pro_num);
         } else {
-          switch (productCate.cate_type) {
+          switch (productList.cate_type) {
             case 1:
               if (e.target.dataset.catetype === '유형별') {
-                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productList.cate_class == 1) {
                   // 로션/에멀전
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productList.cate_class == 2) {
                   // 클렌징
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productList.cate_class == 3) {
                   // 스킨/미스트
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productList.cate_class == 4) {
                   // 기프트 세트
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 } else if (e.target.dataset.cateclass === '전체보기') {
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 }
               }
               break;
             case 2:
               if (e.target.dataset.catetype === '고민별') {
-                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productList.cate_class == 1) {
                   // 로션/에멀전
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productList.cate_class == 2) {
                   // 클렌징
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productList.cate_class == 3) {
                   // 스킨/미스트
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productList.cate_class == 4) {
                   // 기프트 세트
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 } else if (e.target.dataset.cateclass === '전체보기') {
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 }
               }
               break;
             case 3:
               if (e.target.dataset.catetype === '라인별') {
-                if (e.target.dataset.cateclass === '로션/에멀젼' && productCate.cate_class == 1) {
+                if (e.target.dataset.cateclass === '로션/에멀젼' && productList.cate_class == 1) {
                   // 로션/에멀전
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '클렌징' && productCate.cate_class == 2) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '클렌징' && productList.cate_class == 2) {
                   // 클렌징
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '스킨/미스트' && productCate.cate_class == 3) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '스킨/미스트' && productList.cate_class == 3) {
                   // 스킨/미스트
-                  this.selectProductNum.push(productCate.pro_num);
-                } else if (e.target.dataset.cateclass === '기프트세트' && productCate.cate_class == 4) {
+                  this.selectProductNum.push(productList.pro_num);
+                } else if (e.target.dataset.cateclass === '기프트세트' && productList.cate_class == 4) {
                   // 기프트 세트
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 } else if (e.target.dataset.cateclass === '전체보기') {
-                  this.selectProductNum.push(productCate.pro_num);
+                  this.selectProductNum.push(productList.pro_num);
                 }
               }
               break;
