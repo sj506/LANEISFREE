@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-60">
+  <div>
     <hommeBanner />
     <div class="productMain">
       <hommeButton />
@@ -36,9 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.mt-60 {
-  margin-top: 60px;
-}
 .productMain {
   margin-bottom: 10rem;
   margin-left: 20%;

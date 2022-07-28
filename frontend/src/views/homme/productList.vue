@@ -73,14 +73,6 @@ img {
   height: 100%;
 }
 
-img:hover {
-  animation: blink-effect 0.4s;
-}
-
-img:not(:hover) {
-  animation: blink-effect2 0.4s;
-}
-
 .productBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -102,6 +94,14 @@ img:not(:hover) {
 .und-border {
   margin-bottom: 3rem;
   border-bottom: 1px solid #eaeaea;
+}
+
+img:hover {
+  animation: blink-effect 0.4s;
+}
+
+img:not(:hover) {
+  animation: blink-effect2 0.4s;
 }
 
 @keyframes blink-effect {
