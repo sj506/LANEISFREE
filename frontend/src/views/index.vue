@@ -1,9 +1,7 @@
 <template>
   <div>
-    <main class="index-main">
-      <list-item></list-item>
-      <best-seller></best-seller>
-    </main>
+    <list-item></list-item>
+    <best-seller></best-seller>
   </div>
 </template>
 
@@ -23,9 +21,4 @@ export default {
 };
 </script>
 
-<style scoped>
-main {
-  /* margin-top: 60px; */
-  margin: 200px 0;
-}
-</style>
+<style scoped></style>

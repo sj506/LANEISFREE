@@ -7,7 +7,8 @@ import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
-import test from '../views/test.vue';
+import story from '../views/story.vue';
+import meetsArt from '../views/meetsArt.vue';
 
 const routes = [
   {
@@ -51,9 +52,14 @@ const routes = [
     component: signUp,
   },
   {
-    path: '/test',
-    name: 'test',
-    component: test,
+    path: '/story',
+    name: 'story',
+    component: story,
+  },
+  {
+    path: '/meetsart',
+    name: 'meetsart',
+    component: meetsArt,
   },
   // {
   //   path: '/',
