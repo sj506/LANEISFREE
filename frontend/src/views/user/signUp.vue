@@ -5,11 +5,13 @@
       <h1>회원가입을 해야됩니다!!! 작업중</h1>
     </div>
 
-    <form action="" class="daummap">
+    <form @submit.prevent="submitForm">
       <table>
         <tr>
           <td>이름</td>
-          <td><input type="text" name="m_nm" v-model="m_nm" class="m_nm mb-1" placeholder="이름 입력" autofocus></td>
+          <td>
+            <input type="text" name="m_nm" v-model="m_nm" class="m_nm mb-1" placeholder="이름 입력" autofocus>
+          </td>
         </tr>
 
         <tr>
@@ -17,7 +19,8 @@
           <td>
             <input type="text" name="m_email" v-model="m_email" class="mb-1" placeholder="이메일 입력">
             @
-            <input type="text" list="m_email2" v-model="m_email2" class="mb-1" name="m_email2" placeholder="직접입력">
+            <input type="text" list="m_email2" v-model="m_email2" class="mb-1" name="m_email2"
+              placeholder="직접입력">
             <datalist id="m_email2">
               <option value="gmail.com" />
               <option value="naver.com" />
@@ -29,12 +32,14 @@
         <tr>
           <td>비밀번호</td>
           <td><input type="password" name="m_pw1" v-model="m_pw1" class="m_pw w-100 mb-1"
-              placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)"></td>
+              placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
+          </td>
         </tr>
 
         <tr>
           <td>비밀번호 확인</td>
-          <td><input type="password" v-model="m_pw2" name="m_pw2" class="m_pw2 w-100 mb-1" placeholder="비밀번호 확인"></td>
+          <td><input type="password" v-model="m_pw2" name="m_pw2" class="m_pw2 w-100 mb-1" placeholder="비밀번호 확인">
+          </td>
         </tr>
 
         <tr>
@@ -64,7 +69,7 @@
         </tr>
       </table>
       <div class="d-flex justify-content-center">
-        <button class="btn btn-primary mt-3 mx-1" type="button" @click="signUp()">회원가입</button>
+        <button class="btn btn-primary mt-3 mx-1" type="submit" @click="signUp()">회원가입</button>
         <input class="btn btn-danger mt-3 mx-1" type="reset" value="초기화">
       </div>
 
@@ -76,9 +81,9 @@
 
 <script>
 export default {
+  name: "signUpForm",
   data() {
     return {
-      postcode: "",
       m_nm: "",
       m_email: "",
       m_email2: "",
@@ -86,10 +91,18 @@ export default {
       m_pw2: "",
       m_tel1: "",
       m_tel2: "",
-      m_tel3: ""
+      m_tel3: "",
+      postcode: "",
+      addr: "",
+      detailAddr: "",
+      extraAddr: "",
     };
   },
   methods: {
+    async submitForm() {
+      alert('clicked');
+
+    },
     execDaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
