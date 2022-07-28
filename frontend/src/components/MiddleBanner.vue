@@ -141,6 +141,7 @@ export default {
 }
 .banner-info .content {
   line-height: 20px;
+  font-size: 16px;
 }
 .bottomBanner1 {
   align-items: flex-start;
