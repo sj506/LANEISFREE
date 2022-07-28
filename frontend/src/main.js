@@ -12,9 +12,9 @@ createApp(App).use(store).use(router).mixin(mixins).use(css).use(swipe).mount('#
 
 window.Kakao.init('61b4bcbd93b6e2039a3f7f7d46cbbe45');
 
-new Vue({
-  render: h => h(App),
-  mounted() {
-    AOS.init();
-  },
-}).$mount('#app');
+// new Vue({
+//   render: h => h(App),
+//   mounted() {
+//     AOS.init();
+//   },
+// }).$mount('#app');
