@@ -1,83 +1,120 @@
 <template>
-  <div>
-    <div class="m-1">
-      <h1>회원가입을 해야됩니다!!! 작업중</h1>
-    </div>
-    <form @submit.prevent="submitForm">
-      <table>
-        <tr>
-          <td>이름</td>
-          <td>
-            <input type="text" v-model="user.m_nm" class="m_nm mb-1" placeholder="이름 입력" autofocus />
-          </td>
-        </tr>
+  <div id="body">
+    <div class="container">
+      <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+          <h4 class="mb-3 d-flex justify-content-center">회원가입</h4>
+          <form @submit.prevent="submitForm" class="validation-form" novalidate>
 
-        <tr>
-          <td>성별</td>
-          <td>
-            <select v-model="user.m_gender" class="mb-1">
-              <option value="1">여성</option>
-              <option value="2">남성</option>
-            </select>
-          </td>
-        </tr>
+            <!-- 이름 -->
+            <div class="mb-3">
+              <label>이름</label>
+              <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력" autofocus required>
+              <div class="invalid-feedback">
+                이름을 입력해주세요.
+              </div>
+            </div>
 
-        <tr>
-          <td>이메일</td>
-          <td>
-            <input type="text" v-model="user.m_email" class="mb-1" placeholder="이메일 입력" />
-            @
-            <input type="text" list="m_email2" v-model="user.m_email2" class="mb-1" placeholder="직접입력" />
-            <datalist id="m_email2">
-              <option value="gmail.com" />
-              <option value="naver.com" />
-              <option value="daum.net" />
-            </datalist>
-          </td>
-        </tr>
+            <!-- 성별 -->
+            <div class="mb-3">
+              <label>성별</label>
+              <select v-model="user.m_gender" class="form-control">
+                <option value="1">여성</option>
+                <option value="2">남성</option>
+              </select>
+            </div>
 
-        <tr>
-          <td>비밀번호</td>
-          <td><input type="password" v-model="user.m_pw1" class="m_pw w-100 mb-1"
-              placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" /></td>
-        </tr>
+            <!-- 이메일 -->
+            <div>
+              <label>이메일</label>
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <input type="text" v-model="user.m_email" class="form-control" placeholder="이메일 입력" />
+                </div>
 
-        <tr>
-          <td>비밀번호 확인</td>
-          <td><input type="password" v-model="user.m_pw2" class="m_pw2 w-100 mb-1" placeholder="비밀번호 확인" /></td>
-        </tr>
+                <div class="col-md-1 text-center h5"> @ </div>
 
-        <tr>
-          <td>핸드폰</td>
-          <td>
-            <select v-model="user.m_tel1">
-              <option value="010">010</option>
-              <option value="011">011</option>
-              <option value="053">053</option>
-            </select>
-            -
-            <input type="text" v-model="user.m_tel2" size="5" class="mb-1" />
-            -
-            <input type="text" v-model="user.m_tel3" size="5" class="mb-1" />
-          </td>
-        </tr>
+                <div class="col-md-4 mb-3">
+                  <input type="text" list="m_email2" v-model="user.m_email2" class="form-control" placeholder="직접입력" />
+                  <datalist id="m_email2">
+                    <option value="gmail.com" />
+                    <option value="naver.com" />
+                    <option value="daum.net" />
+                    <option value="hanmail.net" />
+                  </datalist>
+                </div>
+              </div>
+            </div>
 
-        <tr>
-          <td>주소</td>
-          <td>
-            <input type="text" v-model="user.postcode" class="mb-1" placeholder="우편번호" />
-            <input type="button" @click="execDaumPostcode()" class="mx-1" value="우편번호 찾기" /><br />
-            <input type="text" v-model="user.addr" class="w-100 mb-1" placeholder="주소" /><br />
-            <input type="text" v-model="user.detailAddr" class="w-100 mb-1" placeholder="상세주소" />
-            <input type="text" v-model="user.extraAddr" class="w-100 mb-1" placeholder="참고항목" />
-          </td>
-        </tr>
-      </table>
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-primary mt-3 m-1" type="submit">회원가입</button>
-        <input class="btn btn-danger mt-3 m-1" type="reset" value="초기화" />
+            <!-- 비밀번호 -->
+            <div>
+              <div class="mb-3">
+                <label>비밀번호</label>
+                <input type="password" v-model="user.m_pw1" class="form-control"
+                  placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
+              </div>
+
+              <div class="mb-3">
+                <label>비밀번호 재확인</label>
+                <input type="password" v-model="user.m_pw2" class="form-control" placeholder="비밀번호 다시 입력" />
+              </div>
+            </div>
+
+            <!-- 핸드폰 번호 -->
+            <div>
+              <label>전화번호</label>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <select v-model="user.m_tel1" class="form-control">
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="053">053</option>
+                  </select>
+                </div>
+
+                <div class="col-md-1 text-center h5"> - </div>
+
+                <div class="col-md-3 mb-3">
+                  <input type="text" v-model="user.m_tel2" size="5" class="form-control" />
+                </div>
+
+                <div class="col-md-1 text-center h5"> - </div>
+
+                <div class="col-md-3 mb-3">
+                  <input type="text" v-model="user.m_tel3" size="5" class="form-control" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 주소 -->
+            <div>
+              <label>주소</label>
+              <div>
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <input type="text" v-model="user.postcode" class="form-control" placeholder="우편번호" />
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm"
+                      value="우편번호 찾기" />
+                  </div>
+                </div>
+                <div>
+                  <input type="text" v-model="user.addr" class="form-control mb-3" placeholder="주소" />
+                  <input type="text" v-model="user.detailAddr" class="form-control mb-3" placeholder="상세주소" />
+                  <input type="text" v-model="user.extraAddr" class="form-control mb-3" placeholder="참고항목" />
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary mx-1">가입하기</button>
+              <button type="reset" class="btn btn-danger mx-1">초기화</button>
+            </div>
+          </form>
+
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -152,4 +189,26 @@
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  #body {
+    min-height: 100vh;
+  }
+
+  .input-form {
+    max-width: 680px;
+
+    margin-top: 45px;
+    padding: 32px;
+
+    background: #f5f6f7;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+  }
+  label {
+    margin-bottom: 10px;
+  }
+</style>
