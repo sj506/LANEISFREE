@@ -1,8 +1,11 @@
 <template>
   <div>
-    <section id="item-1" class="item">첫번째 섹션</section>
-    <section id="item-2" class="item">두번째 섹션</section>
-    <section id="item-3" class="item">세번째 섹션</section>
+    <div class="scroll-container">
+      <div class="scroll-area">1</div>
+      <div class="scroll-area">2</div>
+      <div class="scroll-area">3</div>
+      <div class="scroll-area">4</div>
+    </div>
   </div>
 </template>
 
@@ -23,31 +26,50 @@ export default {
 </script>
 
 <style scoped>
-html,
-body {
+.scroll-container {
+  overflow-x: hidden;
+}
+.scroll-container,
+.scroll-area {
   width: 100vw;
   height: 100vh;
+  font-size: 60px;
+}
+
+.scroll-container {
+  overflow: auto;
   scroll-snap-type: y mandatory;
 }
 
-html {
+.scroll-area {
+  scroll-snap-align: start;
 }
 
-.item {
-  width: 100vw;
-  height: 100vh;
-
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
+.scroll-container,
+.scroll-area {
+  margin: 0 auto;
 }
 
-.item:nth-child(1) {
-  background: green;
+.scroll-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
-.item:nth-child(2) {
-  background: blue;
+
+.scroll-area:nth-of-type(1) {
+  background: #49b293;
 }
-.item:nth-child(3) {
-  background: yellow;
+
+.scroll-area:nth-of-type(2) {
+  background: #c94e4b;
+}
+
+.scroll-area:nth-of-type(3) {
+  background: #4cc1be;
+}
+
+.scroll-area:nth-of-type(4) {
+  background: #8360a6;
 }
 </style>
