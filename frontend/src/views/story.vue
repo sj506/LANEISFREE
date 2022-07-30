@@ -8,7 +8,7 @@
     </div>
     <div class="section column-center ms-5 me-5">
       <div class="flex-center">
-        <img src="@/assets/img/story/glow01-img.png" class="mw-40 me-5" alt="" />
+        <img src="@/assets/img/story/glow01.png" class="mw-40 me-5" alt="" />
         <div class="ms-5 me-5 mw-40">
           <h2>라네즈는 피부의 건강한 빛은 물론<br />삶까지 빛나는 자신감을 선사합니다.</h2>
           <p>
@@ -28,7 +28,27 @@
         </div>
       </div>
     </div>
-    <div class="section">3</div>
+    <div class="section column-center">
+      <div class="column-center">
+        <img src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
+        <h1 class="mb-5">BEAUTY & LIFE LAB</h1>
+        <div class="flex-center mt-2">
+          <div class="mw-40 txt">
+            <i class="fa-solid fa-quote-left"></i>
+            <h2>
+              라네즈 Beauty & Life Lab의 연구는 <br />
+              고객의 24/7 라이프스타일에서 시작합니다.
+            </h2>
+            <p>
+              오랜 시간 이어온 피부 속 보습 메커니즘 연구에 더해<br />
+              피부 밖의 일상을 관찰하며 피부 안과 밖을 모두 아우르는<br />
+              똑똑한 처방이 담긴 제품을 만듭니다.
+            </p>
+          </div>
+          <img src="@/assets/img/story/glow02.png" class="mw-40 ms-5 me-5" alt="" />
+        </div>
+      </div>
+    </div>
     <div class="section">4</div>
     <div class="section">5</div>
   </div>
@@ -95,6 +115,9 @@ export default {
   object-fit: cover;
   color: var(--text-white);
 }
+.section:nth-child(3) {
+  background-color: #f5f9ff;
+}
 .section:first-child h3 {
   margin-top: 30px;
 }
@@ -108,7 +131,12 @@ export default {
   line-height: 30px;
 }
 .mw-40 {
-  max-width: 40%;
+  max-width: 40vw;
+}
+.txt i {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #bed0f5;
 }
 .section h2 {
   font-size: 26px;
