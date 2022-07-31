@@ -49,7 +49,42 @@
         </div>
       </div>
     </div>
-    <div class="section">4</div>
+    <div class="section">
+      <div class="column-center">
+        <img src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
+        <h1 class="mb-5">MAIN PRODUCT</h1>
+        <p>
+          피부 속 보습 메커니즘에 기반한 오랜 연구와 라이프스타일 연구를 더해 완성된<br />
+          라네즈의 5가지 기능성 솔루션
+        </p>
+        <p class="line"></p>
+        <div class="flex-center mt-2">
+          <div class="number-title">
+            <h5 class="num">01</h5>
+            <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+          </div>
+          <div class="product-name">
+            <p class="performance">FULL REPAIR MOISTURIZING</p>
+            <p class="name">워터뱅크 블루 히알루로닉</p>
+          </div>
+          <div class="product-txt">
+            <p>
+              매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+              요즘 건조에 필요한 건 수분만이 아니죠.
+            </p>
+            <p>
+              새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+              블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+              수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+            </p>
+            <p>
+              *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+              블루 히알루론산의 In-vitro 실험 결과 기준)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="section">5</div>
   </div>
 </template>
