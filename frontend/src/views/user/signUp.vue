@@ -1,4 +1,5 @@
 <template>
+  <title>로그인 | 옴니통합회원</title>
   <div id="body">
     <div class="container">
       <div class="input-form-backgroud row">
@@ -18,7 +19,7 @@
             <!-- 성별 -->
             <div class="mb-3">
               <label>성별</label>
-              <select v-model="user.m_gender" class="form-control">
+              <select v-model="user.m_gender" class="form-control" ref="1">
                 <option value="1">여성</option>
                 <option value="2">남성</option>
               </select>
@@ -106,6 +107,7 @@
                 </div>
               </div>
             </div>
+
             <div class="d-flex justify-content-center">
               <button type="submit" class="btn btn-primary mx-1">가입하기</button>
               <button type="reset" class="btn btn-danger mx-1">초기화</button>
@@ -120,32 +122,33 @@
 
 <script>
   export default {
-    name: 'signUpForm',
-    data() {
-      return {
-        user: {
-          m_nm: '',
-          m_gender: '',
-          m_email: '',
-          m_email2: '',
-          m_pw1: '',
-          m_pw2: '',
-          m_tel1: '',
-          m_tel2: '',
-          m_tel3: '',
-          postcode: '',
-          addr: '',
-          detailAddr: '',
-          extraAddr: '',
-        },
-      };
-    },
+  name: 'signUpForm',
+  data() {
+    return {
+      user: {
+        m_nm: '',
+        m_gender: '1',
+        m_email: '',
+        m_email2: '',
+        m_pw1: '',
+        m_pw2: '',
+        m_tel1: '010',
+        m_tel2: '',
+        m_tel3: '',
+        postcode: '',
+        addr: '',
+        detailAddr: '',
+        extraAddr: '',
+      },
+    };
+  },
   methods: {
       // 회원가입 백엔드통신
       async submitForm() {
         console.log(this.user);
         const signUp = await this.$post('user/signUp', this.user);
-        console.log(signUp);
+      console.log(signUp);
+        
       },
 
       // 도로명 주소 팝업창
@@ -196,16 +199,10 @@
 
   .input-form {
     max-width: 680px;
-
     margin-top: 45px;
     padding: 32px;
-
     background: #f5f6f7;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
   }
   label {

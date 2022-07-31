@@ -11,7 +11,9 @@ class UserModel extends Model
     $sql = "INSERT INTO t_member
             (m_email, m_pw, m_nm, m_gender, m_tel, m_postcode, m_addr)
             VALUES
-            (:m_email, :m_pw, :m_nm, :m_gender, :m_tel, :m_postcode, :m_addr)";
+            (:m_email, :m_pw, :m_nm, :m_gender, :m_tel, :m_postcode, :m_addr)
+            ON duplicate key update
+            m_date = now()";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":m_email", $param["m_email"]);
     $stmt->bindValue(":m_pw", $param["m_pw"]);
