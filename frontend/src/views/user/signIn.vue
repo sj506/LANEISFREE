@@ -3,7 +3,9 @@
     <div class="loginBox">
       <div class="login">
         <h1>로그인</h1>
-        <button type="button" class="btnClose"><span class="none">닫기</span></button>
+        <router-link to="/">
+          <button type="button" class="btnClose"><span class="none">닫기</span></button>
+        </router-link>
       </div>
     </div>
 
@@ -17,8 +19,8 @@
 
       <div>
         <!-- 키보드 열기 -->
-        <div class="keyboard open">
-          <button class="keyboardBtn">PC 키보드 열기</button>
+        <div class="keyboard">
+          <button class="keyboardBtn" @click="keyboardBtn()"> {{ keyboardOpenBtn }} </button>
           <span class="keyboardImg">
             <img src="@/assets/img/signIn/img_keyboard.png" alt="키보드 배열 이미지">
           </span>
@@ -28,13 +30,13 @@
           <!-- input 아이디 -->
           <div class="mb-3 inputForm">
             <input type="email" id="loginId" placeholder="이메일 입력" autofocus>
-            <button type="button" class="delBtn"><span class="none">삭제</span></button>
+            <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
             <input type="password" id="loginPw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
-            <button type="button" class="delBtn"><span class="none">삭제</span></button>
+            <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- checkbox 아이디 저장 -->
@@ -80,8 +82,8 @@
 
         <!-- a 아이디, 비번찾기 -->
         <div class="searchA">
-          <a href="#">아이디 찾기</a> |
-          <a href="#">비밀번호 찾기</a>
+          <a href="#" class="px-1">아이디 찾기</a> |
+          <a href="#" class="px-1">비밀번호 찾기</a>
         </div>
 
         <!-- button 회원가입 -->
@@ -99,39 +101,55 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      keyboardOpenBtn: 'PC 키보드 열기',
+    }
+  },
+  methods: {
+    keyboardBtn() {
+      const keyboard = document.querySelector('.keyboard');
+      const keyboardBtn = document.querySelector('.keyboardBtn');
+      const check = keyboard.classList.contains('open');
+      if (check) {
+        keyboard.classList.remove('open');
+        this.keyboardOpenBtn = 'PC 키보드 열기';
+      } else {
+        keyboard.classList.add('open');
+        this.keyboardOpenBtn = 'PC 키보드 닫기';
+      }
+    },
+  }
 }
 </script>
 
 <style scoped>
-
-
-
-
-
-
-
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
   margin: 0 auto
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 a:hover {
   color: inherit;
 }
+
 label {
   vertical-align: middle;
   cursor: pointer;
 }
+
 img {
   width: 100%;
   border: 0;
   vertical-align: top;
 }
+
 button {
   background: transparent;
   cursor: pointer;
@@ -143,6 +161,7 @@ button {
   font-weight: 400;
   color: #252525;
 }
+
 input[type="email"],
 input[type="password"] {
   padding: 0 12px;
@@ -156,16 +175,25 @@ input[type="password"] {
   border-radius: 6px;
   appearance: none;
 }
+
 input[type="email"]:hover,
 input[type="password"]:hover {
   border-color: #ccc;
 }
+
 input[type="email"]:focus,
 input[type="password"]:focus {
   border: 2px solid #0A40D5;
   outline: 0;
   caret-color: #5c95f0;
 }
+
+#saveId:focus+label,
+.searchA a:focus,
+.keyboardBtn:focus {
+  outline: 2px solid #0A40D5;
+}
+
 .none {
   display: block;
   height: 1px;
@@ -205,6 +233,7 @@ input[type="password"]:focus {
 .btnClose:focus {
   border: 2px solid #0A40D5;
 }
+
 .inputForm {
   position: relative;
   display: block;
@@ -242,12 +271,14 @@ input[type="password"]:focus {
   padding-bottom: 12px;
   text-align: right;
 }
+
 .keyboard .keyboardBtn {
   position: relative;
   padding-right: 22px;
   color: #898989;
   letter-spacing: -0.65px;
 }
+
 .keyboard .keyboardBtn:before {
   position: absolute;
   right: 0;
@@ -259,14 +290,17 @@ input[type="password"]:focus {
   background-size: 14px auto;
   content: "";
 }
+
 .keyboard .keyboardImg {
   display: none;
 }
-.keyboard .open .keyboardImg {
+
+.keyboard.open .keyboardImg {
   display: block;
   padding-top: 12px;
 }
-.keyboard .open .keyboardBtn:before {
+
+.keyboard.open .keyboardBtn:before {
   transform: rotate(180deg);
 }
 
@@ -315,12 +349,6 @@ input[type="password"]:focus {
   background-image: url("@/assets/img/signIn/btn_check_on.png");
 }
 
-#saveId:focus+label,
-.loginBtn:focus,
-.searchA a:focus {
-  outline: 2px solid #0A40D5;
-}
-
 /* 로그인 버튼 */
 .btn {
   width: 100%;
@@ -329,6 +357,7 @@ input[type="password"]:focus {
   font-size: 16px;
   letter-spacing: -0.8px;
 }
+
 .blueBtn {
   color: #fff;
   border: solid 1px var(--bg-main);
@@ -336,7 +365,7 @@ input[type="password"]:focus {
 }
 
 /* 카카오톡 로그인 버튼 */
-.kakaoLoginBtn{
+.kakaoLoginBtn {
   margin-top: 20px;
   padding: 20px 17px;
   display: flex;
@@ -381,19 +410,23 @@ input[type="password"]:focus {
   letter-spacing: -0.7px;
   font-weight: bold;
 }
+
 .whiteBtn {
   border: solid 1px #d3d3d3;
   background-color: var(--bg-white);
 }
+
 .signUpBtn span {
   float: left;
 }
+
 .signUpBtn em {
   position: relative;
   padding-right: 12px;
   float: right;
   font-weight: bolder;
 }
+
 .signUpBtn em:before {
   position: absolute;
   right: 0;
