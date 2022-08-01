@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="section">
+    <div class="last-section">
       <div class="column-center">
         <img src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
         <h1 class="mb-5">MAIN PRODUCT</h1>
@@ -58,29 +58,153 @@
           라네즈의 5가지 기능성 솔루션
         </p>
         <p class="line"></p>
-        <div class="flex-center mt-2">
-          <div class="number-title">
-            <h5 class="num">01</h5>
-            <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+        <div class="main-products flex-center">
+          <div class="main-product mt-2">
+            <div class="number-title">
+              <h5 class="num">01</h5>
+              <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+            </div>
+            <div class="product-name">
+              <p class="performance">FULL REPAIR MOISTURIZING</p>
+              <p class="name">워터뱅크 블루 히알루로닉</p>
+            </div>
+            <div class="product-txt">
+              <p>
+                매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+                요즘 건조에 필요한 건 수분만이 아니죠.
+              </p>
+              <p>
+                새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+                수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+              </p>
+              <p>
+                *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+                블루 히알루론산의 In-vitro 실험 결과 기준)
+              </p>
+            </div>
           </div>
-          <div class="product-name">
-            <p class="performance">FULL REPAIR MOISTURIZING</p>
-            <p class="name">워터뱅크 블루 히알루로닉</p>
+          <div class="product-img">
+            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
           </div>
-          <div class="product-txt">
-            <p>
-              매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
-              요즘 건조에 필요한 건 수분만이 아니죠.
-            </p>
-            <p>
-              새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
-              블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
-              수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
-            </p>
-            <p>
-              *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
-              블루 히알루론산의 In-vitro 실험 결과 기준)
-            </p>
+        </div>
+        <div class="main-products flex-center">
+          <div class="main-product mt-2">
+            <div class="number-title">
+              <h5 class="num">02</h5>
+              <h3>
+                칙칙해진 피부 톤이<br />
+                걱정이라면?
+              </h3>
+            </div>
+            <div class="product-name">
+              <p class="performance">BRIGHTENING CARE/p></p>
+              <p class="name">래디언-C 라인</p>
+            </div>
+            <div class="product-txt">
+              <p>
+                이유를 모르게 피부가 자꾸 칙칙해지는 원인은 무엇일까요? <br />
+                햇빛의 자외선은 물론 우리의 일상에 깊숙이 자리잡은 스마트폰과 <br class="pc-only" />
+                PC 모니터의 블루라이트, 심지어 스트레스까지 피부 톤을 어둡게 만듭니다. <br />
+              </p>
+              <p>
+                ‘래디언-C크림’은 비타민C 유도체와 비타민E의 조합으로 칙칙한 피부를 <br class="pc-only" />
+                단 2주만에 ‘빛톤 피부’로 가꿔줍니다.
+              </p>
+            </div>
+          </div>
+          <div class="product-img">
+            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img02-pc.jpg" alt="" />
+          </div>
+        </div>
+        <div class="main-products flex-center">
+          <div class="main-product mt-2">
+            <div class="number-title">
+              <h5 class="num">01</h5>
+              <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+            </div>
+            <div class="product-name">
+              <p class="performance">FULL REPAIR MOISTURIZING</p>
+              <p class="name">워터뱅크 블루 히알루로닉</p>
+            </div>
+            <div class="product-txt">
+              <p>
+                매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+                요즘 건조에 필요한 건 수분만이 아니죠.
+              </p>
+              <p>
+                새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+                수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+              </p>
+              <p>
+                *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+                블루 히알루론산의 In-vitro 실험 결과 기준)
+              </p>
+            </div>
+          </div>
+          <div class="product-img">
+            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
+          </div>
+        </div>
+        <div class="main-products flex-center">
+          <div class="main-product mt-2">
+            <div class="number-title">
+              <h5 class="num">01</h5>
+              <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+            </div>
+            <div class="product-name">
+              <p class="performance">FULL REPAIR MOISTURIZING</p>
+              <p class="name">워터뱅크 블루 히알루로닉</p>
+            </div>
+            <div class="product-txt">
+              <p>
+                매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+                요즘 건조에 필요한 건 수분만이 아니죠.
+              </p>
+              <p>
+                새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+                수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+              </p>
+              <p>
+                *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+                블루 히알루론산의 In-vitro 실험 결과 기준)
+              </p>
+            </div>
+          </div>
+          <div class="product-img">
+            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
+          </div>
+        </div>
+        <div class="main-products flex-center">
+          <div class="main-product mt-2">
+            <div class="number-title">
+              <h5 class="num">01</h5>
+              <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+            </div>
+            <div class="product-name">
+              <p class="performance">FULL REPAIR MOISTURIZING</p>
+              <p class="name">워터뱅크 블루 히알루로닉</p>
+            </div>
+            <div class="product-txt">
+              <p>
+                매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+                요즘 건조에 필요한 건 수분만이 아니죠.
+              </p>
+              <p>
+                새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+                수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+              </p>
+              <p>
+                *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+                블루 히알루론산의 In-vitro 실험 결과 기준)
+              </p>
+            </div>
+          </div>
+          <div class="product-img">
+            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
           </div>
         </div>
       </div>
