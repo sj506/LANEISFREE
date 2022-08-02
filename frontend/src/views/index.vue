@@ -30,8 +30,10 @@ export default {
 <style scoped>
 .index-container {
   width: 100vw;
+  overflow: hidden;
 }
 .index-main {
   max-width: 1180px;
+  margin-bottom: 100px;
 }
 </style>
