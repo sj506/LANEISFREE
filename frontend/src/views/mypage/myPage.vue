@@ -62,7 +62,7 @@
           </div>
 
           <a href="#" class="myShop arrow">리뷰어 프로필 등록하기 </a>
-          <a href="#" class="myShop arrow">[<b>MY SHOP</b>] 등록하기</a>
+          <a href="#" class="myShop arrow">[ <b>MY SHOP</b> ] 등록하기 </a>
 
         </div>
 
@@ -74,14 +74,14 @@
 
         <ul class="userPoint">
           <li class="point">
-            <a href="#" class="arrow">뷰티포인트</a>
+            <a href="#" class="arrow">뷰티포인트 </a>
             <span class="length">
               <span class="num">0</span>P
             </span>
           </li>
 
           <li class="coupon">
-            <a href="#" class="arrow">보유 쿠폰</a>
+            <a href="#" class="arrow">보유 쿠폰 </a>
             <span class="length">
               <span class="num">11</span>장
             </span>
@@ -90,12 +90,12 @@
           <li class="bottle">
             <a href="#" class="arrow">이번달 공병수거 </a>
             <span class="length">
-              <span class="num">0 </span>개
+              <span class="num">0</span>개
             </span>
           </li>
 
           <li class="review">
-            <a href="#" class="arrow">작성가능리뷰</a>
+            <a href="#" class="arrow">작성가능리뷰 </a>
             <span class="length">
               <span class="num">0</span>건
             </span>
@@ -232,8 +232,6 @@ li {
   min-width: 1024px;
   height: 160px;
   margin: 0 auto;
-  padding: 0;
-  z-index: 2;
   background: #f3f3f3;
 }
 
