@@ -21,4 +21,17 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 <style scoped></style>
+=======
+<style scoped>
+.index-container {
+  width: 100vw;
+  overflow: hidden;
+}
+.index-main {
+  max-width: 1180px;
+  margin-bottom: 100px;
+}
+</style>
+>>>>>>> 940bbc22b71d9ad42d8490a093e4e1fa056348fa
