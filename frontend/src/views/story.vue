@@ -61,7 +61,7 @@
         <div class="main-products">
           <div class="main-product mt-2">
             <div class="product-wrap bg-blue-color">
-              <div class="txt-wrap">
+              <div class="txt-wrap odd">
                 <div class="number-title d-flex blue-color">
                   <h5 class="num">01</h5>
                   <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
@@ -125,7 +125,7 @@
           </div>
           <div class="main-product mt-2">
             <div class="product-wrap bg-blue-color">
-              <div class="txt-wrap">
+              <div class="txt-wrap odd">
                 <div class="number-title d-flex purple-color">
                   <h5 class="num">03</h5>
                   <h3>점점 더 커지는<br />모공과 주름이 고민이라면?</h3>
@@ -183,7 +183,7 @@
           </div>
           <div class="main-product mt-2">
             <div class="product-wrap bg-green-color">
-              <div class="txt-wrap">
+              <div class="txt-wrap odd">
                 <div class="number-title d-flex green-color">
                   <h5 class="num">05</h5>
                   <h3>내 피부처럼 감쪽같이<br />커버될 수 없을까?</h3>
@@ -356,6 +356,9 @@ export default {
 .even {
   flex-direction: row-reverse;
 }
+.odd {
+  margin-left: 100px;
+}
 .main-products {
   margin-top: 80px;
   width: 100vw;
@@ -371,7 +374,7 @@ export default {
   display: flex;
 }
 .txt-wrap {
-  width: 50vw;
+  width: 45vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -426,5 +429,27 @@ export default {
   text-align: center;
   color: var(--text-dark-gray);
   line-height: 20px;
+}
+.life-style h1 {
+  position: relative;
+}
+.life-style h1::before {
+  position: absolute;
+  content: '';
+  background-color: #cbdeff;
+  height: 20px;
+  width: 100%;
+  z-index: -1;
+  bottom: 0;
+}
+.life-style h4 {
+  margin: 20px 0;
+  color: var(--text-dark-gray);
+}
+.video-box {
+  margin-top: 40px;
+}
+.video-box video {
+  width: 60vw;
 }
 </style>
