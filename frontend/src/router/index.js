@@ -5,6 +5,7 @@ import index from '../views/index.vue';
 import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
+import myPage from '../views/mypage/myPage.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
@@ -41,6 +42,11 @@ const routes = [
     path: '/detail',
     name: 'hommeDetail',
     component: hommeDetail,
+  },
+  {
+    path: '/mypage',
+    name: 'myPage',
+    component: myPage,
   },
   {
     path: '/signin',
