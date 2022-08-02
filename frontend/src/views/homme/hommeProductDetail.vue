@@ -4,7 +4,7 @@
       <div class="subImgBox">
         <div v-for="img in productImg" :key="img.op_num" class="subImg" @click="changeImg($event.target, img.op_detailimg)">
           <img
-            v-bind:class="{ dbBlack: img.op_detailimg == '1.png' || img.op_detailimg == '1.jpg' }"
+            v-bind:class="{ activeBd: img.op_detailimg == '1.png' || img.op_detailimg == '1.jpg' }"
             :src="getSubImgSrc(img.op_detailimg)"
             class="detailImg"
             ref="subImg"
@@ -91,10 +91,10 @@ export default {
     changeImg(e, subImg) {
       this.$refs.mainImg.src = this.getSubImgSrc(subImg);
       this.$refs.subImg.forEach((subImg) => {
-        subImg.classList.remove('dbBlack');
+        subImg.classList.remove('activeBd');
         console.log(subImg.classList);
       });
-      e.classList.add('dbBlack');
+      e.classList.add('activeBd');
     },
     getSubImgSrc(subImg) {
       return require('@/assets/img/hommeProduct/details/' + this.productDetail.pro_num + '/' + subImg);
@@ -145,7 +145,6 @@ export default {
   width: 2.5rem;
 }
 .detailImg:hover {
-  box-sizing: content-box;
   width: 2.5rem;
   outline: 1.5px solid #000000;
   outline-offset: -1px;
@@ -233,8 +232,9 @@ export default {
   color: #4093ff;
 }
 
-.dbBlack {
-  border: 1px solid #7ba4db;
+.activeBd {
+  outline: 1px solid #7ba4db;
+  outline-offset: -1px;
 }
 
 @keyframes byuBtn-hover-effect {
