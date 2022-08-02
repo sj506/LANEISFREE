@@ -55,16 +55,13 @@
 
         <!-- button 카카오 로그인 -->
         <div class="kakaoLoginBtn">
-          <!-- <button type="button" class="kakaoLoginBtn" @click="kakaoLogin()">
-            <img src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="" alt="카카오 로그인 버튼">
-          </button> -->
           <div>
-            <button type="button">
+            <button type="button" @click="kakaoLogin()">
               <img src="@/assets/img/signIn/btn_login_mobile.png">
               휴대폰<br>로그인</button>
           </div>
           <div>
-            <button type="button">
+            <button type="button" @click="kakaoLogin">
               <img src="@/assets/img/signIn/btn_login_ka.png">
               카카오<br>로그인</button>
           </div>
@@ -106,10 +103,14 @@ export default {
       keyboardOpenBtn: 'PC 키보드 열기',
     }
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
   methods: {
     keyboardBtn() {
       const keyboard = document.querySelector('.keyboard');
-      const keyboardBtn = document.querySelector('.keyboardBtn');
       const check = keyboard.classList.contains('open');
       if (check) {
         keyboard.classList.remove('open');
@@ -119,6 +120,39 @@ export default {
         this.keyboardOpenBtn = 'PC 키보드 닫기';
       }
     },
+    kakaoLogin() {
+      window.Kakao.Auth.login({
+        scope: 'account_email',
+        success: this.getKakaoAccount,
+        fail: e => {
+          console.error(e);
+        }
+      });
+    },
+    getKakaoAccount(authObj) {
+      console.log(authObj);
+      window.Kakao.API.request({
+        url: '/v2/user/me',
+        success: res => {
+          const acc = res.kakao_account.email;
+          const tempEmail = acc.split("@");
+          const param = {
+            m_email: tempEmail[0],
+            m_email2: tempEmail[1]
+          }
+          console.log(param);
+          this.login(param);
+        },
+        fail: e => {
+          console.error(e);
+        }
+      });
+    },
+    async login(param) {
+      const data = await this.$post('/user/signUp', param);
+      param.m_num = data.result;
+      this.$store.commit('user', param);
+    }
   }
 }
 </script>
@@ -127,7 +161,8 @@ export default {
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
-  margin: 0 auto
+  margin: 0 auto;
+  height: 800px;
 }
 
 a {

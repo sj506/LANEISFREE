@@ -9,6 +9,7 @@ import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
+import store from '@/store';
 
 const routes = [
   {

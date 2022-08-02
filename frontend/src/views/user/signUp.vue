@@ -21,6 +21,7 @@
           이상 부터 가입 가능합니다.)
         </p>
       </div>
+      
       <form @submit.prevent="submitForm" class="validation-form" novalidate>
 
         <!-- 이름 -->
@@ -161,8 +162,9 @@ export default {
     async submitForm() {
       console.log(this.user);
       const signUp = await this.$post('user/signUp', this.user);
+      this.$store.commit('user', this.user);
+      this.$router.push('/signin');
       console.log(signUp);
-
     },
 
     // 도로명 주소 팝업창

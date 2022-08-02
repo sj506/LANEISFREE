@@ -25,4 +25,14 @@ class UserModel extends Model
     $stmt->execute();
     return intval($this->pdo->lastInsertId());
   }
+  public function signIn(&$param)
+  {
+    $sql = "SELECT m_email, m_pw
+            FROM t_member
+            WHERE m_num = :m_num";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(":m_num", $param["m_num"]);
+    $stmt->execute();
+    return intval($this->pdo->lastInsertId());
+  }
 }
