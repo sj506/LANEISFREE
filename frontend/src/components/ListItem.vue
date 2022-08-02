@@ -163,4 +163,6 @@ export default {
   max-width: 400px;
   line-height: 1.3;
 }
+
+/* 스와이프 CSS */
 </style>

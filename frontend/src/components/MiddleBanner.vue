@@ -146,4 +146,7 @@ export default {
 .bottomBanner1 {
   align-items: flex-start;
 }
+.bottomBanner2 {
+  margin-top: 20px;
+}
 </style>
