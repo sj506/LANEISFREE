@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="wheelEvent">
+  <div class="story-container" @wheel="wheelEvent">
     <div class="section column-center">
       <img src="@/assets/img/story/visual-logo.png" alt="" />
       <h3>내 피부 본연의 건강한 빛, 내 삶의 빛나는 자신감.</h3>
@@ -51,7 +51,7 @@
     </div>
     <div class="last-section">
       <div class="column-center">
-        <img src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
+        <img src="@/assets/img/story/glow_logo.png" class="mb-3 glow-logo" alt="" />
         <h1 class="mb-5">MAIN PRODUCT</h1>
         <p>
           피부 속 보습 메커니즘에 기반한 오랜 연구와 라이프스타일 연구를 더해 완성된<br />
@@ -258,10 +258,21 @@ export default {
 </script>
 
 <style scoped>
+.story-container h1 {
+  font-weight: bold;
+}
 .section {
   padding-top: 60px;
   width: 100vw;
   height: 100vh;
+}
+.last-section {
+  padding-top: 60px;
+  width: 100vw;
+  height: 100vh;
+}
+.glow-logo {
+  margin-top: 10vw;
 }
 .section:first-child {
   background: url('https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/img_20211215_visual-pc.jpg');
