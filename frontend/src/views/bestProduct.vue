@@ -4,11 +4,11 @@
         <h2 class="best_seller">BEST SELLER</h2>
     </div>
     <div class="container">
-        <!-- <div class="flexWrap_1"> -->
+        <div class="flexWrap_1">
             <div class="flexbox">
                 <img src="../assets/img/bsetProduct/크림스킨가로.jpg" alt="크림스킨">
             </div>
-        <!-- </div> -->
+        </div>
         <div class="flexWrap1">
             <div class="flexbox_1">
                 <img src="../assets/img/bsetProduct/네오쿠션가로.jpg" alt="네오쿠션">
