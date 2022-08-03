@@ -10,7 +10,7 @@ import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
-import store from '@/store';
+import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 
 const routes = [
   {
@@ -67,6 +67,12 @@ const routes = [
     path: '/meetsart',
     name: 'meetsart',
     component: meetsArt,
+  },
+  {
+    path: '/hommeProductDetail/:productId',
+    name: 'hommeProductDetail',
+    component: hommeProductDetail,
+    props: true,
   },
   // {
   //   path: '/',

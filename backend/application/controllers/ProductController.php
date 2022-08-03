@@ -12,4 +12,8 @@ class ProductController extends Controller
     {
         return $this->model->getProductList();
     }
+    public function getProductImg()
+    {
+        return $this->model->getProductImg();
+    }
 }
