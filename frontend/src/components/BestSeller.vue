@@ -6,18 +6,27 @@
     <div class="wave">
       <video autoplay preload muted loop src="https://www.laneige.com/kr/ko/assets/video/index/bestseller-bg.mp4"></video>
     </div>
-    <div class="swiper-box">
-      <swiper :slidesPerView="3" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper">
-        <swiper-slide v-for="(product, idx) in productList" :key="idx">
-          <div data-aos="fade-up" :data-aos-duration="`${idx}000`">
-            <img :src="require(`../assets/img/bestSeller/${idx + 1}.png`)" alt="" />
-            <div class="product-info">
-              <div class="engName">{{ product.engName }}</div>
-              <div class="name">{{ product.name }}</div>
+    <div class="swiper-container flex-center">
+      <div class="swiper-box">
+        <swiper :slidesPerView="3" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper">
+          <swiper-slide v-for="(product, idx) in productList" :key="idx">
+            <div class="swiper-item" data-aos="fade-up" :data-aos-duration="`${idx}000`">
+              <img :src="require(`../assets/img/bestSeller/${idx + 1}.png`)" alt="" />
+              <div class="product-info">
+                <div class="product-name">
+                  <div class="engName">{{ product.engName }}</div>
+                  <div class="name">{{ product.name }}</div>
+                </div>
+                <div class="review-box">
+                  <div><i class="fa-solid fa-quote-left"></i></div>
+                  <div class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, quidem?</div>
+                  <div class="review-user">@abcd*****</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
   </div>
 </template>
@@ -73,25 +82,26 @@ export default {
       modules: [Navigation],
     };
   },
-  mounted() {
-    AOS.init();
-  },
+  mounted() {},
 };
 </script>
 
 <style scoped>
+.swiper-container {
+  width: 100%;
+}
 .swiper-box {
   margin-top: 180px;
+  width: 90%;
+  max-width: 1180px;
 }
 .swiper {
   width: 100%;
   height: 100%;
 }
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,6 +135,7 @@ export default {
   position: absolute;
   z-index: -1;
   object-fit: cover;
+  left: -20px;
   width: 100vw;
   height: 460px;
 }
@@ -132,5 +143,20 @@ export default {
   margin: 10px 0;
   color: var(--text-point);
   font-weight: bold;
+}
+.product-info .review-box {
+  color: var(--text-light-gray);
+}
+.product-info .product-name div {
+  margin-bottom: 20px;
+}
+.review {
+  color: var(--text-gray);
+}
+.review-user {
+  font-size: var(--font-sm);
+}
+.product-info .review-box div {
+  margin: 20px 0;
 }
 </style>
