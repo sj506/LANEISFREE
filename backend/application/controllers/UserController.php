@@ -28,4 +28,14 @@ class UserController extends Controller
     }
     return [_RESULT => 0];
   }
+
+  public function logout()
+  {
+    $this->flash(_LOGINUSER);
+    return [_RESULT => 1];
+  }
+
+  // public function signIn()
+  // {
+  // }
 }
