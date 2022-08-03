@@ -90,7 +90,9 @@
                   src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"></video>
               </div>
               <div class="proof__inner" :class="{ isactive: isActive2 }">
-                <p class="proof__desc">끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.</p>
+                <p class="proof__desc">
+                  끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.
+                </p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
                   <span class="proof__t">물 스킨 제형으로 <br />

@@ -24,14 +24,21 @@ export default {
     };
   },
   beforeCreate() {},
-  created() {},
+  created() {
+    this.getProductImg();
+  },
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
   updated() {},
   beforeUnmount() {},
   unmounted() {},
-  methods: {},
+  methods: {
+    async getProductImg() {
+      const getProductImg = await this.$get('/product/getProductImg', {});
+      this.$store.commit('getProductImg', getProductImg);
+    },
+  },
 };
 </script>
 

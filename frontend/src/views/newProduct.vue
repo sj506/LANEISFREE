@@ -72,7 +72,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_Neo Foundation Brush">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_Neo Foundation Brush"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/모이스처.jpg" alt="모이스처" />
                 </div>
@@ -90,7 +96,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/워터스킨.jpg" alt="워터스킨" />
                 </div>
@@ -105,7 +117,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_water-bank-blue-hyaluronic-serum">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_water-bank-blue-hyaluronic-serum"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/워터폼클렌저.jpg" alt="워터폼클렌저" />
                 </div>
@@ -173,7 +191,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_Neo Foundation Brush">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_Neo Foundation Brush"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/블루에너지에센스.jpg" alt="블루에너지에센스" />
                 </div>
@@ -191,7 +215,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/블루에너지세트.jpg" alt="블루에너지세트" />
                 </div>
@@ -206,7 +236,13 @@
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
               </div>
-              <a href="#" class="product-item__link" ap-click-area="Product" ap-click-name="Click - Product Detail Link" ap-click-data="신제품_water-bank-blue-hyaluronic-serum">
+              <a
+                href="#"
+                class="product-item__link"
+                ap-click-area="Product"
+                ap-click-name="Click - Product Detail Link"
+                ap-click-data="신제품_water-bank-blue-hyaluronic-serum"
+              >
                 <div class="product-item__thumb">
                   <img class="product-item__img" src="../newImage/크림스킨.jpg" alt="크림 스킨 옴므 올인원" />
                 </div>
@@ -226,11 +262,7 @@
 
 <script>
 import NEW from '../components/NEW.vue';
-export default {
-  components: {
-    NEW,
-  },
-};
+export default {};
 </script>
 
 <style scoped>
