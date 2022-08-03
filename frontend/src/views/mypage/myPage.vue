@@ -113,47 +113,6 @@
 </script>
 
 <style scoped>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 button,
 a {
   font-family: inherit;
