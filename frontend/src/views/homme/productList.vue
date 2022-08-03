@@ -6,6 +6,7 @@
         <div class="column-center">
           <img
             @mouseover="changeImg"
+            class="cursor-png"
             @mouseout="reChangeImg($event.target, product.pro_mainimg)"
             :src="getSrc(product.pro_mainimg)"
             :data-category="product.cate_class"
@@ -76,7 +77,9 @@ img {
   max-width: 250px;
   height: 100%;
 }
-
+.cursor-png {
+  cursor: url('https://www.laneige.com/kr/ko/assets/image/a/pointer.png'), auto;
+}
 .productBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
