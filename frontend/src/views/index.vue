@@ -1,27 +1,21 @@
 <template>
-  <div class="index-container column-center">
+  <div>
     <list-item></list-item>
-    <div class="index-main column-center">
-      <best-seller></best-seller>
-      <middle-banner></middle-banner>
-    </div>
+    <best-seller></best-seller>
   </div>
 </template>
 
 <script>
 import ListItem from '../components/ListItem.vue';
 import BestSeller from '@/components/BestSeller.vue';
-import MiddleBanner from '@/components/MiddleBanner.vue';
 export default {
-  components: { ListItem, BestSeller, MiddleBanner },
+  components: { ListItem, BestSeller },
   data() {
     return {};
   },
   setup() {},
   created() {},
-  mounted() {
-    AOS.init();
-  },
+  mounted() {},
   unmounted() {},
   methods: {},
 };

@@ -28,10 +28,15 @@
           <div class="quote-line">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path d="M96 224C84.72 224 74.05 226.3 64 229.9V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32S145.7 96 128 96C57.42 96 0 153.4 0 224v96c0 53.02 42.98 96 96 96s96-42.98 96-96S149 224 96 224zM352 224c-11.28 0-21.95 2.305-32 5.879V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32s-14.33-32-32-32c-70.58 0-128 57.42-128 128v96c0 53.02 42.98 96 96 96s96-42.98 96-96S405 224 352 224z" />
+              <path
+                d="M96 224C84.72 224 74.05 226.3 64 229.9V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32S145.7 96 128 96C57.42 96 0 153.4 0 224v96c0 53.02 42.98 96 96 96s96-42.98 96-96S149 224 96 224zM352 224c-11.28 0-21.95 2.305-32 5.879V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32s-14.33-32-32-32c-70.58 0-128 57.42-128 128v96c0 53.02 42.98 96 96 96s96-42.98 96-96S405 224 352 224z"
+              />
             </svg>
           </div>
-          <p class="quote_text">수분은 부족하고 피지량은 많은 남자 피부를 위한 진화, <br />스킨만으로도 로션, 크림을 따로 바를 필요 없이 바로 촉촉해지는 <br />남자만의 스킨케어 - 올인원 스킨으로 쉽고 간편하게 사용할수 있어요!</p>
+          <p class="quote_text">
+            수분은 부족하고 피지량은 많은 남자 피부를 위한 진화, <br />스킨만으로도 로션, 크림을 따로 바를 필요 없이 바로 촉촉해지는 <br />남자만의
+            스킨케어 - 올인원 스킨으로 쉽고 간편하게 사용할수 있어요!
+          </p>
           <footer class="quote_footer">라네즈 크림 스킨 옴므 올인원 상품개발 담당자</footer>
         </div>
       </blockquote>
@@ -40,16 +45,24 @@
         <div class="viral_title">라네즈 크림 스킨 옴므 올인원</div>
         <div class="viral_sub">[HOMME] CREAM SKIN REFINER ALL IN ONE</div>
         <div class="viral_box">
-          <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_top-visuals-banner_pc.jpg" class="ft-viral__img" alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지" />
+          <img
+            src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_top-visuals-banner_pc.jpg"
+            class="ft-viral__img"
+            alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지"
+          />
         </div>
       </div>
       <div class="c_mood_img">
         <div class="c_c_mood_img">
           <div class="img_box1">
-            <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg" />
+            <img
+              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg"
+            />
           </div>
           <div class="img_box2">
-            <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg" />
+            <img
+              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg"
+            />
           </div>
         </div>
       </div>
@@ -62,7 +75,9 @@
           <ul class="proof-list row">
             <li class="proof col">
               <div class="proof__bg">
-                <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_01_pc.jpg" />
+                <img
+                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_01_pc.jpg"
+                />
               </div>
               <div class="proof__inner" :class="{ isactive: isActive1 }">
                 <p class="proof__desc">크림 한 통을 그대로 녹여낸 스킨 제형으로 로션, 크림이 따로 필요 없는 즉각 수분 충전되는 제품입니다.</p>
@@ -80,10 +95,14 @@
             </li>
             <li class="proof col">
               <div class="proof__bg">
-                <video src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"></video>
+                <video
+                  src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"
+                ></video>
               </div>
               <div class="proof__inner" :class="{ isactive: isActive2 }">
-                <p class="proof__desc">끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.</p>
+                <p class="proof__desc">
+                  끈적이는 올인원은 NO! 물스킨 제형으로 즉각적으로 피부에 흡수되어 빠르고 간편하게 사용하는 남자 올인원 스킨입니다.
+                </p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
                   <span class="proof__t"
@@ -96,7 +115,10 @@
             </li>
             <li class="proof col">
               <div class="proof__bg">
-                <img class="proof_img" src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg" />
+                <img
+                  class="proof_img"
+                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg"
+                />
               </div>
               <div class="proof__inner" v-bind:class="{ isactive: isActive3 }">
                 <p class="proof__desc">과다 분비된 피지 조절 효능이 있는 어성초 성분으로 모공 및 피지를 컨트롤해줍니다.</p>
@@ -117,8 +139,18 @@
       </div>
       <div class="mainImgBox">
         <div class="c_long-video">
-          <img class="longImg" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_detail-PDP_pc.jpg" />
-          <video class="longVideo" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" loop="" autoplay="" muted="" playsinline=""></video>
+          <img
+            class="longImg"
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_detail-PDP_pc.jpg"
+          />
+          <video
+            class="longVideo"
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
         </div>
         <div></div>
       </div>
@@ -129,10 +161,15 @@
           <h3 class="h4 data_title2">2주의 기적 - 크림 스킨 옴므 올인원 사용 만족도</h3>
         </div>
         <div class="bg">
-          <MARQUEE behavior="scroll" scrollamount="10"> #피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습 </MARQUEE>
+          <MARQUEE behavior="scroll" scrollamount="10">
+            #피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습#피부진정#로션크림스킵케어#유수분밸런스#건성피부보습
+          </MARQUEE>
         </div>
         <div class="data">
-          <img class="data_img" src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png" />
+          <img
+            class="data_img"
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png"
+          />
           <div class="data_cnt_box1 data_cnt_box left-after">
             <div>사용 후 피부가 촉촉해진 느낌이다.</div>
             <div>96.6%</div>
@@ -175,13 +212,27 @@
         <div class="texture_title1">
           <div class="h4 texture_stitle">TEXTURE</div>
           <div class="h2 texture_stitle2">우윳빛 물 타입의 스킨</div>
-          <video class="texture_video1" src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4" loop="" autoplay="" muted="" playsinline=""></video>
+          <video
+            class="texture_video1"
+            src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
           <div class="texture_ctnt">촉촉하고는 싶지만 번들거림은 부담스러웠던 남자 피부를 위해,</div>
           <div class="texture_ctnt">물 같은 스킨 제형이라 번들거림 없이 바르는 즉시 흡수돼요!</div>
         </div>
         <div class="texture_title2">
           <div class="texture_stitle3">&lt 자사 올인원 제품과 끈적임 비교 TEST &gt</div>
-          <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+          <video
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4"
+            class="pdp__video"
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
           <div class="texture_stitle4">
             <div>올인원이지만 스킨 제형이라</div>
             <div>피부에 끈적임은 남지 않아 산뜻해요!</div>
@@ -196,7 +247,14 @@
         </div>
         <ol class="d-flex justify-content-center">
           <li>
-            <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+            <video
+              src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4"
+              class="pdp__video"
+              loop=""
+              autoplay=""
+              muted=""
+              playsinline=""
+            ></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 1.</div>
               <div class="how-cnt">
@@ -206,7 +264,14 @@
             </div>
           </li>
           <li>
-            <video src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4" class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+            <video
+              src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4"
+              class="pdp__video"
+              loop=""
+              autoplay=""
+              muted=""
+              playsinline=""
+            ></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 2.</div>
               <div class="how-cnt">
