@@ -46,7 +46,9 @@
           <div>{{ addComma(productDetail.pro_price) }}원</div>
         </div>
         <!-- 구매 및 구매사이트 방문 버튼-->
-        <div class="buyButton _btn">AMORE MALL 에서 구매하기</div>
+        <router-link to="/buyPage">
+          <div class="buyButton _btn">AMORE MALL 에서 구매하기</div>
+        </router-link>
         <div class="visitButton _btn">
           <a href="https://www.laneige.com/kr/ko/brand/flagship-store/introduction/"> 라네즈 명동 쇼룸 방문하기</a>
         </div>
