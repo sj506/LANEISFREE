@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="wheelEvent">
+  <div class="story-container" @wheel="wheelEvent">
     <div class="section column-center">
       <img src="@/assets/img/story/visual-logo.png" alt="" />
       <h3>내 피부 본연의 건강한 빛, 내 삶의 빛나는 자신감.</h3>
@@ -51,159 +51,178 @@
     </div>
     <div class="last-section">
       <div class="column-center">
-        <img src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
+        <img src="@/assets/img/story/glow_logo.png" class="mb-3 glow-logo" alt="" />
         <h1 class="mb-5">MAIN PRODUCT</h1>
-        <p>
+        <p class="last-subtitle">
           피부 속 보습 메커니즘에 기반한 오랜 연구와 라이프스타일 연구를 더해 완성된<br />
           라네즈의 5가지 기능성 솔루션
         </p>
-        <p class="line"></p>
-        <div class="main-products flex-center">
+        <p class="vertical-line"></p>
+        <div class="main-products">
           <div class="main-product mt-2">
-            <div class="number-title">
-              <h5 class="num">01</h5>
-              <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
-            </div>
-            <div class="product-name">
-              <p class="performance">FULL REPAIR MOISTURIZING</p>
-              <p class="name">워터뱅크 블루 히알루로닉</p>
-            </div>
-            <div class="product-txt">
-              <p>
-                매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
-                요즘 건조에 필요한 건 수분만이 아니죠.
-              </p>
-              <p>
-                새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
-                블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
-                수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
-              </p>
-              <p>
-                *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
-                블루 히알루론산의 In-vitro 실험 결과 기준)
-              </p>
+            <div class="product-wrap bg-blue-color">
+              <div class="txt-wrap odd">
+                <div class="number-title d-flex blue-color">
+                  <h5 class="num">01</h5>
+                  <h3>발라도 발라도<br />피부 갈증이 해결되지 않는다면?</h3>
+                </div>
+                <div class="product-name blue-color">
+                  <p class="performance">FULL REPAIR MOISTURIZING</p>
+                  <p class="name">워터뱅크 블루 히알루로닉</p>
+                </div>
+                <div class="product-txt">
+                  <p>
+                    매일 반복되는 피부 스트레스, 블루라이트, 수면부족...&nbsp;<br />
+                    요즘 건조에 필요한 건 수분만이 아니죠.
+                  </p>
+                  <p>
+                    새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                    블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
+                    수분에 더해 장벽까지 잡아주는&nbsp;Full 리페어 보습의 힘을 느껴보세요.
+                  </p>
+                  <p>
+                    *블루 히알루론산 원료 특성에 한함(일반 고분자 히알루론산 대비<br />
+                    블루 히알루론산의 In-vitro 실험 결과 기준)
+                  </p>
+                </div>
+              </div>
+
+              <div class="product-img">
+                <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
+              </div>
             </div>
           </div>
-          <div class="product-img">
-            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/laneige__brand_story_pc_220317.jpg" alt="" />
+          <div class="main-product even mt-2">
+            <div class="product-wrap even bg-brown-color">
+              <div class="txt-wrap">
+                <div class="number-title d-flex brown-color">
+                  <h5 class="num">02</h5>
+                  <h3>
+                    칙칙해진 피부 톤이<br />
+                    걱정이라면?
+                  </h3>
+                </div>
+                <div class="product-name brown-color">
+                  <p class="performance">BRIGHTENING CARE</p>
+                  <p class="name">래디언-C 라인</p>
+                </div>
+                <div class="product-txt">
+                  <p>
+                    이유를 모르게 피부가 자꾸 칙칙해지는 원인은 무엇일까요? <br />
+                    햇빛의 자외선은 물론 우리의 일상에 깊숙이 자리잡은 스마트폰과 <br class="pc-only" />
+                    PC 모니터의 블루라이트, 심지어 스트레스까지 피부 톤을 어둡게 만듭니다. <br />
+                  </p>
+                  <p>
+                    ‘래디언-C크림’은 비타민C 유도체와 비타민E의 조합으로 칙칙한 피부를 <br class="pc-only" />
+                    단 2주만에 ‘빛톤 피부’로 가꿔줍니다.
+                  </p>
+                </div>
+              </div>
+              <div class="product-img">
+                <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img02-pc.jpg" alt="" />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="main-products flex-center">
           <div class="main-product mt-2">
-            <div class="number-title">
-              <h5 class="num">02</h5>
-              <h3>
-                칙칙해진 피부 톤이<br />
-                걱정이라면?
-              </h3>
-            </div>
-            <div class="product-name">
-              <p class="performance">BRIGHTENING CARE/p></p>
-              <p class="name">래디언-C 라인</p>
-            </div>
-            <div class="product-txt">
-              <p>
-                이유를 모르게 피부가 자꾸 칙칙해지는 원인은 무엇일까요? <br />
-                햇빛의 자외선은 물론 우리의 일상에 깊숙이 자리잡은 스마트폰과 <br class="pc-only" />
-                PC 모니터의 블루라이트, 심지어 스트레스까지 피부 톤을 어둡게 만듭니다. <br />
-              </p>
-              <p>
-                ‘래디언-C크림’은 비타민C 유도체와 비타민E의 조합으로 칙칙한 피부를 <br class="pc-only" />
-                단 2주만에 ‘빛톤 피부’로 가꿔줍니다.
-              </p>
+            <div class="product-wrap bg-blue-color">
+              <div class="txt-wrap odd">
+                <div class="number-title d-flex purple-color">
+                  <h5 class="num">03</h5>
+                  <h3>점점 더 커지는<br />모공과 주름이 고민이라면?</h3>
+                </div>
+                <div class="product-name purple-color">
+                  <p class="performance">ANTI-AGING CARE</p>
+                  <p class="name">퍼펙트 리뉴 유스 라인</p>
+                </div>
+                <div class="product-txt">
+                  <p>
+                    어느 날 갑자기 눈에 띄는 세로 모공이 생기고<br />
+                    뺨 피부가 나도 모르게 부쩍 아래로 처진 느낌이 드시나요?<br />
+                    계속 고개를 숙이고 스마트폰을 보는 폰페이스 자세는<br />
+                    우리 피부 노화를 가속화 시킬 수 있습니다
+                  </p>
+                  <p>
+                    라네즈의 안티에이징 기술이 담긴 ‘라네즈 레티놀’은<br />
+                    순도 95%의 초순수 레티놀로 피부 속 콜라겐 생성을 촉진해<br />
+                    단 7일만에 모공의 탄력과 주름을 개선하여,<br />
+                    현대인의 일상에 안티에이징 솔루션을 제공합니다.
+                  </p>
+                </div>
+              </div>
+              <div class="product-img">
+                <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img03-pc.jpg" alt="" />
+              </div>
             </div>
           </div>
-          <div class="product-img">
-            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img02-pc.jpg" alt="" />
+          <div class="main-product even mt-2">
+            <div class="product-wrap even bg-dark-blue-color">
+              <div class="txt-wrap">
+                <div class="number-title d-flex dark-blue-color">
+                  <h5 class="num">04</h5>
+                  <h3>잠은 못 자도 피부는<br />좋아 보일 순 없을까?</h3>
+                </div>
+                <div class="product-name dark-blue-color">
+                  <p class="performance">SLEEPING CARE</p>
+                  <p class="name">슬리핑 라인</p>
+                </div>
+                <div class="product-txt">
+                  <p>수면 시간이 부족하면 건강에는 물론, 피부에도 불균형 상태를 초래합니다.</p>
+                  <p>
+                    피부 수분 손실이 증가하고, 피지 분비가 감소되는<br />
+                    ‘슬리핑 골든 타임＇에 주목해 만들어낸 라네즈의 독자 기술<br />
+                    ‘슬리핑 마이크로바이옴’은 밤 사이 피부를 건강하게 지켜주고<br />
+                    낮 동안 손상 받은 피부 균형을 회복시켜 줍니다.
+                  </p>
+                  <p>‘워터 슬리핑 마스크 EX’로 푹 잔 듯 맑고 투명한 아침 피부를 만들어 보세요.</p>
+                </div>
+              </div>
+              <div class="product-img">
+                <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img04-pc.jpg" alt="" />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="main-products flex-center">
           <div class="main-product mt-2">
-            <div class="number-title">
-              <h5 class="num">03</h5>
-              <h3>점점 더 커지는<br />모공과 주름이 고민이라면?</h3>
+            <div class="product-wrap bg-green-color">
+              <div class="txt-wrap odd">
+                <div class="number-title d-flex green-color">
+                  <h5 class="num">05</h5>
+                  <h3>내 피부처럼 감쪽같이<br />커버될 수 없을까?</h3>
+                </div>
+                <div class="product-name green-color">
+                  <p class="performance">BASE MAKEUP</p>
+                  <p class="name">네오 쿠션</p>
+                </div>
+                <div class="product-txt">
+                  <p>
+                    액티브한 야외 활동에도 들뜸없이,<br />
+                    핸드폰 액정, 마스크에도 묻어남 없는 베이스 메이크업이 필요하신가요?
+                  </p>
+                  <p>
+                    ‘네오 쿠션’을 완성한 ‘백포어 담지체’ 기술은 밀착력 있고 매트한 제형을<br />
+                    쿠션에 담아 얇고 가볍게 발리면서 잡티는 완벽하게 커버해줍니다.<br />
+                    그리고 PC와 스마트폰의 블루라이트로부터 안전하게 피부를 보호해주죠.
+                  </p>
+                  <p>
+                    붉은기, 노란기, 모공과 같은 다양한 피부 고민을 24시간 무너짐 없이 커버해주는<br />
+                    네오 쿠션으로 하루 종일 완벽한 피부를 만들어보세요.
+                  </p>
+                </div>
+              </div>
+              <div class="product-img">
+                <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img05-pc.jpg" alt="" />
+              </div>
             </div>
-            <div class="product-name">
-              <p class="performance">ANTI-AGING CARE</p>
-              <p class="name">퍼펙트 리뉴 유스 라인</p>
-            </div>
-            <div class="product-txt">
-              <p>
-                어느 날 갑자기 눈에 띄는 세로 모공이 생기고<br />
-                뺨 피부가 나도 모르게 부쩍 아래로 처진 느낌이 드시나요?<br />
-                계속 고개를 숙이고 스마트폰을 보는 폰페이스 자세는<br />
-                우리 피부 노화를 가속화 시킬 수 있습니다
-              </p>
-              <p>
-                라네즈의 안티에이징 기술이 담긴 ‘라네즈 레티놀’은<br />
-                순도 95%의 초순수 레티놀로 피부 속 콜라겐 생성을 촉진해<br />
-                단 7일만에 모공의 탄력과 주름을 개선하여,<br />
-                현대인의 일상에 안티에이징 솔루션을 제공합니다.
-              </p>
-            </div>
-          </div>
-          <div class="product-img">
-            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img03-pc.jpg" alt="" />
-          </div>
-        </div>
-        <div class="main-products flex-center">
-          <div class="main-product mt-2">
-            <div class="number-title">
-              <h5 class="num">04</h5>
-              <h3>잠은 못 자도 피부는<br />좋아 보일 순 없을까?</h3>
-            </div>
-            <div class="product-name">
-              <p class="performance">SLEEPING CARE</p>
-              <p class="name">슬리핑 라인</p>
-            </div>
-            <div class="product-txt">
-              <p>수면 시간이 부족하면 건강에는 물론, 피부에도 불균형 상태를 초래합니다.</p>
-              <p>
-                피부 수분 손실이 증가하고, 피지 분비가 감소되는<br />
-                ‘슬리핑 골든 타임＇에 주목해 만들어낸 라네즈의 독자 기술<br />
-                ‘슬리핑 마이크로바이옴’은 밤 사이 피부를 건강하게 지켜주고<br />
-                낮 동안 손상 받은 피부 균형을 회복시켜 줍니다.
-              </p>
-              <p>‘워터 슬리핑 마스크 EX’로 푹 잔 듯 맑고 투명한 아침 피부를 만들어 보세요.</p>
-            </div>
-          </div>
-          <div class="product-img">
-            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img04-pc.jpg" alt="" />
-          </div>
-        </div>
-        <div class="main-products flex-center">
-          <div class="main-product mt-2">
-            <div class="number-title">
-              <h5 class="num">05</h5>
-              <h3>내 피부처럼 감쪽같이<br />커버될 수 없을까?</h3>
-            </div>
-            <div class="product-name">
-              <p class="performance">BASE MAKEUP</p>
-              <p class="name">네오 쿠션</p>
-            </div>
-            <div class="product-txt">
-              <p>
-                액티브한 야외 활동에도 들뜸없이,<br />
-                핸드폰 액정, 마스크에도 묻어남 없는 베이스 메이크업이 필요하신가요?
-              </p>
-              <p>
-                ‘네오 쿠션’을 완성한 ‘백포어 담지체’ 기술은 밀착력 있고 매트한 제형을<br />
-                쿠션에 담아 얇고 가볍게 발리면서 잡티는 완벽하게 커버해줍니다.<br />
-                그리고 PC와 스마트폰의 블루라이트로부터 안전하게 피부를 보호해주죠.
-              </p>
-              <p>
-                붉은기, 노란기, 모공과 같은 다양한 피부 고민을 24시간 무너짐 없이 커버해주는<br />
-                네오 쿠션으로 하루 종일 완벽한 피부를 만들어보세요.
-              </p>
-            </div>
-          </div>
-          <div class="product-img">
-            <img src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow04-img05-pc.jpg" alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div class="section">5</div>
+    <div class="life-style column-center">
+      <h1>LANEIGE LIFE STYLE SCENE</h1>
+      <h4>#LIVE MY OWN LIFE</h4>
+      <div class="video-box">
+        <video autoplay preload muted loop src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow-video.mp4"></video>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -258,10 +277,20 @@ export default {
 </script>
 
 <style scoped>
+.story-container h1 {
+  font-weight: bold;
+}
 .section {
   padding-top: 60px;
   width: 100vw;
   height: 100vh;
+}
+.last-section {
+  padding-top: 60px;
+  width: 100vw;
+}
+.glow-logo {
+  margin-top: 10vw;
 }
 .section:first-child {
   background: url('https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/img_20211215_visual-pc.jpg');
@@ -296,5 +325,131 @@ export default {
 }
 .section h3 {
   font-size: 18px;
+}
+.blue-color {
+  color: #1162b4;
+}
+.brown-color {
+  color: #a2640c;
+}
+.purple-color {
+  color: #5e55d7;
+}
+.dark-blue-color {
+  color: #3b68b4;
+}
+.green-color {
+  color: #487371;
+}
+.bg-blue-color {
+  background-color: #f4fafe;
+}
+.bg-brown-color {
+  background-color: #fcf7f0;
+}
+.bg-dark-blue-color {
+  background-color: #f4f8fc;
+}
+.bg-green-color {
+  background-color: #eff8f8;
+}
+.even {
+  flex-direction: row-reverse;
+}
+.odd {
+  margin-left: 100px;
+}
+.main-products {
+  margin-top: 80px;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.main-product {
+  display: flex;
+  margin: 80px 0;
+}
+.product-wrap {
+  display: flex;
+}
+.txt-wrap {
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+.product-img {
+  width: 40vw;
+}
+.product-img img {
+  width: 100%;
+  object-fit: cover;
+}
+.number-title {
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+.number-title h5.num {
+  font-size: 72px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.number-title h3 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  padding-bottom: 10px;
+}
+.product-name .performance {
+  font-size: 28px;
+  font-weight: bold;
+}
+.product-name .name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.product-txt p {
+  color: var(--text-gray);
+  font-size: 14px;
+  margin: 20px 0;
+  line-height: 20px;
+}
+.vertical-line::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 100px;
+  margin: 45px auto 0;
+  background-color: #0e0e0e;
+}
+.last-subtitle {
+  text-align: center;
+  color: var(--text-dark-gray);
+  line-height: 20px;
+}
+.life-style h1 {
+  position: relative;
+}
+.life-style h1::before {
+  position: absolute;
+  content: '';
+  background-color: #cbdeff;
+  height: 20px;
+  width: 100%;
+  z-index: -1;
+  bottom: 0;
+}
+.life-style h4 {
+  margin: 20px 0;
+  color: var(--text-dark-gray);
+}
+.video-box {
+  margin-top: 40px;
+}
+.video-box video {
+  width: 60vw;
 }
 </style>
