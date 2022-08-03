@@ -8,7 +8,7 @@ export default {
           method: 'post',
           url,
           data: param,
-        }).catch(e => {
+        }).catch((e) => {
           console.error(e);
         })
       ).data;
@@ -20,16 +20,16 @@ export default {
           .get(url, {
             params: param,
           })
-          .catch(e => {
+          .catch((e) => {
             console.error(e);
           })
       ).data;
     },
 
     $base64(file) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const fr = new FileReader();
-        fr.onload = e => {
+        fr.onload = (e) => {
           resolve(e.target.result);
         };
         fr.readAsDataURL(file);

@@ -16,4 +16,11 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function getProductImg()
+    {
+        $sql = "SELECT * FROM t_productimg";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

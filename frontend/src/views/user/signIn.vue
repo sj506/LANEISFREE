@@ -27,10 +27,8 @@
       </button>
     </div>
     <button>
-      <router-link to="/signup">
-        <span>아직 회원이 아니세요?</span>
-        <em>회원가입</em>
-      </router-link>
+      <span>아직 회원이 아니세요?</span>
+      <em>회원가입</em>
     </button>
     <!-- / container -->
   </div>

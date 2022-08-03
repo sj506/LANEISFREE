@@ -1,17 +1,20 @@
 <template>
   <ul class="productBox">
     <li class="und-border" v-for="product in selectProduct" :key="product.pro_num">
-      <div class="column-center">
-        <img
-          @mouseover="changeImg"
-          @mouseout="reChangeImg($event.target, product.pro_mainimg)"
-          :src="getSrc(product.pro_mainimg)"
-          :data-category="product.cate_class"
-        />
+      <router-link :to="{ name: 'hommeProductDetail', params: { productId: product.pro_num } }">
+        <!-- params로 상품번호를 전달 -->
+        <div class="column-center">
+          <img
+            @mouseover="changeImg"
+            @mouseout="reChangeImg($event.target, product.pro_mainimg)"
+            :src="getSrc(product.pro_mainimg)"
+            :data-category="product.cate_class"
+          />
 
-        <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
-        <div class="pro_name">{{ product.pro_name }}</div>
-      </div>
+          <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
+          <div class="pro_name">{{ product.pro_name }}</div>
+        </div>
+      </router-link>
     </li>
   </ul>
 </template>
@@ -46,6 +49,7 @@ export default {
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
     },
+
     getSrc(mainImg) {
       return require('@/assets/img' + mainImg);
     },
@@ -89,6 +93,7 @@ img {
 .pro_name {
   font-size: 0.9rem;
   margin-bottom: 2rem;
+  color: #000000;
 }
 
 .und-border {
