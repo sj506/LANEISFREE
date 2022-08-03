@@ -11,6 +11,15 @@ import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
+import store from '@/store';
+
+const requireAuth = () => (to, from, next) => {
+  if (store.state.user.m_num === undefined) {
+    swal.fire('로그인을 하세요.', '', 'warning');
+    return;
+  }
+  return next();
+};
 
 const routes = [
   {
@@ -47,6 +56,7 @@ const routes = [
     path: '/mypage',
     name: 'myPage',
     component: myPage,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/signin',

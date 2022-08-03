@@ -49,7 +49,7 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn blueBtn">로그인</button>
+            <button type="submit" class="btn blueBtn" @click.prevent="doLogin">로그인</button>
           </div>
         </form>
 
@@ -101,6 +101,7 @@ export default {
   data() {
     return {
       keyboardOpenBtn: 'PC 키보드 열기',
+      
     }
   },
   computed: {
