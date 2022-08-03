@@ -5,8 +5,7 @@ import store from './store';
 import mixins from './mixins';
 import css from './assets/css/style.css';
 import swipe from '@/assets/js/swiper.js';
-import addr from './assets/js/addr.js';
-import AOS from 'aos';
+// import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 createApp(App).use(store).use(router).mixin(mixins).mount('#app').use(css).use(swipe).use(addr);
