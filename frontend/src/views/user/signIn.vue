@@ -26,17 +26,16 @@
           </span>
         </div>
 
-        <form>
+        <form @submit.prevent="submitForm">
           <!-- input 아이디 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" placeholder="이메일 입력" ref="loginId" v-model.trim="loginId" autofocus>
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" autofocus>
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" ref="loginPw"
-              v-model.trim="loginPw">
+            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
@@ -50,7 +49,7 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn blueBtn" @click.prevent="doLogin">로그인</button>
+            <button type="submit" class="btn blueBtn">로그인</button>
           </div>
         </form>
         <p>{{ errorMsg }}</p>
@@ -104,16 +103,14 @@ export default {
   data() {
     return {
       keyboardOpenBtn: 'PC 키보드 열기',
-      loginId: '',
-      loginPw: ''
-    }
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    }
+      user: {
+        m_email: '',
+        m_pw: ''
+      },
+    };
   },
   methods: {
+    // 키보드 열고 닫기
     keyboardBtn() {
       const keyboard = document.querySelector('.keyboard');
       const check = keyboard.classList.contains('open');
@@ -125,27 +122,17 @@ export default {
         this.keyboardOpenBtn = 'PC 키보드 닫기';
       }
     },
-    doLogin() {
-      if (this.loginId === '') {
-        alert("아이디를 입력하세요.");
-        this.$refs.loginId.focus();
-        return;
-      } else if (this.loginPw === '') {
-        alert("패스워드를 입력하세요.");
-        this.$refs.loginPw.focus()
-        return;
-      }
-      let memberInfo = { id: this.loginId, password: this.loginPw };
-      this.$store.dispatch("loginStore/doLogin", memberInfo).then(() => {
-        const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
-        this.$router.push(returnUrl);
-      }).catch((err) => {
-        this.errorMessage = err.response.data.errormessage;
-      });
+
+    // 로그인 백엔드통신
+    async submitForm() {
+      console.log(this.user);
+      const signIn = await this.$post('user/signIn', this.user);
+      this.$store.commit('user', this.user);
+      // this.$router.push('/');
+      console.log(signIn);
     },
-    mounted() {
-      this.$refs.loginId.focus();
-    },
+
+    // 카카오 로그인
     kakaoLogin() {
       window.Kakao.Auth.login({
         scope: 'account_email',
@@ -174,11 +161,7 @@ export default {
         }
       });
     },
-    async login(param) {
-      const data = await this.$post('/user/signUp', param);
-      param.m_num = data.result;
-      this.$store.commit('user', param);
-    }
+
   }
 }
 </script>

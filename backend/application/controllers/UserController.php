@@ -37,6 +37,15 @@ class UserController extends Controller
 
   public function signIn()
   {
-    return $this->model->signIn();
+    $json = getJson();
+    $param = [
+
+    ];
+    $result = $this->model->signIn($param);
+    if ($result) {
+      $this->flash(_LOGINUSER, $result);
+      return [_RESULT => 1];
+    }
+    return [_RESULT => 0];
   }
 }

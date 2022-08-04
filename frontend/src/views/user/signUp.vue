@@ -22,7 +22,7 @@
         </p>
       </div>
       
-      <form @submit.prevent="submitForm" class="validation-form" novalidate>
+      <form @submit.prevent="submitForm">
 
         <!-- 이름 -->
         <div class="mb-3">

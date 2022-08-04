@@ -27,7 +27,7 @@ class UserModel extends Model
   }
   public function signIn(&$param)
   {
-    $sql = "SELECT m_num, m_email, m_pw, m_nm, m_gender, m_tel, m_postcode, m_addr
+    $sql = "SELECT m_email, m_pw
             FROM t_member
             WHERE m_num = :m_num";
     $stmt = $this->pdo->prepare($sql);
