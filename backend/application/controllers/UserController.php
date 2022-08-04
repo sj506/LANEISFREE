@@ -35,7 +35,8 @@ class UserController extends Controller
     return [_RESULT => 1];
   }
 
-  // public function signIn()
-  // {
-  // }
+  public function signIn()
+  {
+    return $this->model->signIn();
+  }
 }

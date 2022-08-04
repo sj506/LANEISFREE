@@ -29,13 +29,14 @@
         <form>
           <!-- input 아이디 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" placeholder="이메일 입력" autofocus>
+            <input type="email" id="loginId" placeholder="이메일 입력" ref="loginId" v-model.trim="loginId" autofocus>
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
+            <input type="password" id="loginPw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" ref="loginPw"
+              v-model.trim="loginPw">
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
@@ -52,6 +53,7 @@
             <button type="submit" class="btn blueBtn" @click.prevent="doLogin">로그인</button>
           </div>
         </form>
+        <p>{{ errorMsg }}</p>
 
         <!-- button 카카오 로그인 -->
         <div class="kakaoLoginBtn">
@@ -98,10 +100,12 @@
 
 <script>
 export default {
+  name: 'signIn',
   data() {
     return {
       keyboardOpenBtn: 'PC 키보드 열기',
-      
+      loginId: '',
+      loginPw: ''
     }
   },
   computed: {
@@ -120,6 +124,27 @@ export default {
         keyboard.classList.add('open');
         this.keyboardOpenBtn = 'PC 키보드 닫기';
       }
+    },
+    doLogin() {
+      if (this.loginId === '') {
+        alert("아이디를 입력하세요.");
+        this.$refs.loginId.focus();
+        return;
+      } else if (this.loginPw === '') {
+        alert("패스워드를 입력하세요.");
+        this.$refs.loginPw.focus()
+        return;
+      }
+      let memberInfo = { id: this.loginId, password: this.loginPw };
+      this.$store.dispatch("loginStore/doLogin", memberInfo).then(() => {
+        const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
+        this.$router.push(returnUrl);
+      }).catch((err) => {
+        this.errorMessage = err.response.data.errormessage;
+      });
+    },
+    mounted() {
+      this.$refs.loginId.focus();
     },
     kakaoLogin() {
       window.Kakao.Auth.login({
