@@ -11,6 +11,8 @@ import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
+import store from '@/store';
+
 
 const routes = [
   {

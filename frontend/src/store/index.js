@@ -3,6 +3,8 @@ import createPersistedState from 'vuex-persistedstate';
 
 export default createStore({
   state: {
+    user: {},
+    setUser: 1,
     getProductList: {},
     selectProduct: [],
     getProductImg: {},
@@ -16,6 +18,9 @@ export default createStore({
   mutations: {
     user: (state, data) => {
       state.user = data;
+    },
+    setUser: (state, data) => {
+      state.setUser = data;
     },
     getProductList: (state, data) => {
       state.getProductList = data;
@@ -33,5 +38,4 @@ export default createStore({
     }),
   ],
   actions: {},
-  modules: {},
 });

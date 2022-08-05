@@ -22,14 +22,16 @@
         </p>
       </div>
       
-      <form @submit.prevent="submitForm" class="validation-form" novalidate>
+      <form @submit.prevent="submitForm">
 
         <!-- 이름 -->
         <div class="mb-3">
           <label>이름</label>
           <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력" autofocus required>
-          <div class="invalid-feedback">
-            이름을 입력해주세요.
+          <div v-if="errors.length">
+            <span v-for="error in errors">
+              {{ error }}
+            </span>
           </div>
         </div>
 
@@ -155,11 +157,14 @@ export default {
         detailAddr: '',
         extraAddr: '',
       },
+      errors:[]
     };
   },
   methods: {
     // 회원가입 백엔드통신
     async submitForm() {
+      this.errors = []
+
       console.log(this.user);
       const signUp = await this.$post('user/signUp', this.user);
       this.$store.commit('user', this.user);
