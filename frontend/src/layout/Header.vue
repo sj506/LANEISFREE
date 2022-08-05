@@ -178,6 +178,7 @@ ul {
   align-items: center;
   height: 60px;
   position: relative;
+  font-size: 18px;
   padding: 0 20px;
 }
 .navbar__menu li:hover a {
