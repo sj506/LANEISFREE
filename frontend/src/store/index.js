@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 export default createStore({
   state: {
     user: {},
-    setUser: 0,
+    setUser: 1,
     getProductList: {},
     selectProduct: [],
     getProductImg: {},
@@ -20,7 +20,7 @@ export default createStore({
       state.user = data;
     },
     setUser: (state, data) => {
-      state.user = data;
+      state.setUser = data;
     },
     getProductList: (state, data) => {
       state.getProductList = data;

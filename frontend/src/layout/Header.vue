@@ -19,7 +19,7 @@
         <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
-        <li v-show="setUser === 1">
+        <li v-show="loginToggle === 1">
           <div class="dropdown">
             <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-user"></i>
@@ -33,10 +33,10 @@
           </div>
         </li>
         <li>
-          <router-link to="/signin" v-show="setUser === 0">
+          <router-link to="/signin" v-show="loginToggle === 0">
             <i class="fa-solid fa-user"></i>
           </router-link>
-          <div v-show="setUser === 1" @click="logOut()">
+          <div v-show="loginToggle === 1" @click="logOut()">
             <i class="fa-solid fa-right-to-bracket"></i>
           </div>
         </li>
@@ -85,10 +85,15 @@ export default {
       setUser: 0,
     };
   },
-  created() {
-    this.$store.state.user ? (this.setUser = 1) : (this.setUser = 0);
-    console.log(this.setUser);
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
   },
+  created() {
+    this.setUser = this.$store.state.setUser;
+  },
+
   methods: {
     toggleNav() {
       this.isActive = !this.isActive;
@@ -107,12 +112,10 @@ export default {
     closeHommeBox() {
       this.hommeShow = false;
     },
-    loginCheck() {
-      this.$store.state.user ? (this.setUser = 1) : (this.setUser = 0);
-    },
     logOut() {
       this.$store.commit('user', null);
-      this.setUser = 0;
+      this.$store.commit('setUser', 0);
+      console.log(this.setUser);
     },
   },
 };
