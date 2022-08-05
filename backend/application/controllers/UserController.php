@@ -21,6 +21,7 @@ class UserController extends Controller
       'm_postcode' => $json['postcode'],
       'm_addr' => $json['addr'] . ' ' . $json['detailAddr'] . ' ' . $json['extraAddr'],
     ];
+    // $param["m_pw"] = password_hash($param["m_pw"], PASSWORD_BCRYPT);
     $result = $this->model->signUp($param);
     if ($result) {
       $this->flash(_LOGINUSER, $result);
@@ -35,7 +36,18 @@ class UserController extends Controller
     return [_RESULT => 1];
   }
 
-  // public function signIn()
-  // {
-  // }
+  public function signIn()
+  {
+    $json = getJson();
+    $param = [
+      "m_email" => $json['m_email'],
+      "m_pw" => $json['m_pw']
+    ];
+    $result = $this->model->signIn($param);
+    if ($result) {
+      $this->flash(_LOGINUSER, $result);
+      return [_RESULT => $result];
+    }
+    return [_RESULT => 0];
+  }
 }
