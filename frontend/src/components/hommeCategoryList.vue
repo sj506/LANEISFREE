@@ -4,7 +4,7 @@
       <span ref="viewAll" class="active" @click="addActive">전체보기</span>
     </router-link>
     <!-- 카테고리 x 이미지 -->
-    <i class="fa-solid fa-xmark toggle pointer" data-bs-toggle="dropdown"></i>
+    <i v-if="true" class="fa-solid fa-xmark toggle pointer" data-bs-toggle="dropdown"></i>
   </div>
   <div class="cateFlex">
     <div class="cateDetails" v-for="(cateList, i) in cateList" :key="i">
@@ -20,6 +20,12 @@
 <script>
 export default {
   name: '',
+  props: {
+    hoverCheck: {
+      type: Boolean,
+      default: 'true',
+    },
+  },
   data() {
     return {
       example: '',
