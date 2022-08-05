@@ -9,20 +9,18 @@
       </div>
     </div>
 
-
     <!-- container -->
     <div class="container">
-
       <div class="signInTitle">
-        <span>아모레퍼시픽 뷰티포인트 통합회원<br>아이디로 로그인 해주세요.</span>
+        <span>아모레퍼시픽 뷰티포인트 통합회원<br />아이디로 로그인 해주세요.</span>
       </div>
 
       <div>
         <!-- 키보드 열기 -->
         <div class="keyboard">
-          <button class="keyboardBtn" @click="keyboardBtn()"> {{ keyboardOpenBtn }} </button>
+          <button class="keyboardBtn" @click="keyboardBtn()">{{ keyboardOpenBtn }}</button>
           <span class="keyboardImg">
-            <img src="@/assets/img/signIn/img_keyboard.png" alt="키보드 배열 이미지">
+            <img src="@/assets/img/signIn/img_keyboard.png" alt="키보드 배열 이미지" />
           </span>
         </div>
 
@@ -43,7 +41,7 @@
           <!-- checkbox 아이디 저장 -->
           <div>
             <span class="idSave">
-              <input type="checkbox" id="saveId" checked>
+              <input type="checkbox" id="saveId" checked />
               <label for="saveId"><span>아이디 저장</span></label>
             </span>
           </div>
@@ -59,23 +57,27 @@
         <div class="kakaoLoginBtn">
           <div>
             <button type="button" @click="kakaoLogin()">
-              <img src="@/assets/img/signIn/btn_login_mobile.png">
-              휴대폰<br>로그인</button>
+              <img src="@/assets/img/signIn/btn_login_mobile.png" />
+              휴대폰<br />로그인
+            </button>
           </div>
           <div>
             <button type="button" @click="kakaoLogin">
-              <img src="@/assets/img/signIn/btn_login_ka.png">
-              카카오<br>로그인</button>
+              <img src="@/assets/img/signIn/btn_login_ka.png" />
+              카카오<br />로그인
+            </button>
           </div>
           <div>
             <button type="button">
-              <img src="@/assets/img/signIn/btn_login_na.png">
-              네이버<br>로그인</button>
+              <img src="@/assets/img/signIn/btn_login_na.png" />
+              네이버<br />로그인
+            </button>
           </div>
           <div>
             <button type="button">
-              <img src="@/assets/img/signIn/btn_login_more.png">
-              더보기</button>
+              <img src="@/assets/img/signIn/btn_login_more.png" />
+              더보기
+            </button>
           </div>
         </div>
 
@@ -106,7 +108,7 @@ export default {
       keyboardOpenBtn: 'PC 키보드 열기',
       user: {
         m_email: '',
-        m_pw: ''
+        m_pw: '',
       },
     };
   },
@@ -126,6 +128,7 @@ export default {
 
     // 로그인 백엔드통신
     async submitForm() {
+      this.$store.commit('setUser', 1);
       console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
       this.$store.commit('user', signIn);
@@ -154,32 +157,32 @@ export default {
       window.Kakao.Auth.login({
         scope: 'account_email',
         success: this.getKakaoAccount,
-        fail: e => {
+        fail: (e) => {
           console.error(e);
-        }
+        },
       });
     },
     getKakaoAccount(authObj) {
       console.log(authObj);
       window.Kakao.API.request({
         url: '/v2/user/me',
-        success: res => {
+        success: (res) => {
           const acc = res.kakao_account.email;
-          const tempEmail = acc.split("@");
+          const tempEmail = acc.split('@');
           const param = {
             m_email: tempEmail[0],
-            m_email2: tempEmail[1]
-          }
+            m_email2: tempEmail[1],
+          };
           console.log(param);
           this.login(param);
         },
-        fail: e => {
+        fail: (e) => {
           console.error(e);
-        }
+        },
       });
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -222,8 +225,8 @@ button {
   color: #252525;
 }
 
-input[type="email"],
-input[type="password"] {
+input[type='email'],
+input[type='password'] {
   padding: 0 12px;
   width: 100%;
   height: 50px;
@@ -236,22 +239,22 @@ input[type="password"] {
   appearance: none;
 }
 
-input[type="email"]:hover,
-input[type="password"]:hover {
+input[type='email']:hover,
+input[type='password']:hover {
   border-color: #ccc;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border: 2px solid #0A40D5;
+input[type='email']:focus,
+input[type='password']:focus {
+  border: 2px solid #0a40d5;
   outline: 0;
   caret-color: #5c95f0;
 }
 
-#saveId:focus+label,
+#saveId:focus + label,
 .searchA a:focus,
 .keyboardBtn:focus {
-  outline: 2px solid #0A40D5;
+  outline: 2px solid #0a40d5;
 }
 
 .none {
@@ -286,12 +289,12 @@ input[type="password"]:focus {
   top: 0;
   width: 60px;
   height: 54px;
-  background: url("@/assets/img/signIn/btn_title_close.png") no-repeat 50% 50%;
+  background: url('@/assets/img/signIn/btn_title_close.png') no-repeat 50% 50%;
   background-size: 23px auto;
 }
 
 .btnClose:focus {
-  border: 2px solid #0A40D5;
+  border: 2px solid #0a40d5;
 }
 
 .inputForm {
@@ -305,7 +308,7 @@ input[type="password"]:focus {
   top: 10px;
   width: 30px;
   height: 30px;
-  background: #fff url("@/assets/img/signIn/btn_textfield_delete.png") no-repeat 50% 50%;
+  background: #fff url('@/assets/img/signIn/btn_textfield_delete.png') no-repeat 50% 50%;
   -webkit-background-size: 13px auto;
   background-size: 13px auto;
   border-radius: 50%;
@@ -347,9 +350,9 @@ input[type="password"]:focus {
   margin-top: -4px;
   width: 14px;
   height: 8px;
-  background: url("@/assets/img/signIn/btn_keyboard_open.png") no-repeat 0 0;
+  background: url('@/assets/img/signIn/btn_keyboard_open.png') no-repeat 0 0;
   background-size: 14px auto;
-  content: "";
+  content: '';
 }
 
 .keyboard .keyboardImg {
@@ -364,7 +367,6 @@ input[type="password"]:focus {
 .keyboard.open .keyboardBtn:before {
   transform: rotate(180deg);
 }
-
 
 /* 아이디 저장 */
 .idSave {
@@ -398,16 +400,16 @@ input[type="password"]:focus {
   position: absolute;
   left: 0;
   top: 0;
-  content: "";
+  content: '';
   width: 21px;
   height: 21px;
   vertical-align: middle;
-  background: url("@/assets/img/signIn/btn_check_off.png") no-repeat 0 0;
+  background: url('@/assets/img/signIn/btn_check_off.png') no-repeat 0 0;
   background-size: 100% auto;
 }
 
-.idSave input:checked+label:before {
-  background-image: url("@/assets/img/signIn/btn_check_on.png");
+.idSave input:checked + label:before {
+  background-image: url('@/assets/img/signIn/btn_check_on.png');
 }
 
 /* 로그인 버튼 */
@@ -495,8 +497,8 @@ input[type="password"]:focus {
   margin-top: -6px;
   width: 7px;
   height: 12px;
-  background: url("@/assets/img/signIn/icon_signup_arrow.png") no-repeat 0 0;
+  background: url('@/assets/img/signIn/icon_signup_arrow.png') no-repeat 0 0;
   background-size: 7px auto;
-  content: "";
+  content: '';
 }
 </style>
