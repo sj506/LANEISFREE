@@ -223,6 +223,13 @@
         <video autoplay preload muted loop src="https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/glow-video.mp4"></video>
       </div>
     </div>
+    <div class="story-footer column-center">
+      <h3>
+        라네스프리가 선사하는 새로운 뷰티 경험을 통해<br />
+        당신의 삶이 더 즐겁고 자신감으로 빛나길 응원합니다
+      </h3>
+      <div class="white-logo"><img src="@/assets/img/story/glow-logo-white.png" alt="" /></div>
+    </div>
   </div>
 </template>
 
@@ -302,6 +309,12 @@ export default {
 }
 .section:first-child h3 {
   margin-top: 30px;
+}
+.down-icon {
+  position: absolute;
+  bottom: 0px;
+  font-size: 60px;
+  cursor: pointer;
 }
 .section h4 {
   font-size: 18px;
@@ -451,5 +464,16 @@ export default {
 }
 .video-box video {
   width: 60vw;
+}
+.story-footer {
+  margin-top: 60px;
+  background: url('https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/img_20211215_visual-pc.jpg');
+  object-fit: cover;
+  color: var(--text-white);
+  height: 100vh;
+}
+.story-footer h3 {
+  text-align: center;
+  margin-bottom: 40px;
 }
 </style>
