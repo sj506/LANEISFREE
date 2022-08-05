@@ -305,7 +305,8 @@ export default {
 }
 .section:first-child {
   background: url('https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/img_20211215_visual-pc.jpg');
-  object-fit: cover;
+  background-position: center;
+  background-size: cover;
   color: var(--text-white);
 }
 .section:nth-child(3) {
@@ -478,7 +479,8 @@ export default {
 .story-footer {
   margin-top: 60px;
   background: url('https://www.laneige.com/kr/ko/assets/image/brand/feel-the-glow/img_20211215_visual-pc.jpg');
-  object-fit: cover;
+  background-position: center;
+  background-size: cover;
   color: var(--text-white);
   height: 100vh;
 }
