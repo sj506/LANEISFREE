@@ -26,17 +26,17 @@
           </span>
         </div>
 
-        <form>
+        <form @submit.prevent="submitForm">
           <!-- input 아이디 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" placeholder="이메일 입력" autofocus>
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력">
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
-            <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
+            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
+              <button type=" button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- checkbox 아이디 저장 -->
@@ -52,6 +52,7 @@
             <button type="submit" class="btn blueBtn">로그인</button>
           </div>
         </form>
+        <p>{{ errorMsg }}</p>
 
         <!-- button 카카오 로그인 -->
         <div class="kakaoLoginBtn">
@@ -98,17 +99,18 @@
 
 <script>
 export default {
+  name: 'signIn',
   data() {
     return {
       keyboardOpenBtn: 'PC 키보드 열기',
-    }
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    }
+      user: {
+        m_email: '',
+        m_pw: ''
+      },
+    };
   },
   methods: {
+    // 키보드 열고 닫기
     keyboardBtn() {
       const keyboard = document.querySelector('.keyboard');
       const check = keyboard.classList.contains('open');
@@ -120,6 +122,20 @@ export default {
         this.keyboardOpenBtn = 'PC 키보드 닫기';
       }
     },
+
+    // 로그인 백엔드통신
+    async submitForm() {
+      console.log(this.user);
+      if (this.user.m_email === '') { alert('이메일을 입력해주세요.'); return; }
+      if (this.user.m_pw === '') { alert('비밀번호를 입력해주세요.'); return; }
+      const signIn = await this.$post('user/signIn', this.user);
+      this.$store.commit('user', signIn);
+      this.$router.push('/');
+      console.log(this.$store.state.user);
+      // console.log(signIn);
+    },
+
+    // 카카오 로그인
     kakaoLogin() {
       window.Kakao.Auth.login({
         scope: 'account_email',
@@ -148,11 +164,7 @@ export default {
         }
       });
     },
-    async login(param) {
-      const data = await this.$post('/user/signUp', param);
-      param.m_num = data.result;
-      this.$store.commit('user', param);
-    }
+
   }
 }
 </script>
