@@ -19,10 +19,26 @@
         <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
+        <li v-show="setUser === 1">
+          <div class="dropdown">
+            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user"></i>
+            </router-link>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><router-link to="" class="dropdown-item">주문배송조회</router-link></li>
+              <li><router-link to="" class="dropdown-item">내 리뷰</router-link></li>
+              <li><router-link to="" class="dropdown-item">회원정보 수정</router-link></li>
+              <li><router-link to="" class="dropdown-item">찜한 제품</router-link></li>
+            </ul>
+          </div>
+        </li>
         <li>
-          <router-link to="/signin">
+          <router-link to="/signin" v-show="setUser === 0">
             <i class="fa-solid fa-user"></i>
           </router-link>
+          <div v-show="setUser === 1" @click="logOut()">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </div>
         </li>
         <li>
           <router-link to="">
@@ -66,7 +82,12 @@ export default {
       hommeShow: false,
       content: '',
       url: '',
+      setUser: 0,
     };
+  },
+  created() {
+    this.$store.state.user ? (this.setUser = 1) : (this.setUser = 0);
+    console.log(this.setUser);
   },
   methods: {
     toggleNav() {
@@ -85,6 +106,13 @@ export default {
     },
     closeHommeBox() {
       this.hommeShow = false;
+    },
+    loginCheck() {
+      this.$store.state.user ? (this.setUser = 1) : (this.setUser = 0);
+    },
+    logOut() {
+      this.$store.commit('user', null);
+      this.setUser = 0;
     },
   },
 };
