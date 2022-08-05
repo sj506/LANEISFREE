@@ -10,21 +10,21 @@
       <div class="flex-center">
         <img data-aos="fade-up" data-aos-duration="1000" src="@/assets/img/story/glow01.png" class="mw-40 me-5" alt="" />
         <div class="ms-5 me-5 mw-40">
-          <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">라네즈는 피부의 건강한 빛은 물론<br />삶까지 빛나는 자신감을 선사합니다.</h2>
+          <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">라네스프리는 피부의 건강한 빛은 물론<br />삶까지 빛나는 자신감을 선사합니다.</h2>
           <div class="txt-box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
             <p>
-              라네즈는 누군가 정의한 아름다움을 따르는 것이 아닌 개개인의<br />
+              라네스프리는 누군가 정의한 아름다움을 따르는 것이 아닌 개개인의<br />
               다양성과 자신만의 반짝임을 존중합니다.
             </p>
             <p>
-              자신의 피부가 가진 건강함을 되찾을 수 있도록 라네즈는 오늘도<br />
+              자신의 피부가 가진 건강함을 되찾을 수 있도록 라네스프리는 오늘도<br />
               당신의 피부를 위한 최적의 솔루션을 찾기 위해 분석하고 연구하죠.
             </p>
             <p>
-              라네즈가 선사하는 최적의 피부 솔루션으로 피부 본연의 건강한 빛을 되찾고<br />
+              라네스프리가 선사하는 최적의 피부 솔루션으로 피부 본연의 건강한 빛을 되찾고<br />
               더 나아가 스스로를 믿고 자신감을 가지고 나아가세요.
             </p>
-            <p>라네즈와 함께라면 언제나 빛나고 아름다울 거에요.</p>
+            <p>라네스프리와 함께라면 언제나 빛나고 아름다울 거에요.</p>
             <h3>FEEL the GLOW with LANEIGE.</h3>
           </div>
         </div>
@@ -35,10 +35,10 @@
         <img data-aos="fade-up" data-aos-duration="1000" src="@/assets/img/story/glow_logo.png" class="mb-3" alt="" />
         <h1 class="mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">BEAUTY & LIFE LAB</h1>
         <div class="flex-center mt-2">
-          <div class="mw-40 txt">
+          <div class="mw-40 txt-box">
             <i data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" class="fa-solid fa-quote-left"></i>
             <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-              라네즈 Beauty & Life Lab의 연구는 <br />
+              라네스프리 Beauty & Life Lab의 연구는 <br />
               고객의 24/7 라이프스타일에서 시작합니다.
             </h2>
             <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">
@@ -57,7 +57,7 @@
         <h1 data-aos="fade-up" data-aos-duration="1000" class="mb-5">MAIN PRODUCT</h1>
         <p class="last-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
           피부 속 보습 메커니즘에 기반한 오랜 연구와 라이프스타일 연구를 더해 완성된<br />
-          라네즈의 5가지 기능성 솔루션
+          라네스프리의 5가지 기능성 솔루션
         </p>
         <p class="vertical-line" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"></p>
         <div class="main-products">
@@ -78,7 +78,7 @@
                     요즘 건조에 필요한 건 수분만이 아니죠.
                   </p>
                   <p>
-                    새로워진 워터뱅크는 38년 연구 끝에 개발된 라네즈 독자 성분<br />
+                    새로워진 워터뱅크는 38년 연구 끝에 개발된 라네스프리 독자 성분<br />
                     블루 히알루론산을 탑재하여 300%<sub style="bottom: 0.5em">*</sub> 더 강력한 장벽 개선 효과를 선사합니다.<br />
                     수분에 더해 장벽까지 잡아주는 Full 리페어 보습의 힘을 느껴보세요.
                   </p>
@@ -144,7 +144,7 @@
                     우리 피부 노화를 가속화 시킬 수 있습니다
                   </p>
                   <p>
-                    라네즈의 안티에이징 기술이 담긴 ‘라네즈 레티놀’은<br />
+                    라네스프리의 안티에이징 기술이 담긴 ‘라네스프리 레티놀’은<br />
                     순도 95%의 초순수 레티놀로 피부 속 콜라겐 생성을 촉진해<br />
                     단 7일만에 모공의 탄력과 주름을 개선하여,<br />
                     현대인의 일상에 안티에이징 솔루션을 제공합니다.
@@ -171,7 +171,7 @@
                   <p>수면 시간이 부족하면 건강에는 물론, 피부에도 불균형 상태를 초래합니다.</p>
                   <p>
                     피부 수분 손실이 증가하고, 피지 분비가 감소되는<br />
-                    ‘슬리핑 골든 타임＇에 주목해 만들어낸 라네즈의 독자 기술<br />
+                    ‘슬리핑 골든 타임＇에 주목해 만들어낸 라네스프리의 독자 기술<br />
                     ‘슬리핑 마이크로바이옴’은 밤 사이 피부를 건강하게 지켜주고<br />
                     낮 동안 손상 받은 피부 균형을 회복시켜 줍니다.
                   </p>
@@ -339,16 +339,19 @@ export default {
 .mw-40 {
   max-width: 40vw;
 }
-.txt i {
+.txt-box i {
   font-size: 36px;
   margin-bottom: 20px;
   color: #bed0f5;
 }
+.txt-box p {
+  font-size: 1vw;
+}
 .section h2 {
-  font-size: 26px;
+  font-size: 2.4vw;
 }
 .section h3 {
-  font-size: 18px;
+  font-size: 2vw;
 }
 .blue-color {
   color: #1162b4;
@@ -413,33 +416,34 @@ export default {
 }
 .number-title {
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 60px;
 }
 .number-title h5.num {
-  font-size: 72px;
+  font-size: 5.7vw;
+  font-family: 'brandon-grotesque';
   font-weight: bold;
   margin-right: 10px;
 }
 .number-title h3 {
-  font-size: 20px;
+  font-size: 1.66vw;
   font-weight: bold;
-  line-height: 30px;
-  padding-bottom: 10px;
+  line-height: 2.6vw;
+  margin: 0;
 }
 .product-name .performance {
-  font-size: 28px;
+  font-size: 2.188vw;
   font-weight: bold;
 }
 .product-name .name {
-  font-size: 20px;
+  font-size: 1.4vw;
   font-weight: bold;
 }
 .product-txt p {
   color: var(--text-gray);
-  font-size: 14px;
+  font-size: 1.4vw;
   margin: 20px 0;
-  line-height: 20px;
+  line-height: 1.6vw;
 }
 .vertical-line::after {
   content: '';
