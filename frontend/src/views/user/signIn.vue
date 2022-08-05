@@ -29,14 +29,14 @@
         <form @submit.prevent="submitForm">
           <!-- input 아이디 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" autofocus>
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력">
             <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
             <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
-            <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
+              <button type=" button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
           </div>
 
           <!-- checkbox 아이디 저장 -->
@@ -126,10 +126,13 @@ export default {
     // 로그인 백엔드통신
     async submitForm() {
       console.log(this.user);
+      if (this.user.m_email === '') { alert('이메일을 입력해주세요.'); return; }
+      if (this.user.m_pw === '') { alert('비밀번호를 입력해주세요.'); return; }
       const signIn = await this.$post('user/signIn', this.user);
-      this.$store.commit('user', this.user);
-      // this.$router.push('/');
-      console.log(signIn);
+      this.$store.commit('user', signIn);
+      this.$router.push('/');
+      console.log(this.$store.state.user);
+      // console.log(signIn);
     },
 
     // 카카오 로그인
