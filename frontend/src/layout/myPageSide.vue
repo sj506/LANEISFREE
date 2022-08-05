@@ -24,10 +24,11 @@ export default {
 	#snb{
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
+		min-width: 213px;
 	}
 	.inner{
-
+		padding-left: 50px;
 	}
 	.navList{
 		display: flex;
