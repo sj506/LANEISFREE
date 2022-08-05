@@ -9,12 +9,11 @@
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
       >
-        >
         <div class="main-box">
-          <img
-            src="../assets/img/bsetProduct/크림스킨가로.jpg"
-            alt="크림스킨"
-          />
+            <img
+              src="../assets/img/bsetProduct/크림스킨가로.jpg"
+              alt="크림스킨"
+            />
           <div class="txt">
             <h3>크림 스킨</h3>
             <h4>CREAM SKIN REFINER</h4>
@@ -25,7 +24,7 @@
               피부를 촉촉하게 채워주는 스킨
             </p>
             <router-link to="/" class="link">
-              <!-- 링크 필요 -->
+              <!-- 어디로 링크할지 정해야 함 -->
               <span class="btn__text">자세히 보기 ></span>
             </router-link>
             <p class="review-desc">
@@ -141,7 +140,8 @@
               <h4>LIP SLEEPING MASK EX</h4>
               <p class="desc">
                 밤 사이 입술 각질을 부드럽게 녹여주고 <br />
-                매끈 탱탱한 입술로 가꿔주는 립 전용 슬리핑 마스크
+                매끈 탱탱한 입술로 가꿔주는 립 전용 <br />
+                슬리핑 마스크
               </p>
               <router-link to="/" class="link">
                 <span class="btn__text">자세히 보기 ></span>
@@ -198,7 +198,8 @@
               alt="워터뱅크블루히알루로닉크림"
             />
             <div class="txt2">
-              <h3>워터뱅크 블루 히알루로닉 크림</h3>
+              <h3>워터뱅크 블루 <br />
+                히알루로닉 크림</h3>
               <h4>WATER BANK BLUE HYALURONIC CREAM</h4>
               <p class="desc">
                 1/2000 사이즈의 초소형 블루 히알루산이<br />
