@@ -27,12 +27,12 @@ class UserModel extends Model
   }
   public function signIn(&$param)
   {
-    $sql = "SELECT m_email, m_pw
+    $sql = "SELECT m_num, m_email, m_pw, m_gender, m_tel, m_postcode, m_addr
             FROM t_member
-            WHERE m_num = :m_num";
+            WHERE m_email = :m_email";
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(":m_num", $param["m_num"]);
+    $stmt->bindValue(":m_email", $param["m_email"]);
     $stmt->execute();
-    return intval($this->pdo->lastInsertId());
+    return $stmt->fetch(PDO::FETCH_OBJ);
   }
 }
