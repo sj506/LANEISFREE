@@ -18,6 +18,7 @@
         <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()"><router-link class="router-link" to="/new">신상품</router-link></li>
         <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
+      <router-link class="router-link" to="/myPageReview">MyPageReview</router-link>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li>
           <router-link to="/signin">

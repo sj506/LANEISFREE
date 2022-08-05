@@ -16,7 +16,7 @@
                   <div class="review_policy">리뷰운영정책 </div>
                 </div>
                 <div class="p_ctnt">
-                  <div class="nonList">
+                  <div class="nonList" v-if="(this.user.m_email == undefined)">
                     구매하신 제품이 있을 경우에만<br>
                     리뷰 작성이 가능합니다.
                   </div>
@@ -41,7 +41,12 @@ export default {
       return {
         isActive1: true,
         isActive2: false,
+        user: {}
       };
+    },
+    created() {
+      this.user = this.$store.state.user;
+      console.log(this.user)
     },
     methods: {
       displayP(e) {
@@ -53,6 +58,7 @@ export default {
         this.isActive1 = false;
         this.isActive2 = true;
       }
+      
     }
 }
 </script>
