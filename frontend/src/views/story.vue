@@ -345,10 +345,10 @@ export default {
   color: #bed0f5;
 }
 .txt-box p {
-  font-size: 1vw;
+  font-size: 1.3vw;
 }
 .section h2 {
-  font-size: 2.4vw;
+  font-size: 2.2vw;
 }
 .section h3 {
   font-size: 2vw;
