@@ -262,7 +262,9 @@
 
 <script>
 import NEW from '../components/NEW.vue';
-export default {};
+export default {
+  components: { NEW },
+};
 </script>
 
 <style scoped>
