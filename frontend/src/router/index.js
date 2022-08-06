@@ -11,8 +11,16 @@ import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
+import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
 
+const requireAuth = () => (to, from, next) => {
+  if (store.state.setUser === 0) {
+    alert('로그인 후에 이용해주시길 바랍니다.', '', 'warning');
+    return;
+  }
+  return next();
+};
 
 const routes = [
   {
@@ -75,6 +83,13 @@ const routes = [
     name: 'hommeProductDetail',
     component: hommeProductDetail,
     props: true,
+  },
+  {
+    path: '/buyPage',
+    name: 'buyPage',
+    component: buyPage,
+    props: true,
+    beforeEnter: requireAuth(),
   },
   // {
   //   path: '/',

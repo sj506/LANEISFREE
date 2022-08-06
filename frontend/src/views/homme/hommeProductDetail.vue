@@ -13,7 +13,7 @@
       </div>
       <div>
         <!-- 이미지박스 -->
-        <img ref="mainImg" :src="getSrc(productDetail.pro_mainimg)" class="mainImg" />
+        <img ref="mainImg" :src="this.$getSrc(productDetail.pro_mainimg)" class="mainImg" />
       </div>
       <div class="detailBox">
         <!-- 상품설명박스 -->
@@ -46,7 +46,9 @@
           <div>{{ addComma(productDetail.pro_price) }}원</div>
         </div>
         <!-- 구매 및 구매사이트 방문 버튼-->
-        <div class="buyButton _btn">AMORE MALL 에서 구매하기</div>
+        <router-link :to="{ name: 'buyPage', params: { productId: productDetail.pro_num } }">
+          <div class="buyButton _btn">AMORE MALL 에서 구매하기</div>
+        </router-link>
         <div class="visitButton _btn">
           <a href="https://www.laneige.com/kr/ko/brand/flagship-store/introduction/"> 라네즈 명동 쇼룸 방문하기</a>
         </div>
@@ -98,9 +100,6 @@ export default {
     },
     getSubImgSrc(subImg) {
       return require('@/assets/img/hommeProduct/details/' + this.productDetail.pro_num + '/' + subImg);
-    },
-    getSrc(mainImg) {
-      return require('@/assets/img' + mainImg);
     },
     addComma(price) {
       return price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
