@@ -19,13 +19,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 	#snb{
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		min-width: 213px;
+		border-right: 0.5px solid #ccc;
+		height: 100vh;
+		position: sticky;
 	}
 	.inner{
 		padding-left: 50px;
