@@ -18,14 +18,14 @@
       <div>
         <!-- 키보드 열기 -->
         <div class="keyboard">
-          <button class="keyboardBtn" @click="keyboardBtn()">{{ keyboardOpenBtn }}</button>
+          <button class="keyboardBtn" @click="keyboardBtn">{{ keyboardOpenBtn }}</button>
           <span class="keyboardImg">
             <img src="@/assets/img/signIn/img_keyboard.png" alt="키보드 배열 이미지" />
           </span>
         </div>
 
         <form @submit.prevent="submitForm">
-        
+
           <!-- input 이메일 -->
           <div class="mb-3 inputForm">
             <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력">
@@ -48,7 +48,7 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn blueBtn submitBtn"
+            <button type="submit" class="btn submitBtn blueBtn grayBtn" @click="submitBtn"
               v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
           </div>
         </form>
@@ -143,6 +143,16 @@ export default {
       // console.log(signIn.result.m_email);
     },
 
+    submitBtn() {
+      const submitBtn = document.querySelector('.submitBtn');
+      if (this.user.m_email === '' || this.user.m_pw === '') {
+        submitBtn.classList.remove('blueBtn');
+      } 
+      else if (this.user.m_email !== '' || this.user.m_pw !== '') {
+        submitBtn.classList.remove('grayBtn');
+      }
+    },
+
     // ' X ' 버튼 
     eDelBtn() {
       this.user.m_email = '';
@@ -186,6 +196,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
@@ -425,6 +436,12 @@ input[type='password']:focus {
   color: #fff;
   border: solid 1px var(--bg-main);
   background-color: var(--bg-main);
+}
+
+.grayBtn {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #c6c6c6;
 }
 
 /* 카카오톡 로그인 버튼 */
