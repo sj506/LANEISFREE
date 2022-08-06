@@ -17,6 +17,7 @@ import store from '@/store';
 const requireAuth = () => (to, from, next) => {
   if (store.state.setUser === 0) {
     alert('로그인 후에 이용해주시길 바랍니다.', '', 'warning');
+    next('/signin');
     return;
   }
   return next();
