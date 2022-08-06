@@ -44,13 +44,15 @@
           <label>이메일</label>
           <div class="row">
             <div class="col-md-5 mb-3">
-              <input type="text" v-model="user.m_email" ref="m_email" class="form-control" placeholder="이메일 입력" />
+              <input @keyup="checkEmail" type="text" v-model="user.m_email" ref="m_email" class="form-control"
+                placeholder="이메일 입력" />
             </div>
 
             <div class="col-md-1 text-center h5"> @ </div>
 
             <div class="col-md-4 mb-3">
-              <input type="text" list="m_email2" v-model="user.m_email2" class="form-control" placeholder="직접입력" />
+              <input @change="checkEmail"  type="text" list="m_email2" v-model="user.m_email2" class="form-control"
+                placeholder="직접입력" />
               <datalist id="m_email2">
                 <option value="gmail.com" />
                 <option value="naver.com" />
@@ -58,6 +60,7 @@
                 <option value="hanmail.net" />
               </datalist>
             </div>
+            <p>{{ emailCheck }}</p>
           </div>
         </div>
 
@@ -65,7 +68,8 @@
         <div>
           <div class="mb-3">
             <label>비밀번호</label>
-            <input type="password" v-model="user.m_pw1" ref="m_pw1" class="form-control" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
+            <input type="password" v-model="user.m_pw1" ref="m_pw1" class="form-control"
+              placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
           </div>
 
           <div class="mb-3">
@@ -115,8 +119,10 @@
             </div>
             <div>
               <input type="text" v-model="user.addr" ref="addr" class="form-control mb-3" placeholder="주소" />
-              <input type="text" v-model="user.detailAddr" ref="detailAddr" class="form-control mb-3" placeholder="상세주소" />
-              <input type="text" v-model="user.extraAddr" ref="extraAddr" class="form-control mb-3" placeholder="참고항목" />
+              <input type="text" v-model="user.detailAddr" ref="detailAddr" class="form-control mb-3"
+                placeholder="상세주소" />
+              <input type="text" v-model="user.extraAddr" ref="extraAddr" class="form-control mb-3"
+                placeholder="참고항목" />
             </div>
           </div>
         </div>
@@ -159,20 +165,29 @@ export default {
         detailAddr: '',
         extraAddr: '',
       },
+      emailCheck: '',
     };
   },
   methods: {
     // 회원가입 백엔드통신
     async submitForm() {
       console.log(this.user);
-
       const signUp = await this.$post('user/signUp', this.user);
       this.$store.commit('user', this.user);
       this.$router.push('/signin');
-
       console.log(signUp);
     },
 
+    // 이메일 정규식
+    isEmail(asValue) {
+      var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+      return regExp.test(asValue);
+    },
+    checkEmail() {
+      this.isEmail(this.user.m_email + '@' + this.user.m_email2) ? this.emailCheck = '이메일형식이 맞습니다' : this.emailCheck = '이메일형식이 맞지 않습니다'
+    },
+    
     // 도로명 주소 팝업창
     execDaumPostcode() {
       new window.daum.Postcode({
