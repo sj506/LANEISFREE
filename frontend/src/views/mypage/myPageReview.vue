@@ -37,7 +37,7 @@
                         </li>
                         <li>{{ item.pro_price }}</li>
                         <li>{{ item.pur_date }}</li>
-                        <li><button>리뷰쓰기</button></li>
+                        <li><button><router-link to="/ReviewWrite"> 리뷰쓰기 </router-link></button></li>
                       </ul>
                     </div>
                   </div>
@@ -77,7 +77,7 @@ export default {
       this.userChecking();
       this.getPurchase(this.user.result.m_num);
       console.log(this.purchaseData);
-      this.getUserProductList();
+      this.getUserProductList(this.user.result.m_num);
     },
     methods: {
       displayP(e) {
@@ -99,8 +99,8 @@ export default {
           this.purchaseCheck = true;
         }
       },
-      async getUserProductList() {
-        this.userProductList = await this.$get('/review/getUserProductList', {});
+      async getUserProductList(m_num) {
+        this.userProductList = await this.$get(`/review/getUserProductList/${m_num}`, {});
         console.log(this.userProductList);
       },
       userChecking() {
@@ -128,14 +128,20 @@ h3{
   background-color: #17342f;
   color: #fff;
 }
+a{
+  color: var(--text-black);
+  font-style: none;
+}
 /* header */
 #container {
+  width: 100vw;
   min-height: 500px;
   padding-bottom: 110px;
   border-top: 1px solid transparent;
 }
 
 .contents{
+  max-width: 1400px;
   margin: auto;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -195,7 +201,7 @@ h3{
     content: '';
     display: inline-block;
     position: absolute;
-    left: -18px;
+    left: -20px;
     width: 18px;
     height: 17px;
     background: url(https://images.innisfree.co.kr/resources/web2/images/review/icon_exc.png) no-repeat left top;
@@ -231,9 +237,13 @@ h3{
   width: 150px;
   text-align: center;
   position: relative;
+  margin-left: 20px;
 }
 .p_ctnt_ctnt li:nth-child(2){
-  padding-left: 24px;
+  padding-left: 16px;
+}
+.p_ctnt_ctnt li:nth-child(3){
+  padding-left: 15px;
 }
 .proNm{
 }

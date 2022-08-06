@@ -6,6 +6,7 @@ import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
+import ReviewWrite from '../views/mypage/ReviewWrite.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
@@ -77,6 +78,11 @@ const routes = [
     path: '/myPageReview',
     name: 'myPageReview',
     component: myPageReview,
+  },
+  {
+    path: '/ReviewWrite',
+    name: 'ReviewWrite',
+    component: ReviewWrite,
   },
   {
     path: '/hommeProductDetail/:productId',

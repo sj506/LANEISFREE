@@ -17,6 +17,9 @@ class ReviewController extends Controller
     }
     public function getUserProductList()
     {        
-        return $this->model->getUserProductList();
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ "m_num" => intval($urlPaths[2]) ];
+        return $this->model->getUserProductList($param);
     }
 }
