@@ -12,11 +12,13 @@ import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
+import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
 import store from '@/store';
 
 const requireAuth = () => (to, from, next) => {
   if (store.state.setUser === 0) {
     alert('로그인 후에 이용해주시길 바랍니다.', '', 'warning');
+    next('/signin');
     return;
   }
   return next();
@@ -77,6 +79,11 @@ const routes = [
     path: '/myPageReview',
     name: 'myPageReview',
     component: myPageReview,
+  },
+  {
+    path: '/myPageMemberCheck',
+    name: 'myPageMemberCheck',
+    component: myPageMemberCheck,
   },
   {
     path: '/hommeProductDetail/:productId',
