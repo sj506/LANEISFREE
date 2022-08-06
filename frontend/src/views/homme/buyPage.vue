@@ -295,6 +295,8 @@ img {
 .mt {
   margin-top: 1rem;
 }
+
+/* 재훈형 파트 */
 .buypage-container {
   width: 100vw;
   display: flex;
