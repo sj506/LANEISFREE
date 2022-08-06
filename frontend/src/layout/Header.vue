@@ -2,28 +2,50 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
+        <router-link to="/" class="flex-center"
+          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
+        /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">
           <router-link class="router-link" to="/story"> 브랜드</router-link>
         </li>
-        <li @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()"><router-link class="router-link" to="/intro">팀소개</router-link></li>
+        <li @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="/intro">팀소개</router-link>
+        </li>
         <li @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">
           <router-link class="router-link" to="/meetsart">미츠아트</router-link>
         </li>
         <li @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">
           <router-link class="router-link" to="/best">베스트</router-link>
         </li>
-        <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()"><router-link class="router-link" to="/new">신상품</router-link></li>
+        <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">
+          <router-link class="router-link" to="/new">신상품</router-link>
+        </li>
         <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
       </ul>
       <router-link class="router-link" to="/myPageReview">MyPageReview</router-link>
       <ul class="navbar__icons" :class="{ active: isActive }">
+        <li v-show="loginToggle === 1">
+          <div class="dropdown">
+            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user"></i>
+            </router-link>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><router-link to="" class="dropdown-item">주문배송조회</router-link></li>
+              <li><router-link to="" class="dropdown-item">내 리뷰</router-link></li>
+              <li><router-link to="" class="dropdown-item">회원정보 수정</router-link></li>
+              <li><router-link to="" class="dropdown-item">찜한 제품</router-link></li>
+            </ul>
+          </div>
+        </li>
         <li>
-          <router-link to="/signin">
+          <router-link to="/signin" v-show="loginToggle === 0">
             <i class="fa-solid fa-user"></i>
           </router-link>
+          <div v-show="loginToggle === 1" @click="logOut()">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </div>
         </li>
         <li>
           <router-link to="">
@@ -47,7 +69,7 @@
     </div>
     <div class="contents" v-show="hommeShow" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">
       <div class="hommeBox column-center">
-        <hommeCategoryList />
+        <hommeCategoryList v-bind:hoverCheck="false" />
       </div>
     </div>
     <div v-show="isShow" class="transparent-box"></div>
@@ -67,8 +89,19 @@ export default {
       hommeShow: false,
       content: '',
       url: '',
+      // setUser: 0,
     };
   },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
+  },
+  created() {
+    console.log(this.$store.state.setUser);
+    // this.setUser = this.$store.state.setUser;
+  },
+
   methods: {
     toggleNav() {
       this.isActive = !this.isActive;
@@ -86,6 +119,10 @@ export default {
     },
     closeHommeBox() {
       this.hommeShow = false;
+    },
+    logOut() {
+      this.$store.commit('user', null);
+      this.$store.commit('setUser', 0);
     },
   },
 };
@@ -148,6 +185,7 @@ ul {
   align-items: center;
   height: 60px;
   position: relative;
+  font-size: 18px;
   padding: 0 20px;
 }
 .navbar__menu li:hover a {

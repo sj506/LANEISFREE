@@ -15,7 +15,7 @@
     </div>
     <div class="banner bottomBanner1">
       <router-link :to="`${item.url}`" v-for="(item, idx) in bottomBanner1" :key="idx">
-        <div class="banner-item flex-center" :class="{ itemWitdh: itemWitdh }" data-aos="fade-up" :data-aos-duration="`${idx + 1}000`" data-aos-easing="ease-in-sine">
+        <div class="banner-item flex-center" :class="{ itemWidth: idx === 0 }" data-aos="fade-up" :data-aos-duration="`${idx + 1}000`" data-aos-easing="ease-in-sine">
           <div class="banner-title">{{ item.title }}</div>
           <div class="banner-info">
             <img :src="`${item.src}`" alt="" />
@@ -27,7 +27,7 @@
     </div>
     <div class="banner bottomBanner2">
       <router-link :to="`${item.url}`" v-for="(item, idx) in bottomBanner2" :key="idx">
-        <div class="banner-item flex-center" data-aos="fade-up" :data-aos-duration="`${idx + 1}000`" data-aos-easing="ease-in-sine">
+        <div class="banner-item flex-center" :class="{ itemWidth: idx === 1 }" data-aos="fade-up" :data-aos-duration="`${idx + 1}000`" data-aos-easing="ease-in-sine">
           <div class="banner-title">{{ item.title }}</div>
           <div class="banner-info">
             <img :src="`${item.src}`" alt="" />
@@ -44,7 +44,6 @@
 export default {
   data() {
     return {
-      itemWitdh: '600px',
       banner: [
         {
           url: '/story',
@@ -132,7 +131,7 @@ export default {
   color: var(--text-gray);
 }
 .banner-info img {
-  max-width: 300px;
+  width: 100%;
 }
 .banner-info .sub-title {
   color: var(--text-dark-gray);
@@ -148,5 +147,8 @@ export default {
 }
 .bottomBanner2 {
   margin-top: 20px;
+}
+.itemWidth {
+  width: 600px;
 }
 </style>
