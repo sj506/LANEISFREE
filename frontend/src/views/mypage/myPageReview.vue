@@ -16,9 +16,30 @@
                   <div class="review_policy">리뷰운영정책 </div>
                 </div>
                 <div class="p_ctnt">
-                  <div class="nonList" v-if="(this.user.m_email == undefined)">
+                  <div class="nonList" v-show="!purchaseCheck">
                     구매하신 제품이 있을 경우에만<br>
                     리뷰 작성이 가능합니다.
+                  </div>
+                  <div v-show="purchaseCheck">
+                    <header>
+                      <ul class="d-flex p_ctnt_header">
+                        <li class="">제품명</li>
+                        <li class="">결제금액</li>
+                        <li class="">작성기한</li>
+                        <li class="">리뷰작성</li>
+                      </ul>
+                    </header>
+                    <div>
+                      <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
+                        <li>
+                          <div class="proNm">{{ item.pro_name }}</div>
+                          <img :src="$getSrc(item.pro_mainimg)" class="proImg">
+                        </li>
+                        <li>{{ item.pro_price }}</li>
+                        <li>{{ item.pur_date }}</li>
+                        <li><button>리뷰쓰기</button></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -41,12 +62,22 @@ export default {
       return {
         isActive1: true,
         isActive2: false,
-        user: {}
+        user: {},
+        userCheck: true,
+        purchaseData: [],
+        purchaseCheck: false,
+        userProductList: {}
       };
+    },
+    beforeCreate() {
     },
     created() {
       this.user = this.$store.state.user;
-      console.log(this.user)
+      console.log(this.user.result);
+      this.userChecking();
+      this.getPurchase(this.user.result.m_num);
+      console.log(this.purchaseData);
+      this.getUserProductList();
     },
     methods: {
       displayP(e) {
@@ -57,8 +88,28 @@ export default {
       displayW() {
         this.isActive1 = false;
         this.isActive2 = true;
-      }
-      
+      },
+      async getPurchase(m_num) {
+        this.purchaseData = await this.$get(`/review/getPurchase/${m_num}`, {});
+        console.log(this.purchaseData);
+        if(this.purchaseData.length == 0){
+          console.log(this.purchaseData);
+          this.purchaseCheck = false;
+        } else {
+          this.purchaseCheck = true;
+        }
+      },
+      async getUserProductList() {
+        this.userProductList = await this.$get('/review/getUserProductList', {});
+        console.log(this.userProductList);
+      },
+      userChecking() {
+        if(this.user.result === undefined){
+          this.userCheck = true;
+        } else {
+          this.userCheck = false;
+          } 
+      },
     }
 }
 </script>
@@ -150,4 +201,48 @@ h3{
     background: url(https://images.innisfree.co.kr/resources/web2/images/review/icon_exc.png) no-repeat left top;
     background-size: 100%;
 }
+.nonList{
+    width: 100% !important;
+    margin: 80px 0 0;
+    padding: 120px 0 40px;
+    text-align: center;
+    font: 22px/32px 'SDNeoL', 'notoR';
+    color: #222;
+    background: url(https://images.innisfree.co.kr/resources/web2/images/common/bg_no_list.png) no-repeat 50% 40px;
+    background-size: 60px;
+}
+.p_ctnt_header{
+  justify-content: space-around;
+  padding: 20px 0;
+  font-weight: 600;
+  border-bottom: 1px solid var(--text-light-gray);
+  background-color: rgba(226, 223, 223, 0.712);
+}
+.p_ctnt_header li:first-child{
+  width: 150px;
+  text-align: center;
+}
+.p_ctnt_ctnt{
+  justify-content: space-around;
+  padding: 35px 0;
+  align-items: center;
+}
+.p_ctnt_ctnt li:first-child{
+  width: 150px;
+  text-align: center;
+  position: relative;
+}
+.p_ctnt_ctnt li:nth-child(2){
+  padding-left: 24px;
+}
+.proNm{
+}
+.proImg{
+    width: 100px;
+    height: 90px;
+    position: absolute;
+    left: -96px;
+    top: -30px;
+}
+
 </style>

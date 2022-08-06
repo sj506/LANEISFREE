@@ -2,6 +2,12 @@ import axios from 'axios';
 
 export default {
   methods: {
+    $getSrc(mainImg) {
+      return require('@/assets/img' + mainImg);
+    },
+    $addComma(price) {
+      return price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+    },
     async $post(url, param) {
       return (
         await axios({
@@ -36,4 +42,5 @@ export default {
       });
     },
   },
+
 };
