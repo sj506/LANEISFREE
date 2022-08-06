@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 export default createStore({
   state: {
     user: {},
-    setUser: 1,
+    setUser: 0,
     getProductList: {},
     selectProduct: [],
     getProductImg: {},
@@ -34,7 +34,7 @@ export default createStore({
   },
   plugins: [
     createPersistedState({
-      paths: ['user'],
+      paths: ['user', 'setUser'],
     }),
   ],
   actions: {},

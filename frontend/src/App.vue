@@ -21,5 +21,9 @@ export default {
 <style>
 main {
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
