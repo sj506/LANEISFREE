@@ -9,8 +9,8 @@
                     <p class="guide1">리뷰 작성은 제한이 없으나, 월 최대 6,000P 까지만 적립이 가능합니다.</p>
                     <li>리뷰작성을 통해 6,000P를 모두 적립 받았을 경우, 리뷰를 계속 작성하시더라도 뷰티포인트는 추가 지급되지않습니다.</li>
                 </div>
-                <div class="writeCtnt">
-                    <div class="pro_review">
+                <div class="writeCtnt row ">
+                    <div class="pro_review col-6">
                         <div class="pro">
                             <div><img src="" alt=""></div>
                             <div>
@@ -21,9 +21,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="review">
-                        <div></div>
+                        <div class="review ">
+                        <div>제품 리뷰 운영 정책</div>
                         <div>
                             <div>[리뷰 작성 유의사항]</div>
                             <ul>
@@ -40,7 +39,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="reiviewForm"></div>
+                    </div>
+                    <div class="reiviewForm col-6"></div>
                 </div>
             </div>
         </section>
@@ -101,5 +101,8 @@ p::before{
 .guide1{
     margin-left: 19px;
     padding-bottom: 2px !important;
+}
+/* 리뷰작성화면 */
+.writeCtnt{
 }
 </style>
