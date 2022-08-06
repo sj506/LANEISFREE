@@ -32,5 +32,10 @@ export default createStore({
       state.getProductImg = data;
     },
   },
+  plugins: [
+    createPersistedState({
+      paths: ['user', 'setUser', 'getProductList'],
+    }),
+  ],
   actions: {},
 });
