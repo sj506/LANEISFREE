@@ -28,13 +28,13 @@
 
           <!-- input 이메일 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력">
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" required>
             <div type="button" class="delBtn" @click="eDelBtn()"><span class="none">삭제</span></div>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)">
+            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" required>
             <div type=" button" class="delBtn" @click="pDelBtn()"><span class="none">삭제</span></div>
           </div>
 
@@ -48,7 +48,7 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn submitBtn blueBtn grayBtn" @click="submitBtn"
+            <button type="submit" class="btn submitBtn blueBtn" @click="submitBtn"
               v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
           </div>
         </form>
@@ -143,16 +143,6 @@ export default {
       };
       console.log(this.$store.state.user);
       // console.log(signIn.result.m_email);
-    },
-
-    submitBtn() {
-      const submitBtn = document.querySelector('.submitBtn');
-      if (this.user.m_email === '' || this.user.m_pw === '') {
-        submitBtn.classList.remove('blueBtn');
-      } 
-      else if (this.user.m_email !== '' || this.user.m_pw !== '') {
-        submitBtn.classList.remove('grayBtn');
-      }
     },
 
     // ' X ' 버튼 
@@ -440,7 +430,8 @@ input[type='password']:focus {
   background-color: var(--bg-main);
 }
 
-.grayBtn {
+.submitBtn:disabled,
+.submitBtn[disabled] {
   background-color: #f0f0f0;
   border-color: #f0f0f0;
   color: #c6c6c6;

@@ -27,7 +27,7 @@
         <!-- 이름 -->
         <div class="mb-3">
           <label>이름</label>
-          <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력" autofocus required>
+          <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력">
           <div v-if="errors.length">
             <span v-for="error in errors">
               {{ error }}
@@ -128,7 +128,14 @@
 
         <!-- button 회원가입 -->
         <div class="joinBtnDiv">
-          <button type="submit" class="btnJoin">회원가입</button>
+          <button type="submit" class="btnJoin submitBtn" v-bind:disabled="
+          this.user.m_email === '' ||
+          this.user.m_pw === '' ||
+          this.user.m_email === '' ||
+          this.user.m_tel2 === '' ||
+          this.user.m_tel3 === '' ||
+          this.user.postcode == '' ||
+          this.user.addr == ''">회원가입</button>
         </div>
       </form>
 
@@ -214,6 +221,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
@@ -341,5 +349,13 @@ button {
   background-color: var(--bg-main);
   border-top: 1px solid #f0f0f0;
   margin: 30px auto;
+}
+
+.submitBtn:disabled,
+.submitBtn[disabled] {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #c6c6c6;
+  cursor: none;
 }
 </style>
