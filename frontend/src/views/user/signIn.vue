@@ -130,6 +130,8 @@ export default {
     // 로그인 백엔드통신
     async submitForm() {
       this.$store.commit('setUser', 1);
+      console.log(this.$store.state.setUser);
+
       console.log(this.user);
       if (this.user.m_email === '') {
         alert('이메일을 입력해주세요.');
