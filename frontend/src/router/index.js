@@ -5,7 +5,10 @@ import index from '../views/index.vue';
 import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
+import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
+import mypageOnlineOrderList from '../views/mypage/mypageOnlineOrderList.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
+import myPageWishList from '../views/mypage/myPageWishList.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
@@ -78,10 +81,28 @@ const routes = [
     component: meetsArt,
   },
   {
+    path: '/myPageMemberCheck',
+    name: 'myPageMemberCheck',
+    component: myPageMemberCheck,
+    // beforeEnter: requireAuth(),
+  },
+  {
+    path: '/mypageOnlineOrderList',
+    name: 'mypageOnlineOrderList',
+    component: mypageOnlineOrderList,
+    // beforeEnter: requireAuth(),
+  },
+  {
     path: '/myPageReview',
     name: 'myPageReview',
     component: myPageReview,
-    beforeEnter: requireAuth(),
+    // beforeEnter: requireAuth(),
+  },
+  {
+    path: '/myPageWishList',
+    name: 'myPageWishList',
+    component: myPageWishList,
+    // beforeEnter: requireAuth(),
   },
   {
     path: '/hommeProductDetail/:productId',

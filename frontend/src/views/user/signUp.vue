@@ -21,24 +21,19 @@
           이상 부터 가입 가능합니다.)
         </p>
       </div>
-      
+
       <form @submit.prevent="submitForm">
 
         <!-- 이름 -->
         <div class="mb-3">
           <label>이름</label>
-          <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력">
-          <div v-if="errors.length">
-            <span v-for="error in errors">
-              {{ error }}
-            </span>
-          </div>
+          <input type="text" v-model="user.m_nm" ref="m_nm" class="form-control" placeholder="이름 입력">
         </div>
 
         <!-- 성별 -->
         <div class="mb-3">
           <label>성별</label>
-          <select v-model="user.m_gender" class="form-control" ref="1">
+          <select v-model="user.m_gender" class="form-control" ref="m_gender">
             <option value="1">여성</option>
             <option value="2">남성</option>
           </select>
@@ -49,7 +44,7 @@
           <label>이메일</label>
           <div class="row">
             <div class="col-md-5 mb-3">
-              <input type="text" v-model="user.m_email" class="form-control" placeholder="이메일 입력" />
+              <input type="text" v-model="user.m_email" ref="m_email" class="form-control" placeholder="이메일 입력" />
             </div>
 
             <div class="col-md-1 text-center h5"> @ </div>
@@ -70,12 +65,12 @@
         <div>
           <div class="mb-3">
             <label>비밀번호</label>
-            <input type="password" v-model="user.m_pw1" class="form-control" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
+            <input type="password" v-model="user.m_pw1" ref="m_pw1" class="form-control" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
           </div>
 
           <div class="mb-3">
             <label>비밀번호 재확인</label>
-            <input type="password" v-model="user.m_pw2" class="form-control" placeholder="비밀번호 다시 입력" />
+            <input type="password" v-model="user.m_pw2" ref="m_pw2" class="form-control" placeholder="비밀번호 다시 입력" />
           </div>
         </div>
 
@@ -84,7 +79,7 @@
           <label>전화번호</label>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <select v-model="user.m_tel1" class="form-control">
+              <select v-model="user.m_tel1" ref="m_tel" class="form-control">
                 <option value="010">010</option>
                 <option value="011">011</option>
                 <option value="053">053</option>
@@ -94,13 +89,13 @@
             <div class="col-md-1 text-center h5"> - </div>
 
             <div class="col-md-3 mb-3">
-              <input type="text" v-model="user.m_tel2" size="5" class="form-control" />
+              <input type="text" v-model="user.m_tel2" ref="m_tel2" size="5" class="form-control" />
             </div>
 
             <div class="col-md-1 text-center h5"> - </div>
 
             <div class="col-md-3 mb-3">
-              <input type="text" v-model="user.m_tel3" size="5" class="form-control" />
+              <input type="text" v-model="user.m_tel3" ref="m_tel3" size="5" class="form-control" />
             </div>
           </div>
         </div>
@@ -111,7 +106,7 @@
           <div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <input type="text" v-model="user.postcode" class="form-control" placeholder="우편번호" />
+                <input type="text" v-model="user.postcode" ref="postcode" class="form-control" placeholder="우편번호" />
               </div>
               <div class="col-md-3 mb-3">
                 <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm"
@@ -119,9 +114,9 @@
               </div>
             </div>
             <div>
-              <input type="text" v-model="user.addr" class="form-control mb-3" placeholder="주소" />
-              <input type="text" v-model="user.detailAddr" class="form-control mb-3" placeholder="상세주소" />
-              <input type="text" v-model="user.extraAddr" class="form-control mb-3" placeholder="참고항목" />
+              <input type="text" v-model="user.addr" ref="addr" class="form-control mb-3" placeholder="주소" />
+              <input type="text" v-model="user.detailAddr" ref="detailAddr" class="form-control mb-3" placeholder="상세주소" />
+              <input type="text" v-model="user.extraAddr" ref="extraAddr" class="form-control mb-3" placeholder="참고항목" />
             </div>
           </div>
         </div>
@@ -164,18 +159,17 @@ export default {
         detailAddr: '',
         extraAddr: '',
       },
-      errors:[]
     };
   },
   methods: {
     // 회원가입 백엔드통신
     async submitForm() {
-      this.errors = []
-
       console.log(this.user);
+
       const signUp = await this.$post('user/signUp', this.user);
       this.$store.commit('user', this.user);
       this.$router.push('/signin');
+
       console.log(signUp);
     },
 

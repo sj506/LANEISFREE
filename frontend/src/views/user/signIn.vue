@@ -435,6 +435,7 @@ input[type='password']:focus {
   background-color: #f0f0f0;
   border-color: #f0f0f0;
   color: #c6c6c6;
+  cursor: none;
 }
 
 /* 카카오톡 로그인 버튼 */

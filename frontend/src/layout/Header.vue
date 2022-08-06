@@ -2,9 +2,8 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img"
+            src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">
@@ -22,19 +21,30 @@
         <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">
           <router-link class="router-link" to="/new">신상품</router-link>
         </li>
-        <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
+        <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()">
+          <router-link class="router-link" to="/homme">옴므</router-link>
+        </li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li v-show="loginToggle === 1">
           <div class="dropdown">
-            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <i class="fa-solid fa-user"></i>
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><router-link to="" class="dropdown-item">주문배송조회</router-link></li>
-              <li><router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link></li>
-              <li><router-link to="" class="dropdown-item">회원정보 수정</router-link></li>
-              <li><router-link to="" class="dropdown-item">찜한 제품</router-link></li>
+              <li>
+                <router-link to="/mypageOnlineOrderList" class="dropdown-item">주문배송조회</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageMemberCheck" class="dropdown-item">회원정보 수정</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageWishList" class="dropdown-item">찜한 제품</router-link>
+              </li>
             </ul>
           </div>
         </li>
