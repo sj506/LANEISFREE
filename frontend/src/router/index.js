@@ -11,6 +11,7 @@ import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
+import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
 
 //네비게이션 가드
@@ -87,6 +88,13 @@ const routes = [
     name: 'hommeProductDetail',
     component: hommeProductDetail,
     props: true,
+  },
+  {
+    path: '/buyPage',
+    name: 'buyPage',
+    component: buyPage,
+    props: true,
+    beforeEnter: requireAuth(),
   },
   // {
   //   path: '/',

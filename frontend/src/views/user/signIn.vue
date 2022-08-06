@@ -129,6 +129,8 @@ export default {
     // 로그인 백엔드통신
     async submitForm() {
       this.$store.commit('setUser', 1);
+      console.log(this.$store.state.setUser);
+
       console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
       this.$store.commit('user', signIn);

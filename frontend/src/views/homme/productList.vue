@@ -6,8 +6,9 @@
         <div class="column-center">
           <img
             @mouseover="changeImg"
+            class="cursor-png"
             @mouseout="reChangeImg($event.target, product.pro_mainimg)"
-            :src="getSrc(product.pro_mainimg)"
+            :src="$getSrc(product.pro_mainimg)"
             :data-category="product.cate_class"
           />
 
@@ -49,10 +50,6 @@ export default {
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
     },
-
-    getSrc(mainImg) {
-      return require('@/assets/img' + mainImg);
-    },
     changeImg(e) {
       if (e.target.dataset.category === '1') {
         e.target.src = 'https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2019/11/17/Active_Water_Skin_Toner_thumb_list.png';
@@ -76,7 +73,9 @@ img {
   max-width: 250px;
   height: 100%;
 }
-
+.cursor-png {
+  cursor: url('https://www.laneige.com/kr/ko/assets/image/a/pointer.png'), auto;
+}
 .productBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
