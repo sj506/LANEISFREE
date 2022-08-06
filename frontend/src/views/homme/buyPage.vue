@@ -1,6 +1,5 @@
 <template>
   <div class="buypage-container">
-    <!-- <button @click="logout">로그아웃</button> -->
     <h1 class="header">결제하기</h1>
     <div class="buy-box">
       <div class="buypage-main">
@@ -9,37 +8,64 @@
           <div class="formBox">
             <div class="formData">
               <label>
+                <span class="star">*</span>
                 주문자
-                <input v-model="user.m_nm" type="text" />
+                <input class="ml-10" v-model="purchase.m_nm" type="text" />
               </label>
             </div>
             <div class="formData">
               <label>
+                <span class="star">*</span>
                 연락처
-                <select class="telInput">
+                <select class="telInput ml-10" @change="changeTel1" v-model="purchase.m_tel1">
                   <option v-for="(code, idx) in AreaCode" :key="idx" :value="code">{{ code }}</option>
                 </select>
               </label>
-              - <input v-model="userPhNum[1]" class="telInput" type="text" /> - <input v-model="userPhNum[2]" class="telInput" type="text" />
+              - <input v-model="purchase.m_tel2" class="telInput" type="text" /> -
+              <input v-model="purchase.m_tel3" class="telInput" type="text" />
             </div>
             <div class="formData">
-              <label>이메일 <input class="emailInputBox" v-model="user.m_email" type="text" /></label>
+              <label>
+                <span class="star">*</span>
+                이메일 <input class="emailInputBox ml-10" v-model="purchase.m_email" type="text"
+              /></label>
             </div>
             <!-- 이메일 형식으로 -->
             <div class="formData">
               <div>
+                <span class="star">*</span>
                 배송지 선택
-                <button>배송지 관리</button>
-                <div v-show="userAddr === 0">
-                  {{ productDetail.m_addr }}
+                <button ref="addrBtn1" class="addrBtn activeBd ml-8" @click="toggleBtn">배송지 관리</button>
+                <button ref="addrBtn2" class="addrBtn" @click="toggleBtn">새로운 배송지</button>
+
+                <div class="addrBox" v-if="userAddr === 0">
+                  {{ purchase.m_addr }}
                 </div>
-                <button>새로운 배송지</button>
+                <div class="addrBox" v-else>
+                  <label>주소</label>
+                  <div>
+                    <div class="row">
+                      <div class="col-md-3 mb-3">
+                        <input type="text" v-model="purchase.postcode" class="form-control" placeholder="우편번호" />
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm" value="우편번호 찾기" />
+                      </div>
+                    </div>
+                    <div>
+                      <input type="text" v-model="purchase.m_addr" class="form-control mb-3" placeholder="주소" />
+                      <input type="text" v-model="purchase.detailAddr" class="form-control mb-3" placeholder="상세주소" />
+                      <input type="text" v-model="purchase.extraAddr" class="form-control mb-3" placeholder="참고항목" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="formData">
-              <label class="formData"
-                >배송 요청사항
-                <select class="" @change="getOption" v-model="RequireOption">
+              <label class="formData">
+                <span class="star">*</span>
+                배송 요청사항
+                <select class="" v-model="RequireOption">
                   <option v-if="RequireOption === '배송 요청사항을 선택해 주세요.'">{{ RequireOption }}</option>
                   <option v-for="(option, idx) in Requirements" :key="idx" :value="option">{{ option }}</option>
                 </select>
@@ -63,7 +89,7 @@
             <!-- {{ productDetail.pro_mainimg }} -->
             <img :src="this.$getSrc(productDetail.pro_mainimg)" />
             {{ productDetail.pro_name }}
-            <div><input type="number" min="0" v-model="productCount" />개</div>
+            <div><input type="number" min="1" v-model="purchase.pro_count" @change="getPrice" />개</div>
             <div>{{ $addComma(price()) }}원</div>
           </div>
           <hr />
@@ -77,10 +103,20 @@
             </span>
           </div>
           <hr />
-          {{ selectPayment }}
+          <div class="mb-5 column-center" v-show="selectPayment === 0">
+            <img style="width: 800px; cursor: pointer" src="@/assets/img/bank.png" />
+            <span class="interest">무이자할부안내</span>
+          </div>
+          <div class="mb" v-show="selectPayment === 1">
+            <button class="byeBtn"><span class="byeBtnImg">대표카드를 등록해주세요</span></button>
+            <div class="buyCaution">
+              저희 쇼핑몰은 고객님의 안전한 거래를 위해 무통장입금/계좌이체 거래에 대해 구매안전서비스를 적용하고 있습니다.
+            </div>
+          </div>
           <hr />
         </div>
         <!-- ---------------------------- -->
+
         <div class="mb-6">
           <h3>유의사항</h3>
           ※주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수 있습니다. <br />
@@ -132,7 +168,10 @@
           <!-- ---------------------------- -->
           <div class="essential">
             <label> <input type="checkbox" v-model="payAgree" /> [필수] 구매조건 및 결제 진행동의 </label>
-            <div>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며, 구매 진행에 동의 하시겠습니까? (전자상거래법 제8조 제2항)</div>
+            <div>
+              주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며, 구매 진행에 동의 하시겠습니까? <br />
+              (전자상거래법 제8조 제2항)
+            </div>
           </div>
         </div>
         <div class="buyBtn">
@@ -144,6 +183,8 @@
   </div>
 </template>
 <script>
+import router from '@/router';
+
 export default {
   props: {
     name: {
@@ -162,14 +203,27 @@ export default {
         '배송 전에 연락주세요.',
         '메세지 직접 입력',
       ],
-      payment: ['신용카드 결제', '원클릭 결제', '다른 결제수단'],
+      payment: ['신용카드 결제', '원클릭 결제'],
       paymentCate: '신용카드 결제',
       RequireOption: '배송 요청사항을 선택해 주세요.',
       productDetail: '',
-      productCount: 1,
-      selectPayment: '신용카드로 결제할 페이지',
+      selectPayment: 0,
       payAgree: false,
-      user: '',
+      purchase: {
+        pro_num: 0,
+        m_num: 0,
+        m_nm: '',
+        m_email: '',
+        m_tel1: '010',
+        m_tel2: '',
+        m_tel3: '',
+        postcode: '',
+        m_addr: '',
+        detailAddr: '',
+        extraAddr: '',
+        pro_count: 1,
+        pro_price: 0,
+      },
       userPhNum: [],
       userAddr: 0,
     };
@@ -187,8 +241,14 @@ export default {
   beforeCreate() {},
   created() {
     this.productDetail = this.$store.state.getProductList[this.$route.params.productId - 1];
-    this.user = this.$store.state.user.result;
-    this.getTel();
+    this.purchase.pro_price = this.productDetail.pro_price;
+    this.purchase.pro_num = this.productDetail.pro_num;
+    this.purchase.m_num = this.$store.state.user.result.m_num;
+    this.purchase.m_nm = this.$store.state.user.result.m_nm;
+    this.purchase.m_email = this.$store.state.user.result.m_email;
+    this.purchase.m_tel2 = this.$store.state.user.result.m_tel2;
+    this.purchase.m_tel3 = this.$store.state.user.result.m_tel3;
+    this.purchase.m_addr = this.$store.state.user.result.m_addr;
   },
   beforeMount() {},
   mounted() {},
@@ -197,6 +257,9 @@ export default {
   beforeUnmount() {},
   unmounted() {},
   methods: {
+    changeTel1(e) {
+      this.purchase.m_tel1 = e.target.value;
+    },
     loginCheck() {
       if (!this.$store.state.user) {
         alert('로그인 한 유저만 구매가 가능합니다.');
@@ -207,32 +270,81 @@ export default {
       this.$store.commit('user', null);
       this.$router.push('signin');
     },
-    getOption() {
-      console.log(this.RequireOption);
-    },
     price() {
-      return this.productCount * this.productDetail.pro_price;
+      return this.purchase.pro_count * this.productDetail.pro_price;
     },
     changePayment() {
       if (this.paymentCate === this.payment[0]) {
-        this.selectPayment = '신용카드로 결제할 페이지';
+        this.selectPayment = 0;
       } else if (this.paymentCate === this.payment[1]) {
-        this.selectPayment = '원클릭으로 결제할 페이지';
+        this.selectPayment = 1;
       } else {
-        this.selectPayment = '다른 결제수단으로 결제할 페이지';
+        this.selectPayment = 2;
       }
     },
-    buy() {
+    async buy() {
       if (this.payAgree === false) {
         alert('결제진행 동의를 해야만 구매가 가능합니다.');
         return;
       }
+      console.log(this.purchase);
+      const productBuy = await this.$post('product/productBuy', this.purchase)
+        .then((response) => {
+          console.log(response);
+          alert('결제 완료되었습니다.');
+          router.push('/myPageMemberCheck');
+        })
+        .catch((error) => {
+          console.log(error.response);
+          alert('결제에 실패하였습니다.');
+        });
     },
-    getTel() {
-      console.log(this.user.m_tel);
-      const phNum = this.user.m_tel.split('-');
-      console.log(phNum);
-      this.userPhNum = phNum;
+    toggleBtn(e) {
+      this.userAddr -= 1;
+      this.userAddr *= -1;
+      this.$refs.addrBtn1.classList.remove('activeBd');
+      this.$refs.addrBtn2.classList.remove('activeBd');
+      e.target.classList.add('activeBd');
+      console.log(this.userAddr);
+    },
+    execDaumPostcode() {
+      new window.daum.Postcode({
+        oncomplete: (data) => {
+          if (this.purchase.extraAddr !== '') {
+            this.purchase.extraAddr = '';
+          }
+          if (data.userSelectedType === 'R') {
+            // 사용자가 도로명 주소를 선택했을 경우
+            this.purchase.m_addr = data.roadAddress;
+          } else {
+            // 사용자가 지번 주소를 선택했을 경우(J)
+            this.purchase.m_addr = data.jibunAddress;
+          }
+
+          // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+          if (data.userSelectedType === 'R') {
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+              this.purchase.extraAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+              this.purchase.extraAddr += this.purchase.extraAddr !== '' ? `, ${data.buildingName}` : data.buildingName;
+            }
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if (this.purchase.extraAddr !== '') {
+              this.purchase.extraAddr = `(${this.purchase.extraAddr})`;
+            }
+          } else {
+            this.purchase.extraAddr = '';
+          }
+          // 우편번호를 입력한다.
+          this.purchase.postcode = data.zonecode;
+        },
+      }).open();
+    },
+    getPrice() {
+      this.purchase.pro_price = this.purchase.pro_count * this.productDetail.pro_price;
     },
   },
 };
@@ -244,6 +356,12 @@ export default {
   /* 위 오른쪽 아래 왼쪽 */
 }
 
+.ml-10 {
+  margin-left: 10rem;
+}
+.mb {
+  margin-bottom: 5rem;
+}
 ._hr {
   padding-bottom: 1rem;
   border-bottom: 1px solid #000000;
@@ -278,12 +396,19 @@ select {
   width: 20rem;
 }
 .longInputBox {
+  margin-top: 1rem;
+  margin-left: 6.1rem;
   width: 40rem;
 }
 
 img {
   width: 10rem;
 }
+
+input {
+  padding-left: 10px;
+}
+
 .orderInfo {
   display: flex;
   flex-direction: row;
@@ -301,6 +426,9 @@ img {
 .changePayment {
   margin-right: 2rem;
 }
+.star {
+  color: rgba(255, 0, 0, 0.774);
+}
 .mt {
   margin-top: 1rem;
 }
@@ -310,7 +438,7 @@ img {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  max-width: 1180px;
+  max-width: 1400px;
 }
 
 .buy-section {
@@ -319,6 +447,7 @@ img {
   position: sticky;
   top: 100px;
   height: 25vh;
+  width: 500px;
 }
 .buy-box {
   display: flex;
@@ -368,5 +497,58 @@ img {
 }
 .discount {
   color: tomato;
+}
+
+.addrBox {
+  margin: 1.5rem 0 0 0;
+  padding: 24px;
+  background: #f3f3f3;
+}
+
+.addrBtn {
+  border: 1px solid rgb(173, 173, 173);
+  margin-left: 2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 0.9rem;
+}
+
+.ml-8 {
+  margin-left: 8rem;
+}
+.activeBd {
+  border: 1px solid #222;
+}
+
+.interest {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #000000;
+  margin-top: 1.5rem;
+  margin-right: 45rem;
+  cursor: pointer;
+}
+
+.byeBtn {
+  display: block;
+  width: 328px;
+  height: 200px;
+  margin: 0 auto;
+  background: #a7a7a7;
+  border-radius: 15px;
+  color: #fff;
+  font-family: 'SDNeoL', 'notoL';
+  border: none;
+}
+
+.byeBtnImg {
+  display: block;
+  padding-top: 72px;
+  background: url(https://images.innisfree.co.kr/resources/web2/images/order/btn_add_card.png) no-repeat 50% 0;
+}
+
+.buyCaution {
+  margin-top: 3rem;
+  text-align: center;
+  color: #949494;
 }
 </style>
