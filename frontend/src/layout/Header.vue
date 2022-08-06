@@ -32,7 +32,7 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><router-link to="" class="dropdown-item">주문배송조회</router-link></li>
-              <li><router-link to="" class="dropdown-item">내 리뷰</router-link></li>
+              <li><router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link></li>
               <li><router-link to="" class="dropdown-item">회원정보 수정</router-link></li>
               <li><router-link to="" class="dropdown-item">찜한 제품</router-link></li>
             </ul>
