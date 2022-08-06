@@ -23,4 +23,20 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function productBuy(&$param)
+    {
+        $sql = "INSERT INTO t_purchase
+            (m_num, pro_num, pur_nm, pur_addr, pur_tel, pur_count)
+            VALUES
+            (:m_num, :pro_num, :pur_nm, :pur_addr, :pur_tel, :pur_count )";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":m_num", $param["m_num"]);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":pur_nm", $param["pur_nm"]);
+        $stmt->bindValue(":pur_addr", $param["pur_addr"]);
+        $stmt->bindValue(":pur_tel", $param["pur_tel"]);
+        $stmt->bindValue(":pur_count", $param["pur_count"]);
+        $stmt->execute();
+        return intval($this->pdo->lastInsertId());
+    }
 }
