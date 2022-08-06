@@ -8,7 +8,7 @@
             @mouseover="changeImg"
             class="cursor-png"
             @mouseout="reChangeImg($event.target, product.pro_mainimg)"
-            :src="getSrc(product.pro_mainimg)"
+            :src="$getSrc(product.pro_mainimg)"
             :data-category="product.cate_class"
           />
 
@@ -49,10 +49,6 @@ export default {
       this.$store.commit('selectProduct', getProductList);
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
-    },
-
-    getSrc(mainImg) {
-      return require('@/assets/img' + mainImg);
     },
     changeImg(e) {
       if (e.target.dataset.category === '1') {

@@ -174,18 +174,21 @@ export default {
       userAddr: 0,
     };
   },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
+  },
+  watch: {
+    loginToggle: function () {
+      this.loginCheck();
+    },
+  },
   beforeCreate() {},
   created() {
     this.productDetail = this.$store.state.getProductList[this.$route.params.productId - 1];
-    console.log(this.productDetail);
-    if (!this.$store.state.user) {
-      alert('로그인 한 유저만 구매가 가능합니다.');
-      this.$router.push('signin');
-    } else {
-      this.user = this.$store.state.user.result;
-      console.log(this.user);
-      this.getTel();
-    }
+    this.user = this.$store.state.user.result;
+    this.getTel();
   },
   beforeMount() {},
   mounted() {},
@@ -194,6 +197,12 @@ export default {
   beforeUnmount() {},
   unmounted() {},
   methods: {
+    loginCheck() {
+      if (!this.$store.state.user) {
+        alert('로그인 한 유저만 구매가 가능합니다.');
+        this.$router.push('signin');
+      }
+    },
     logout() {
       this.$store.commit('user', null);
       this.$router.push('signin');

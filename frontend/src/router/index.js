@@ -12,6 +12,15 @@ import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
+import store from '@/store';
+
+const requireAuth = () => (to, from, next) => {
+  if (store.state.setUser === 0) {
+    alert('로그인을 해야합니다.', '', 'warning');
+    return;
+  }
+  return next();
+};
 
 const routes = [
   {
@@ -80,6 +89,7 @@ const routes = [
     name: 'buyPage',
     component: buyPage,
     props: true,
+    beforeEnter: requireAuth(),
   },
   // {
   //   path: '/',

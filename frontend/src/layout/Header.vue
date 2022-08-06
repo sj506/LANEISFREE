@@ -88,7 +88,7 @@ export default {
       hommeShow: false,
       content: '',
       url: '',
-      setUser: 0,
+      // setUser: 0,
     };
   },
   computed: {
@@ -97,7 +97,8 @@ export default {
     },
   },
   created() {
-    this.setUser = this.$store.state.setUser;
+    console.log(this.$store.state.setUser);
+    // this.setUser = this.$store.state.setUser;
   },
 
   methods: {
@@ -121,7 +122,6 @@ export default {
     logOut() {
       this.$store.commit('user', null);
       this.$store.commit('setUser', 0);
-      console.log(this.setUser);
     },
   },
 };
