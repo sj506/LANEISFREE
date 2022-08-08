@@ -1,5 +1,5 @@
 <template>
-  <div class="index-container column-center" @wheel="scrollBgChange" :class="{ bgColor: bgColor }">
+  <div class="index-container column-center" @wheel="scrollBgChange" :class="{ bgColor: bgColor, bgColorOut: bgColorOut }">
     <list-item></list-item>
     <div class="index-main column-center">
       <best-seller></best-seller>
@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       bgColor: false,
+      bgColorOut: false,
     };
   },
   setup() {},
@@ -36,8 +37,10 @@ export default {
       console.log(`currentScroll = ${currentScroll}`);
       if (currentScroll + modifier > documentHeight) {
         this.bgColor = true;
+        this.bgColorOut = false;
       } else {
         this.bgColor = false;
+        this.bgColorOut = true;
       }
     },
   },
@@ -68,8 +71,36 @@ export default {
   opacity: 0.6;
   animation: bgColor 0.5s linear;
   z-index: -1;
-  background-image: linear-gradient(to left bottom, #f3bac7, #ebb4ce, #deafd7, #cbade0, #b2ace7, #9fb4f1, #88bcf7, #6ec3f9, #5fd2fd, #5be1fd, #64eff9, #7afbf1);
+  background-image: var(--bg-gradient);
 }
+.bgColorOut {
+  position: relative;
+}
+.bgColorOut::before {
+  content: '';
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  animation: bgColorOut 0.5s linear;
+  z-index: -1;
+  background-image: var(--bg-gradient);
+}
+@keyframes bgColorOut {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes bgColor {
   0% {
     opacity: 0;
