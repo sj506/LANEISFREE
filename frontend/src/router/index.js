@@ -5,23 +5,26 @@ import index from '../views/index.vue';
 import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
+import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
+import mypageOnlineOrderList from '../views/mypage/mypageOnlineOrderList.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
+import myPageWishList from '../views/mypage/myPageWishList.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
 import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
-import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
 import store from '@/store';
 
+//네비게이션 가드
 const requireAuth = () => (to, from, next) => {
   if (store.state.setUser === 0) {
     alert('로그인 후에 이용해주시길 바랍니다.', '', 'warning');
     next('/signin');
     return;
   }
-  return next();
+  return next(); // next가 호출이 되어야 사용가능
 };
 
 const routes = [
@@ -76,14 +79,28 @@ const routes = [
     component: meetsArt,
   },
   {
-    path: '/myPageReview',
-    name: 'myPageReview',
-    component: myPageReview,
-  },
-  {
     path: '/myPageMemberCheck',
     name: 'myPageMemberCheck',
     component: myPageMemberCheck,
+    // beforeEnter: requireAuth(),
+  },
+  {
+    path: '/mypageOnlineOrderList',
+    name: 'mypageOnlineOrderList',
+    component: mypageOnlineOrderList,
+    // beforeEnter: requireAuth(),
+  },
+  {
+    path: '/myPageReview',
+    name: 'myPageReview',
+    component: myPageReview,
+    // beforeEnter: requireAuth(),
+  },
+  {
+    path: '/myPageWishList',
+    name: 'myPageWishList',
+    component: myPageWishList,
+    // beforeEnter: requireAuth(),
   },
   {
     path: '/hommeProductDetail/:productId',
