@@ -37,10 +37,12 @@
         </ul>
       </div>
     </div>
+  </div>
 
-    <!-- 000님은 00 회원입니다  -->
-    <div class="mypageTop">
-      <div class="userBox">
+  <!-- 000님은 00 회원입니다  -->
+  <div class="mypageTop">
+    <div class="userBox">
+      <div>
         <div class="userInfo">
           <span class="name"> {{ userNm }} </span>님은
           <span class="wImg">
@@ -65,39 +67,37 @@
         <div class="membership">
           <a href="#" class="memberBtn">멤버십 혜택</a>
         </div>
-
-
-
-        <ul class="userPoint">
-          <li class="point">
-            <a href="#" class="arrow">뷰티포인트 </a>
-            <span class="length">
-              <span class="num">0</span>P
-            </span>
-          </li>
-
-          <li class="coupon">
-            <a href="#" class="arrow">보유 쿠폰 </a>
-            <span class="length">
-              <span class="num">11</span>장
-            </span>
-          </li>
-
-          <li class="bottle">
-            <a href="#" class="arrow">이번달 공병수거 </a>
-            <span class="length">
-              <span class="num">0</span>개
-            </span>
-          </li>
-
-          <li class="review">
-            <a href="#" class="arrow">작성가능리뷰 </a>
-            <span class="length">
-              <span class="num">0</span>건
-            </span>
-          </li>
-        </ul>
       </div>
+
+      <ul class="userPoint">
+        <li class="point">
+          <a href="#" class="arrow">뷰티포인트 </a>
+          <span class="length">
+            <span class="num">0</span>P
+          </span>
+        </li>
+
+        <li class="coupon">
+          <a href="#" class="arrow">보유 쿠폰 </a>
+          <span class="length">
+            <span class="num">11</span>장
+          </span>
+        </li>
+
+        <li class="bottle">
+          <a href="#" class="arrow">이번달 공병수거 </a>
+          <span class="length">
+            <span class="num">0</span>개
+          </span>
+        </li>
+
+        <li class="review">
+          <a href="#" class="arrow">작성가능리뷰 </a>
+          <span class="length">
+            <span class="num">0</span>건
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -109,6 +109,8 @@
 </script>
 
 <style scoped>
+
+
 button,
 a {
   font-family: inherit;
@@ -119,8 +121,7 @@ a {
   text-decoration: none;
   outline: none;
 }
-.header{
-}
+
 li {
   list-style: none;
 }
@@ -132,6 +133,9 @@ li {
   content: "";
   display: block;
   clear: both;
+}
+.header {
+  margin-left: 80px;
 }
 .depth {
   float: left;
@@ -185,7 +189,6 @@ li {
   min-width: 1024px;
   height: 160px;
   margin: 0 auto;
-  background: #f3f3f3;
 }
 
 .userInfo {

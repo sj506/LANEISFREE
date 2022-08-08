@@ -48,9 +48,9 @@ export default {
   margin-left: 20%;
   margin-right: 20%;
 }
-@media (max-width: 59.99em) {
+/* @media (max-width: 59.99em) {
   .mobile {
     display: block;
   }
-}
+/* } */
 </style>

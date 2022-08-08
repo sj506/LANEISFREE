@@ -1,28 +1,16 @@
 <template>
   <header>
-    <nav class="navbar">
+    <nav class="navbar" @click="toggleNav">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
-        <li @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="/story"> 브랜드</router-link>
-        </li>
-        <li @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="/intro">팀소개</router-link>
-        </li>
-        <li @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="/meetsart">미츠아트</router-link>
-        </li>
-        <li @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="/best">베스트</router-link>
-        </li>
-        <li @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">
-          <router-link class="router-link" to="/new">신상품</router-link>
-        </li>
-        <li @mouseover="showHommeBox()" @mouseout="closeHommeBox()"><router-link class="router-link" to="/homme">옴므</router-link></li>
+        <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">브랜드</li>
+        <li data-to="/intro" @click="routerPush" @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">팀소개</li>
+        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">미츠아트</li>
+        <li data-to="/best" @click="routerPush" @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">베스트</li>
+        <li data-to="/new" @click="routerPush" @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">신상품</li>
+        <li data-to="/homme" @click="routerPush" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">옴므</li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li v-show="loginToggle === 1">
@@ -31,10 +19,18 @@
               <i class="fa-solid fa-user"></i>
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><router-link to="" class="dropdown-item">주문배송조회</router-link></li>
-              <li><router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link></li>
-              <li><router-link to="" class="dropdown-item">회원정보 수정</router-link></li>
-              <li><router-link to="" class="dropdown-item">찜한 제품</router-link></li>
+              <li>
+                <router-link to="/mypageOnlineOrderList" class="dropdown-item">주문배송조회</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageMemberCheck" class="dropdown-item">회원정보 수정</router-link>
+              </li>
+              <li>
+                <router-link to="/myPageWishList" class="dropdown-item">찜한 제품</router-link>
+              </li>
             </ul>
           </div>
         </li>
@@ -57,7 +53,7 @@
           </router-link>
         </li>
       </ul>
-      <a href="#" class="navbar__toogleBtn" @click="toggleNav">
+      <a href="#" class="navbar__toogleBtn" @click="menuToggle">
         <i class="fa-solid fa-bars"></i>
       </a>
     </nav>
@@ -71,7 +67,8 @@
         <hommeCategoryList v-bind:hoverCheck="false" />
       </div>
     </div>
-    <div v-show="isShow" class="transparent-box"></div>
+    <div v-show="isShow || hommeShow" class="transparent-box"></div>
+    ;
   </header>
 </template>
 
@@ -115,14 +112,22 @@ export default {
     },
     showHommeBox() {
       this.hommeShow = true;
+      // this.isShow = true;
     },
     closeHommeBox() {
       this.hommeShow = false;
+      this.isShow = false;
     },
     logOut() {
       this.$store.commit('user', null);
       this.$store.commit('setUser', 0);
     },
+    routerPush(e) {
+      this.$router.push(e.target.dataset.to);
+    },
+    // menuToggle() {
+    //   this.isShow = !this.isShow;
+    // },
   },
 };
 </script>
@@ -147,7 +152,6 @@ header {
   justify-content: center;
   width: 130px;
   margin-left: 50px;
-  margin-right: 100px;
 }
 .navbar__logo {
   height: 60px;
@@ -168,6 +172,7 @@ ul {
   padding: 0;
   margin: 0px 20px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   font-size: var(--text-lg);
@@ -242,6 +247,15 @@ ul {
     background-color: var(--bg-white);
     flex-direction: column;
     align-items: flex-start;
+    margin: 0;
+    /* width: 100%; */
+  }
+  .navbar__menu li {
+    cursor: pointer;
+  }
+  .dropdown-menu {
+    display: flex;
+    left: -200px;
   }
   .navbar__menu {
     display: none;
@@ -254,6 +268,15 @@ ul {
   }
   .navbar__menu li {
     width: 100%;
+  }
+  .contents {
+    display: none;
+  }
+  .contents-link-box {
+    display: none;
+  }
+  .hommeBox {
+    display: none;
   }
   .navbar__icons {
     display: none;

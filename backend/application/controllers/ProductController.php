@@ -16,4 +16,20 @@ class ProductController extends Controller
     {
         return $this->model->getProductImg();
     }
+    public function productBuy()
+    {
+        $json = getJson();
+        $param = [
+            'm_num' => $json['m_num'],
+            'pro_num' => $json['pro_num'],
+            'pur_nm' => $json['m_nm'],
+            'pur_addr' => $json['m_addr'] . ' ' . $json['detailAddr'] . ' ' . $json['extraAddr'],
+            'pur_tel' => $json['m_tel1'] . '-' . $json['m_tel2'] . '-' . $json['m_tel3'],
+            'pur_count' => $json['pro_count'],
+        ];
+        // $param["m_pw"] = password_hash($param["m_pw"], PASSWORD_BCRYPT);
+        $result = $this->model->productBuy($param);
+
+        return [_RESULT => $result];
+    }
 }
