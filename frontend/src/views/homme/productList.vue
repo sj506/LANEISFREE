@@ -11,7 +11,10 @@
             :src="$getSrc(product.pro_mainimg)"
             :data-category="product.cate_class"
           />
-
+          <div class="heartIconBox">
+            <i class="fa-regular fa-heart heartIcon" @mouseover="likeUp"></i>
+            <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
+          </div>
           <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
           <div class="pro_name">{{ product.pro_name }}</div>
         </div>
@@ -25,7 +28,7 @@ export default {
   components: {},
   data() {
     return {
-      example: '',
+      likeCheck: false,
     };
   },
   computed: {
@@ -63,11 +66,35 @@ export default {
     reChangeImg(target, mainImg) {
       target.src = require('@/assets/img' + mainImg);
     },
+    likeUp(e) {
+      this.likeCheck = true;
+      e.target.classList.add('fa-solid');
+      e.target.classList.add('bigHeartIcon');
+    },
+    likeDown() {
+      this.likeCheck = false;
+    },
   },
 };
 </script>
 
 <style scoped>
+.heartIcon {
+  position: absolute;
+  top: 65%;
+  left: 80%;
+  font-size: 1.3rem;
+}
+.bigHeartIcon {
+  position: absolute;
+  top: 65%;
+  left: 80%;
+  font-size: 1.3rem;
+  color: red;
+}
+.bigHeartIcon:hover {
+  animation: heart-effect 1s;
+}
 img {
   width: 100%;
   max-width: 250px;
@@ -76,6 +103,7 @@ img {
 .cursor-png {
   cursor: url('https://www.laneige.com/kr/ko/assets/image/a/pointer.png'), auto;
 }
+
 .productBox {
   display: grid;
   grid-template-rows: repeat(4, minmax(auto, auto));
@@ -95,6 +123,8 @@ img {
 }
 
 .und-border {
+  position: relative;
+
   margin-bottom: 3rem;
   border-bottom: 1px solid #eaeaea;
 }
@@ -122,6 +152,26 @@ img:not(:hover) {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes heart-effect {
+  0% {
+    opacity: 0;
+    color: rgb(255, 145, 125);
+  }
+  20% {
+    opacity: 0.5;
+    color: tomato;
+  }
+  60% {
+    opacity: 1;
+    color: tomato;
+    margin-left: 10px;
+  }
+  100% {
+    opacity: 1;
+    color: red;
   }
 }
 
