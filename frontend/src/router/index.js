@@ -9,6 +9,7 @@ import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
 import mypageOnlineOrderList from '../views/mypage/mypageOnlineOrderList.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
 import myPageWishList from '../views/mypage/myPageWishList.vue';
+import ReviewWrite from '../views/mypage/ReviewWrite.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
