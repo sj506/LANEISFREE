@@ -56,6 +56,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  min-width: 40rem;
 }
 .hommeProductCount {
   margin-right: 5rem;
@@ -111,5 +112,15 @@ export default {
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
   padding: 0;
+}
+
+@media (max-width: 980px) {
+  .buttonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30rem;
+  }
 }
 </style>

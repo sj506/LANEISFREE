@@ -1,6 +1,5 @@
 <template>
   <div id="body">
-
     <div class="joinBox">
       <div class="join">
         <h1>회원가입</h1>
@@ -17,17 +16,15 @@
       <div class="joinTitle">
         <h2>뷰티포인트 회원가입</h2>
         <p>
-          뷰티포인트 통합 아이디로 아모레퍼시픽 모든 브랜드의 온/오프 매장 서비스를 이용하실 수 있습니다.<br />(만 14세
-          이상 부터 가입 가능합니다.)
+          뷰티포인트 통합 아이디로 아모레퍼시픽 모든 브랜드의 온/오프 매장 서비스를 이용하실 수 있습니다.<br />(만 14세 이상 부터 가입 가능합니다.)
         </p>
       </div>
-      
-      <form @submit.prevent="submitForm">
 
+      <form @submit.prevent="submitForm">
         <!-- 이름 -->
         <div class="mb-3">
           <label>이름</label>
-          <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력" autofocus required>
+          <input type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력" autofocus required />
           <div v-if="errors.length">
             <span v-for="error in errors">
               {{ error }}
@@ -49,10 +46,11 @@
           <label>이메일</label>
           <div class="row">
             <div class="col-md-5 mb-3">
-              <input type="text" v-model="user.m_email" class="form-control" placeholder="이메일 입력" />
+              <input @change="checkEmail" type="text" v-model="user.m_email" class="form-control" placeholder="이메일 입력" />
+              <p style="color: red">{{ emailCheck }}</p>
             </div>
 
-            <div class="col-md-1 text-center h5"> @ </div>
+            <div class="col-md-1 text-center h5">@</div>
 
             <div class="col-md-4 mb-3">
               <input type="text" list="m_email2" v-model="user.m_email2" class="form-control" placeholder="직접입력" />
@@ -91,13 +89,13 @@
               </select>
             </div>
 
-            <div class="col-md-1 text-center h5"> - </div>
+            <div class="col-md-1 text-center h5">-</div>
 
             <div class="col-md-3 mb-3">
               <input type="text" v-model="user.m_tel2" size="5" class="form-control" />
             </div>
 
-            <div class="col-md-1 text-center h5"> - </div>
+            <div class="col-md-1 text-center h5">-</div>
 
             <div class="col-md-3 mb-3">
               <input type="text" v-model="user.m_tel3" size="5" class="form-control" />
@@ -114,8 +112,7 @@
                 <input type="text" v-model="user.postcode" class="form-control" placeholder="우편번호" />
               </div>
               <div class="col-md-3 mb-3">
-                <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm"
-                  value="우편번호 찾기" />
+                <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm" value="우편번호 찾기" />
               </div>
             </div>
             <div>
@@ -131,10 +128,8 @@
           <button type="submit" class="btnJoin">회원가입</button>
         </div>
       </form>
-
     </div>
   </div>
-
 </template>
 
 <script>
@@ -157,25 +152,34 @@ export default {
         detailAddr: '',
         extraAddr: '',
       },
-      errors:[]
+      errors: [],
+      emailCheck: '',
     };
   },
   methods: {
     // 회원가입 백엔드통신
     async submitForm() {
-      this.errors = []
-
+      this.errors = [];
       console.log(this.user);
       const signUp = await this.$post('user/signUp', this.user);
       this.$store.commit('user', this.user);
       this.$router.push('/signin');
       console.log(signUp);
     },
+    checkEmail() {
+      !this.isEmail(this.m_email + '@' + this.m_email2) ? (this.emailCheck = '이메일이 맞지 않습니다.') : (this.emailCheck = '이메일이 맞습니다.');
+    },
+    // 이메일 정규식
+    isEmail(asValue) {
+      var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+      return regExp.test(asValue);
+    },
 
     // 도로명 주소 팝업창
     execDaumPostcode() {
       new window.daum.Postcode({
-        oncomplete: data => {
+        oncomplete: (data) => {
           if (this.user.extraAddr !== '') {
             this.user.extraAddr = '';
           }
@@ -217,7 +221,7 @@ export default {
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
-  margin: 15px auto
+  margin: 15px auto;
 }
 
 a {
@@ -262,7 +266,6 @@ button {
 /* 뷰티포인트 회원가입 */
 .joinTitle {
   padding: 10px 0 40px;
-
 }
 
 .joinTitle h2 {
@@ -304,7 +307,7 @@ button {
   top: 0;
   width: 60px;
   height: 54px;
-  background: url("@/assets/img/signIn/btn_title_close.png") no-repeat 50% 50%;
+  background: url('@/assets/img/signIn/btn_title_close.png') no-repeat 50% 50%;
   background-size: 23px auto;
 }
 
@@ -314,14 +317,14 @@ button {
   top: 0;
   width: 54px;
   height: 54px;
-  background: url("@/assets/img/signIn/btn_title_back.png") no-repeat 50% 50%;
+  background: url('@/assets/img/signIn/btn_title_back.png') no-repeat 50% 50%;
   -webkit-background-size: 23px auto;
   background-size: 23px auto;
 }
 
 .btnClose:focus,
 .btnPreve:focus {
-  border: 2px solid #0A40D5;
+  border: 2px solid #0a40d5;
 }
 
 /* 회원가입 버튼 */
