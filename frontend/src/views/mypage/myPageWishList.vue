@@ -1,7 +1,7 @@
 <template>
-  <div id="container">
+  <div class="containers">
     <myPageHeader />
-    <section class="contents d-flex row align-items-baseline justify-content-between">
+    <section class="d-flex row align-items-baseline justify-content-between">
       <myPageSide />
       <div class="col-9">
         <h3>찜한 제품</h3>
@@ -20,4 +20,8 @@ export default {
 </script>
 
 <style scoped>
+.containers {
+  width: 100%;
+}
+
 </style>
