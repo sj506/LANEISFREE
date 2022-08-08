@@ -108,7 +108,7 @@
             <span class="interest">무이자할부안내</span>
           </div>
           <div class="mb" v-show="selectPayment === 1">
-            <button class="byeBtn"><span class="byeBtnImg">대표카드를 등록해주세요</span></button>
+            <button class="cardBtn"><span class="cardBtnImg">대표카드를 등록해주세요</span></button>
             <div class="buyCaution">
               저희 쇼핑몰은 고객님의 안전한 거래를 위해 무통장입금/계좌이체 거래에 대해 구매안전서비스를 적용하고 있습니다.
             </div>
@@ -545,7 +545,7 @@ input {
   cursor: pointer;
 }
 
-.byeBtn {
+.cardBtn {
   display: block;
   width: 328px;
   height: 200px;
@@ -557,7 +557,11 @@ input {
   border: none;
 }
 
-.byeBtnImg {
+.buyBtn > button:hover {
+  animation: buyBtn-hover-effect 1s;
+}
+
+.cardBtnImg {
   display: block;
   padding-top: 72px;
   background: url(https://images.innisfree.co.kr/resources/web2/images/order/btn_add_card.png) no-repeat 50% 0;
@@ -567,6 +571,17 @@ input {
   margin-top: 3rem;
   text-align: center;
   color: #949494;
+}
+
+@keyframes buyBtn-hover-effect {
+  50% {
+    opacity: 0.9;
+    color: #ffffff;
+  }
+  100% {
+    opacity: 1;
+    color: #ffffff;
+  }
 }
 
 @media (max-width: 1240px) {
