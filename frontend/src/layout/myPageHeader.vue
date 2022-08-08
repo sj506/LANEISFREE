@@ -1,6 +1,6 @@
 <template>
   <!-- 마이페이지 상단리스트 -->
-  <div class="location">
+  <!-- <div class="location">
     <div class="header">
       <router-link to='/'>
         <div class="depth"><button href="/" class="btn">홈</button></div>
@@ -8,36 +8,17 @@
 
       <div class="depth">
         <button type="button" class="btn">마이페이지</button>
-        <ul class="list">
-          <li><a href="#">카테고리</a></li>
-          <li><a href="#">마이페이지</a></li>
-        </ul>
       </div>
 
       <div class="depth">
         <button type="button" class="btn">주문/배송현황</button>
-        <ul class="list">
-          <li><a href="#">주문/배송현황</a></li>
-          <li><a href="#">내쿠폰</a></li>
-          <li><a href="#">찜한제품</a></li>
-          <li><a href="#">회원정보 수정</a></li>
-          <li><a href="#">배송지 관리</a></li>
-          <li><a href="#">쇼핑카드 사용 내역</a></li>
-        </ul>
       </div>
 
       <div class="depth">
         <button type="button" class="btn">주문배송내역</button>
-        <ul class="list">
-          <li><a href="#"><span>주문배송내역</span></a></li>
-          <li><a href="#"><span>취소신청</span></a></li>
-          <li><a href="#"><span>반품신청</span></a></li>
-          <li><a href="#"><span>교환신청</span></a></li>
-          <li><a href="#"><span>구매내역</span></a></li>
-        </ul>
       </div>
     </div>
-  </div>
+  </div>  -->
 
   <!-- 000님은 00 회원입니다  -->
   <div class="mypageTop">

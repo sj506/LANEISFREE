@@ -1,5 +1,20 @@
 <template>
   <div id="container">
+    <div class="location">
+      <div class="header">
+        <router-link to='/'>
+          <div class="depth"><button href="/" class="btn">홈</button></div>
+        </router-link>
+
+        <div class="depth">
+          <button type="button" class="btn">마이페이지</button>
+        </div>
+
+        <div class="depth">
+          <button type="button" class="btn">찜한 제품</button>
+        </div>
+      </div>
+    </div>
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
@@ -9,44 +24,44 @@
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
           <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
         </div>
-            <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
-              <div class="p_container">
-                <div class="p_header">
-                  <div class="review_point">리뷰 포인트 혜택</div>
-                  <div class="review_policy">리뷰운영정책 </div>
-                </div>
-                <div class="p_ctnt">
-                  <div class="nonList" v-show="!purchaseCheck">
-                    구매하신 제품이 있을 경우에만<br>
-                    리뷰 작성이 가능합니다.
-                  </div>
-                  <div v-show="purchaseCheck">
-                    <header>
-                      <ul class="d-flex p_ctnt_header">
-                        <li class="">제품명</li>
-                        <li class="">결제금액</li>
-                        <li class="">작성기한</li>
-                        <li class="">리뷰작성</li>
-                      </ul>
-                    </header>
-                    <div>
-                      <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
-                        <li>
-                          <div class="proNm">{{ item.pro_name }}</div>
-                          <img :src="$getSrc(item.pro_mainimg)" class="proImg">
-                        </li>
-                        <li>{{ item.pro_price }}</li>
-                        <li>{{ item.pur_date }}</li>
-                        <li><button>리뷰쓰기</button></li>
-                      </ul>
-                    </div>
-                  </div>
+        <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
+          <div class="p_container">
+            <div class="p_header">
+              <div class="review_point">리뷰 포인트 혜택</div>
+              <div class="review_policy">리뷰운영정책 </div>
+            </div>
+            <div class="p_ctnt">
+              <div class="nonList" v-show="!purchaseCheck">
+                구매하신 제품이 있을 경우에만<br>
+                리뷰 작성이 가능합니다.
+              </div>
+              <div v-show="purchaseCheck">
+                <header>
+                  <ul class="d-flex p_ctnt_header">
+                    <li class="">제품명</li>
+                    <li class="">결제금액</li>
+                    <li class="">작성기한</li>
+                    <li class="">리뷰작성</li>
+                  </ul>
+                </header>
+                <div>
+                  <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
+                    <li>
+                      <div class="proNm">{{ item.pro_name }}</div>
+                      <img :src="$getSrc(item.pro_mainimg)" class="proImg">
+                    </li>
+                    <li>{{ item.pro_price }}</li>
+                    <li>{{ item.pur_date }}</li>
+                    <li><button>리뷰쓰기</button></li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
+          </div>
+        </div>
+        <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
 
-            </div>
+        </div>
       </div>
     </section>
   </div>
@@ -115,6 +130,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* default */
 .dNone{
   display: none;
@@ -243,6 +259,75 @@ h3{
     position: absolute;
     left: -96px;
     top: -30px;
+}
+
+/* myPage Header */
+button,
+a {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+}
+
+.location:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.header {
+  margin-left: 80px;
+}
+
+.depth {
+  float: left;
+  margin-left: 10px;
+  padding: 15px 0 17px;
+  background: url('@/assets/img/mypage/arw_loc.png') no-repeat 0 50%;
+}
+
+.depth:first-child {
+  background: none;
+}
+
+.btn {
+  margin: 0 0 0 15px;
+  padding-right: 25px;
+  color: #777;
+  background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
+}
+
+.depth:last-child .btn {
+  color: #222;
+}
+
+.depth:first-child .btn {
+  color: #777;
+}
+
+.location .list {
+  display: none;
+  position: absolute;
+  max-height: 350px;
+  overflow: hidden;
+  top: 48px;
+  left: -8px;
+  padding: 18px 24px;
+  background: #fff;
+  border: 1px solid #a7a7a7;
+}
+
+.location .list a:hover {
+  color: #222;
 }
 
 </style>
