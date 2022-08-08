@@ -67,7 +67,8 @@
         <hommeCategoryList v-bind:hoverCheck="false" />
       </div>
     </div>
-    <div v-show="isShow" class="transparent-box"></div>
+    <div v-show="isShow || hommeShow" class="transparent-box"></div>
+    ;
   </header>
 </template>
 
@@ -111,7 +112,7 @@ export default {
     },
     showHommeBox() {
       this.hommeShow = true;
-      this.isShow = true;
+      // this.isShow = true;
     },
     closeHommeBox() {
       this.hommeShow = false;
