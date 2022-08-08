@@ -25,15 +25,18 @@
       <form @submit.prevent="submitForm">
 
         <!-- 이름 -->
-        <div class="mb-3">
-          <label>이름</label>
-          <input type="text" v-model="user.m_nm" ref="m_nm" class="form-control" placeholder="이름 입력">
+        <div>
+          <div class="mb-3">
+            <label>이름</label>
+            <input @keyup="checkName" type="text" v-model="user.m_nm" class="form-control" placeholder="이름 입력">
+          </div>
+          <p class="check">{{ nameCheck }}</p>
         </div>
 
         <!-- 성별 -->
         <div class="mb-3">
           <label>성별</label>
-          <select v-model="user.m_gender" class="form-control" ref="m_gender">
+          <select v-model="user.m_gender" class="form-control">
             <option value="1">여성</option>
             <option value="2">남성</option>
           </select>
@@ -44,14 +47,13 @@
           <label>이메일</label>
           <div class="row">
             <div class="col-md-5 mb-3">
-              <input @keyup="checkEmail" type="text" v-model="user.m_email" ref="m_email" class="form-control"
-                placeholder="이메일 입력" />
+              <input @keyup="checkEmail" type="text" v-model="user.m_email" class="form-control" placeholder="이메일 입력" />
             </div>
 
             <div class="col-md-1 text-center h5"> @ </div>
 
             <div class="col-md-4 mb-3">
-              <input @change="checkEmail"  type="text" list="m_email2" v-model="user.m_email2" class="form-control"
+              <input @change="checkEmail" type="text" list="m_email2" v-model="user.m_email2" class="form-control"
                 placeholder="직접입력" />
               <datalist id="m_email2">
                 <option value="gmail.com" />
@@ -60,21 +62,28 @@
                 <option value="hanmail.net" />
               </datalist>
             </div>
-            <p>{{ emailCheck }}</p>
+            <p class="check">{{ emailCheck }}</p>
           </div>
         </div>
 
         <!-- 비밀번호 -->
         <div>
-          <div class="mb-3">
-            <label>비밀번호</label>
-            <input type="password" v-model="user.m_pw1" ref="m_pw1" class="form-control"
-              placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
+          <div>
+            <div class="mb-3">
+              <label>비밀번호</label>
+              <input @keyup="checkPassword" type="password" v-model="user.m_pw1" class="form-control"
+                placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합 8~16자로 입력)" />
+            </div>
+            <p class="check">{{ passwordCheck }}</p>
           </div>
 
-          <div class="mb-3">
-            <label>비밀번호 재확인</label>
-            <input type="password" v-model="user.m_pw2" ref="m_pw2" class="form-control" placeholder="비밀번호 다시 입력" />
+          <div>
+            <div class="mb-3">
+              <label>비밀번호 재확인</label>
+              <input @keyup="checkPassword2" type="password" v-model="user.m_pw2" class="form-control"
+                placeholder="비밀번호 다시 입력" />
+            </div>
+            <p class="check">{{ passwordCheck2 }}</p>
           </div>
         </div>
 
@@ -83,7 +92,7 @@
           <label>전화번호</label>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <select v-model="user.m_tel1" ref="m_tel" class="form-control">
+              <select v-model="user.m_tel1" class="form-control">
                 <option value="010">010</option>
                 <option value="011">011</option>
                 <option value="053">053</option>
@@ -93,15 +102,17 @@
             <div class="col-md-1 text-center h5"> - </div>
 
             <div class="col-md-3 mb-3">
-              <input type="text" v-model="user.m_tel2" ref="m_tel2" size="5" class="form-control" />
+              <input @keyup="checkTel" type="text" v-model="user.m_tel2" size="5" class="form-control" />
             </div>
 
             <div class="col-md-1 text-center h5"> - </div>
 
             <div class="col-md-3 mb-3">
-              <input type="text" v-model="user.m_tel3" ref="m_tel3" size="5" class="form-control" />
+              <input @keyup="checkTel2" type="text" v-model="user.m_tel3" size="5" class="form-control" />
             </div>
+
           </div>
+          <p class="check">{{ telCheck }}</p>
         </div>
 
         <!-- 주소 -->
@@ -110,7 +121,8 @@
           <div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <input type="text" v-model="user.postcode" ref="postcode" class="form-control" placeholder="우편번호" />
+                <input type="text" @click="execDaumPostcode()" v-model="user.postcode" class="form-control"
+                  placeholder="우편번호" />
               </div>
               <div class="col-md-3 mb-3">
                 <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm"
@@ -118,11 +130,9 @@
               </div>
             </div>
             <div>
-              <input type="text" v-model="user.addr" ref="addr" class="form-control mb-3" placeholder="주소" />
-              <input type="text" v-model="user.detailAddr" ref="detailAddr" class="form-control mb-3"
-                placeholder="상세주소" />
-              <input type="text" v-model="user.extraAddr" ref="extraAddr" class="form-control mb-3"
-                placeholder="참고항목" />
+              <input type="text" v-model="user.addr" class="form-control mb-3" placeholder="주소" />
+              <input type="text" v-model="user.detailAddr" class="form-control mb-3" placeholder="상세주소" />
+              <input type="text" v-model="user.extraAddr" class="form-control mb-3" placeholder="참고항목" />
             </div>
           </div>
         </div>
@@ -130,13 +140,20 @@
         <!-- button 회원가입 -->
         <div class="joinBtnDiv">
           <button type="submit" class="btnJoin submitBtn" v-bind:disabled="
-          this.user.m_email === '' ||
-          this.user.m_pw === '' ||
-          this.user.m_email === '' ||
-          this.user.m_tel2 === '' ||
-          this.user.m_tel3 === '' ||
-          this.user.postcode == '' ||
-          this.user.addr == ''">회원가입</button>
+                    this.user.m_email === '' ||
+                    this.user.m_pw === '' ||
+                    this.user.m_email === '' ||
+                    this.user.m_tel2 === '' ||
+                    this.user.m_tel3 === '' ||
+                    this.user.postcode == '' ||
+                    this.user.addr == ''||
+                    !this.isName(this.user.m_nm) ||
+                    !this.isEmail(this.user.m_email + '@' + this.user.m_email2) ||
+                    !this.isPassword(this.user.m_pw1) ||
+                    this.user.m_pw1 !== this.user.m_pw2 ||
+                    !this.isTel(this.user.m_tel2) ||
+                    !this.isTel(this.user.m_tel3)
+          ">회원가입</button>
         </div>
       </form>
 
@@ -166,6 +183,10 @@ export default {
         extraAddr: '',
       },
       emailCheck: '',
+      nameCheck: '',
+      passwordCheck: '',
+      passwordCheck2: '',
+      telCheck: ''
     };
   },
   methods: {
@@ -178,16 +199,52 @@ export default {
       console.log(signUp);
     },
 
-    // 이메일 정규식
+    // 이름 유효성
+    isName(asValue) {
+      const regExp = /^[가-힣]+$/;
+
+      return regExp.test(asValue);
+    },
+    checkName() {
+      this.isName(this.user.m_nm) || this.user.m_nm === '' ? this.nameCheck = '' : this.nameCheck = '한글만 입력가능합니다.'
+    },    
+
+    // 이메일 유효성
     isEmail(asValue) {
-      var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+      const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
       return regExp.test(asValue);
     },
     checkEmail() {
-      this.isEmail(this.user.m_email + '@' + this.user.m_email2) ? this.emailCheck = '이메일형식이 맞습니다' : this.emailCheck = '이메일형식이 맞지 않습니다'
+      this.isEmail(this.user.m_email + '@' + this.user.m_email2) || (this.user.m_email === '' && this.user.m_email2 === '') ? this.emailCheck = '' : this.emailCheck = '이메일형식이 맞지 않습니다'
     },
-    
+
+    // 비밀번호 유효성
+    isPassword(asValue) {
+      const regExp = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{6,16}$/;
+
+      return regExp.test(asValue);
+    },
+    checkPassword() {
+      this.isPassword(this.user.m_pw1) || this.user.m_pw1 === '' ? this.passwordCheck = '' : this.passwordCheck = '영문, 숫자, 특수문자 조합 8~16자만 입력가능합니다.'
+    },
+    checkPassword2() {
+      this.user.m_pw1 === this.user.m_pw2 || this.user.m_pw2 === '' ? this.passwordCheck2 = '' : this.passwordCheck2 = '비밀번호가 일치하지 않습니다.'
+    },
+
+    // 전화번화 유효성
+    isTel(asValue) {
+      const regExp = /^[0-9]{3,4}/;
+
+      return regExp.test(asValue);
+    },
+    checkTel() {
+      this.isTel(this.user.m_tel2) || this.user.m_tel2 === '' ? this.telCheck = '' : this.telCheck = '숫자만 입력가능합니다.'
+    },
+    checkTel2() {
+      this.isTel(this.user.m_tel3) || this.user.m_tel3 === '' ? this.telCheck2 = '' : this.telCheck2 = '숫자만 입력가능합니다.'
+    },
+
     // 도로명 주소 팝업창
     execDaumPostcode() {
       new window.daum.Postcode({
@@ -274,6 +331,11 @@ button {
   display: block;
   height: 1px;
   overflow: hidden;
+}
+
+.check {
+  color: red;
+  margin-bottom: 10px;
 }
 
 /* 뷰티포인트 회원가입 */
