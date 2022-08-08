@@ -18,24 +18,24 @@
       <div>
         <!-- 키보드 열기 -->
         <div class="keyboard">
-          <button class="keyboardBtn" @click="keyboardBtn()">{{ keyboardOpenBtn }}</button>
+          <button class="keyboardBtn" @click="keyboardBtn">{{ keyboardOpenBtn }}</button>
           <span class="keyboardImg">
             <img src="@/assets/img/signIn/img_keyboard.png" alt="키보드 배열 이미지" />
           </span>
         </div>
 
         <form @submit.prevent="submitForm">
-          <!-- input 아이디 -->
+
+          <!-- input 이메일 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" />
-            <button type="button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
-            <div v-show="emailCheck">이메일형식에 맞춰주세요</div>
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" required>
+            <div type="button" class="delBtn" @click="eDelBtn()"><span class="none">삭제</span></div>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" />
-            <button type=" button" class="delBtn" @click="delBtn()"><span class="none">삭제</span></button>
+            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" required>
+            <div type=" button" class="delBtn" @click="pDelBtn()"><span class="none">삭제</span></div>
           </div>
 
           <!-- checkbox 아이디 저장 -->
@@ -48,10 +48,10 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn blueBtn">로그인</button>
+            <button type="submit" class="btn submitBtn blueBtn" @click="submitBtn"
+              v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
           </div>
         </form>
-        <p>{{ errorMsg }}</p>
 
         <!-- button 카카오 로그인 -->
         <div class="kakaoLoginBtn">
@@ -110,7 +110,6 @@ export default {
         m_email: '',
         m_pw: '',
       },
-      emailCheck: false,
     };
   },
   methods: {
@@ -133,19 +132,26 @@ export default {
       console.log(this.$store.state.setUser);
 
       console.log(this.user);
-      if (this.user.m_email === '') {
-        alert('이메일을 입력해주세요.');
-        return;
-      }
-      if (this.user.m_pw === '') {
-        alert('비밀번호를 입력해주세요.');
-        return;
-      }
       const signIn = await this.$post('user/signIn', this.user);
       this.$store.commit('user', signIn);
-      this.$router.push('/');
+      if (this.user.m_email === signIn.result.m_email && this.user.m_pw === signIn.result.m_pw) {
+        this.$router.push('/');
+      } else {
+        alert('이메일 또는 비밀번호를 확인해주세요.');
+        this.user.m_email = '';
+        this.user.m_pw = '';
+      };
       console.log(this.$store.state.user);
-      // console.log(signIn);
+      // console.log(signIn.result.m_email);
+    },
+
+    // ' X ' 버튼 
+    eDelBtn() {
+      this.user.m_email = '';
+    },
+
+    pDelBtn() {
+      this.user.m_pw = '';
     },
 
     // 카카오 로그인
@@ -182,6 +188,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
@@ -308,6 +315,7 @@ input[type='password']:focus {
   -webkit-background-size: 13px auto;
   background-size: 13px auto;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 /* 아모레퍼시픽 뷰티포인트 통합회원 */
@@ -420,6 +428,14 @@ input[type='password']:focus {
   color: #fff;
   border: solid 1px var(--bg-main);
   background-color: var(--bg-main);
+}
+
+.submitBtn:disabled,
+.submitBtn[disabled] {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #c6c6c6;
+  cursor: none;
 }
 
 /* 카카오톡 로그인 버튼 */
