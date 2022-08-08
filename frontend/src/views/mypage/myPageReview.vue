@@ -37,7 +37,7 @@
                         </li>
                         <li>{{ item.pro_price }}</li>
                         <li>{{ item.pur_date }}</li>
-                        <li><button><router-link to="/ReviewWrite"> 리뷰쓰기 </router-link></button></li>
+                        <li><button><router-link :to="{path:'/ReviewWrite', query: { pro_num: item.pro_num }}"> 리뷰쓰기 </router-link></button></li>
                       </ul>
                     </div>
                   </div>
@@ -101,6 +101,7 @@ export default {
       },
       async getUserProductList(m_num) {
         this.userProductList = await this.$get(`/review/getUserProductList/${m_num}`, {});
+        this.$store.commit('userProductList', this.userProductList);
         console.log(this.userProductList);
       },
       userChecking() {
