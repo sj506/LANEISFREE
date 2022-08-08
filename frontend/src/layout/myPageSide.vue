@@ -26,15 +26,17 @@ export default {
 		min-width: 213px;
 		border-right: 0.5px solid #ccc;
 		height: 100vh;
-		position: sticky;
+		z-index: 2;
 	}
 	.inner{
-		padding-left: 50px;
+		padding-left: 40px;
+		position: sticky;
+		top: 100px;
 	}
 	.navList{
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
-		padding: 40px;
+		white-space: nowrap;
 	}
 </style>

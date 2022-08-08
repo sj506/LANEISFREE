@@ -24,42 +24,42 @@
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
           <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
         </div>
-        <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
-          <div class="p_container">
-            <div class="p_header">
-              <div class="review_point">리뷰 포인트 혜택</div>
-              <div class="review_policy">리뷰운영정책 </div>
-            </div>
-            <div class="p_ctnt">
-              <div class="nonList" v-show="!purchaseCheck">
-                구매하신 제품이 있을 경우에만<br>
-                리뷰 작성이 가능합니다.
-              </div>
-              <div v-show="purchaseCheck">
-                <header>
-                  <ul class="d-flex p_ctnt_header">
-                    <li class="">제품명</li>
-                    <li class="">결제금액</li>
-                    <li class="">작성기한</li>
-                    <li class="">리뷰작성</li>
-                  </ul>
-                </header>
-                <div>
-                  <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
-                    <li>
-                      <div class="proNm">{{ item.pro_name }}</div>
-                      <img :src="$getSrc(item.pro_mainimg)" class="proImg">
-                    </li>
-                    <li>{{ item.pro_price }}</li>
-                    <li>{{ item.pur_date }}</li>
-                    <li><button>리뷰쓰기</button></li>
-                  </ul>
+            <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
+              <div class="p_container">
+                <div class="p_header">
+                  <div class="review_point">리뷰 포인트 혜택</div>
+                  <div class="review_policy">리뷰운영정책 </div>
+                </div>
+                <div class="p_ctnt">
+                  <div class="nonList" v-show="!purchaseCheck">
+                    구매하신 제품이 있을 경우에만<br>
+                    리뷰 작성이 가능합니다.
+                  </div>
+                  <div v-show="purchaseCheck">
+                    <header>
+                      <ul class="d-flex p_ctnt_header">
+                        <li class="">제품명</li>
+                        <li class="">결제금액</li>
+                        <li class="">작성기한</li>
+                        <li class="">리뷰작성</li>
+                      </ul>
+                    </header>
+                    <div>
+                      <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
+                        <li>
+                          <div class="proNm">{{ item.pro_name }}</div>
+                          <img :src="$getSrc(item.pro_mainimg)" class="proImg">
+                        </li>
+                        <li>{{ item.pro_price }}</li>
+                        <li>{{ item.pur_date }}</li>
+                        <li><button><router-link :to="{path:'/ReviewWrite', query: { pro_num: item.pro_num }}"> 리뷰쓰기 </router-link></button></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
+            <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
 
         </div>
       </div>
@@ -92,7 +92,7 @@ export default {
       this.userChecking();
       this.getPurchase(this.user.result.m_num);
       console.log(this.purchaseData);
-      this.getUserProductList();
+      this.getUserProductList(this.user.result.m_num);
     },
     methods: {
       displayP(e) {
@@ -114,8 +114,9 @@ export default {
           this.purchaseCheck = true;
         }
       },
-      async getUserProductList() {
-        this.userProductList = await this.$get('/review/getUserProductList', {});
+      async getUserProductList(m_num) {
+        this.userProductList = await this.$get(`/review/getUserProductList/${m_num}`, {});
+        this.$store.commit('userProductList', this.userProductList);
         console.log(this.userProductList);
       },
       userChecking() {
@@ -144,14 +145,20 @@ h3{
   background-color: #17342f;
   color: #fff;
 }
+a{
+  color: var(--text-black);
+  font-style: none;
+}
 /* header */
 #container {
+  width: 100vw;
   min-height: 500px;
   padding-bottom: 110px;
   border-top: 1px solid transparent;
 }
 
 .contents{
+  max-width: 1400px;
   margin: auto;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -211,7 +218,7 @@ h3{
     content: '';
     display: inline-block;
     position: absolute;
-    left: -18px;
+    left: -20px;
     width: 18px;
     height: 17px;
     background: url(https://images.innisfree.co.kr/resources/web2/images/review/icon_exc.png) no-repeat left top;
@@ -247,9 +254,13 @@ h3{
   width: 150px;
   text-align: center;
   position: relative;
+  margin-left: 20px;
 }
 .p_ctnt_ctnt li:nth-child(2){
-  padding-left: 24px;
+  padding-left: 16px;
+}
+.p_ctnt_ctnt li:nth-child(3){
+  padding-left: 15px;
 }
 .proNm{
 }
