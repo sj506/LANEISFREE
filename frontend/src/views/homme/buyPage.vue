@@ -228,6 +228,7 @@ export default {
       userAddr: 0,
     };
   },
+
   computed: {
     loginToggle: function () {
       return this.$store.state.setUser;
@@ -246,17 +247,33 @@ export default {
     this.purchase.m_num = this.$store.state.user.result.m_num;
     this.purchase.m_nm = this.$store.state.user.result.m_nm;
     this.purchase.m_email = this.$store.state.user.result.m_email;
-    this.purchase.m_tel2 = this.$store.state.user.result.m_tel2;
-    this.purchase.m_tel3 = this.$store.state.user.result.m_tel3;
     this.purchase.m_addr = this.$store.state.user.result.m_addr;
+    this.getUserTel();
+    console.log(this.$store.state.user.result);
+    console.log(this.purchase);
   },
   beforeMount() {},
-  mounted() {},
   beforeUpdate() {},
   updated() {},
-  beforeUnmount() {},
   unmounted() {},
+  mounted() {
+    window.addEventListener('beforeunload', this.unLoadEvent);
+  },
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', this.unLoadEvent);
+  },
   methods: {
+    unLoadEvent: function (event) {
+      if (this.canLeaveSite) return;
+
+      event.preventDefault();
+      event.returnValue = '';
+    },
+    getUserTel() {
+      const userTel = this.$store.state.user.result.m_tel.split('-');
+      this.purchase.m_tel2 = userTel[1];
+      this.purchase.m_tel3 = userTel[2];
+    },
     changeTel1(e) {
       this.purchase.m_tel1 = e.target.value;
     },
@@ -397,7 +414,7 @@ select {
 }
 .longInputBox {
   margin-top: 1rem;
-  margin-left: 6.1rem;
+  margin-left: 7.1rem;
   width: 40rem;
 }
 
