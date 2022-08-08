@@ -68,7 +68,6 @@
       </div>
     </div>
     <div v-show="isShow || hommeShow" class="transparent-box"></div>
-    ;
   </header>
 </template>
 
@@ -256,6 +255,7 @@ ul {
   .dropdown-menu {
     display: flex;
     left: -200px;
+    top: 28px;
   }
   .navbar__menu {
     display: none;
