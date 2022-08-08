@@ -4,6 +4,7 @@
     <div class="index-main column-center">
       <best-seller></best-seller>
       <middle-banner></middle-banner>
+      <chat-view></chat-view>
     </div>
   </div>
 </template>
@@ -12,8 +13,9 @@
 import ListItem from '../components/ListItem.vue';
 import BestSeller from '@/components/BestSeller.vue';
 import MiddleBanner from '@/components/MiddleBanner.vue';
+import ChatView from '@/components/ChatView.vue';
 export default {
-  components: { ListItem, BestSeller, MiddleBanner },
+  components: { ListItem, BestSeller, MiddleBanner, ChatView },
   data() {
     return {
       bgColor: false,
@@ -32,9 +34,6 @@ export default {
       let currentScroll = window.scrollY + window.innerHeight;
       // When the user is [modifier]px from the bottom, fire the event.
       let modifier = 1000;
-
-      console.log(`documentHeight = ${documentHeight}`);
-      console.log(`currentScroll = ${currentScroll}`);
       if (currentScroll + modifier > documentHeight) {
         this.bgColor = true;
         this.bgColorOut = false;
