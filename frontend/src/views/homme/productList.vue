@@ -27,9 +27,7 @@ export default {
   name: '',
   components: {},
   data() {
-    return {
-      likeCheck: false,
-    };
+    return {};
   },
   computed: {
     selectProduct() {
@@ -67,12 +65,20 @@ export default {
       target.src = require('@/assets/img' + mainImg);
     },
     likeUp(e) {
-      this.likeCheck = true;
-      e.target.classList.add('fa-solid');
-      e.target.classList.add('bigHeartIcon');
-    },
-    likeDown() {
-      this.likeCheck = false;
+      e.target.classList.forEach((heartIcon) => {
+        if (heartIcon === 'bigHeartIcon') {
+          setTimeout(() => {
+            e.target.classList.remove('bigHeartIcon');
+            e.target.classList.remove('fa-solid');
+          }, 400);
+        } else {
+          setTimeout(() => {
+            e.target.classList.add('fa-solid');
+            e.target.classList.add('bigHeartIcon');
+          }, 400);
+        }
+        return;
+      });
     },
   },
 };
@@ -84,6 +90,7 @@ export default {
   top: 65%;
   left: 80%;
   font-size: 1.3rem;
+  padding: 10px;
 }
 .bigHeartIcon {
   position: absolute;
@@ -92,9 +99,10 @@ export default {
   font-size: 1.3rem;
   color: red;
 }
-.bigHeartIcon:hover {
+.heartIcon:hover {
   animation: heart-effect 1s;
 }
+
 img {
   width: 100%;
   max-width: 250px;
@@ -157,12 +165,8 @@ img:not(:hover) {
 
 @keyframes heart-effect {
   0% {
-    opacity: 0;
+    opacity: 1;
     color: rgb(255, 145, 125);
-  }
-  20% {
-    opacity: 0.5;
-    color: tomato;
   }
   60% {
     opacity: 1;
