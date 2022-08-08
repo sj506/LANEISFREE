@@ -17,6 +17,7 @@ import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
+import ChatView from '@/components/ChatView.vue';
 
 //네비게이션 가드
 const requireAuth = () => (to, from, next) => {
@@ -120,6 +121,11 @@ const routes = [
     component: buyPage,
     props: true,
     beforeEnter: requireAuth(),
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: ChatView,
   },
   // {
   //   path: '/',
