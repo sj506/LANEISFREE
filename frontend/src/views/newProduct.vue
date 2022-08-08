@@ -281,7 +281,9 @@ export default {
   color: var(--text-gray);
 }
 .breadcrumb {
-  display: flex;
+  position: absolute;
+  top: 8%;
+  left: 5%;
   padding-top: 10px;
   padding-left: 20px;
 }
