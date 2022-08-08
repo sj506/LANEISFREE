@@ -1,7 +1,7 @@
 <template>
-  <div class="containers">
+  <div id="container">
 
-    <div class="location">
+    <div class="location headerCate">
       <div class="header">
         <router-link to='/'>
           <div class="depth"><button href="/" class="btn">홈</button></div>
@@ -19,9 +19,9 @@
     </div>
 
     <myPageHeader />
-    <section class="d-flex row align-items-baseline justify-content-between">
+    <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
-      <div class="col-9">
+      <div class="col-10 p-5">
         <h3>찜한 제품</h3>
       </div>
     </section>
@@ -39,19 +39,12 @@ export default {
 
 <style scoped>
 
-.containers {
-  width: 100%;
-}
 
-button,
-a {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  text-decoration: none;
-  outline: none;
+#container {
+  width: 100vw;
+  min-height: 500px;
+  padding-bottom: 110px;
+  border-top: 1px solid transparent;
 }
 
 .location {
@@ -63,6 +56,19 @@ a {
   content: "";
   display: block;
   clear: both;
+}
+.contents {
+  max-width: 1400px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.headerCate {
+  max-width: 1550px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .header {

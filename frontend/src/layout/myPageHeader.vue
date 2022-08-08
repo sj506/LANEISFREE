@@ -1,25 +1,4 @@
 <template>
-  <!-- 마이페이지 상단리스트 -->
-  <!-- <div class="location">
-    <div class="header">
-      <router-link to='/'>
-        <div class="depth"><button href="/" class="btn">홈</button></div>
-      </router-link>
-
-      <div class="depth">
-        <button type="button" class="btn">마이페이지</button>
-      </div>
-
-      <div class="depth">
-        <button type="button" class="btn">주문/배송현황</button>
-      </div>
-
-      <div class="depth">
-        <button type="button" class="btn">주문배송내역</button>
-      </div>
-    </div>
-  </div>  -->
-
   <!-- 000님은 00 회원입니다  -->
   <div class="mypageTop">
     <div class="userBox">

@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <div class="location">
+    <div class="location headerCate">
       <div class="header">
         <router-link to='/'>
           <div class="depth"><button href="/" class="btn">홈</button></div>
@@ -24,42 +24,44 @@
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
           <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
         </div>
-            <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
-              <div class="p_container">
-                <div class="p_header">
-                  <div class="review_point">리뷰 포인트 혜택</div>
-                  <div class="review_policy">리뷰운영정책 </div>
-                </div>
-                <div class="p_ctnt">
-                  <div class="nonList" v-show="!purchaseCheck">
-                    구매하신 제품이 있을 경우에만<br>
-                    리뷰 작성이 가능합니다.
-                  </div>
-                  <div v-show="purchaseCheck">
-                    <header>
-                      <ul class="d-flex p_ctnt_header">
-                        <li class="">제품명</li>
-                        <li class="">결제금액</li>
-                        <li class="">작성기한</li>
-                        <li class="">리뷰작성</li>
-                      </ul>
-                    </header>
-                    <div>
-                      <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
-                        <li>
-                          <div class="proNm">{{ item.pro_name }}</div>
-                          <img :src="$getSrc(item.pro_mainimg)" class="proImg">
-                        </li>
-                        <li>{{ item.pro_price }}</li>
-                        <li>{{ item.pur_date }}</li>
-                        <li><button><router-link :to="{path:'/ReviewWrite', query: { pro_num: item.pro_num }}"> 리뷰쓰기 </router-link></button></li>
-                      </ul>
-                    </div>
-                  </div>
+        <div class="reviewP_ctnt" :class="{ dNone: isActive2}">
+          <div class="p_container">
+            <div class="p_header">
+              <div class="review_point">리뷰 포인트 혜택</div>
+              <div class="review_policy">리뷰운영정책 </div>
+            </div>
+            <div class="p_ctnt">
+              <div class="nonList" v-show="!purchaseCheck">
+                구매하신 제품이 있을 경우에만<br>
+                리뷰 작성이 가능합니다.
+              </div>
+              <div v-show="purchaseCheck">
+                <header>
+                  <ul class="d-flex p_ctnt_header">
+                    <li class="">제품명</li>
+                    <li class="">결제금액</li>
+                    <li class="">작성기한</li>
+                    <li class="">리뷰작성</li>
+                  </ul>
+                </header>
+                <div>
+                  <ul class="d-flex p_ctnt_ctnt" v-for="item in userProductList" :key="item.pro_num">
+                    <li>
+                      <div class="proNm">{{ item.pro_name }}</div>
+                      <img :src="$getSrc(item.pro_mainimg)" class="proImg">
+                    </li>
+                    <li>{{ item.pro_price }}</li>
+                    <li>{{ item.pur_date }}</li>
+                    <li><button>
+                        <router-link :to="{path:'/ReviewWrite', query: { pro_num: item.pro_num }}"> 리뷰쓰기 </router-link>
+                      </button></li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
+          </div>
+        </div>
+        <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
 
         </div>
       </div>
@@ -131,6 +133,7 @@ export default {
 </script>
 
 <style scoped>
+
 
 /* default */
 .dNone{
@@ -272,17 +275,7 @@ a{
     top: -30px;
 }
 
-/* myPage Header */
-button,
-a {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  text-decoration: none;
-  outline: none;
-}
+/* header category */
 
 .location {
   display: flex;
@@ -297,6 +290,13 @@ a {
 
 .header {
   margin-left: 80px;
+}
+
+.headerCate {
+  max-width: 1550px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .depth {

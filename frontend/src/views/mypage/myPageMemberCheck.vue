@@ -1,26 +1,26 @@
 <template>
-  <div class="containers">
+  <div id="container">
 
-  <div class="location">
-    <div class="header">
-      <router-link to='/'>
-        <div class="depth"><button href="/" class="btn">홈</button></div>
-      </router-link>
+    <div class="location headerCate">
+      <div class="header">
+        <router-link to='/'>
+          <div class="depth"><button href="/" class="btn">홈</button></div>
+        </router-link>
 
-      <div class="depth">
-        <button type="button" class="btn">마이페이지</button>
-      </div>
+        <div class="depth">
+          <button type="button" class="btn">마이페이지</button>
+        </div>
 
-      <div class="depth">
-        <button type="button" class="btn">회원정보 수정</button>
+        <div class="depth">
+          <button type="button" class="btn">회원정보 수정</button>
+        </div>
       </div>
     </div>
-  </div>
 
     <myPageHeader />
-    <section class="d-flex row align-items-baseline justify-content-between">
+    <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
-      <div class="col-9">
+      <div class="col-10 p-5">
         <h3>비밀번호 재확인</h3>
         <p>회원님의 개인정보 보호를 위해 비밀번호를 입력해주세요.</p>
         <p>이니스프리는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이는 회원정보가 공개되지 않습니다.</p>
@@ -28,8 +28,8 @@
         <div class="pwForm">
           <form>
             <label>비밀번호</label>
-            <input type="password">
-            <input type="submit" value="확인">
+            <input type="password" @change="pwInput" class="pwInput">
+            <input type="submit" class="pwSubmit" @click.prevent="pwCheckForm" value="확인">
           </form>
         </div>
       </div>
@@ -43,27 +43,22 @@ import myPageSide from '@/layout/myPageSide';
 export default {
   name: '',
   components: { myPageHeader, myPageSide },
+  data() {
+    return {
+
+    }
+  },
 }
 </script>
 
 <style scoped>
 
-.containers {
-  width: 100%;
-}
-.pwForm {
-  margin-top: 80px;
-  text-align: center;
-}
-button,
-a {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  text-decoration: none;
-  outline: none;
+
+#container {
+  width: 100vw;
+  min-height: 500px;
+  padding-bottom: 110px;
+  border-top: 1px solid transparent;
 }
 
 .location {
@@ -77,9 +72,23 @@ a {
   clear: both;
 }
 
+.headerCate {
+  max-width: 1550px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
 .header {
   margin-left: 80px;
 }
+
+.contents {
+  max-width: 1400px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
 
 .depth {
   float: left;
@@ -122,4 +131,34 @@ a {
 .location .list a:hover {
   color: #222;
 }
+
+p{
+  color: #777;
+  padding: 3px;
+}
+
+/* 비밀번호 재확인 form */
+.pwForm {
+  margin-top: 80px;
+  text-align: center;
+}
+.pwCheckInput h3 {
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.pwInput{
+  height: 40px;
+  margin: 0 8px;
+  border: 1px solid #dcdcdc;
+  width: 270px;
+}
+
+.pwSubmit {
+  height: 40px;
+  background: #000;
+  color: #fff;
+  padding: 0 30px;
+}
+
 </style>
