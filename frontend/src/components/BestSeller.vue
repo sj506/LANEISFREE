@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="changeBg">
+  <div>
     <div class="title column-center">
       <h3>BEST SELLER</h3>
     </div>

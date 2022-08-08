@@ -2,16 +2,12 @@
   <header>
     <nav class="navbar" @click="toggleNav">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">브랜드</li>
         <li data-to="/intro" @click="routerPush" @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">팀소개</li>
-        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">
-          미츠아트
-        </li>
+        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">미츠아트</li>
         <li data-to="/best" @click="routerPush" @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">베스트</li>
         <li data-to="/new" @click="routerPush" @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">신상품</li>
         <li data-to="/homme" @click="routerPush" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">옴므</li>
@@ -49,7 +45,7 @@
           </router-link>
         </li>
       </ul>
-      <a href="#" class="navbar__toogleBtn">
+      <a href="#" class="navbar__toogleBtn" @click="menuToggle">
         <i class="fa-solid fa-bars"></i>
       </a>
     </nav>
@@ -107,9 +103,11 @@ export default {
     },
     showHommeBox() {
       this.hommeShow = true;
+      this.isShow = true;
     },
     closeHommeBox() {
       this.hommeShow = false;
+      this.isShow = false;
     },
     logOut() {
       this.$store.commit('user', null);
@@ -118,6 +116,9 @@ export default {
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
     },
+    // menuToggle() {
+    //   this.isShow = !this.isShow;
+    // },
   },
 };
 </script>
@@ -240,6 +241,13 @@ ul {
     margin: 0;
     /* width: 100%; */
   }
+  .navbar__menu li {
+    cursor: pointer;
+  }
+  .dropdown-menu {
+    display: flex;
+    left: -200px;
+  }
   .navbar__menu {
     display: none;
     flex-direction: column;
@@ -251,6 +259,15 @@ ul {
   }
   .navbar__menu li {
     width: 100%;
+  }
+  .contents {
+    display: none;
+  }
+  .contents-link-box {
+    display: none;
+  }
+  .hommeBox {
+    display: none;
   }
   .navbar__icons {
     display: none;
