@@ -94,8 +94,6 @@ export default {
   methods: {
     onResize() {
       this.windowWidth = window.innerWidth;
-      console.log(this.windowWidth);
-      console.log(this.slidesPerView);
 
       if (this.windowWidth < 950) {
         this.slidesPerView = 1;

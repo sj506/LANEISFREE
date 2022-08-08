@@ -66,7 +66,8 @@ export default {
         userCheck: true,
         purchaseData: [],
         purchaseCheck: false,
-        userProductList: {}
+        userProductList: {},
+        userReviewProduct: {}
       };
     },
     beforeCreate() {

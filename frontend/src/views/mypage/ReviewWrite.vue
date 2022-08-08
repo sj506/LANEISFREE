@@ -66,7 +66,8 @@
                                 </div>
                                 <h3 class="review-h2">써 보니 어떠셨나요?</h3>
                                 <input v-model="review_ctnt.ctnt" type="text" name="review_ctnt" class="review_ctnt">
-                                <input id="picture" type="file" accept="image/png,image/jpeg" name="review_pic" @change="fileUpload">
+                                <input id="picture" type="file" accept="image/png,image/jpeg" name="review_pic"
+                                    @change="fileUpload">
                                 <label for="picture" class="input_file"><i class="fa-solid fa-camera"></i> 사진
                                     올리기</label>
                                 <div class="Precautions pt-2 pb-5">※ 상품과 무관한 사진을 첨부한 경우 통보없이 삭제 및 리워드 혜택이 회수될 수 있습니다.
@@ -74,7 +75,7 @@
                                 <div class="d-flex justify-content-between w-100">
                                     <div>
                                         <div class="pb-2"><input type="checkbox">제품 리뷰 이용약관 동의</div>
-                                        <div class="Precautions pb-3">※제품 리뷰 이용야고간에 동의해주세요.</div>
+                                        <div class="Precautions pb-3">※제품 리뷰 이용약관에 동의해주세요.</div>
                                     </div>
                                     <div class="cursor">자세히보기 ></div>
                                 </div>
@@ -107,13 +108,17 @@ export default {
                 ctnt: '',
                 pic: ''
             },
+            user: {},
+            pro_num: ''
         };
     },
     created() {
+        this.user = this.$store.state.user;
+        console.log(this.user);
         this.userProductList = this.$store.state.userProductList;
         console.log(this.userProductList);
-        console.log(this.$route.query.pro_num);
         this.getUserProduct();
+        this.pro_num = this.$route.query.pro_num;
     },
     methods: {
         getUserProduct() {
@@ -142,20 +147,16 @@ export default {
                     }
                 };
             }
-
-            const reviewMain = document.querySelector(".review__main");
-            const reviewSubmit = document.querySelector(".review--submit")
-
-            reviewMain.classList.add("d_block");
-            reviewSubmit.classList.add("footer-ani");
         },
         async submitForm() {
-            const review = await this.$post('review/insertReview', this.review_ctnt);
+            const review = await this.$post(`review/insertReview/${this.user.result.m_num}/${this.pro_num}`, this.review_ctnt);
             // this.$router.push('/signin');
             console.log(review);
+            this.$router.push("./myPageReview");
         },
-        fileUpload(e) {
-            this.review_ctnt.pic = e.target.files;
+        async fileUpload(e) {
+            const image = await this.$base64(e.target.files[0]);
+            this.review_ctnt.pic = image;
             console.log(this.review_ctnt);
         }
     }
