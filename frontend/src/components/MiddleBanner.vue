@@ -142,13 +142,21 @@ export default {
   line-height: 20px;
   font-size: 16px;
 }
-.bottomBanner1 {
-  align-items: flex-start;
-}
 .bottomBanner2 {
   margin-top: 20px;
 }
 .itemWidth {
   width: 600px;
+}
+@media screen and (max-width: 960px) {
+  .banner {
+    flex-direction: column;
+  }
+  .banner-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }
 </style>

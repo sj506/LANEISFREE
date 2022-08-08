@@ -288,6 +288,9 @@ export default {
 </script>
 
 <style scoped>
+.story-container {
+  width: 100%;
+}
 .story-container h1 {
   font-weight: bold;
 }
@@ -345,13 +348,14 @@ export default {
   color: #bed0f5;
 }
 .txt-box p {
-  font-size: 1.3vw;
+  font-size: 1.1vw;
 }
 .section h2 {
   font-size: 2.2vw;
 }
 .section h3 {
-  font-size: 2vw;
+  font-size: 1.8vw;
+  font-weight: bold;
 }
 .blue-color {
   color: #1162b4;
@@ -441,7 +445,7 @@ export default {
 }
 .product-txt p {
   color: var(--text-gray);
-  font-size: 1.4vw;
+  font-size: 1.1vw;
   margin: 20px 0;
   line-height: 1.6vw;
 }
@@ -455,8 +459,9 @@ export default {
 }
 .last-subtitle {
   text-align: center;
+  font-size: 1.3vw;
   color: var(--text-dark-gray);
-  line-height: 20px;
+  line-height: 2.6vw;
 }
 .life-style h1 {
   position: relative;
