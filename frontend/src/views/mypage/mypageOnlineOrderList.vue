@@ -3,7 +3,9 @@
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
-
+      <div class="col-9">
+        <h3>주문조회</h3>
+      </div>
     </section>
   </div>
 </template>
