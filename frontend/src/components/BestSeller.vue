@@ -8,7 +8,7 @@
     </div>
     <div class="swiper-container flex-center">
       <div class="swiper-box">
-        <swiper :slidesPerView="3" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper">
+        <swiper :slidesPerView="slidesPerView" :spaceBetween="30" :navigation="true" :modules="modules" class="mySwiper">
           <swiper-slide v-for="(product, idx) in productList" :key="idx">
             <div class="swiper-item" data-aos="fade-up" :data-aos-duration="`${idx}000`">
               <img :src="require(`../assets/img/bestSeller/${idx + 1}.png`)" alt="" />
@@ -70,7 +70,8 @@ export default {
           engName: 'WATER BANK BLUE HYALURONIC CREAM',
         },
       ],
-      cars: ['hyundai', 'kia', 'bmw', 'volvo', 'benz'],
+      slidesPerView: 3,
+      windowWidth: window.innerWidth,
     };
   },
   components: {
@@ -82,7 +83,31 @@ export default {
       modules: [Navigation],
     };
   },
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+      console.log(this.windowWidth);
+      console.log(this.slidesPerView);
+
+      if (this.windowWidth < 950) {
+        this.slidesPerView = 1;
+      } else {
+        this.slidesPerView = 3;
+      }
+    },
+    changeBg() {
+      let percentHeight = Math.floor(($(window).scrollTop() / ($(document).height() - $(window).height())) * 100);
+      console.log(percentHeight);
+    },
+  },
 };
 </script>
 
@@ -158,5 +183,29 @@ export default {
 }
 .product-info .review-box div {
   margin: 20px 0;
+}
+
+.swiper-item img:hover {
+  animation: wobble-hor-bottom 0.4s both;
+}
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+
+  30% {
+    transform: translateX(-15px) rotate(-4deg);
+  }
+
+  60% {
+    transform: translateX(15px) rotate(4deg);
+  }
+}
+@media screen and (max-width: 960px) {
+  .swiper {
+    width: 50%;
+  }
 }
 </style>
