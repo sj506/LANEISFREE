@@ -1,5 +1,5 @@
 <template>
-  <header class="container">
+  <header class="_container mobile">
     <div class="mainBox">
       <div class="subImgBox">
         <div v-for="img in productImg" :key="img.op_num" class="subImg" @click="changeImg($event.target, img.op_detailimg)">
@@ -255,6 +255,47 @@ export default {
   100% {
     opacity: 1;
     color: #4093ff;
+  }
+}
+
+@media (min-width: 480px) {
+  .mobile {
+    display: flex;
+  }
+}
+
+@media (min-width: 992px) {
+  ._container {
+    max-width: 1040px;
+  }
+}
+
+@media (max-width: 992px) {
+  .subImgBox {
+    display: flex;
+    flex-direction: row;
+  }
+  .mainBox {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1200px) {
+  ._btn {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  ._container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  ._container {
+    max-width: 1320px;
   }
 }
 </style>

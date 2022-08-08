@@ -551,4 +551,21 @@ input {
   text-align: center;
   color: #949494;
 }
+
+@media (max-width: 1240px) {
+  .buy-section {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    top: 0px;
+    height: 100%;
+    width: 80%;
+  }
+  .buy-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 </style>

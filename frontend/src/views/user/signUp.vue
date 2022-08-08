@@ -1,6 +1,5 @@
 <template>
   <div id="body">
-
     <div class="joinBox">
       <div class="join">
         <h1>회원가입</h1>
@@ -99,13 +98,13 @@
               </select>
             </div>
 
-            <div class="col-md-1 text-center h5"> - </div>
+            <div class="col-md-1 text-center h5">-</div>
 
             <div class="col-md-3 mb-3">
               <input @keyup="checkTel" type="text" v-model="user.m_tel2" size="5" class="form-control" />
             </div>
 
-            <div class="col-md-1 text-center h5"> - </div>
+            <div class="col-md-1 text-center h5">-</div>
 
             <div class="col-md-3 mb-3">
               <input @keyup="checkTel2" type="text" v-model="user.m_tel3" size="5" class="form-control" />
@@ -156,10 +155,8 @@
           ">회원가입</button>
         </div>
       </form>
-
     </div>
   </div>
-
 </template>
 
 <script>
@@ -248,7 +245,7 @@ export default {
     // 도로명 주소 팝업창
     execDaumPostcode() {
       new window.daum.Postcode({
-        oncomplete: data => {
+        oncomplete: (data) => {
           if (this.user.extraAddr !== '') {
             this.user.extraAddr = '';
           }
@@ -291,7 +288,7 @@ export default {
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
-  margin: 15px auto
+  margin: 15px auto;
 }
 
 a {
@@ -341,7 +338,6 @@ button {
 /* 뷰티포인트 회원가입 */
 .joinTitle {
   padding: 10px 0 40px;
-
 }
 
 .joinTitle h2 {
@@ -383,7 +379,7 @@ button {
   top: 0;
   width: 60px;
   height: 54px;
-  background: url("@/assets/img/signIn/btn_title_close.png") no-repeat 50% 50%;
+  background: url('@/assets/img/signIn/btn_title_close.png') no-repeat 50% 50%;
   background-size: 23px auto;
 }
 
@@ -393,14 +389,14 @@ button {
   top: 0;
   width: 54px;
   height: 54px;
-  background: url("@/assets/img/signIn/btn_title_back.png") no-repeat 50% 50%;
+  background: url('@/assets/img/signIn/btn_title_back.png') no-repeat 50% 50%;
   -webkit-background-size: 23px auto;
   background-size: 23px auto;
 }
 
 .btnClose:focus,
 .btnPreve:focus {
-  border: 2px solid #0A40D5;
+  border: 2px solid #0a40d5;
 }
 
 /* 회원가입 버튼 */

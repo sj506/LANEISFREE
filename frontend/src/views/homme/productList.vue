@@ -78,7 +78,6 @@ img {
 }
 .productBox {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, minmax(auto, auto));
   grid-template-columns: repeat(4, minmax(auto, auto));
 }
@@ -123,6 +122,14 @@ img:not(:hover) {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .productBox {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(auto, auto));
+    grid-template-columns: repeat(2, minmax(auto, auto));
   }
 }
 </style>
