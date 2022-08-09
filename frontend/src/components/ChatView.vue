@@ -5,15 +5,18 @@
       <button class="btnClose"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="chat-body">
-      <div v-for="(item, idx) in chatList" class="d-flex chat-box" :key="idx">
-        <div class="circle-img">
-          <img src="@/assets/img/logo-nobg.png" alt="" />
-        </div>
-        <div class="chat-content">
-          <div class="user-name">{{ item.name }}</div>
-          <div class="message">
-            {{ item.msg }}
+      <div v-for="(item, idx) in chatList" class="d-flex chat-box" :class="{ sent: item.name === userNm ? true : false }" :key="idx">
+        <div class="chat-section d-flex" :class="{ sent: item.name === userNm ? true : false }">
+          <div class="circle-img">
+            <img src="@/assets/img/logo-nobg.png" alt="" />
           </div>
+          <div class="chat-content">
+            <div class="user-name">{{ item.name }}</div>
+            <div class="message" :class="{ sent: item.name === userNm ? true : false }">
+              {{ item.msg }}
+            </div>
+          </div>
+          <div class="time">{{ item.time }}</div>
         </div>
       </div>
     </div>
@@ -26,26 +29,41 @@
 </template>
 
 <script>
+import dayjs from 'dayjs';
+
 export default {
   data() {
     return {
+      component: {
+        dayjs,
+      },
       input: '',
       chatList: [],
       user: {},
+      userNm: '',
+      sent: false,
     };
   },
   created() {
     this.user = this.$store.state.user;
+    this.userNm = this.user.result['m_nm'];
+    console.log(this.time);
     this.$socket.on('msg', (data) => {
       this.chatList.push(data);
     });
   },
+  updated() {
+    const chatBody = document.querySelector('.chat-body');
+    chatBody.scrollTop = chatBody.scrollHeight;
+  },
+
   methods: {
     sendMsg() {
       if (this.input !== '') {
         this.$socket.emit('msg', {
           msg: this.input,
           name: this.user.result['m_nm'],
+          time: dayjs().format('h:mm A'),
         });
         this.input = '';
       }
@@ -76,6 +94,9 @@ export default {
   width: 100%;
   height: 48px;
 }
+.chat-section {
+  align-items: flex-end;
+}
 .chat-header .chat-title {
   padding: 0;
   margin: 0;
@@ -100,11 +121,9 @@ export default {
 }
 .chat-body {
   width: 100%;
-  height: 100%;
-  min-height: 300px;
-  max-height: 500px;
+  height: 300px;
   overflow-y: auto;
-  padding: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -146,6 +165,15 @@ export default {
   background-color: var(--bg-white);
   border-radius: 0 5px 5px 5px;
 }
+.message.sent {
+  background-color: var(--bg-main);
+  color: var(--text-white);
+
+  border-radius: 5px 0px 5px 5px;
+}
+.sent {
+  flex-direction: row-reverse;
+}
 .circle-img {
   width: 40px;
   height: 40px;
@@ -157,5 +185,10 @@ export default {
 }
 .chat-footer input[type='text']:focus {
   outline: none;
+}
+.time {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin: 5px;
 }
 </style>
