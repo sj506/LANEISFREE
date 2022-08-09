@@ -84,11 +84,11 @@
                 </ul>
               </div>
             </div>
-            <div class="w_review">{{item.re_ctnt}}</div>
-            <div class="w_btn">
-              <div><button>수정</button></div>
-              <div><button>삭제</button></div>
-            </div>
+              <div class="w_review">{{item.re_ctnt}}</div>
+              <div class="w_btn d-flex justify-content-end pt-2">
+                <div><button class="btn btn-outline-dark">수정</button></div>
+                <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+              </div>
           </div>
         </div>
       </div>
@@ -118,6 +118,16 @@ export default {
     },
     beforeCreate() {
     },
+    // computed: {
+    //   loginToggle: function () {
+    //     return this.$store.state.setUser;
+    //   },
+    // },
+    // watch: {
+    //   loginToggle: function () {
+    //     this.loginCheck();
+    //   },
+    // },
     created() {
       this.user = this.$store.state.user;
       console.log(this.user.result);
@@ -129,6 +139,12 @@ export default {
       this.getWritenReview(this.user.result.m_num);
     },
     methods: {
+      // loginCheck() {
+      //   if(!this.$store.state.user) {
+      //     alert('로그인 한 유저만 구매가 가능합니다.');
+      //     this.$router.push('signin');
+      //   } 
+      // },
       displayP(e) {
         this.isActive1 = true;
         this.isActive2 = false;
@@ -161,6 +177,12 @@ export default {
         this.writenReview = await this.$get(`/review/getWritenReview/${m_num}`, {});
         console.log(this.writenReview);
       },
+      async reviewDel(pro_num, m_num) {
+        await this.$get(`/review/reviewDel/${m_num}/${pro_num}`, {});
+        this.getUserProductList(this.user.result.m_num);
+        this.getWritenReview(this.user.result.m_num);
+        this.displayP();
+      },
       userChecking() {
         if(this.user.result === undefined){
           this.userCheck = true;
@@ -168,6 +190,7 @@ export default {
           this.userCheck = false;
           } 
       },
+
 
     }
 }
@@ -337,6 +360,13 @@ a{
   padding-top: 10px;
   font-size: 20px;
   font-weight: 600;
+}
+.w_review{
+  margin-top: 20px;
+  color: #222;
+}
+.w_btn{
+  gap: 5px;
 }
 .user_hash{
 }

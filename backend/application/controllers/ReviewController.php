@@ -66,4 +66,13 @@ class ReviewController extends Controller
         return $this->model->getWritenReview($param);
     }
 
+    public function reviewDel() {
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ 
+            "m_num" => intval($urlPaths[2]),
+            "pro_num" => intval($urlPaths[3])
+         ];
+        return $this->model->reviewDel($param);
+    }
 }

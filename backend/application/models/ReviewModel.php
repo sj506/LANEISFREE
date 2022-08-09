@@ -74,4 +74,13 @@ class ReviewModel extends Model
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function reviewDel($param) {
+        $sql = 'DELETE FROM t_review WHERE m_num = :m_num AND pro_num = :pro_num';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":m_num", $param["m_num"]);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->execute();
+        return intval($this->pdo->lastInsertId());
+    }
+
 }
