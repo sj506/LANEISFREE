@@ -6,7 +6,9 @@
         <i class="fa-solid fa-comment-smile"></i>
       </div>
     </div>
-    <div class="toTop"></div>
+    <div class="toTop">
+      <i class="fa-solid fa-angle-up"></i>
+    </div>
   </aside>
 </template>
 
