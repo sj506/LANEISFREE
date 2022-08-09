@@ -95,7 +95,7 @@ export default {
     onResize() {
       this.windowWidth = window.innerWidth;
 
-      if (this.windowWidth < 950) {
+      if (this.windowWidth < 970) {
         this.slidesPerView = 1;
       } else {
         this.slidesPerView = 3;
@@ -201,7 +201,7 @@ export default {
     transform: translateX(15px) rotate(4deg);
   }
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
   .swiper {
     width: 50%;
   }
