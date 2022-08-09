@@ -13,7 +13,7 @@ export default createStore({
       고민별: ['전체보기', '주름/탄력/보습', '수분/보습'],
       라인별: ['전체보기', '블루에너지', '크림 스킨', '액티브워터', '기타'],
     },
-    userProductList: []
+    userProductList: [],
   },
   getters: {},
   mutations: {
@@ -34,11 +34,12 @@ export default createStore({
     },
     userProductList: (state, data) => {
       state.userProductList = data;
-    }
+    },
   },
   plugins: [
     createPersistedState({
-      paths: ['user', 'setUser', 'getProductList'],
+      paths: ['setUser', 'getProductList', 'user.result.m_email', 'user.result.m_tel', 'user.result.m_addr', 'user.result.m_nm'],
+      storage: window.sessionStorage,
     }),
   ],
   actions: {},
