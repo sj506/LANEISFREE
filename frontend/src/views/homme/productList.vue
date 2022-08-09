@@ -12,7 +12,7 @@
             :data-category="product.cate_class"
           />
           <div class="heartIconBox">
-            <i class="fa-regular fa-heart heartIcon" @mouseover="likeUp"></i>
+            <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon" @mouseover="likeUp"></i>
             <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
           </div>
           <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
@@ -30,18 +30,31 @@ export default {
     return {};
   },
   computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
     selectProduct() {
       return this.$store.state.selectProduct;
     },
   },
+
+  watch: {
+    loginToggle: function () {
+      this.heartClear();
+    },
+  },
+
   beforeCreate() {},
   created() {
     this.getProductList();
   },
+
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
-  updated() {},
+  updated() {
+    this.getHeart();
+  },
   beforeUnmount() {},
   unmounted() {},
   methods: {
@@ -64,20 +77,52 @@ export default {
     reChangeImg(target, mainImg) {
       target.src = require('@/assets/img' + mainImg);
     },
-    likeUp(e) {
-      e.target.classList.forEach((heartIcon) => {
-        if (heartIcon === 'bigHeartIcon') {
-          setTimeout(() => {
-            e.target.classList.remove('bigHeartIcon');
-            e.target.classList.remove('fa-solid');
-          }, 400);
-        } else {
-          setTimeout(() => {
-            e.target.classList.add('fa-solid');
-            e.target.classList.add('bigHeartIcon');
-          }, 400);
-        }
+    async likeUp(e) {
+      if (this.loginToggle === 0) {
+        alert('로그인 후 찜을 할 수 있습니다');
         return;
+      }
+
+      if (e.target.classList[4] === 'bigHeartIcon') {
+        setTimeout(() => {
+          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          this.$post('product/delHeart', param);
+
+          e.target.classList.remove('bigHeartIcon');
+          e.target.classList.remove('fa-solid');
+        }, 400);
+      } else {
+        setTimeout(() => {
+          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const insHeart = this.$post('product/insHeart', param);
+
+          e.target.classList.add('fa-solid');
+          e.target.classList.add('bigHeartIcon');
+
+          if (insHeart === 0) {
+            alert('찜 하기에 실패하였습니다.');
+            return;
+          }
+        }, 400);
+      }
+    },
+
+    async getHeart() {
+      const param = { m_num: this.$store.state.user.result.m_num };
+      const getHeart = await this.$post('product/getHeart', param);
+      getHeart.result.forEach((heartNum) => {
+        this.$refs.heart.forEach((heart) => {
+          if (heart.dataset.pro_num == heartNum.pro_num) {
+            heart.classList.add('fa-solid');
+            heart.classList.add('bigHeartIcon');
+          }
+        });
+      });
+    },
+    heartClear() {
+      this.$refs.heart.forEach((heart) => {
+        heart.classList.remove('fa-solid');
+        heart.classList.remove('bigHeartIcon');
       });
     },
   },

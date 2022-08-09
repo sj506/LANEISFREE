@@ -32,4 +32,37 @@ class ProductController extends Controller
 
         return [_RESULT => $result];
     }
+    public function insHeart()
+    {
+        $json = getJson();
+        $param = [
+            'm_num' => $json['m_num'],
+            'pro_num' => $json['pro_num'],
+        ];
+        $result = $this->model->insHeart($param);
+
+        return [_RESULT => $result];
+    }
+
+    public function delHeart()
+    {
+        $json = getJson();
+        $param = [
+            'm_num' => $json['m_num'],
+            'pro_num' => $json['pro_num'],
+        ];
+        $result = $this->model->delHeart($param);
+
+        return [_RESULT => $result];
+    }
+    public function getHeart()
+    {
+        $json = getJson();
+        $param = [
+            'm_num' => $json['m_num'],
+        ];
+        $result = $this->model->getHeart($param);
+
+        return [_RESULT => $result];
+    }
 }
