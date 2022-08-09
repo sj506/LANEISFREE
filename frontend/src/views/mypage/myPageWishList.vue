@@ -1,9 +1,9 @@
 <template>
-  <div id="container">
+  <div class="containers">
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
-      <div class="col-9 reviewHeader">
+      <div class="col-9">
         <h3>찜한 제품</h3>
         <!-- <div class="reviewDiv">
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
@@ -125,118 +125,7 @@ export default {
 </script>
 
 <style scoped>
-/* default */
-.dNone {
-  display: none;
-}
-h3 {
-  font-size: 30px;
-  font-weight: 600;
-  padding-bottom: 20px;
-}
-a {
-  color: var(--text-black);
-  font-style: none;
-}
-/* header */
-#container {
-  width: 100vw;
-  min-height: 500px;
-  padding-bottom: 110px;
-  border-top: 1px solid transparent;
-}
-
-.contents {
-  max-width: 1400px;
-  margin: auto;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-
-/* main */
-.reviewHeader {
-  padding: 40px;
-  min-width: 560px;
-}
-
-/* reviewP */
-.p_header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid #000;
-}
-.nonList {
-  width: 100% !important;
-  margin: 80px 0 0;
-  padding: 120px 0 40px;
-  text-align: center;
-  font: 22px/32px 'SDNeoL', 'notoR';
-  color: #222;
-  background: url(https://images.innisfree.co.kr/resources/web2/images/common/bg_no_list.png) no-repeat 50% 40px;
-  background-size: 60px;
-}
-.p_ctnt_header {
-  padding: 20px 0;
-  font-weight: 600;
-  border-bottom: 1px solid var(--text-light-gray);
-  background-color: rgba(223, 224, 226, 0.712);
-}
-
-table {
-  min-width: 560px;
+.containers {
   width: 100%;
-}
-
-._th {
-  padding: 20px;
-  padding-left: 50px;
-}
-
-._th > label {
-  display: flex;
-}
-
-.SelectBox {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-td {
-  vertical-align: middle;
-}
-.onceSelectBox {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.allSelect {
-  width: 300px;
-}
-.product_img {
-  width: 130px;
-  margin-left: 3rem;
-}
-.product_box {
-  text-align: center;
-  border-bottom: 1px solid #afafaf;
-}
-.selPrice {
-  padding-left: 7rem;
-}
-._tbody {
-}
-
-._flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btnBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
 }
 </style>
