@@ -64,8 +64,10 @@ class ProductModel extends Model
     }
     public function getHeart(&$param)
     {
-        $sql = "SELECT m_num, pro_num FROM t_like
-        WHERE m_num = :m_num";
+        $sql = "SELECT a.m_num, a.pro_num, b.* FROM t_like a
+                INNER JOIN t_product b
+                on a.pro_num = b.pro_num
+                WHERE m_num = :m_num";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);

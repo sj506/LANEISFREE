@@ -11,14 +11,15 @@
             :src="$getSrc(product.pro_mainimg)"
             :data-category="product.cate_class"
           />
-          <div class="heartIconBox">
-            <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon" @mouseover="likeUp"></i>
-            <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
-          </div>
+
           <div class="pro_tag">{{ product.pro_tag1 }} {{ product.pro_tag2 }}</div>
           <div class="pro_name">{{ product.pro_name }}</div>
         </div>
       </router-link>
+      <div class="heartIconBox">
+        <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon" @click="likeUp"></i>
+        <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
+      </div>
     </li>
   </ul>
 </template>
@@ -134,18 +135,19 @@ export default {
   position: absolute;
   top: 65%;
   left: 80%;
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 10px;
+  color: var(--bg-gray);
 }
 .bigHeartIcon {
   position: absolute;
   top: 65%;
   left: 80%;
-  font-size: 1.3rem;
-  color: red;
+  font-size: 1rem;
+  color: var(--bg-point);
 }
 .heartIcon:hover {
-  animation: heart-effect 1s;
+  animation: heart-effect 0.5s infinite;
 }
 
 img {
@@ -209,18 +211,15 @@ img:not(:hover) {
 }
 
 @keyframes heart-effect {
-  0% {
+  50% {
     opacity: 1;
-    color: rgb(255, 145, 125);
-  }
-  60% {
-    opacity: 1;
-    color: tomato;
-    margin-left: 10px;
+    color: rgb(0, 81, 255);
+    margin-left: 5px;
   }
   100% {
     opacity: 1;
-    color: red;
+    color: rgb(0, 81, 255);
+    margin-right: 5px;
   }
 }
 
