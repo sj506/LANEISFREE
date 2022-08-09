@@ -22,7 +22,7 @@
                   <thead>
                     <tr class="p_ctnt_header">
                       <th class="_th allSelect">
-                        <label><input class="SelectBox" type="checkbox" />전체선택</label>
+                        <label><input class="SelectBox" type="checkbox" @click="selectAll" />전체선택</label>
                       </th>
                       <th class="_th"></th>
                       <th class="_th selPrice">판매가</th>
@@ -32,7 +32,13 @@
                   <tbody class="_tbody">
                     <tr class="product_box" v-for="(likeProduct, idx) in likeList" :key="idx">
                       <td class="_flex">
-                        <input class="SelectBox onceSelectBox" type="checkbox" />
+                        <input
+                          class="SelectBox onceSelectBox"
+                          type="checkbox"
+                          :checked="checkboxSelect"
+                          :data-pro_num="likeProduct.pro_num"
+                          ref="buyProduct"
+                        />
                         <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
                           <img class="product_img" :src="this.$getSrc(likeProduct.pro_mainimg)" />
                         </router-link>
@@ -47,6 +53,9 @@
                     </tr>
                   </tbody>
                 </table>
+                <div class="btnBox">
+                  <button @click="clickBuy">장바구니에 담기</button>
+                </div>
               </div>
             </div>
           </div>
@@ -67,7 +76,18 @@ export default {
       isActive2: false,
       purchaseCheck: false,
       likeList: {},
+      checkboxSelect: false,
     };
+  },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
+  },
+  watch: {
+    loginToggle: function () {
+      this.loginCheck();
+    },
   },
   created() {
     this.getHeart();
@@ -81,6 +101,22 @@ export default {
       }
       console.log(getHeart.result);
       this.likeList = getHeart.result;
+    },
+    selectAll() {
+      this.checkboxSelect = !this.checkboxSelect;
+    },
+    loginCheck() {
+      if (!this.$store.state.user) {
+        alert('로그인 한 유저만 구매가 가능합니다.');
+        this.$router.push('signin');
+      }
+    },
+    clickBuy() {
+      this.$refs.buyProduct.forEach((ele) => {
+        if (ele.checked) {
+          console.log(ele.dataset.pro_num);
+        }
+      });
     },
   },
 };
@@ -184,7 +220,7 @@ td {
   border-bottom: 1px solid #afafaf;
 }
 .selPrice {
-  padding-left: 5.5rem;
+  padding-left: 7rem;
 }
 ._tbody {
 }
@@ -192,6 +228,13 @@ td {
 ._flex {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
 }
 </style>

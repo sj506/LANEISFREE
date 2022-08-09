@@ -17,7 +17,7 @@
         </div>
       </router-link>
       <div class="heartIconBox">
-        <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon" @click="likeUp"></i>
+        <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon pointer" @click="likeUp"></i>
         <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
       </div>
     </li>
@@ -84,7 +84,7 @@ export default {
         return;
       }
 
-      if (e.target.classList[4] === 'bigHeartIcon') {
+      if (e.target.classList[5] === 'bigHeartIcon') {
         setTimeout(() => {
           const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
           this.$post('product/delHeart', param);
@@ -147,7 +147,7 @@ export default {
   color: var(--bg-point);
 }
 .heartIcon:hover {
-  animation: heart-effect 0.5s infinite;
+  animation: heart-effect 0.5s both;
 }
 
 img {
@@ -211,15 +211,16 @@ img:not(:hover) {
 }
 
 @keyframes heart-effect {
-  50% {
-    opacity: 1;
-    color: rgb(0, 81, 255);
-    margin-left: 5px;
-  }
+  0%,
   100% {
-    opacity: 1;
-    color: rgb(0, 81, 255);
-    margin-right: 5px;
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+  30% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  60% {
+    transform: translateX(3px) rotate(1deg);
   }
 }
 
