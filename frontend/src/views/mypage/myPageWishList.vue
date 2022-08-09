@@ -1,9 +1,9 @@
 <template>
-  <div class="containers">
+  <div id="container">
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide />
-      <div class="col-9">
+      <div class="col-9 reviewHeader">
         <h3>찜한 제품</h3>
         <!-- <div class="reviewDiv">
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
@@ -49,14 +49,14 @@
                           {{ likeProduct.pro_name }}
                         </router-link>
                       </td>
-                      <td>수량</td>
-                      <td>{{ this.$addComma(likeProduct.pro_price) }}원</td>
+                      <td><input type="number" class="pro_count" v-model="likeProduct.pro_count" min="0" /></td>
+                      <td>{{ this.$addComma(likeProduct.pro_count * likeProduct.pro_price) }}원</td>
                       <td></td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="btnBox">
-                  <button @click="clickBuy">장바구니에 담기</button>
+                  <button class="buyBtn" @click="clickBuy">장바구니에 담기</button>
                 </div>
               </div>
             </div>
@@ -103,6 +103,9 @@ export default {
       }
       console.log(getHeart.result);
       this.likeList = getHeart.result;
+      this.likeList.forEach((likeProduct) => {
+        likeProduct.pro_count = 1;
+      });
     },
     selectAll() {
       this.checkboxSelect = !this.checkboxSelect;
@@ -113,19 +116,159 @@ export default {
         this.$router.push('signin');
       }
     },
-    clickBuy() {
+    async clickBuy() {
+      const param = [];
+      console.log(this.$store.state.user.result.m_num);
       this.$refs.buyProduct.forEach((ele) => {
         if (ele.checked) {
-          console.log(ele.dataset.pro_num);
+          // console.log(ele.dataset.pro_num);
+          // 체크박스 인풋에서 true인 상품들만 리스트를 가져온다
+          this.likeList.forEach((likeProduct) => {
+            if (likeProduct.pro_num == ele.dataset.pro_num) {
+              // 체크박스가 true인 상품번호와 찜목록에 상품번호가 일치한 상품만
+              // 수량과 상품번호를 param값에 전달한다 여기서 param을 만들면 param이 여러개가 만들어져서 밖으로 뺐다.
+              const basketList = { m_num: this.$store.state.user.result.m_num, pro_num: ele.dataset.pro_num, ba_stock: likeProduct.pro_count };
+              param.push(basketList);
+            }
+          });
         }
       });
+      const basketList = await this.$post('product/insbasket', param);
+      console.log(basketList);
     },
   },
 };
 </script>
 
 <style scoped>
-.containers {
+/* default */
+.dNone {
+  display: none;
+}
+h3 {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+a {
+  color: var(--text-black);
+  font-style: none;
+}
+/* header */
+#container {
+  width: 100vw;
+  min-height: 500px;
+  padding-bottom: 110px;
+  border-top: 1px solid transparent;
+}
+
+.contents {
+  max-width: 1400px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+/* main */
+.reviewHeader {
+  padding: 40px;
+  min-width: 560px;
+}
+
+/* reviewP */
+.p_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000;
+}
+.nonList {
+  width: 100% !important;
+  margin: 80px 0 0;
+  padding: 120px 0 40px;
+  text-align: center;
+  font: 22px/32px 'SDNeoL', 'notoR';
+  color: #222;
+  background: url(https://images.innisfree.co.kr/resources/web2/images/common/bg_no_list.png) no-repeat 50% 40px;
+  background-size: 60px;
+}
+.p_ctnt_header {
+  padding: 20px 0;
+  font-weight: 600;
+  border-bottom: 1px solid var(--text-light-gray);
+  background-color: rgba(223, 224, 226, 0.712);
+}
+
+table {
+  min-width: 560px;
   width: 100%;
+}
+
+._th {
+  padding: 20px;
+  padding-left: 50px;
+}
+
+._th > label {
+  display: flex;
+}
+
+.SelectBox {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+td {
+  vertical-align: middle;
+}
+.onceSelectBox {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.allSelect {
+  width: 300px;
+}
+.product_img {
+  width: 130px;
+  margin-left: 3rem;
+}
+.product_box {
+  text-align: center;
+  border-bottom: 1px solid #afafaf;
+}
+.selPrice {
+  padding-left: 5rem;
+}
+._tbody {
+}
+
+._flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pro_count {
+  text-align: center;
+  width: 3rem;
+}
+
+.buyBtn {
+  margin-top: 20px;
+  width: 180px;
+  height: 50px;
+  font-size: 19px;
+  font-weight: bold;
+  background-color: var(--bg-main);
+  border: none;
+  color: var(--text-white);
 }
 </style>

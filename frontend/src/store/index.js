@@ -38,7 +38,8 @@ export default createStore({
   },
   plugins: [
     createPersistedState({
-      paths: ['user', 'setUser', 'getProductList'],
+      paths: ['setUser', 'getProductList', 'user.result.m_email', 'user.result.m_tel', 'user.result.m_addr', 'user.result.m_nm', 'user.result.m_num'],
+      storage: window.sessionStorage,
     }),
   ],
   actions: {},

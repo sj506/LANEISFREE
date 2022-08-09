@@ -65,4 +65,26 @@ class ProductController extends Controller
 
         return [_RESULT => $result];
     }
+
+    public function insbasket()
+    {
+        $json = getJson();
+        foreach ($json as $json) {
+
+            $param = [
+                'm_num' => $json['m_num'],
+                'pro_num' => $json['pro_num'],
+                'ba_stock' => $json['ba_stock'],
+            ];
+
+            $overlapCheck = $this->model->selbasket($param);
+            if ($overlapCheck) {
+                $this->model->updbasket($param);
+            }
+            $result = $this->model->insbasket($param);
+        }
+
+
+        return [_RESULT => $result];
+    }
 }
