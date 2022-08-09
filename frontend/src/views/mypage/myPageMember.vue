@@ -98,10 +98,10 @@
                   <input type="submit" value="우편번호 검색">
                 </div>
                 <div>
-                  <input type="text" disabled>
+                  <input type="text" class="inputText" style="width: 70%;" disabled>
                 </div>
                 <div>
-                  <input type="text">
+                  <input type="text" class="inputText" style="width: 70%;">
                 </div>
               </td>
             </tr>
