@@ -46,7 +46,9 @@ export default {
   },
   created() {
     this.user = this.$store.state.user;
-    this.userNm = this.user.result['m_nm'];
+    if (this.user.result['m_nm']) {
+      this.userNm = this.user.result['m_nm'];
+    }
     console.log(this.time);
     this.$socket.on('msg', (data) => {
       this.chatList.push(data);
