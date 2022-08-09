@@ -51,7 +51,7 @@
                       <img :src="$getSrc(item.pro_mainimg)" class="proImg">
                     </li>
                     <li>{{ item.pro_price }}</li>
-                    <li>{{ item.pur_date }}</li>
+                    <li>{{ item.pur_deadline }}</li>
                     <li><button>
                         <router-link :to="{path:'/ReviewWrite', query: { pro_num: item.pro_num }}"> 리뷰쓰기 </router-link>
                       </button></li>
@@ -62,7 +62,49 @@
           </div>
         </div>
         <div class="reviewW_ctnt" :class="{ dNone: isActive1}">
-
+          <div class="w_container" v-for="item in writenReview" :key="item.pro_num">
+            <div class="w_main row">
+              <div class="w_user col-6 p-3 d-flex justify-content-between align-items-center">
+                <div class="user_info">
+                  <ul>
+                    <li class="p-1">{{ item.m_email }}</li>
+                    <li class="p-1 user_hash">#남성 #20대</li>
+                  </ul>
+                  <div class="star--box">
+                    <div class="star">
+                      <div class="stars-outer">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <div class="stars-inner" :class="'star' + item.re_star">
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-1 re_time">{{ item.re_time }}</div>
+              </div>
+              <div class="w_ctnt col-6 p-3 d-flex align-items-center" >
+                <div><img class="reviewImg" :src="$getSrc(item.pro_mainimg)" alt=""></div>
+                <ul>
+                  <li>{{ item.pro_name }}</li>
+                  <li class="pro_price">{{ item.pro_price }}원</li>
+                </ul>
+              </div>
+            </div>
+              <div class="w_review">{{item.re_ctnt}}</div>
+              <div class="w_btn d-flex justify-content-end pt-2">
+                <div><button class="btn btn-outline-dark">수정</button></div>
+                <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+              </div>
+          </div>
         </div>
       </div>
     </section>
@@ -83,10 +125,23 @@ export default {
         userCheck: true,
         purchaseData: [],
         purchaseCheck: false,
-        userProductList: {}
+        userProductList: {},
+        userReviewList: {},
+        writenReview: [],
+        stars: ["star1", "star2", "star3", "star4", "star5"]
       };
     },
     beforeCreate() {
+    },
+    computed: {
+      loginToggle: function () {
+        return this.$store.state.setUser;
+      },
+    },
+    watch: {
+      loginToggle: function () {
+        this.loginCheck();
+      },
     },
     created() {
       this.user = this.$store.state.user;
@@ -95,8 +150,16 @@ export default {
       this.getPurchase(this.user.result.m_num);
       console.log(this.purchaseData);
       this.getUserProductList(this.user.result.m_num);
+      this.getUserReviewList(this.user.result.m_num);
+      this.getWritenReview(this.user.result.m_num);
     },
     methods: {
+      loginCheck() {
+        if(!this.$store.state.user) {
+          alert('로그인 한 유저만 구매가 가능합니다.');
+          this.$router.push('signin');
+        } 
+      },
       displayP(e) {
         this.isActive1 = true;
         this.isActive2 = false;
@@ -121,6 +184,20 @@ export default {
         this.$store.commit('userProductList', this.userProductList);
         console.log(this.userProductList);
       },
+      async getUserReviewList(m_num) {
+        this.userReviewList = await this.$get(`/review/getUserReview/${m_num}`, {});
+        console.log(this.userReviewList);
+      },
+      async getWritenReview(m_num) {
+        this.writenReview = await this.$get(`/review/getWritenReview/${m_num}`, {});
+        console.log(this.writenReview);
+      },
+      async reviewDel(pro_num, m_num) {
+        await this.$get(`/review/reviewDel/${m_num}/${pro_num}`, {});
+        this.getUserProductList(this.user.result.m_num);
+        this.getWritenReview(this.user.result.m_num);
+        this.displayP();
+      },
       userChecking() {
         if(this.user.result === undefined){
           this.userCheck = true;
@@ -128,6 +205,8 @@ export default {
           this.userCheck = false;
           } 
       },
+
+
     }
 }
 </script>
@@ -274,6 +353,71 @@ a{
     left: -96px;
     top: -30px;
 }
+/* review W */
+.w_container{
+  margin-top: 50px;
+}
+.w_main{
+  border: 1px solid #ccc;
+}
+.w_user{
+  border-right: 1px solid #ccc;
+}
+.reviewImg{
+  width:100px;
+  height:100px;
+}
+.w_ctnt{
+}
+.re_time{
+  align-self: flex-start;
+  color: #777;
+}
+.pro_price{
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.w_review{
+  margin-top: 20px;
+  color: #222;
+}
+.w_btn{
+  gap: 5px;
+}
+.user_hash{
+}
+/* 리뷰별점 */
+.user_info{
+  display: flex;
+  flex-direction: column;
+}
+.star--box{
+  display: inline;
+  width: 92px;
+  padding-top: 5px;
+}
+.store--rating i {
+  font-size: 18px;
+}
+.stars-outer {
+  position: relative;
+  display: flex;
+}
+
+.stars-inner {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.stars-outer i {
+  font-weight: 900;
+  color: #ccc;
+}
 
 /* header category */
 
@@ -341,4 +485,26 @@ a{
   color: #222;
 }
 
+.stars-inner i {
+  font-weight: 900;
+  color: #fcd34d;
+}
+.stars-inner.star5 {
+  width: 100% !important;
+}
+.stars-inner.star4 {
+  width: 80% !important;
+}
+.stars-inner.star3 {
+  width: 60% !important;
+}
+.stars-inner.star2 {
+  width: 40% !important;
+}
+.stars-inner.star1 {
+  width: 20% !important;
+}
+.stars-inner.star0 {
+  width: 0% !important;
+}
 </style>
