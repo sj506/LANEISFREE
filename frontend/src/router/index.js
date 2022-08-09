@@ -5,6 +5,7 @@ import index from '../views/index.vue';
 import introduce from '../views/introduce.vue';
 import bestProduct from '../views/bestProduct.vue';
 import newProduct from '../views/newProduct.vue';
+import myPageMember from '../views/mypage/myPageMember.vue';
 import myPageMemberCheck from '../views/mypage/myPageMemberCheck.vue';
 import mypageOnlineOrderList from '../views/mypage/mypageOnlineOrderList.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
@@ -79,6 +80,12 @@ const routes = [
     path: '/meetsart',
     name: 'meetsart',
     component: meetsArt,
+  },
+  {
+    path: '/myPageMember',
+    name: 'myPageMember',
+    component: myPageMember,
+    // beforeEnter: requireAuth(),
   },
   {
     path: '/myPageMemberCheck',
