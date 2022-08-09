@@ -9,25 +9,21 @@
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
       >
-        <div class="main-box">
+        <div class="main-box" v-for="(best,idx) in bestProduct" :key="idx">
             <img
-              src="../assets/img/bsetProduct/크림스킨가로.jpg"
+              :src="this.$getSrc(best.imgSrc)"
               alt="크림스킨"
             />
           <div class="txt">
-            <h3>크림 스킨</h3>
-            <h4>CREAM SKIN REFINER</h4>
-            <p class="desc">
-              크림 한 통을 그대로 녹여내어 <br class="pc-only" />
-              스킨만으로도 <br class="mo-only" />크림을 바른 듯
-              <br class="pc-only" />
-              피부를 촉촉하게 채워주는 스킨
-            </p>
+            <h3>{{best.productNm}}</h3>
+            <h4>{{best.engNm}}</h4>
+            <p class="desc" v-html="best.ctnt"></p>
             <router-link to="/" class="link">
               <!-- 어디로 링크할지 정해야 함 -->
               <span class="btn__text">자세히 보기 ></span>
             </router-link>
             <p class="review-desc">
+              <!-- 리뷰 데이터 베이스 자료 당겨 와야함 -->
               <i>“</i>스킨인데 뛰어난 보습지속력과, 산뜻한 사용감으로 <br />
               이만한 스킨은 없는 것 같아요<br />
               <span>@rabb********</span>
@@ -226,11 +222,15 @@
 export default {
   data() {
     return {
-      bestProduct: {
+      bestProduct: [{
         productNm: '크림스킨',
         engNm: 'CREAM SKIN REFINER',
-        imgSrc: '../assets/img/bsetProduct/크림스킨가로.jpg',
-      }
+        imgSrc: '/bsetProduct/크림스킨가로.jpg',
+        ctnt: `크림 한 통을 그대로 녹여내어</br> 스킨만으로도 크림을 바른 듯</br> 피부를 촉촉하게 채워주는 스킨`
+      }],
+      bestProduct_1: [{
+        
+      }]
     }
   },
   mounted() {
