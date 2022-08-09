@@ -118,16 +118,16 @@ export default {
     },
     beforeCreate() {
     },
-    // computed: {
-    //   loginToggle: function () {
-    //     return this.$store.state.setUser;
-    //   },
-    // },
-    // watch: {
-    //   loginToggle: function () {
-    //     this.loginCheck();
-    //   },
-    // },
+    computed: {
+      loginToggle: function () {
+        return this.$store.state.setUser;
+      },
+    },
+    watch: {
+      loginToggle: function () {
+        this.loginCheck();
+      },
+    },
     created() {
       this.user = this.$store.state.user;
       console.log(this.user.result);
@@ -139,12 +139,12 @@ export default {
       this.getWritenReview(this.user.result.m_num);
     },
     methods: {
-      // loginCheck() {
-      //   if(!this.$store.state.user) {
-      //     alert('로그인 한 유저만 구매가 가능합니다.');
-      //     this.$router.push('signin');
-      //   } 
-      // },
+      loginCheck() {
+        if(!this.$store.state.user) {
+          alert('로그인 한 유저만 구매가 가능합니다.');
+          this.$router.push('signin');
+        } 
+      },
       displayP(e) {
         this.isActive1 = true;
         this.isActive2 = false;

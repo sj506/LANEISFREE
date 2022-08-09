@@ -128,6 +128,16 @@ export default {
             pro_num: ''
         };
     },
+    computed: {
+      loginToggle: function () {
+        return this.$store.state.setUser;
+      },
+    },
+    watch: {
+      loginToggle: function () {
+        this.loginCheck();
+      },
+    },
     created() {
         this.user = this.$store.state.user;
         console.log(this.user);
@@ -137,6 +147,12 @@ export default {
         this.pro_num = this.$route.query.pro_num;
     },
     methods: {
+        loginCheck() {
+          if(!this.$store.state.user) {
+            alert('로그인 한 유저만 구매가 가능합니다.');
+            this.$router.push('signin');
+          } 
+        },
         getUserProduct() {
             this.UserProduct = this.userProductList.filter(element => {
                 return element.pro_num == this.$route.query.pro_num;
