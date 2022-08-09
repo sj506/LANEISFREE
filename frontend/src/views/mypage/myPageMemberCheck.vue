@@ -29,7 +29,7 @@
 
           <form>
             <label>비밀번호</label>
-            <input type="password" v-model="user.m_pw" class="pwInput">
+            <input type="password" v-model="user.m_pw" ref="focus" class="pwInput">
             <input type="submit" class="pwSubmit" @click.prevent="pwCheckForm" value="확인">
           </form>
 

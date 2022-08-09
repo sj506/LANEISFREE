@@ -29,7 +29,7 @@
         </div>
         <div class="memberE_ctnt" :class="{ dNone: isActive2}">
           <h4>SNS 계정연동 관리</h4>
-          <table>
+          <table class="firstT">
             <thead>
               <tr>
                 <th class="col">SNS 연결</th>
@@ -61,6 +61,51 @@
             </tbody>
           </table>
           <div class="sub">이름 변경(개명)의 경우 이니스프리 고객상담실(080-380-0114)로 문의 부탁드립니다.</div>
+          <table class="seconT">
+            <tr>
+              <th>이름</th>
+              <td>쌀과자</td>
+            </tr>
+            <tr>
+              <th>이메일</th>
+              <td>
+                <input type="text" class="inputText"> @
+                <input type="text" class="inputText">
+                <select>
+                  <option value="gmail.com" class="inputText">선택하세요</option>
+                  <option value="gmail.com">구글</option>
+                  <option value="naver.com">네이버</option>
+                  <option value="daum.net">다음</option>
+                  <option value="hanmail.net">한메일</option>
+                </select>
+                <span><input type="submit" class="noConnectBtn" value="메일확인"></span>
+              </td>
+            </tr>
+            <tr>
+              <th>휴대전화 번호</th>
+              <td>
+                <input type="text" class="inputText"> -
+                <input type="text" class="inputText"> -
+                <input type="text" class="inputText">
+                <input type="submit" value="변경">
+              </td>
+            </tr>
+            <tr>
+              <th>주소</th>
+              <td>
+                <div>
+                  <input type="text">
+                  <input type="submit" value="우편번호 검색">
+                </div>
+                <div>
+                  <input type="text">
+                </div>
+                <div>
+                  <input type="text">
+                </div>
+              </td>
+            </tr>
+          </table>
         </div>
         <div class="memberP_ctnt" :class="{ dNone: isActive1}">
 
@@ -99,6 +144,7 @@ export default {
 
 <style scoped>
 
+
 p {
   color: #777;
   padding: 3px;
@@ -123,18 +169,25 @@ table {
   table-layout: fixed;
 }
 
+th, td {
+  padding: 17px 16px;
+}
+
 thead th {
   width: 170px;
   border-top: 2px solid #222;
 }
 
-th,
-td {
-  border-bottom: 1px solid #dcdcdc;
-  padding: 17px 16px;
+.seconT th {
+  width: 170px;
 }
 
-th img {
+.firstT th,
+.firstT td {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.firstT th img {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -167,6 +220,14 @@ th img {
 .sub {
   margin: 75px 0 24px;
   color: #777;
+}
+
+.inputText {
+  width: 150px;
+  vertical-align: middle;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid #dcdcdc;
 }
 
 /* header */
