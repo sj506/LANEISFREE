@@ -224,6 +224,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      bestProduct: {
+        productNm: '크림스킨',
+        engNm: 'CREAM SKIN REFINER',
+        imgSrc: '../assets/img/bsetProduct/크림스킨가로.jpg',
+      }
+    }
+  },
   mounted() {
     AOS.init();
   },
