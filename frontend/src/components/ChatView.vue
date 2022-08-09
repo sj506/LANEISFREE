@@ -1,8 +1,8 @@
 <template>
-  <div class="chat-container">
+  <div class="chat-container" :class="{ dNone: dNone }">
     <div class="chat-header">
       <h3 class="chat-title">LALESFREE</h3>
-      <button class="btnClose"><i class="fa-solid fa-xmark"></i></button>
+      <button class="btnClose" @click="closeChat"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="chat-body">
       <div v-for="(item, idx) in chatList" class="d-flex chat-box" :class="{ sent: item.name === userNm ? true : false }" :key="idx">
@@ -42,6 +42,7 @@ export default {
       user: {},
       userNm: '',
       sent: false,
+      dNone: true,
     };
   },
   created() {
@@ -70,15 +71,27 @@ export default {
         this.input = '';
       }
     },
+    closeChat() {
+      const chatContainer = document.querySelector('.chat-container');
+      chatContainer.classList.add('dNone');
+    },
   },
 };
 </script>
 
 <style scoped>
+.chat-container.dNone {
+  display: none;
+}
 .chat-container {
+  position: fixed;
+  z-index: 3;
+  bottom: 30px;
+  right: 30px;
   width: 360px;
   max-height: 640px;
   box-shadow: var(--box-shadow);
+  background-color: #a9e8fe;
   display: flex;
   flex-direction: column;
   justify-content: center;

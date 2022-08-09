@@ -3,6 +3,7 @@
     <Header />
     <main>
       <router-view />
+      <Side />
     </main>
     <Footer />
   </div>
@@ -11,9 +12,10 @@
 <script>
 import Header from './layout/Header.vue';
 import Footer from './layout/Footer.vue';
+import Side from './layout/side.vue';
 
 export default {
-  components: { Header, Footer },
+  components: { Header, Footer, Side },
   computed: {},
 };
 </script>
