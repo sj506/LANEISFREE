@@ -102,7 +102,7 @@
 
 <script>
 export default {
-  name: 'signIn',
+  name: '',
   data() {
     return {
       keyboardOpenBtn: 'PC 키보드 열기',
@@ -129,9 +129,9 @@ export default {
     // 로그인 백엔드통신
     async submitForm() {
       this.$store.commit('setUser', 1);
-      console.log(this.$store.state.setUser);
+      // console.log(this.$store.state.setUser);
 
-      console.log(this.user);
+      // console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
       this.$store.commit('user', signIn);
       if (this.user.m_email === signIn.result.m_email && this.user.m_pw === signIn.result.m_pw) {
@@ -141,7 +141,7 @@ export default {
         this.user.m_email = '';
         this.user.m_pw = '';
       };
-      console.log(this.$store.state.user);
+      // console.log(this.$store.state.user);
       // console.log(signIn.result.m_email);
     },
 

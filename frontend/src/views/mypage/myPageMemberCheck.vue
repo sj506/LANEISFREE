@@ -26,11 +26,13 @@
         <p>이니스프리는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이는 회원정보가 공개되지 않습니다.</p>
         <p>보다 다양한 혜택/서비스를 받으시려면 회원 정보를 최신으로 유지해주세요.</p>
         <div class="pwForm">
+
           <form>
             <label>비밀번호</label>
-            <input type="password" @change="pwInput" class="pwInput">
+            <input type="password" v-model="user.m_pw" class="pwInput">
             <input type="submit" class="pwSubmit" @click.prevent="pwCheckForm" value="확인">
           </form>
+
         </div>
       </div>
     </section>
@@ -45,9 +47,32 @@ export default {
   components: { myPageHeader, myPageSide },
   data() {
     return {
-
+      user: {
+        m_email: '',
+        m_pw: '',
+      },
     }
   },
+  methods: {
+    async pwCheckForm() {
+      this.user.m_email = this.$store.state.user.result.m_email;
+      const signIn = await this.$post('user/signIn', this.user);
+      if (this.user.m_pw === signIn.result.m_pw) {
+        this.$router.push('/myPageMember');
+        // console.log('로그인 성공');
+      } else {
+        alert('이메일 또는 비밀번호를 확인해주세요.');
+        this.user.m_pw = '';
+      };
+    },
+
+    checkSetUser() {
+      console.log(this.$store.state.setUser);
+      // if (this.$store.state.setUser === 1) {
+      //   this.$router.push('/myPageMember');
+      // }
+    }
+  }
 }
 </script>
 
