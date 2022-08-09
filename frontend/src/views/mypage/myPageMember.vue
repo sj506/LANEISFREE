@@ -70,7 +70,7 @@
               <th>이메일</th>
               <td>
                 <input type="text" class="inputText"> @
-                <input type="text" class="inputText">
+                <input type="text" class="inputText" disabled>
                 <select>
                   <option value="gmail.com" class="inputText">선택하세요</option>
                   <option value="gmail.com">구글</option>
@@ -84,9 +84,9 @@
             <tr>
               <th>휴대전화 번호</th>
               <td>
-                <input type="text" class="inputText"> -
-                <input type="text" class="inputText"> -
-                <input type="text" class="inputText">
+                <input type="text" class="inputText" disabled> -
+                <input type="text" class="inputText" disabled> -
+                <input type="text" class="inputText" disabled>
                 <input type="submit" value="변경">
               </td>
             </tr>
@@ -94,11 +94,11 @@
               <th>주소</th>
               <td>
                 <div>
-                  <input type="text">
+                  <input type="text" class="inputText" style="width: 13%;" disabled>
                   <input type="submit" value="우편번호 검색">
                 </div>
                 <div>
-                  <input type="text">
+                  <input type="text" disabled>
                 </div>
                 <div>
                   <input type="text">
