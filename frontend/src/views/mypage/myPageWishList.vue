@@ -25,6 +25,7 @@
                         <label><input class="SelectBox" type="checkbox" @click="selectAll" />전체선택</label>
                       </th>
                       <th class="_th"></th>
+                      <th class="_th">수량</th>
                       <th class="_th selPrice">판매가</th>
                       <th class="_th"></th>
                     </tr>
@@ -48,6 +49,7 @@
                           {{ likeProduct.pro_name }}
                         </router-link>
                       </td>
+                      <td>수량</td>
                       <td>{{ this.$addComma(likeProduct.pro_price) }}원</td>
                       <td></td>
                     </tr>
