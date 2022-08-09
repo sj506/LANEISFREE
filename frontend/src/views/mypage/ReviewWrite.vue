@@ -96,7 +96,7 @@
                   <div class="cursor">자세히보기 ></div>
                 </div>
                 <div>
-                  <input type="button" value="취소" class="btn btn-secondary cansle" />
+                  <router-link to="myPageReview"><input type="button" value="취소" class="btn btn-secondary cansle" /></router-link>
                   <input type="submit" value="작성완료" class="btn btn-dark" />
                 </div>
               </form>

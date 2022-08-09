@@ -50,6 +50,20 @@ class ReviewController extends Controller
             "m_num" => $m_num
         ];
         $this->model->insertReview($param);
-
     }
+
+    public function getUserReview() {
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ "m_num" => intval($urlPaths[2])];
+        return $this->model->getUserReview($param);
+    }
+
+    public function getWritenReview() {
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ "m_num" => intval($urlPaths[2]) ];
+        return $this->model->getWritenReview($param);
+    }
+
 }
