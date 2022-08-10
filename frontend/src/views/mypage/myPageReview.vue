@@ -55,8 +55,7 @@
                     <li>{{ item.pur_deadline }}</li>
                     <li>
                       <button>
-                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"> 리뷰쓰기
-                        </router-link>
+                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"> 리뷰쓰기 </router-link>
                       </button>
                     </li>
                   </ul>
@@ -103,12 +102,11 @@
                 </ul>
               </div>
             </div>
-            <div class="w_review">{{ item.re_ctnt }}</div>
-            <div class="w_btn d-flex justify-content-end pt-2">
-              <div><button class="btn btn-outline-dark">수정</button></div>
-              <div><button class="btn btn-outline-dark"
-                  @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
-            </div>
+              <div class="w_review">{{item.re_ctnt}}</div>
+              <div class="w_btn d-flex justify-content-end pt-2">
+                <div><button class="btn btn-outline-dark">수정</button></div>
+                <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+              </div>
           </div>
         </div>
       </div>
@@ -466,6 +464,7 @@ button {
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
+  border: none;
 }
 
 .depth:last-child .btn_h {
