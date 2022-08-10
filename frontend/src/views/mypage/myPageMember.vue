@@ -17,21 +17,16 @@
     </div>
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-
       <myPageSide activeLink="/myPageMemberCheck" />
       <div class="col-10 p-5 r_border">
-
-
         <h3 class="pb-4">뷰티포인트 통합 회원 정보 수정</h3>
-        <p class="mb-3 text-dark">
-          * 이 페이지에서 회원정보 수정, 비밀번호 수정시 뷰티포인트 통합 아이디로 로그인하는 아모레퍼시픽 사이트의 정보가 함께 변경됩니다.
-        </p>
+        <p class="mb-3 text-dark">* 이 페이지에서 회원정보 수정, 비밀번호 수정시 뷰티포인트 통합 아이디로 로그인하는 아모레퍼시픽 사이트의 정보가 함께 변경됩니다.</p>
 
         <div class="memberDiv">
           <div class="memberE" @click="displayE" :class="{ bgGreen: isActive1 }">회원정보 수정</div>
           <div class="memberP" @click="displayP" :class="{ bgGreen: isActive2 }">비밀번호 수정</div>
         </div>
-        
+
         <div class="memberE_ctnt" :class="{ dNone: isActive2 }">
           <form>
             <h4 class="mt-4 pt-2 mb-4">SNS 계정연동 관리</h4>
@@ -44,8 +39,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <th class="col"><img src="@/assets/img/mypage/icon_facebook.jpg" alt="페이스북 아이콘" /><span>페이스북</span>
-                  </th>
+                  <th class="col"><img src="@/assets/img/mypage/icon_facebook.jpg" alt="페이스북 아이콘" /><span>페이스북</span></th>
                   <td class="noConnect">연결 정보 없음</td>
                 </tr>
                 <tr>
@@ -139,7 +133,7 @@
             </div>
             <div class="pt-3 sub3">
               <span>※ 귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 수 있습니다. 단, 거부할 경우 문의 서비스의 이용이 불가합니다.</span>
-              <label class="agree"><input type="checkbox" class="me-1 agreeCheckBox">동의합니다.</label>
+              <label class="agree"><input type="checkbox" class="me-1 agreeCheckBox" />동의합니다.</label>
             </div>
             <div class="sub2">
               <h4>관련정보 수신여부</h4>
@@ -150,24 +144,15 @@
               <table class="table">
                 <tr>
                   <th>이메일 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>문자 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>우편물 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
               </table>
             </div>
@@ -181,44 +166,32 @@
               <table class="table bPoint">
                 <tr>
                   <th>이메일 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>문자 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>우편물 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>TM 수신동의</th>
-                  <td>
-                    <input type="radio"> 수신
-                    <input type="radio" class="ms-4" checked> 미수신
-                  </td>
+                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th colspan="2" class="siteMoveBtn">뷰티포인트 수신여부는 뷰티포인트 사이트에서 수정이 가능합니다.</th>
                   <td>
-                    <input type="button" class="noConnectBtn" value="뷰티포인트 사이트 이동">
+                    <input type="button" class="noConnectBtn" value="뷰티포인트 사이트 이동" />
                   </td>
                 </tr>
               </table>
             </div>
 
             <div class="my-5 d-flex submitBtnDiv">
-              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인">
-              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소">
+              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인" />
+              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
             </div>
 
             <div class="secessionDiv">
@@ -231,13 +204,12 @@
         </div>
 
         <div class="memberP_ctnt" :class="{ dNone: isActive1 }">
-          
-            <div class="">
-              <h4 class="mt-4 pt-2 mb-4">뷰티포인트 통합 비밀번호 수정</h4>
-              <p class="mb-1">개인정보 보호를 위해 비밀번호는 90일마다 변경해주세요.</p>
-              <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
-              <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
-            </div>
+          <div class="">
+            <h4 class="mt-4 pt-2 mb-4">뷰티포인트 통합 비밀번호 수정</h4>
+            <p class="mb-1">개인정보 보호를 위해 비밀번호는 90일마다 변경해주세요.</p>
+            <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
+            <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
+          </div>
           <form class="column-center">
             <div class="noticeForm">
               <div class="notice">
@@ -256,27 +228,26 @@
                 <table>
                   <tr>
                     <th>현재 비밀번호</th>
-                    <td><input type="text"></td>
+                    <td><input type="text" /></td>
                   </tr>
                   <tr>
                     <th>새 비밀번호</th>
-                    <td><input type="text"></td>
+                    <td><input type="text" /></td>
                   </tr>
                   <tr>
                     <th>새 비밀번호 확인</th>
-                    <td><input type="text"></td>
+                    <td><input type="text" /></td>
                   </tr>
                 </table>
               </div>
             </div>
 
             <div class="my-5 d-flex submitBtnDiv update">
-              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인">
-              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소">
+              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인" />
+              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
             </div>
           </form>
         </div>
-
       </div>
     </section>
   </div>
@@ -310,7 +281,6 @@ export default {
 </script>
 
 <style scoped>
-
 p {
   color: #777;
   padding: 3px;
@@ -357,7 +327,7 @@ button {
 }
 
 .bgGreen {
-  background-color: #17342f;
+  background-color: var(--bg-main);
   color: #fff;
 }
 
