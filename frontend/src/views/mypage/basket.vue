@@ -180,7 +180,7 @@ a {
 .p_header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--text-main);
 }
 .nonList {
   width: 100% !important;
@@ -195,8 +195,7 @@ a {
 .p_ctnt_header {
   padding: 20px 0;
   font-weight: 600;
-  border-bottom: 1px solid var(--text-light-gray);
-  background-color: rgba(223, 224, 226, 0.712);
+  border-bottom: 1px solid var(--text-main);
 }
 
 table {
