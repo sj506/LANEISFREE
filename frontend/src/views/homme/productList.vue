@@ -16,6 +16,10 @@
           <div class="pro_name">{{ product.pro_name }}</div>
         </div>
       </router-link>
+      <div class="heartIconBox">
+        <i ref="heart" :data-pro_num="product.pro_num" class="fa-regular fa-heart heartIcon pointer" @click="likeUp"></i>
+        <!-- <i class="fa-solid fa-heart bigHeartIcon"></i> -->
+      </div>
     </li>
   </ul>
 </template>
@@ -24,23 +28,34 @@ export default {
   name: '',
   components: {},
   data() {
-    return {
-      example: '',
-    };
+    return {};
   },
   computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
     selectProduct() {
       return this.$store.state.selectProduct;
     },
   },
+
+  watch: {
+    loginToggle: function () {
+      this.heartClear();
+    },
+  },
+
   beforeCreate() {},
   created() {
     this.getProductList();
   },
+
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
-  updated() {},
+  updated() {
+    this.getHeart();
+  },
   beforeUnmount() {},
   unmounted() {},
   methods: {
@@ -63,11 +78,78 @@ export default {
     reChangeImg(target, mainImg) {
       target.src = require('@/assets/img' + mainImg);
     },
+    async likeUp(e) {
+      if (this.loginToggle === 0) {
+        alert('로그인 후 찜을 할 수 있습니다');
+        return;
+      }
+
+      if (e.target.classList[5] === 'bigHeartIcon') {
+        setTimeout(() => {
+          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          this.$post('product/delHeart', param);
+
+          e.target.classList.remove('bigHeartIcon');
+          e.target.classList.remove('fa-solid');
+        }, 400);
+      } else {
+        setTimeout(() => {
+          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const insHeart = this.$post('product/insHeart', param);
+
+          e.target.classList.add('fa-solid');
+          e.target.classList.add('bigHeartIcon');
+
+          if (insHeart === 0) {
+            alert('찜 하기에 실패하였습니다.');
+            return;
+          }
+        }, 400);
+      }
+    },
+
+    async getHeart() {
+      const param = { m_num: this.$store.state.user.result.m_num };
+      const getHeart = await this.$post('product/getHeart', param);
+      getHeart.result.forEach((heartNum) => {
+        this.$refs.heart.forEach((heart) => {
+          if (heart.dataset.pro_num == heartNum.pro_num) {
+            heart.classList.add('fa-solid');
+            heart.classList.add('bigHeartIcon');
+          }
+        });
+      });
+    },
+    heartClear() {
+      this.$refs.heart.forEach((heart) => {
+        heart.classList.remove('fa-solid');
+        heart.classList.remove('bigHeartIcon');
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
+.heartIcon {
+  position: absolute;
+  top: 65%;
+  left: 80%;
+  font-size: 1rem;
+  padding: 10px;
+  color: var(--bg-gray);
+}
+.bigHeartIcon {
+  position: absolute;
+  top: 65%;
+  left: 80%;
+  font-size: 1rem;
+  color: var(--bg-point);
+}
+.heartIcon:hover {
+  animation: heart-effect 0.5s both;
+}
+
 img {
   width: 100%;
   max-width: 250px;
@@ -76,6 +158,7 @@ img {
 .cursor-png {
   cursor: url('https://www.laneige.com/kr/ko/assets/image/a/pointer.png'), auto;
 }
+
 .productBox {
   display: grid;
   grid-template-rows: repeat(4, minmax(auto, auto));
@@ -95,6 +178,8 @@ img {
 }
 
 .und-border {
+  position: relative;
+
   margin-bottom: 3rem;
   border-bottom: 1px solid #eaeaea;
 }
@@ -122,6 +207,20 @@ img:not(:hover) {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes heart-effect {
+  0%,
+  100% {
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+  30% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  60% {
+    transform: translateX(3px) rotate(1deg);
   }
 }
 
