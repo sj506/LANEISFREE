@@ -19,6 +19,7 @@ import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
 import ChatView from '@/components/ChatView.vue';
+import map from '@/views/map.vue';
 
 //네비게이션 가드
 const requireAuth = () => (to, from, next) => {
@@ -133,6 +134,11 @@ const routes = [
     path: '/chat',
     name: 'chat',
     component: ChatView,
+  },
+  {
+    path: '/map',
+    name: 'map',
+    component: map,
   },
   // {
   //   path: '/',
