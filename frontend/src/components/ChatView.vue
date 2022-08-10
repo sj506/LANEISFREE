@@ -43,32 +43,46 @@ export default {
       userNm: '',
       sent: false,
       dNone: true,
+      setUser: 0,
     };
   },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
+  },
   created() {
-    this.user = this.$store.state.user;
-    if (this.user.result['m_nm'] !== null) {
+    if (this.loginToggle === 1) {
+      this.user = this.$store.state.user;
       this.userNm = this.user.result['m_nm'];
     }
-    console.log(this.time);
     this.$socket.on('msg', (data) => {
       this.chatList.push(data);
     });
   },
   updated() {
+    if (this.loginToggle === 1) {
+      this.user = this.$store.state.user;
+      this.userNm = this.user.result['m_nm'];
+    }
     const chatBody = document.querySelector('.chat-body');
     chatBody.scrollTop = chatBody.scrollHeight;
   },
 
   methods: {
     sendMsg() {
-      if (this.input !== '') {
+      if (this.input !== '' && this.userNm !== '') {
         this.$socket.emit('msg', {
           msg: this.input,
-          name: this.user.result['m_nm'],
+          name: this.userNm,
           time: dayjs().format('h:mm A'),
         });
         this.input = '';
+      } else {
+        this.input = '';
+        if (!alert('로그인이 필요합니다.')) {
+          this.closeChat();
+        }
       }
     },
     closeChat() {
