@@ -19,7 +19,7 @@
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide activeLink="/myPageReview" />
       <!-- <div class="col-9 reviewHeader"> -->
-      <div class="col-10 p-5">
+      <div class="col-10 p-5 r_border">
         <h3>내 리뷰</h3>
         <div class="reviewDiv">
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
@@ -212,6 +212,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* default */
 .dNone {
   display: none;
@@ -229,11 +230,18 @@ a {
   color: var(--text-black);
   font-style: none;
 }
+button {
+  border: none;
+}
+.r_border {
+  min-height: 1200px;
+  border-left: 1px solid #ccc;
+}
 /* header */
 #container {
   width: 100vw;
   min-height: 500px;
-  padding-bottom: 110px;
+  /* padding-bottom: 110px; */
   border-top: 1px solid transparent;
 }
 

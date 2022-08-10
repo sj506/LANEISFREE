@@ -128,13 +128,12 @@ export default {
 
     // 로그인 백엔드통신
     async submitForm() {
-      this.$store.commit('setUser', 1);
       // console.log(this.$store.state.setUser);
-
       // console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
-      this.$store.commit('user', signIn);
       if (this.user.m_email === signIn.result.m_email && this.user.m_pw === signIn.result.m_pw) {
+        this.$store.commit('setUser', 1);
+        this.$store.commit('user', signIn);
         this.$router.push('/');
       } else {
         alert('이메일 또는 비밀번호를 확인해주세요.');
