@@ -93,7 +93,6 @@ export default {
     },
   },
   created() {
-    console.log(this.$store.state.setUser);
     // this.setUser = this.$store.state.setUser;
   },
 
