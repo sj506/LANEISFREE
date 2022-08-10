@@ -100,7 +100,7 @@ class ProductModel extends Model
     {
         $sql = "UPDATE t_basket 
                 set pro_check = :pro_check
-                WHERE m_num = :m_num and pro_num = :pro_num";
+                WHERE m_num = :m_num and pro_num = :pro_num and pro_check = '0'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
         $stmt->bindValue(":pro_num", $param["pro_num"]);
