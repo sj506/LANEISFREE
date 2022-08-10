@@ -10,24 +10,24 @@
               <label>
                 <span class="star">*</span>
                 주문자
-                <input class="ml-10" v-model="purchase.m_nm" type="text" />
+                <input class="ml-10" v-model="userData.m_nm" type="text" />
               </label>
             </div>
             <div class="formData">
               <label>
                 <span class="star">*</span>
                 연락처
-                <select class="telInput ml-10" @change="changeTel1" v-model="purchase.m_tel1">
+                <select class="telInput ml-10" @change="changeTel1" v-model="userData.m_tel1">
                   <option v-for="(code, idx) in AreaCode" :key="idx" :value="code">{{ code }}</option>
                 </select>
               </label>
-              - <input v-model="purchase.m_tel2" class="telInput" type="text" /> -
-              <input v-model="purchase.m_tel3" class="telInput" type="text" />
+              - <input v-model="userData.m_tel2" class="telInput" type="text" /> -
+              <input v-model="userData.m_tel3" class="telInput" type="text" />
             </div>
             <div class="formData">
               <label>
                 <span class="star">*</span>
-                이메일 <input class="emailInputBox ml-10" v-model="purchase.m_email" type="text"
+                이메일 <input class="emailInputBox ml-10" v-model="userData.m_email" type="text"
               /></label>
             </div>
             <!-- 이메일 형식으로 -->
@@ -39,23 +39,23 @@
                 <button ref="addrBtn2" class="addrBtn" @click="toggleBtn">새로운 배송지</button>
 
                 <div class="addrBox" v-if="userAddr === 0">
-                  {{ purchase.m_addr }}
+                  {{ userData.m_addr }}
                 </div>
                 <div class="addrBox" v-else>
                   <label>주소</label>
                   <div>
                     <div class="row">
                       <div class="col-md-3 mb-3">
-                        <input type="text" v-model="purchase.postcode" class="form-control" placeholder="우편번호" />
+                        <input type="text" v-model="userData.postcode" class="form-control" placeholder="우편번호" />
                       </div>
                       <div class="col-md-3 mb-3">
                         <input type="button" @click="execDaumPostcode()" class="btn btn-secondary my-1 btn-sm" value="우편번호 찾기" />
                       </div>
                     </div>
                     <div>
-                      <input type="text" v-model="purchase.m_addr" class="form-control mb-3" placeholder="주소" />
-                      <input type="text" v-model="purchase.detailAddr" class="form-control mb-3" placeholder="상세주소" />
-                      <input type="text" v-model="purchase.extraAddr" class="form-control mb-3" placeholder="참고항목" />
+                      <input type="text" v-model="userData.m_addr" class="form-control mb-3" placeholder="주소" />
+                      <input type="text" v-model="userData.detailAddr" class="form-control mb-3" placeholder="상세주소" />
+                      <input type="text" v-model="userData.extraAddr" class="form-control mb-3" placeholder="참고항목" />
                     </div>
                   </div>
                 </div>
@@ -85,12 +85,13 @@
         <!-- ---------------------------- -->
         <div class="list">
           <h2 class="_hr">주문 상품 정보</h2>
-          <div class="orderInfo">
+          <div class="orderInfo" v-for="(basketData, idx) in basketList" :key="idx">
             <!-- {{ productDetail.pro_mainimg }} -->
-            <img :src="this.$getSrc(productDetail.pro_mainimg)" />
-            {{ productDetail.pro_name }}
-            <div><input type="number" min="1" v-model="purchase.pro_count" @change="getPrice" />개</div>
-            <div>{{ $addComma(price()) }}원</div>
+            <img :src="this.$getSrc(basketData.pro_mainimg)" />
+            <div class="pro_name">{{ basketData.pro_name }}</div>
+            <div><input type="number" min="1" v-model="basketData.ba_stock" />개</div>
+            <td>{{ this.$addComma(basketData.ba_stock * basketData.pro_price) }}원</td>
+            <td><i :data-pro_num="basketData.pro_num" @click="delLike" class="fa-solid fa-x pointer"></i></td>
           </div>
           <hr />
         </div>
@@ -183,8 +184,6 @@
   </div>
 </template>
 <script>
-import router from '@/router';
-
 export default {
   props: {
     name: {
@@ -209,7 +208,7 @@ export default {
       productDetail: '',
       selectPayment: 0,
       payAgree: false,
-      purchase: {
+      userData: {
         pro_num: 0,
         m_num: 0,
         m_nm: '',
@@ -221,9 +220,8 @@ export default {
         m_addr: '',
         detailAddr: '',
         extraAddr: '',
-        pro_count: 1,
-        pro_price: 0,
       },
+      basketList: {},
       userPhNum: [],
       userAddr: 0,
     };
@@ -241,16 +239,13 @@ export default {
   },
   beforeCreate() {},
   created() {
-    this.productDetail = this.$store.state.getProductList[this.$route.params.productId - 1];
-    this.purchase.pro_price = this.productDetail.pro_price;
-    this.purchase.pro_num = this.productDetail.pro_num;
-    this.purchase.m_num = this.$store.state.user.result.m_num;
-    this.purchase.m_nm = this.$store.state.user.result.m_nm;
-    this.purchase.m_email = this.$store.state.user.result.m_email;
-    this.purchase.m_addr = this.$store.state.user.result.m_addr;
+    this.getBasket();
     this.getUserTel();
-    console.log(this.$store.state.user.result);
-    console.log(this.purchase);
+    this.userData.m_num = this.$store.state.user.result.m_num;
+    this.userData.m_nm = this.$store.state.user.result.m_nm;
+    this.userData.m_email = this.$store.state.user.result.m_email;
+    this.userData.m_addr = this.$store.state.user.result.m_addr;
+    console.log(this.userData);
   },
   beforeMount() {},
   beforeUpdate() {},
@@ -263,6 +258,12 @@ export default {
     window.removeEventListener('beforeunload', this.unLoadEvent);
   },
   methods: {
+    async getBasket() {
+      const param = { m_num: this.$store.state.user.result.m_num };
+      const selbasket = await this.$post('product/selbasket', param);
+      this.basketList = selbasket.result;
+      console.log(this.basketList);
+    },
     unLoadEvent: function (event) {
       if (this.canLeaveSite) return;
 
@@ -271,11 +272,12 @@ export default {
     },
     getUserTel() {
       const userTel = this.$store.state.user.result.m_tel.split('-');
-      this.purchase.m_tel2 = userTel[1];
-      this.purchase.m_tel3 = userTel[2];
+      this.userData.m_tel1 = userTel[0];
+      this.userData.m_tel2 = userTel[1];
+      this.userData.m_tel3 = userTel[2];
     },
     changeTel1(e) {
-      this.purchase.m_tel1 = e.target.value;
+      this.basketList.m_tel1 = e.target.value;
     },
     loginCheck() {
       if (!this.$store.state.user) {
@@ -288,7 +290,11 @@ export default {
       this.$router.push('signin');
     },
     price() {
-      return this.purchase.pro_count * this.productDetail.pro_price;
+      let product_price = 0;
+      this.basketList.forEach((basketList) => {
+        product_price += basketList.ba_stock * basketList.pro_price;
+      });
+      return product_price;
     },
     changePayment() {
       if (this.paymentCate === this.payment[0]) {
@@ -304,17 +310,28 @@ export default {
         alert('결제진행 동의를 해야만 구매가 가능합니다.');
         return;
       }
-      console.log(this.purchase);
-      const productBuy = await this.$post('product/productBuy', this.purchase)
-        .then((response) => {
-          console.log(response);
-          alert('결제 완료되었습니다.');
-          router.push('/myPageMemberCheck');
-        })
-        .catch((error) => {
-          console.log(error.response);
-          alert('결제에 실패하였습니다.');
-        });
+      const buyList = this.basketList;
+      this.basketList.forEach((item) => {
+        item.m_num = this.userData.m_num;
+        item.m_nm = this.userData.m_nm;
+        item.m_email = this.userData.m_email;
+        item.m_addr = this.userData.m_addr;
+        item.detailAddr = this.userData.detailAddr;
+        item.extraAddr = this.userData.extraAddr;
+        item.m_tel1 = this.userData.m_tel1;
+        item.m_tel2 = this.userData.m_tel2;
+        item.m_tel3 = this.userData.m_tel3;
+        item.postcode = this.userData.postcode;
+      });
+      console.log(buyList);
+      const result = await this.$post('product/productBuy', buyList);
+      if (result) {
+        alert('결제 완료되었습니다.');
+        this.$router.push('/mypageOnlineOrderList');
+      } else {
+        alert('결제에 실패하였습니다.');
+        return;
+      }
     },
     toggleBtn(e) {
       this.userAddr -= 1;
@@ -327,41 +344,47 @@ export default {
     execDaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
-          if (this.purchase.extraAddr !== '') {
-            this.purchase.extraAddr = '';
+          if (this.userData.extraAddr !== '') {
+            this.userData.extraAddr = '';
           }
           if (data.userSelectedType === 'R') {
             // 사용자가 도로명 주소를 선택했을 경우
-            this.purchase.m_addr = data.roadAddress;
+            this.userData.m_addr = data.roadAddress;
           } else {
             // 사용자가 지번 주소를 선택했을 경우(J)
-            this.purchase.m_addr = data.jibunAddress;
+            this.userData.m_addr = data.jibunAddress;
           }
 
           // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
           if (data.userSelectedType === 'R') {
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
             if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-              this.purchase.extraAddr += data.bname;
+              this.userData.extraAddr += data.bname;
             }
             // 건물명이 있고, 공동주택일 경우 추가한다.
             if (data.buildingName !== '' && data.apartment === 'Y') {
-              this.purchase.extraAddr += this.purchase.extraAddr !== '' ? `, ${data.buildingName}` : data.buildingName;
+              this.userData.extraAddr += this.userData.extraAddr !== '' ? `, ${data.buildingName}` : data.buildingName;
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if (this.purchase.extraAddr !== '') {
-              this.purchase.extraAddr = `(${this.purchase.extraAddr})`;
+            if (this.userData.extraAddr !== '') {
+              this.userData.extraAddr = `(${this.userData.extraAddr})`;
             }
           } else {
-            this.purchase.extraAddr = '';
+            this.userData.extraAddr = '';
           }
           // 우편번호를 입력한다.
-          this.purchase.postcode = data.zonecode;
+          this.userData.postcode = data.zonecode;
         },
       }).open();
     },
-    getPrice() {
-      this.purchase.pro_price = this.purchase.pro_count * this.productDetail.pro_price;
+    async delLike(e) {
+      const param = {
+        m_num: this.$store.state.user.result.m_num,
+        pro_num: e.target.dataset.pro_num,
+      };
+      const delLike = await this.$post('product/delLike', param);
+      console.log(delLike);
+      this.getBasket();
     },
   },
 };
@@ -571,6 +594,11 @@ input {
   margin-top: 3rem;
   text-align: center;
   color: #949494;
+}
+
+.pro_name {
+  width: 200px;
+  text-align: center;
 }
 
 @keyframes buyBtn-hover-effect {

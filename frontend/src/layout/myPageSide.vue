@@ -29,6 +29,7 @@ export default {
         { name: '내 리뷰', to: '/myPageReview' },
         { name: '회원정보 수정', to: '/myPageMember' },
         { name: '찜한 제품', to: '/myPageWishList' },
+        { name: '장바구니', to: '/basket' },
       ],
     };
   },

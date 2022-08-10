@@ -80,23 +80,31 @@ class ProductModel extends Model
 
     public function selbasket(&$param)
     {
-        $sql = "SELECT * FROM t_basket
-                WHERE m_num = :m_num and pro_num = :pro_num";
+        $sql = "SELECT a.*, b.* FROM t_basket a
+                INNER JOIN t_product b
+                on a.pro_num = b.pro_num
+                WHERE a.m_num = :m_num and a.pro_check = 0";
+        if (isset($param["pro_num"])) {
+            $sql .= " and a.pro_num = :pro_num";
+        }
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
-        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        if (isset($param["pro_num"])) {
+            $stmt->bindValue(":pro_num", $param["pro_num"]);
+        }
         $stmt->execute();
-        return $stmt->rowCount();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function updbasket(&$param)
     {
         $sql = "UPDATE t_basket 
-                set pro_check = 2
+                set pro_check = :pro_check
                 WHERE m_num = :m_num and pro_num = :pro_num";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
         $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":pro_check", $param["pro_check"]);
         $stmt->execute();
         return $stmt->rowCount();
     }
@@ -110,6 +118,18 @@ class ProductModel extends Model
         $stmt->bindValue(":m_num", $param["m_num"]);
         $stmt->bindValue(":pro_num", $param["pro_num"]);
         $stmt->bindValue(":ba_stock", $param["ba_stock"]);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
+    public function delLike(&$param)
+    {
+        $sql = "DELETE FROM t_basket
+        WHERE m_num = :m_num and pro_num = :pro_num";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":m_num", $param["m_num"]);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
         $stmt->execute();
         return $stmt->rowCount();
     }

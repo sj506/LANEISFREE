@@ -11,6 +11,7 @@ import mypageOnlineOrderList from '../views/mypage/mypageOnlineOrderList.vue';
 import myPageReview from '../views/mypage/myPageReview.vue';
 import myPageWishList from '../views/mypage/myPageWishList.vue';
 import ReviewWrite from '../views/mypage/ReviewWrite.vue';
+import basket from '../views/mypage/basket.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
@@ -133,6 +134,11 @@ const routes = [
     path: '/chat',
     name: 'chat',
     component: ChatView,
+  },
+  {
+    path: '/basket',
+    name: 'basket',
+    component: basket,
   },
   // {
   //   path: '/',
