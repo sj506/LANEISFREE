@@ -3,26 +3,26 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to="/">
-          <div class="depth"><button href="/" class="btn">홈</button></div>
+          <div class="depth"><button href="/" class="btn_h">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn">마이페이지</button>
+          <button type="button" class="btn_h">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">주문/배송현황</button>
+          <button type="button" class="btn_h">주문/배송현황</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">주문배송내역</button>
+          <button type="button" class="btn_h">주문배송내역</button>
         </div>
       </div>
     </div>
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide activeLink="/myPageOnlineOrderList" />
-      <div class="col-10 p-5">
+      <div class="col-10 p-5 r_border">
         <h3>주문조회</h3>
       </div>
     </section>
@@ -39,10 +39,12 @@ export default {
 </script>
 
 <style scoped>
+
+
 #container {
   width: 100vw;
   min-height: 500px;
-  padding-bottom: 110px;
+  /* padding-bottom: 110px; */
   border-top: 1px solid transparent;
 }
 
@@ -51,6 +53,16 @@ h3 {
   font-weight: 600;
   padding-bottom: 20px;
 }
+
+button {
+  border: none;
+}
+
+.r_border {
+  min-height: 1200px;
+  border-left: 1px solid #ccc;
+}
+
 .location {
   display: flex;
   flex-direction: column;
@@ -91,18 +103,18 @@ h3 {
   background: none;
 }
 
-.btn {
+.btn_h {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
 }
 
-.depth:last-child .btn {
+.depth:last-child .btn_h {
   color: #222;
 }
 
-.depth:first-child .btn {
+.depth:first-child .btn_h {
   color: #777;
 }
 

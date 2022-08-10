@@ -26,7 +26,7 @@
                 <router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link>
               </li>
               <li>
-                <div @click="myPageMember" class="dropdown-item pe-auto">회원정보 수정</div>
+                <router-link to="/myPageMemberCheck" class="dropdown-item">회원정보 수정</router-link>
               </li>
               <li>
                 <router-link to="/myPageWishList" class="dropdown-item">찜한 제품</router-link>
@@ -122,7 +122,6 @@ export default {
     logOut() {
       this.$store.commit('user', null);
       this.$store.commit('setUser', 0);
-      sessionStorage.removeItem('savePw');
     },
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
@@ -130,13 +129,6 @@ export default {
     // menuToggle() {
     //   this.isShow = !this.isShow;
     // },
-    myPageMember() {
-      if (sessionStorage.getItem('savePw')) {
-        this.$router.push('/myPageMember');
-      } else {
-        this.$router.push('/myPageMemberCheck');
-      }
-    },
   },
 };
 </script>
@@ -318,9 +310,5 @@ ul {
 }
 .contents-link-box a:hover {
   color: var(--text-point);
-}
-
-.pe-auto {
-  cursor: pointer;
 }
 </style>
