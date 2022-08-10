@@ -24,9 +24,9 @@
             </router-link>
             <p class="review-desc">
               <!-- 리뷰 데이터 베이스 자료 당겨 와야함 -->
-              <i>“</i>스킨인데 뛰어난 보습지속력과, 산뜻한 사용감으로 <br />
-              이만한 스킨은 없는 것 같아요<br />
-              <span>@rabb********</span>
+              <i>“</i>
+              <span v-html="best.review"></span>
+              <span>{{best.review_id}}</span>
             </p>
           </div>
         </div>
@@ -37,30 +37,30 @@
             class="main-box1"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
+            v-for="(best1, idx) in bestProduct_1" :key="idx"
           >
             <img
-              src="../assets/img/bsetProduct/네오쿠션가로.jpg"
+              :src="this.$getSrc(best1.imgSrc)"
               alt="네오쿠션"
             />
             <div class="txt1">
-              <h3>네오 쿠션</h3>
-              <h4>NEO CUSHION</h4>
-              <p class="desc">
-                한 번의 터치만으로 타고난 듯 <br />
-                24시간 완벽하게 커버해주는 쿠션
-              </p>
+              <h3>{{best1.productNm}}</h3>
+              <h4>{{best1.engNm}}</h4>
+              <p class="desc" v-html="best1.ctnt"></p>
               <router-link to="/" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
-                <i>“</i>지금까지 썼던 쿠션 중에 제일 마무리감이 좋았어요.<br />
+                <!-- 리뷰 데이터 베이스 자료 당겨 와야함 -->
+                <i>“</i>
+                지금까지 썼던 쿠션 중에 제일 마무리감이 좋았어요.<br />
                 매트한데 피부 겉만 보송하게 마무리되는 느낌이고
                 <br class="mo-only" />피부 표현도 정말 예쁘답니다.<br />
                 <span>@euns********</span>
               </p>
             </div>
           </div>
-          <div
+          <!-- <div
             class="main-box2"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
@@ -88,7 +88,7 @@
                 <span>@opst********</span>
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="flexWrap1 section">
@@ -226,11 +226,27 @@ export default {
         productNm: '크림스킨',
         engNm: 'CREAM SKIN REFINER',
         imgSrc: '/bsetProduct/크림스킨가로.jpg',
-        ctnt: `크림 한 통을 그대로 녹여내어</br> 스킨만으로도 크림을 바른 듯</br> 피부를 촉촉하게 채워주는 스킨`
+        ctnt: `크림 한 통을 그대로 녹여내어<br> 스킨만으로도 크림을 바른 듯<br> 피부를 촉촉하게 채워주는 스킨`,
+        review: `스킨인데 뛰어난 보습지속력과, 산뜻한 사용감으로 <br> 이만한 스킨은 없는 것 같아요<br>`,
+        review_id: '@rabb********'
       }],
-      bestProduct_1: [{
-        
-      }]
+      bestProduct_1: [
+      {
+        productNm: '네오쿠션',
+        engNm: 'NEO CUSHION',
+        imgSrc: '/bsetProduct/네오쿠션가로.jpg',
+        ctnt: `한 번의 터치만으로 타고난 듯 <br> 24시간 완벽하게 커버해주는 쿠션`
+      },
+      {
+        productNm: '네오 파운데이션_매트',
+        engNm: 'NEO FOUNDATION _ MATTE',
+        imgSrc: '/bsetProduct/네오파운데이션매트가로.jpg',
+        ctnt: ` 바쁜 도시 생활 속 스트레스로 변덕스러운 <br>
+                피부에도 맑은 날의 구름과 햇살처럼 예쁜 자연광 피부로 만들어주는
+                네오 파운데이션`
+      },
+      
+      ]
     }
   },
   mounted() {
