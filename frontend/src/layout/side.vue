@@ -45,19 +45,19 @@ aside {
   bottom: 300px;
   right: 0;
   z-index: 1;
-  width: 100px;
+  width: 80px;
 }
 .chat-circle {
   margin: 20px 0;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: var(--bg-main);
   border-radius: 50%;
   padding: 20px;
   cursor: pointer;
 }
 .chat-circle i {
-  font-size: 40px;
+  font-size: 28px;
   color: var(--text-white);
 }
 
@@ -69,8 +69,7 @@ aside {
   background-color: var(--bg-white);
 }
 .toTop i {
-  margin: 5px 0;
-  font-size: 40px;
+  font-size: 30px;
   color: var(--text-light-gray);
 }
 </style>
