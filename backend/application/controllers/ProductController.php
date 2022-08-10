@@ -26,14 +26,16 @@ class ProductController extends Controller
                 'pur_nm' => $item['m_nm'],
                 'pur_addr' => $item['m_addr'] . ' ' . $item['detailAddr'] . ' ' . $item['extraAddr'],
                 'pur_tel' => $item['m_tel1'] . '-' . $item['m_tel2'] . '-' . $item['m_tel3'],
-                'pur_count' => $item['ba_stock'],
+                'pur_count' => intval($item['ba_stock']),
             ];
             // $param["m_pw"] = password_hash($param["m_pw"], PASSWORD_BCRYPT);
             $result = $this->model->productBuy($param);
 
             if ($result) {
+                // 구매 성공하면
                 $param += ['pro_check' => 1,];
                 $this->model->updbasket($param);
+                $this->model->updProStock($param);
             }
         }
         return [_RESULT => $result];

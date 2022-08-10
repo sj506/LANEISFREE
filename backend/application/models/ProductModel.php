@@ -40,6 +40,18 @@ class ProductModel extends Model
         return intval($this->pdo->lastInsertId());
     }
 
+    public function updProStock(&$param)
+    {
+        $sql = "UPDATE t_product
+                set pro_stock = pro_stock - :pur_count
+                WHERE pro_num = :pro_num";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":pur_count", $param["pur_count"]);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
     public function insHeart(&$param)
     {
         $sql = "INSERT INTO t_like
