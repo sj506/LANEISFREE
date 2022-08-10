@@ -4,7 +4,6 @@
     <div class="index-main column-center">
       <best-seller></best-seller>
       <middle-banner></middle-banner>
-      <chat-view></chat-view>
     </div>
   </div>
 </template>
@@ -13,9 +12,9 @@
 import ListItem from '../components/ListItem.vue';
 import BestSeller from '@/components/BestSeller.vue';
 import MiddleBanner from '@/components/MiddleBanner.vue';
-import ChatView from '@/components/ChatView.vue';
+
 export default {
-  components: { ListItem, BestSeller, MiddleBanner, ChatView },
+  components: { ListItem, BestSeller, MiddleBanner },
   data() {
     return {
       bgColor: false,
