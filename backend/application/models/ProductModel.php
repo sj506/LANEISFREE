@@ -121,16 +121,4 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->rowCount();
     }
-
-    public function delLike(&$param)
-    {
-        $sql = "DELETE FROM t_basket
-        WHERE m_num = :m_num and pro_num = :pro_num";
-
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":m_num", $param["m_num"]);
-        $stmt->bindValue(":pro_num", $param["pro_num"]);
-        $stmt->execute();
-        return $stmt->rowCount();
-    }
 }

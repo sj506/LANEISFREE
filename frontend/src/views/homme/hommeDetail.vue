@@ -408,7 +408,7 @@
                   <option value="" selected>작성일순</option>
                   <option value="">베스트순</option>
                 </select>
-                <!-- <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span> -->
+                <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt="" /></span>
               </div>
             </div>
           </header>

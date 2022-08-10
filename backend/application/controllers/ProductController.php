@@ -114,8 +114,9 @@ class ProductController extends Controller
         $param = [
             'm_num' => $json['m_num'],
             'pro_num' => $json['pro_num'],
+            'pro_check' => 2,
         ];
-        $result = $this->model->delLike($param);
+        $result = $this->model->updbasket($param);
         return [_RESULT => $result];
     }
 }
