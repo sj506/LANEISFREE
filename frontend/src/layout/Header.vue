@@ -2,24 +2,29 @@
   <header>
     <nav class="navbar" @click="toggleNav">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img"
+            src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
-        <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">브랜드</li>
-        <li data-to="/intro" @click="routerPush" @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">팀소개</li>
-        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">
+        <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')"
+          @mouseout="closeContentsBox()">브랜드</li>
+        <li data-to="/intro" @click="routerPush" @mouseover="showContentsBox('소개', '/intro')"
+          @mouseout="closeContentsBox()">팀소개</li>
+        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')"
+          @mouseout="closeContentsBox()">
           미츠아트
         </li>
-        <li data-to="/best" @click="routerPush" @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">베스트</li>
-        <li data-to="/new" @click="routerPush" @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">신상품</li>
+        <li data-to="/best" @click="routerPush" @mouseover="showContentsBox('베스트 상품', '/best')"
+          @mouseout="closeContentsBox()">베스트</li>
+        <li data-to="/new" @click="routerPush" @mouseover="showContentsBox('NEW 신상품', '/new')"
+          @mouseout="closeContentsBox()">신상품</li>
         <li data-to="/homme" @click="routerPush" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">옴므</li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
         <li v-show="loginToggle === 1">
           <div class="dropdown">
-            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <i class="fa-solid fa-user"></i>
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -30,7 +35,7 @@
                 <router-link to="/myPageReview" class="dropdown-item">내 리뷰</router-link>
               </li>
               <li>
-                <router-link to="/myPageMemberCheck" class="dropdown-item">회원정보 수정</router-link>
+                <div @click="myPageMember" class="dropdown-item pe-auto">회원정보 수정</div>
               </li>
               <li>
                 <router-link to="/myPageWishList" class="dropdown-item">찜한 제품</router-link>
@@ -131,10 +136,18 @@ export default {
     // menuToggle() {
     //   this.isShow = !this.isShow;
     // },
+    myPageMember() {
+      if (sessionStorage.getItem('savePw')) {
+        this.$router.push('/myPageMember');
+      } else {
+        this.$router.push('/myPageMemberCheck');
+      }
+    }
   },
 };
 </script>
 <style scoped>
+
 header {
   height: 60px;
   background-color: var(--bg-white);
@@ -311,5 +324,9 @@ ul {
 }
 .contents-link-box a:hover {
   color: var(--text-point);
+}
+
+.pe-auto {
+  cursor: pointer;
 }
 </style>
