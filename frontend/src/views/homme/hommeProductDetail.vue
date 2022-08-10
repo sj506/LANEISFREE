@@ -77,8 +77,11 @@ export default {
   },
   beforeCreate() {},
   created() {
-    console.log(this.$store.state.getProductList);
-    this.productDetail = this.$store.state.getProductList[this.$route.params.productId - 1];
+    this.$store.state.getProductList.forEach((item) => {
+      if (item.pro_num == this.$route.params.productId) {
+        this.productDetail = item;
+      }
+    });
     this.productId = this.$route.params.productId;
     // this를 붙여줘야 route가 돌아감
     this.getProductImg();
