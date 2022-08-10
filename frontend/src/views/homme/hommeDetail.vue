@@ -356,6 +356,9 @@
               </div>
             </div>
           </header>
+          <main>
+            
+          </main>
         </div>
         <div class="pagination">
           <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span class="a11y">이전 페이지</span></button>

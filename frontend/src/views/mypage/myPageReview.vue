@@ -3,15 +3,15 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to='/'>
-          <div class="depth"><button href="/" class="btn">홈</button></div>
+          <div class="depth"><button href="/" class="btn_h">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn">마이페이지</button>
+          <button type="button" class="btn_h">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">찜한 제품</button>
+          <button type="button" class="btn_h">찜한 제품</button>
         </div>
       </div>
     </div>
@@ -454,18 +454,19 @@ a{
   background: none;
 }
 
-.btn {
+.btn_h {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
+  border: none;
 }
 
-.depth:last-child .btn {
+.depth:last-child .btn_h {
   color: #222;
 }
 
-.depth:first-child .btn {
+.depth:first-child .btn_h {
   color: #777;
 }
 
