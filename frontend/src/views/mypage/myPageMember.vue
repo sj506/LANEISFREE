@@ -433,6 +433,10 @@ td {
   padding: 17px 16px;
 }
 
+.col {
+  width: 38px;
+}
+
 thead th {
   width: 170px;
   border-top: 2px solid #222;
@@ -548,6 +552,7 @@ thead th {
   background: #f3f3f3;
   text-align: center;
   color: #222;
+  max-width: 1026px;
 }
 
 .bPoint td {
