@@ -3,15 +3,15 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to="/">
-          <div class="depth"><button href="/" class="btn">홈</button></div>
+          <div class="depth"><button href="/" class="btn_h">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn">마이페이지</button>
+          <button type="button" class="btn_h">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">내 리뷰</button>
+          <button type="button" class="btn_h">내 리뷰</button>
         </div>
       </div>
     </div>
@@ -102,11 +102,11 @@
                 </ul>
               </div>
             </div>
-            <div class="w_review">{{ item.re_ctnt }}</div>
-            <div class="w_btn d-flex justify-content-end pt-2">
-              <div><button class="btn btn-outline-dark">수정</button></div>
-              <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
-            </div>
+              <div class="w_review">{{item.re_ctnt}}</div>
+              <div class="w_btn d-flex justify-content-end pt-2">
+                <div><button class="btn btn-outline-dark">수정</button></div>
+                <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+              </div>
           </div>
         </div>
       </div>
@@ -451,18 +451,19 @@ a {
   background: none;
 }
 
-.btn {
+.btn_h {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
+  border: none;
 }
 
-.depth:last-child .btn {
+.depth:last-child .btn_h {
   color: #222;
 }
 
-.depth:first-child .btn {
+.depth:first-child .btn_h {
   color: #777;
 }
 
