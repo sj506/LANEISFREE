@@ -18,8 +18,8 @@
 
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide activeLink="/myPageMember" />
-      <div class="col-10 p-5">
+      <myPageSide activeLink="/myPageMemberCheck" />
+      <div class="col-10 p-5 r_border">
         <h3>비밀번호 재확인</h3>
         <p>회원님의 개인정보 보호를 위해 비밀번호를 입력해주세요.</p>
         <p>이니스프리는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이는 회원정보가 공개되지 않습니다.</p>
@@ -77,7 +77,7 @@ export default {
 #container {
   width: 100vw;
   min-height: 500px;
-  padding-bottom: 110px;
+  /* padding-bottom: 110px; */
   border-top: 1px solid transparent;
 }
 
@@ -118,6 +118,11 @@ export default {
 
 .depth:first-child {
   background: none;
+}
+
+.r_border{ 
+  min-height: 1200px;
+  border-left: 1px solid #ccc;
 }
 
 .btn {

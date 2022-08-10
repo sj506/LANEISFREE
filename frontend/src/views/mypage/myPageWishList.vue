@@ -3,22 +3,22 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to="/">
-          <div class="depth"><button href="/" class="btn">홈</button></div>
+          <div class="depth"><button href="/" class="btn_h">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn">마이페이지</button>
+          <button type="button" class="btn_h">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">찜한 제품</button>
+          <button type="button" class="btn_h">찜한 제품</button>
         </div>
       </div>
     </div>
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide activeLink="/myPageWishList" />
-      <div class="col-10 p-5">
+      <div class="col-10 p-5 r_border">
         <h3>찜한 제품</h3>
         <!-- <div class="reviewDiv">
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
@@ -48,13 +48,8 @@
                   <tbody class="_tbody">
                     <tr class="product_box" v-for="(likeProduct, idx) in likeList" :key="idx">
                       <td class="_flex">
-                        <input
-                          class="SelectBox onceSelectBox"
-                          type="checkbox"
-                          :checked="checkboxSelect"
-                          :data-pro_num="likeProduct.pro_num"
-                          ref="buyProduct"
-                        />
+                        <input class="SelectBox onceSelectBox" type="checkbox" :checked="checkboxSelect"
+                          :data-pro_num="likeProduct.pro_num" ref="buyProduct" />
                         <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
                           <img class="product_img" :src="this.$getSrc(likeProduct.pro_mainimg)" />
                         </router-link>
@@ -156,6 +151,10 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
 /* default */
 .dNone {
   display: none;
@@ -169,11 +168,20 @@ a {
   color: var(--text-black);
   font-style: none;
 }
+button {
+  border: none;
+}
+
+.r_border {
+  min-height: 1200px;
+  border-left: 1px solid #ccc;
+}
+
 /* header */
 #container {
   width: 100vw;
   min-height: 500px;
-  padding-bottom: 110px;
+  /* padding-bottom: 110px; */
   border-top: 1px solid transparent;
 }
 
@@ -322,18 +330,18 @@ td {
   background: none;
 }
 
-.btn {
+.btn_h {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
 }
 
-.depth:last-child .btn {
+.depth:last-child .btn_h {
   color: #222;
 }
 
-.depth:first-child .btn {
+.depth:first-child .btn_h {
   color: #777;
 }
 /* header category */

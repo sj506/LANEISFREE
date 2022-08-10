@@ -3,7 +3,7 @@
     <div class="inner">
       <ul class="navList">
         <li v-for="(myPage, idx) in myPageList" :key="idx" @click="myPagePush">
-          <div v-bind:class="{ active: activeLink == myPage.to }" :data-to="myPage.to">{{ myPage.name }}</div>
+          <div v-bind:class="{ active: activeLink == myPage.to }" class="pointer" :data-to="myPage.to">{{ myPage.name }}</div>
         </li>
         <!-- <li>
           <router-link to="/myPageReview">내 리뷰</router-link>
@@ -27,7 +27,7 @@ export default {
       myPageList: [
         { name: '주문배송조회', to: '/myPageOnlineOrderList' },
         { name: '내 리뷰', to: '/myPageReview' },
-        { name: '회원정보 수정', to: '/myPageMember' },
+        { name: '회원정보 수정', to: '/myPageMemberCheck' },
         { name: '찜한 제품', to: '/myPageWishList' },
       ],
     };
@@ -59,7 +59,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   min-width: 213px;
-  border-right: 0.5px solid #ccc;
+  /* border-right: 0.5px solid #ccc; */
   height: 100vh;
   z-index: 2;
 }

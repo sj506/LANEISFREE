@@ -3,15 +3,15 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to="/">
-          <div class="depth"><button href="/" class="btn">홈</button></div>
+          <div class="depth"><button href="/" class="btn_h">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn">마이페이지</button>
+          <button type="button" class="btn_h">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn">내 리뷰</button>
+          <button type="button" class="btn_h">내 리뷰</button>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide activeLink="/myPageReview" />
       <!-- <div class="col-9 reviewHeader"> -->
-      <div class="col-10 p-5">
+      <div class="col-10 p-5 r_border">
         <h3>내 리뷰</h3>
         <div class="reviewDiv">
           <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
@@ -55,7 +55,8 @@
                     <li>{{ item.pur_deadline }}</li>
                     <li>
                       <button>
-                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"> 리뷰쓰기 </router-link>
+                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"> 리뷰쓰기
+                        </router-link>
                       </button>
                     </li>
                   </ul>
@@ -105,7 +106,8 @@
             <div class="w_review">{{ item.re_ctnt }}</div>
             <div class="w_btn d-flex justify-content-end pt-2">
               <div><button class="btn btn-outline-dark">수정</button></div>
-              <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+              <div><button class="btn btn-outline-dark"
+                  @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
             </div>
           </div>
         </div>
@@ -212,6 +214,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* default */
 .dNone {
   display: none;
@@ -229,11 +232,18 @@ a {
   color: var(--text-black);
   font-style: none;
 }
+button {
+  border: none;
+}
+.r_border {
+  min-height: 1200px;
+  border-left: 1px solid #ccc;
+}
 /* header */
 #container {
   width: 100vw;
   min-height: 500px;
-  padding-bottom: 110px;
+  /* padding-bottom: 110px; */
   border-top: 1px solid transparent;
 }
 
@@ -451,18 +461,18 @@ a {
   background: none;
 }
 
-.btn {
+.btn_h {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
 }
 
-.depth:last-child .btn {
+.depth:last-child .btn_h {
   color: #222;
 }
 
-.depth:first-child .btn {
+.depth:first-child .btn_h {
   color: #777;
 }
 
