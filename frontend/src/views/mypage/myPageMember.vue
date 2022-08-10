@@ -130,8 +130,8 @@
               <td>동의 철회 또는 회원 탈퇴 시 까지</td>
             </tbody>
           </table>
-          <div>
-            <p>※ 귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 수 있습니다. 단, 거부할 경우 문의 서비스의 이용이 불가합니다.</p>
+          <div class="pt">
+            <span class="sub3">※ 귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 수 있습니다. 단, 거부할 경우 문의 서비스의 이용이 불가합니다.</span>
             <label><input type="checkbox">동의합니다.</label>
           </div>
         </div>
@@ -171,9 +171,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
 
 p {
   color: #777;
@@ -273,8 +270,13 @@ thead th {
   margin: 75px 0 24px;
 }
 
+.sub3 {
+  color: #777;
+  padding: 3px;
+}
+
 .inputText {
-  width: 150px;
+  width: 150px;         
   vertical-align: middle;
   height: 40px;
   padding: 8px;
