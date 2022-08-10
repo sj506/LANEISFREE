@@ -1,9 +1,8 @@
 <template>
   <div id="container">
-
     <div class="location headerCate">
       <div class="header">
-        <router-link to='/'>
+        <router-link to="/">
           <div class="depth"><button href="/" class="btn">홈</button></div>
         </router-link>
 
@@ -20,10 +19,9 @@
         </div>
       </div>
     </div>
-
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide />
+      <myPageSide activeLink="/myPageOnlineOrderList" />
       <div class="col-10 p-5">
         <h3>주문조회</h3>
       </div>
@@ -37,7 +35,7 @@ import myPageSide from '@/layout/myPageSide';
 export default {
   name: '',
   components: { myPageHeader, myPageSide },
-}
+};
 </script>
 
 <style scoped>
@@ -48,13 +46,18 @@ export default {
   border-top: 1px solid transparent;
 }
 
+h3 {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
 .location {
   display: flex;
   flex-direction: column;
 }
 
 .location:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }

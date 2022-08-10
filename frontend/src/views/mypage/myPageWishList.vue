@@ -1,9 +1,8 @@
 <template>
   <div id="container">
-
     <div class="location headerCate">
       <div class="header">
-        <router-link to='/'>
+        <router-link to="/">
           <div class="depth"><button href="/" class="btn">홈</button></div>
         </router-link>
 
@@ -14,15 +13,70 @@
         <div class="depth">
           <button type="button" class="btn">찜한 제품</button>
         </div>
-
       </div>
     </div>
-
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide />
+      <myPageSide activeLink="/myPageWishList" />
       <div class="col-10 p-5">
         <h3>찜한 제품</h3>
+        <!-- <div class="reviewDiv">
+          <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
+          <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
+        </div> -->
+        <div class="reviewP_ctnt" :class="{ dNone: isActive2 }">
+          <div class="p_container">
+            <div class="p_header">
+              <!-- <div class="review_point">리뷰 포인트 혜택</div> -->
+              <!-- <div class="review_policy">찜한 제품</div> -->
+            </div>
+            <div class="p_ctnt">
+              <div class="nonList" v-show="!purchaseCheck">찜한제품이 없습니다.</div>
+              <div v-show="purchaseCheck">
+                <table>
+                  <thead>
+                    <tr class="p_ctnt_header">
+                      <th class="_th allSelect">
+                        <label><input class="SelectBox" type="checkbox" @click="selectAll" />전체선택</label>
+                      </th>
+                      <th class="_th"></th>
+                      <th class="_th">수량</th>
+                      <th class="_th selPrice">판매가</th>
+                      <th class="_th"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="_tbody">
+                    <tr class="product_box" v-for="(likeProduct, idx) in likeList" :key="idx">
+                      <td class="_flex">
+                        <input
+                          class="SelectBox onceSelectBox"
+                          type="checkbox"
+                          :checked="checkboxSelect"
+                          :data-pro_num="likeProduct.pro_num"
+                          ref="buyProduct"
+                        />
+                        <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
+                          <img class="product_img" :src="this.$getSrc(likeProduct.pro_mainimg)" />
+                        </router-link>
+                      </td>
+                      <td>
+                        <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
+                          {{ likeProduct.pro_name }}
+                        </router-link>
+                      </td>
+                      <td><input type="number" class="pro_count" v-model="likeProduct.pro_count" min="0" /></td>
+                      <td>{{ this.$addComma(likeProduct.pro_count * likeProduct.pro_price) }}원</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="btnBox">
+                  <button class="buyBtn" @click="clickBuy">장바구니에 담기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -34,12 +88,88 @@ import myPageSide from '@/layout/myPageSide';
 export default {
   name: '',
   components: { myPageHeader, myPageSide },
-}
+  data() {
+    return {
+      isActive2: false,
+      purchaseCheck: false,
+      likeList: {},
+      checkboxSelect: false,
+    };
+  },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
+    },
+  },
+  watch: {
+    loginToggle: function () {
+      this.loginCheck();
+    },
+  },
+  created() {
+    this.getHeart();
+  },
+  methods: {
+    async getHeart() {
+      const param = { m_num: this.$store.state.user.result.m_num };
+      const getHeart = await this.$post('product/getHeart', param);
+      if (getHeart.result) {
+        this.purchaseCheck = true;
+      }
+      console.log(getHeart.result);
+      this.likeList = getHeart.result;
+      this.likeList.forEach((likeProduct) => {
+        likeProduct.pro_count = 1;
+      });
+    },
+    selectAll() {
+      this.checkboxSelect = !this.checkboxSelect;
+    },
+    loginCheck() {
+      if (!this.$store.state.user) {
+        alert('로그인 한 유저만 구매가 가능합니다.');
+        this.$router.push('signin');
+      }
+    },
+    async clickBuy() {
+      const param = [];
+      console.log(this.$store.state.user.result.m_num);
+      this.$refs.buyProduct.forEach((ele) => {
+        if (ele.checked) {
+          // console.log(ele.dataset.pro_num);
+          // 체크박스 인풋에서 true인 상품들만 리스트를 가져온다
+          this.likeList.forEach((likeProduct) => {
+            if (likeProduct.pro_num == ele.dataset.pro_num) {
+              // 체크박스가 true인 상품번호와 찜목록에 상품번호가 일치한 상품만
+              // 수량과 상품번호를 param값에 전달한다 여기서 param을 만들면 param이 여러개가 만들어져서 밖으로 뺐다.
+              const basketList = { m_num: this.$store.state.user.result.m_num, pro_num: ele.dataset.pro_num, ba_stock: likeProduct.pro_count };
+              param.push(basketList);
+            }
+          });
+        }
+      });
+      const basketList = await this.$post('product/insbasket', param);
+      console.log(basketList);
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-
+/* default */
+.dNone {
+  display: none;
+}
+h3 {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+a {
+  color: var(--text-black);
+  font-style: none;
+}
+/* header */
 #container {
   width: 100vw;
   min-height: 500px;
@@ -47,16 +177,6 @@ export default {
   border-top: 1px solid transparent;
 }
 
-.location {
-  display: flex;
-  flex-direction: column;
-}
-
-.location:after {
-  content: "";
-  display: block;
-  clear: both;
-}
 .contents {
   max-width: 1400px;
   margin: auto;
@@ -64,15 +184,131 @@ export default {
   flex-wrap: nowrap;
 }
 
+/* main */
+.reviewHeader {
+  padding: 40px;
+  min-width: 560px;
+}
+
+/* reviewP */
+.p_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000;
+}
+.nonList {
+  width: 100% !important;
+  margin: 80px 0 0;
+  padding: 120px 0 40px;
+  text-align: center;
+  font: 22px/32px 'SDNeoL', 'notoR';
+  color: #222;
+  background: url(https://images.innisfree.co.kr/resources/web2/images/common/bg_no_list.png) no-repeat 50% 40px;
+  background-size: 60px;
+}
+.p_ctnt_header {
+  padding: 20px 0;
+  font-weight: 600;
+  border-bottom: 1px solid var(--text-light-gray);
+  background-color: rgba(223, 224, 226, 0.712);
+}
+
+table {
+  min-width: 560px;
+  width: 100%;
+}
+
+._th {
+  padding: 20px;
+  padding-left: 50px;
+}
+
+._th > label {
+  display: flex;
+}
+
+.SelectBox {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+td {
+  vertical-align: middle;
+}
+.onceSelectBox {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.allSelect {
+  width: 300px;
+}
+.product_img {
+  width: 130px;
+  margin-left: 3rem;
+}
+.product_box {
+  text-align: center;
+  border-bottom: 1px solid #afafaf;
+}
+.selPrice {
+  padding-left: 5rem;
+}
+._tbody {
+}
+
+._flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pro_count {
+  text-align: center;
+  width: 3rem;
+}
+
+.buyBtn {
+  margin-top: 20px;
+  width: 180px;
+  height: 50px;
+  font-size: 19px;
+  font-weight: bold;
+  background-color: var(--bg-main);
+  border: none;
+  color: var(--text-white);
+}
+
+/* header category */
+
+.location {
+  display: flex;
+  flex-direction: column;
+}
+
+.location:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.header {
+  margin-left: 80px;
+}
+
 .headerCate {
   max-width: 1550px;
   margin: auto;
   justify-content: space-between;
   flex-wrap: nowrap;
-}
-
-.header {
-  margin-left: 80px;
 }
 
 .depth {
@@ -100,21 +336,5 @@ export default {
 .depth:first-child .btn {
   color: #777;
 }
-
-.location .list {
-  display: none;
-  position: absolute;
-  max-height: 350px;
-  overflow: hidden;
-  top: 48px;
-  left: -8px;
-  padding: 18px 24px;
-  background: #fff;
-  border: 1px solid #a7a7a7;
-}
-
-.location .list a:hover {
-  color: #222;
-}
-
+/* header category */
 </style>

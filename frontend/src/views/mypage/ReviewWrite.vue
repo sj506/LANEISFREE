@@ -2,7 +2,7 @@
   <div id="container">
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide />
+      <myPageSide activeLink="/ReviewWrite" />
       <div class="col-9 reviewHeader">
         <h3>리뷰 작성</h3>
         <div class="reviewGuide">
@@ -84,8 +84,7 @@
                 </div>
                 <h3 class="review-h2">써 보니 어떠셨나요?</h3>
                 <input v-model="review_ctnt.ctnt" type="text" name="review_ctnt" class="review_ctnt" />
-                <input id="picture" type="file" accept="image/png,image/jpeg" name="review_pic"
-                                    @change="fileUpload" />
+                <input id="picture" type="file" accept="image/png,image/jpeg" name="review_pic" @change="fileUpload" />
                 <label for="picture" class="input_file"><i class="fa-solid fa-camera"></i> 사진 올리기</label>
                 <div class="Precautions pt-2 pb-5">※ 상품과 무관한 사진을 첨부한 경우 통보없이 삭제 및 리워드 혜택이 회수될 수 있습니다.</div>
                 <div class="d-flex justify-content-between w-100">
@@ -113,86 +112,86 @@ import myPageHeader from '@/layout/myPageHeader';
 import myPageSide from '@/layout/myPageSide';
 
 export default {
-    name: '',
-    components: { myPageHeader, myPageSide },
-    data() {
-        return {
-            userProductList: [],
-            UserProduct: [],
-            review_ctnt: {
-                star: '',
-                ctnt: '',
-                pic: ''
-            },
-            user: {},
-            pro_num: ''
-        };
-    },
-    computed: {
-      loginToggle: function () {
-        return this.$store.state.setUser;
+  name: '',
+  components: { myPageHeader, myPageSide },
+  data() {
+    return {
+      userProductList: [],
+      UserProduct: [],
+      review_ctnt: {
+        star: '',
+        ctnt: '',
+        pic: '',
       },
+      user: {},
+      pro_num: '',
+    };
+  },
+  computed: {
+    loginToggle: function () {
+      return this.$store.state.setUser;
     },
-    watch: {
-      loginToggle: function () {
-        this.loginCheck();
-      },
+  },
+  watch: {
+    loginToggle: function () {
+      this.loginCheck();
     },
-    created() {
-        this.user = this.$store.state.user;
-        console.log(this.user);
-        this.userProductList = this.$store.state.userProductList;
-        console.log(this.userProductList);
-        this.getUserProduct();
-        this.pro_num = this.$route.query.pro_num;
+  },
+  created() {
+    this.user = this.$store.state.user;
+    console.log(this.user);
+    this.userProductList = this.$store.state.userProductList;
+    console.log(this.userProductList);
+    this.getUserProduct();
+    this.pro_num = this.$route.query.pro_num;
+  },
+  methods: {
+    loginCheck() {
+      if (!this.$store.state.user) {
+        alert('로그인 한 유저만 구매가 가능합니다.');
+        this.$router.push('signin');
+      }
     },
-    methods: {
-        loginCheck() {
-          if(!this.$store.state.user) {
-            alert('로그인 한 유저만 구매가 가능합니다.');
-            this.$router.push('signin');
-          } 
-        },
-        getUserProduct() {
-            this.UserProduct = this.userProductList.filter(element => {
-                return element.pro_num == this.$route.query.pro_num;
-            });
-            console.log(this.UserProduct);
-        },
-        starBtn() {
-            let radioInputs = document.getElementsByClassName("star-radio");
-            let selected = 0;
+    getUserProduct() {
+      this.UserProduct = this.userProductList.filter((element) => {
+        return element.pro_num == this.$route.query.pro_num;
+      });
+      console.log(this.UserProduct);
+    },
+    starBtn() {
+      let radioInputs = document.getElementsByClassName('star-radio');
+      let selected = 0;
 
-            for (let idx = 0; idx < radioInputs.length; idx++) {
-                let current = radioInputs[idx];
-                current.onclick = function () {
-                    selected = current.value;
-                    for (let idx2 = 0; idx2 < radioInputs.length; idx2++) {
-                        let radioGuy = radioInputs[idx2];
-                        if (radioGuy.value <= selected) {
-                            let icon = radioGuy.previousSibling;
-                            icon.classList.add("checked");
-                        } else {
-                            let icon = radioGuy.previousSibling;
-                            icon.classList.remove("checked");
-                        }
-                    }
-                };
+      for (let idx = 0; idx < radioInputs.length; idx++) {
+        let current = radioInputs[idx];
+        current.onclick = function () {
+          selected = current.value;
+          for (let idx2 = 0; idx2 < radioInputs.length; idx2++) {
+            let radioGuy = radioInputs[idx2];
+            if (radioGuy.value <= selected) {
+              let icon = radioGuy.previousSibling;
+              icon.classList.add('checked');
+            } else {
+              let icon = radioGuy.previousSibling;
+              icon.classList.remove('checked');
             }
-        },
-        async submitForm() {
-            const review = await this.$post(`review/insertReview/${this.user.result.m_num}/${this.pro_num}`, this.review_ctnt);
-            // this.$router.push('/signin');
-            console.log(review);
-            this.$router.push("./myPageReview");
-        },
-        async fileUpload(e) {
-            const image = await this.$base64(e.target.files[0]);
-            this.review_ctnt.pic = image;
-            console.log(this.review_ctnt);
-        }
-    }
-}
+          }
+        };
+      }
+    },
+    async submitForm() {
+      const review = await this.$post(`review/insertReview/${this.user.result.m_num}/${this.pro_num}`, this.review_ctnt);
+      // this.$router.push('/signin');
+      console.log(review);
+      this.$router.push('./myPageReview');
+    },
+    async fileUpload(e) {
+      const image = await this.$base64(e.target.files[0]);
+      this.review_ctnt.pic = image;
+      console.log(this.review_ctnt);
+    },
+  },
+};
 </script>
 
 <style scoped>
