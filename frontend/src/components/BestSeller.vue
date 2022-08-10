@@ -201,7 +201,7 @@ export default {
     transform: translateX(15px) rotate(4deg);
   }
 }
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 969px) {
   .swiper {
     width: 50%;
   }
