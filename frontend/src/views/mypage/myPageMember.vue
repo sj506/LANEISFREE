@@ -31,7 +31,7 @@
           <div class="memberE" @click="displayE" :class="{ bgGreen: isActive1 }">회원정보 수정</div>
           <div class="memberP" @click="displayP" :class="{ bgGreen: isActive2 }">비밀번호 수정</div>
         </div>
-
+        
         <div class="memberE_ctnt" :class="{ dNone: isActive2 }">
           <form>
             <h4 class="mt-4 pt-2 mb-4">SNS 계정연동 관리</h4>
@@ -231,14 +231,14 @@
         </div>
 
         <div class="memberP_ctnt" :class="{ dNone: isActive1 }">
-          <form>
-            <div>
+          
+            <div class="">
               <h4 class="mt-4 pt-2 mb-4">뷰티포인트 통합 비밀번호 수정</h4>
               <p class="mb-1">개인정보 보호를 위해 비밀번호는 90일마다 변경해주세요.</p>
               <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
               <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
             </div>
-
+          <form class="column-center">
             <div class="noticeForm">
               <div class="notice">
                 <div class="noticeTitle">
@@ -270,7 +270,7 @@
               </div>
             </div>
 
-            <div class="my-5 d-flex submitBtnDiv">
+            <div class="my-5 d-flex submitBtnDiv update">
               <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인">
               <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소">
             </div>
@@ -310,6 +310,7 @@ export default {
 </script>
 
 <style scoped>
+
 p {
   color: #777;
   padding: 3px;
@@ -588,6 +589,7 @@ thead th {
   margin-top: 20px;
   border-top: 1px solid #222;
   border-bottom: 1px solid #f3f3f3;
+  max-width: 1026px;
 }
 
 .notice {
