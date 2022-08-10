@@ -382,7 +382,7 @@
                 <li>{{ item.m_email }}</li>
                 <li>{{ item.re_time }}</li>
                 <li>{{ item.re_ctnt }}</li>
-                <li><img :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt=""></li>
+                <li><img class="review_img" :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt=""></li>
               </ul>
             </div>
           </main>
@@ -1204,6 +1204,9 @@ MARQUEE {
 .review_box{
   background-color: #fff;
   padding: 15px;
+}
+.review_img{
+  height: 150px;
 }
 /* 리뷰별점 */
 .user_info {

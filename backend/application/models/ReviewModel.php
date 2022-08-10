@@ -86,7 +86,9 @@ class ReviewModel extends Model
     }
 
     public function getReviewData() {
-        $sql = 'SELECT A.re_star, A.re_ctnt, A.re_img, A.re_time, B.m_email, A.m_num, A.pro_num
+        $sql = 'SELECT A.re_star, A.re_ctnt, A.re_img, DATE_FORMAT(A.re_time, "%Y-%m-%d") as re_time, 
+                insert(B.m_email, 5 , LENGTH(m_email) - 4, REPEAT("*", LENGTH(SUBSTRING(B.m_email, 1, instr(B.m_email, "@")-1)) - 4 )) AS m_email, 
+                A.m_num, A.pro_num
                 FROM t_review A
                 INNER JOIN t_member B
                 ON A.m_num = B.m_num';
