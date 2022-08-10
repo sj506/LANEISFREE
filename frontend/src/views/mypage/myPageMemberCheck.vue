@@ -59,6 +59,7 @@ export default {
       const signIn = await this.$post('user/signIn', this.user);
       if (this.user.m_pw === signIn.result.m_pw) {
         this.$router.push('/myPageMember');
+        sessionStorage.setItem('savePw', 1);
         // console.log('로그인 성공');
       } else {
         alert('이메일 또는 비밀번호를 확인해주세요.');
