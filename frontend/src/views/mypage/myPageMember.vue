@@ -21,18 +21,19 @@
       <myPageSide activeLink="/myPageMemberCheck" />
       <div class="col-10 p-5 r_border">
 
-        <form>
-          <h3 class="pb-4">뷰티포인트 통합 회원 정보 수정</h3>
-          <p class="mb-3 text-dark">
-            * 이 페이지에서 회원정보 수정, 비밀번호 수정시 뷰티포인트 통합 아이디로 로그인하는 아모레퍼시픽 사이트의 정보가 함께 변경됩니다.
-          </p>
 
-          <div class="memberDiv">
-            <div class="memberE" @click="displayE" :class="{ bgGreen: isActive1 }">회원정보 수정</div>
-            <div class="memberP" @click="displayP" :class="{ bgGreen: isActive2 }">비밀번호 수정</div>
-          </div>
-          <div class="memberE_ctnt" :class="{ dNone: isActive2 }">
+        <h3 class="pb-4">뷰티포인트 통합 회원 정보 수정</h3>
+        <p class="mb-3 text-dark">
+          * 이 페이지에서 회원정보 수정, 비밀번호 수정시 뷰티포인트 통합 아이디로 로그인하는 아모레퍼시픽 사이트의 정보가 함께 변경됩니다.
+        </p>
 
+        <div class="memberDiv">
+          <div class="memberE" @click="displayE" :class="{ bgGreen: isActive1 }">회원정보 수정</div>
+          <div class="memberP" @click="displayP" :class="{ bgGreen: isActive2 }">비밀번호 수정</div>
+        </div>
+
+        <div class="memberE_ctnt" :class="{ dNone: isActive2 }">
+          <form>
             <h4 class="mt-4 pt-2 mb-4">SNS 계정연동 관리</h4>
             <table class="firstT">
               <thead>
@@ -226,33 +227,56 @@
                 <span class="noConnectBtn ms-3 py-2">회원탈퇴</span>
               </router-link>
             </div>
-
-          </div>
-        </form>
-        <div class="memberP_ctnt" :class="{ dNone: isActive1 }">
-
-          <form>
-            <h4 class="mt-4 pt-2 mb-4">뷰티포인트 통합 비밀번호 수정</h4>
-            <p class="mb-1">개인정보 보호를 위해 비밀번호는 90일마다 변경해주세요.</p>
-            <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
-            <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
-
-            <div>
-              <div><img src="@/assets/img/mypage/icon_alert.png " alt="느낌표"></div>
-              <div>
-                <h3>비밀번호 입력 시 유의사항</h3>
-              </div>
-            </div>
-            <ul class="noticeList">
-              <li>* 영문 소문자, 숫자, 특수문자 중 최소 2가지 조합으로 8~16자</li>
-              <li>- 사용 가능한 특수문자: !”#$%&’()+,-./:;=>?@[ ]^_`{|}~</li>
-              <li>- 공백 사용 불가</li>
-              <li>* 아이디와 동일한 비밀번호 사용불가</li>
-              <li>* 개인정보와 관련되거나 연속된 숫자, 반복된 문자는 사용하지 않도록 주의</li>
-            </ul>
-
           </form>
         </div>
+
+        <div class="memberP_ctnt" :class="{ dNone: isActive1 }">
+          <form>
+            <div>
+              <h4 class="mt-4 pt-2 mb-4">뷰티포인트 통합 비밀번호 수정</h4>
+              <p class="mb-1">개인정보 보호를 위해 비밀번호는 90일마다 변경해주세요.</p>
+              <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
+              <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
+            </div>
+
+            <div class="noticeForm">
+              <div class="notice">
+                <div class="noticeTitle">
+                  <p>비밀번호 입력 시 유의사항</p>
+                </div>
+                <div class="noticeList">
+                  <p>* 영문 소문자, 숫자, 특수문자 중 최소 2가지 조합으로 8~16자</p>
+                  <p>- 사용 가능한 특수문자: !”#$%&’()+,-./:;=>?@[ ]^_`{|}~</p>
+                  <p>- 공백 사용 불가</p>
+                  <p>* 아이디와 동일한 비밀번호 사용불가</p>
+                  <p>* 개인정보와 관련되거나 연속된 숫자, 반복된 문자는 사용하지 않도록 주의</p>
+                </div>
+              </div>
+              <div class="changePw">
+                <table>
+                  <tr>
+                    <th>현재 비밀번호</th>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <th>새 비밀번호</th>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <th>새 비밀번호 확인</th>
+                    <td><input type="text"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="my-5 d-flex submitBtnDiv">
+              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인">
+              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소">
+            </div>
+          </form>
+        </div>
+
       </div>
     </section>
   </div>
@@ -286,8 +310,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 p {
   color: #777;
   padding: 3px;
@@ -469,10 +491,6 @@ thead th {
   vertical-align: middle;
 }
 
-.col {
-  width: 35px;
-}
-
 .thirdT thead th,
 .thirdT tbody td {
   border-bottom: 1px solid #dcdcdc;
@@ -566,8 +584,70 @@ thead th {
 }
 
 /* 비밀번호 수정 */
+.noticeForm {
+  margin-top: 20px;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.notice {
+  float: right;
+  width: 50%;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
 .noticeList {
   padding: 5px 35px 35px;
   text-align: left;
+}
+
+.noticeList p {
+  color: #777;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.noticeTitle p {
+  padding-top: 140px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  color: #222;
+  background: url('@/assets/img/mypage/icon_alert.png') no-repeat 50% 40px;
+}
+
+.changePw {
+  float: left;
+  width: 50%;
+}
+
+.changePw table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  padding: 14px 0;
+  margin-top: 35px;
+}
+
+.changePw th {
+  width: 170px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  color: #222;
+  vertical-align: top;
+}
+
+.changePw td {
+  padding: 4px 0;
+  color: #222;
+}
+
+.changePw input {
+  height: 40px;
+  width: 234px;
+  padding: 0 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 16px;
 }
 </style>
