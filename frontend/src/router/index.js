@@ -20,6 +20,7 @@ import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
 import ChatView from '@/components/ChatView.vue';
+import map from '@/views/map.vue';
 
 //네비게이션 가드
 const requireAuth = () => (to, from, next) => {
@@ -136,6 +137,11 @@ const routes = [
     component: ChatView,
   },
   {
+    path: '/map',
+    name: 'map',
+    component: map,
+  },
+  {
     path: '/basket',
     name: 'basket',
     component: basket,
@@ -158,5 +164,8 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 export default router;
