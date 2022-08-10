@@ -5,23 +5,20 @@
       <div>
         <div class="userInfo">
           <span class="name"> {{ userNm }} </span>님은
-          <span class="wImg">
-            <img src="@/assets/img/mypage/icon_rank_w2.png" alt="w"> 웰컴
-          </span>
+          <span class="wImg"> <img src="@/assets/img/mypage/icon_rank_w2.png" alt="w" /> 웰컴 </span>
           회원입니다.
-          <br>
+          <br />
 
           <div class="totalGrade">
             VIP 승급까지
             <span>100,000 원</span> <span class="bColor">부족</span>
             <span class="gColor">(다음 등급 산정일 &nbsp; 2022.09.01)</span>
-            <br>
+            <br />
             당월포함 직전6개월 구매금액 <span>0 원</span>
           </div>
 
           <a href="#" class="myShop arrow">리뷰어 프로필 등록하기 </a>
           <a href="#" class="myShop arrow">[ <b>MY SHOP</b> ] 등록하기 </a>
-
         </div>
 
         <div class="membership">
@@ -32,30 +29,22 @@
       <ul class="userPoint">
         <li class="point">
           <a href="#" class="arrow">뷰티포인트 </a>
-          <span class="length">
-            <span class="num">0</span>P
-          </span>
+          <span class="length"> <span class="num">0</span>P </span>
         </li>
 
         <li class="coupon">
           <a href="#" class="arrow">보유 쿠폰 </a>
-          <span class="length">
-            <span class="num">11</span>장
-          </span>
+          <span class="length"> <span class="num">11</span>장 </span>
         </li>
 
         <li class="bottle">
           <a href="#" class="arrow">이번달 공병수거 </a>
-          <span class="length">
-            <span class="num">0</span>개
-          </span>
+          <span class="length"> <span class="num">0</span>개 </span>
         </li>
 
         <li class="review">
           <a href="#" class="arrow">작성가능리뷰 </a>
-          <span class="length">
-            <span class="num">0</span>건
-          </span>
+          <span class="length"> <span class="num">0</span>건 </span>
         </li>
       </ul>
     </div>
@@ -63,14 +52,10 @@
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {};
 </script>
 
 <style scoped>
-
-
 button,
 a {
   font-family: inherit;
@@ -85,12 +70,12 @@ a {
 li {
   list-style: none;
 }
-.location{
+.location {
   display: flex;
   flex-direction: column;
 }
 .location:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -158,8 +143,8 @@ li {
   color: #222;
 }
 .wImg {
-  color: #167a68;
-  font-weight: normal;
+  color: var(--text-point);
+  font-weight: bold;
 }
 
 .wImg img {
@@ -192,7 +177,7 @@ li {
 .arrow::after {
   background: url(@/assets/img/mypage/arw_link_bs.png) no-repeat;
   vertical-align: -2px;
-  content: "";
+  content: '';
   display: inline-block;
   width: 7px;
   height: 12px;
@@ -215,7 +200,7 @@ li {
   color: #222;
   font-size: 14px;
   text-align: center;
-  transition: all .3s;
+  transition: all 0.3s;
   box-sizing: border-box;
 }
 
@@ -237,7 +222,7 @@ li {
 .userPoint .length {
   display: block;
   margin: 5px 0 0;
-  color: #167a68;
+  color: var(--text-main);
   font-size: 16px;
 }
 
@@ -262,8 +247,4 @@ li {
 .review {
   background: url('@/assets/img/mypage/icon_review_wr.png') no-repeat 50% 0;
 }
-
-
-
-
 </style>
