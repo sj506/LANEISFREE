@@ -67,9 +67,11 @@ class ReviewModel extends Model
                 ON A.pro_num = B.pro_num
                 LEFT JOIN t_member C
                 ON B.m_num = C.m_num
-                WHERE A.pro_num in (SELECT pro_num FROM t_review WHERE m_num = :m_num)';
+                WHERE A.pro_num in (SELECT pro_num FROM t_review WHERE m_num = :m_num)
+                AND B.m_num = :m_num1';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
+        $stmt->bindValue(":m_num1", $param["m_num"]);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -83,4 +85,13 @@ class ReviewModel extends Model
         return intval($this->pdo->lastInsertId());
     }
 
+    public function getReviewData() {
+        $sql = 'SELECT A.re_star, A.re_ctnt, A.re_img, A.re_time, B.m_email, A.m_num, A.pro_num
+                FROM t_review A
+                INNER JOIN t_member B
+                ON A.m_num = B.m_num';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

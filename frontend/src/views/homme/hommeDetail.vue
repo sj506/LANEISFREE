@@ -337,7 +337,7 @@
     <section class="pdp-review centerCol">
       <div class="review centerCol">
         <div class="c_review">
-          <header class="">
+          <header class="border_bottom">
             <div class="centerCol ">
               <em class="">AMORE MALL REVIEWS</em>
               <h3 class="h4">481개의 소중한 상품 리뷰</h3>
@@ -357,7 +357,34 @@
             </div>
           </header>
           <main>
-            
+            <div class="review_container">
+              <ul class="review_box" v-for="(item, idx) in reviewData" :key="idx">
+                <li class="star--container">
+                  <div class="star--box">
+                    <div class="star">
+                      <div class="stars-outer">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <div class="stars-inner" :class="'star'+ item.re_star" >
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>{{ item.m_email }}</li>
+                <li>{{ item.re_time }}</li>
+                <li>{{ item.re_ctnt }}</li>
+                <li><img :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt=""></li>
+              </ul>
+            </div>
           </main>
         </div>
         <div class="pagination">
@@ -381,6 +408,7 @@ export default {
       isActive1: false,
       isActive2: false,
       isActive3: false,
+      reviewData: {}
     };
   },
   methods: {
@@ -391,8 +419,14 @@ export default {
       this[activeNm] = !this[activeNm];
       ele.classList.toggle('collapsed');
     },
+    async getReviewData() {
+      this.reviewData = await this.$get(`/review/getReviewData`, {});
+      console.log(this.reviewData);
+    }
   },
-  created() {},
+  created() {
+    this.getReviewData();
+  },
   // computed: {
   //   isactive: function(n) {
   //     return this.n;
@@ -1151,11 +1185,81 @@ MARQUEE {
 }
 .c_review{
   width: 100%;
-  border-bottom: 1px solid #000;
+}
+.border_bottom{
+  border-bottom: 1px solid rgb(88, 87, 87);
+
 }
 .review{
   max-width: 980px;
   width: 100%;
+}
+.review_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  gap: 20px;
+  padding: 10px;
+}
+.review_box{
+  background-color: #fff;
+  padding: 15px;
+}
+/* 리뷰별점 */
+.user_info {
+  display: flex;
+  flex-direction: column;
+}
+.star--box {
+  display: inline;
+  width: 92px;
+  padding-top: 5px;
+}
+.store--rating i {
+  font-size: 18px;
+}
+.stars-outer {
+  position: relative;
+  display: flex;
+}
+
+.stars-inner {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.stars-outer i {
+  font-weight: 900;
+  color: #ccc;
+}
+.star--container{
+  width: 92px;
+}
+.stars-inner i {
+  font-weight: 900;
+  color: #fcd34d;
+}
+.stars-inner.star5 {
+  width: 100% !important;
+}
+.stars-inner.star4 {
+  width: 80% !important;
+}
+.stars-inner.star3 {
+  width: 60% !important;
+}
+.stars-inner.star2 {
+  width: 40% !important;
+}
+.stars-inner.star1 {
+  width: 20% !important;
+}
+.stars-inner.star0 {
+  width: 0% !important;
 }
 
 /* 공용 */
