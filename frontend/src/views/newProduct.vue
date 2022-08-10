@@ -51,7 +51,7 @@
         </div>
 
         <div class="prod_box column-center">
-          <div class="prod_box1 flex-center" v-for="product in selectProduct" :key="product.pro_num">
+          <div class="prod_box1 flex-center">
             <div class="product_item">
               <div class="product-item__badge-wrap">
                 <span class="product-item__badge badge badge--new"><NEW></NEW></span>
@@ -59,7 +59,7 @@
               <router-link to="/" class="product-item__link">
                 <!-- 링크연결 -->
                 <div class="product-item__thumb">
-                  <img class="product-item__img" :src="this.$getSrc(product.pro_mainimg)" alt="액티브2종세트" />
+                  <img class="product-item__img" src="../assets/img/newImage/액티브2종세트.jpg" alt="액티브2종세트" />
                 </div>
                 <div class="product-item__hash-wrap">
                   <span class="product-item__hash">#남성스킨로션</span>
@@ -267,9 +267,8 @@ export default {
   components: { NEW },
   methods: {
     async getProductList() {
-      const getProductList = await this.$get('/product/getProductList', {});
-      this.$store.commit('selectProduct', getProductList);
-      this.$store.commit('getProductList', getProductList);
+      this.ProductList = await this.$get('/product/getProductList', {});
+      console.log(this.ProductList);
       //상품 리스트 가져오는 통신
     },
   }
