@@ -132,8 +132,35 @@
           </table>
           <div class="pt-3 sub3">
             <span>※ 귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 수 있습니다. 단, 거부할 경우 문의 서비스의 이용이 불가합니다.</span>
-            <label><input type="checkbox" class="ms-1">동의합니다.</label>
+            <label class="agree"><input type="checkbox" class="me-1 agreeCheckBox">동의합니다.</label>
           </div>
+          <div class="sub2">
+            <h4>관련정보 수신여부</h4>
+            <p>이니스프리에서 보내드리는 문자, 이메일, 우편물에 대한 수신동의 입니다.</p>
+          </div>
+          <table class="seconT">
+            <tr>
+              <th>이메일 수신동의</th>
+              <td>
+                <input type="radio"> 수신
+                <input type="radio" checked> 미수신
+              </td>
+            </tr>
+            <tr>
+              <th>문자 수신동의</th>
+              <td>
+                <input type="radio"> 수신
+                <input type="radio" checked> 미수신
+              </td>
+            </tr>
+            <tr>
+              <th>우편물 수신동의</th>
+              <td>
+                <input type="radio"> 수신
+                <input type="radio" checked> 미수신
+              </td>
+            </tr>
+          </table>
         </div>
         <div class="memberP_ctnt" :class="{ dNone: isActive1 }">
 
@@ -171,7 +198,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 p {
   color: #777;
@@ -272,6 +298,7 @@ thead th {
 }
 
 .sub3 {
+  position: relative;
   width: 1026px;
 }
 
@@ -286,6 +313,16 @@ thead th {
   height: 40px;
   padding: 8px;
   border: 1px solid #dcdcdc;
+}
+
+.agree {
+  position: absolute;
+  right: 0;
+}
+
+.agreeCheckBox {
+  height: 20px;
+  width: 20px;
 }
 
 /* header */

@@ -9,7 +9,7 @@
           <router-link to="/myPageReview">내 리뷰</router-link>
         </li>
         <li>
-          <div @click="myPageMember" class="pe-auto">회원정보 수정</div>
+          <router-link to="/myPageMemberCheck">회원정보 수정</router-link>
         </li>
         <li>
           <router-link to="/myPageWishList">찜한 제품</router-link>
@@ -59,10 +59,6 @@ export default {
   flex-direction: column;
   gap: 40px;
   white-space: nowrap;
-}
-
-.pe-auto {
-  cursor: pointer;
 }
 
 a {
