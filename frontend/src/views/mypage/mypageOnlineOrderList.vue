@@ -23,7 +23,17 @@
     <section class="contents d-flex row align-items-baseline justify-content-between">
       <myPageSide activeLink="/myPageOnlineOrderList" />
       <div class="col-10 p-5 r_border">
-        <h3>주문조회</h3>
+        <h3>주문/배송현황</h3>
+        <div class="reviewDiv">
+          <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
+          <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
+        </div>
+        <div class="reviewP_ctnt" :class="{ dNone: isActive2 }">
+          
+        </div>
+        <div class="reviewW_ctnt" :class="{ dNone: isActive1 }">
+         
+        </div>
       </div>
     </section>
   </div>
@@ -39,8 +49,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 #container {
   width: 100vw;
   min-height: 500px;

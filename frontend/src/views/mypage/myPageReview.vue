@@ -212,7 +212,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* default */
 .dNone {
   display: none;
@@ -237,6 +236,7 @@ button {
   min-height: 1200px;
   border-left: 1px solid #ccc;
 }
+
 /* header */
 #container {
   width: 100vw;

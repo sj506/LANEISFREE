@@ -166,10 +166,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-
 /* default */
 .dNone {
   display: none;
