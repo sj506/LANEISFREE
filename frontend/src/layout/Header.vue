@@ -120,6 +120,7 @@ export default {
     logOut() {
       this.$store.commit('user', null);
       this.$store.commit('setUser', 0);
+      sessionStorage.removeItem('savePw');
     },
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
