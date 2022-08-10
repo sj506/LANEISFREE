@@ -31,6 +31,9 @@
               <li>
                 <router-link to="/myPageWishList" class="dropdown-item">찜한 제품</router-link>
               </li>
+              <li>
+                <router-link to="/basket" class="dropdown-item">장바구니</router-link>
+              </li>
             </ul>
           </div>
         </li>
