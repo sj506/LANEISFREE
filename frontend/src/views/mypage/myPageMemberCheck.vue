@@ -1,9 +1,8 @@
 <template>
   <div id="container">
-
     <div class="location headerCate">
       <div class="header">
-        <router-link to='/'>
+        <router-link to="/">
           <div class="depth"><button href="/" class="btn">홈</button></div>
         </router-link>
 
@@ -19,20 +18,18 @@
 
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide />
+      <myPageSide activeLink="/myPageMember" />
       <div class="col-10 p-5">
         <h3>비밀번호 재확인</h3>
         <p>회원님의 개인정보 보호를 위해 비밀번호를 입력해주세요.</p>
         <p>이니스프리는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이는 회원정보가 공개되지 않습니다.</p>
         <p>보다 다양한 혜택/서비스를 받으시려면 회원 정보를 최신으로 유지해주세요.</p>
         <div class="pwForm">
-
           <form>
             <label>비밀번호</label>
-            <input type="password" v-model="user.m_pw" ref="focus" class="pwInput">
-            <input type="submit" class="pwSubmit" @click.prevent="pwCheckForm" value="확인">
+            <input type="password" v-model="user.m_pw" ref="focus" class="pwInput" />
+            <input type="submit" class="pwSubmit" @click.prevent="pwCheckForm" value="확인" />
           </form>
-
         </div>
       </div>
     </section>
@@ -51,7 +48,7 @@ export default {
         m_email: '',
         m_pw: '',
       },
-    }
+    };
   },
   methods: {
     async pwCheckForm() {
@@ -59,11 +56,12 @@ export default {
       const signIn = await this.$post('user/signIn', this.user);
       if (this.user.m_pw === signIn.result.m_pw) {
         this.$router.push('/myPageMember');
+        sessionStorage.setItem('savePw', 1);
         // console.log('로그인 성공');
       } else {
         alert('이메일 또는 비밀번호를 확인해주세요.');
         this.user.m_pw = '';
-      };
+      }
     },
 
     checkSetUser() {
@@ -71,14 +69,12 @@ export default {
       // if (this.$store.state.setUser === 1) {
       //   this.$router.push('/myPageMember');
       // }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-
 #container {
   width: 100vw;
   min-height: 500px;
@@ -92,7 +88,7 @@ export default {
 }
 
 .location:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -113,7 +109,6 @@ export default {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
-
 
 .depth {
   float: left;
@@ -157,7 +152,7 @@ export default {
   color: #222;
 }
 
-p{
+p {
   color: #777;
   padding: 3px;
 }
@@ -172,7 +167,7 @@ p{
   font-weight: bold;
 }
 
-.pwInput{
+.pwInput {
   height: 40px;
   margin: 0 8px;
   border: 1px solid #dcdcdc;
@@ -185,5 +180,4 @@ p{
   color: #fff;
   padding: 0 30px;
 }
-
 </style>
