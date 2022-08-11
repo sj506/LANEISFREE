@@ -25,30 +25,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
-            <div><label for="">상품이름[한글]</label><input type="text" name="" id="" /></div>
-            <div><label for="">상품이름[영어]</label><input type="text" name="" id="" /></div>
-            <div>
-              <select name="" id="" @change="selectCate()" v-model="cate1">
-                <option value="">선택</option>
-                <option v-for="(cate, idx) in category.cateList1" :value="idx" :key="idx">{{ cate }}</option>
-              </select>
-              <select name="" id="" @change="selectCate()" v-model="cate2">
-                <option value="">선택</option>
-                <option v-for="(cate, idx) in category.cateList2[cate1]" :key="idx">{{ cate }}</option>
-              </select>
-            </div>
-            <div><label for="">재고수량</label><input type="number" name="" id="" /></div>
-            <div><label for="">해쉬태그1</label><input type="text" name="" id="" value="#" /></div>
-            <div><label for="">해쉬태그2</label><input type="text" name="" id="" value="#" /></div>
-            <div><label for="">상품설명</label><textarea name="" id="" cols="30" rows="10"></textarea></div>
-            <div><label for="">메인사진</label><input type="file" name="" id="" /></div>
-            <div><label for="">서브사진</label><input type="file" multiple name="" id="" /></div>
-          </form>
+          <div><label for="" ref="product_kname">상품이름[한글]</label><input v-model="pro_name" type="text" name="" id="" /></div>
+          <div><label for="" ref="product_ename">상품이름[영어]</label><input v-model="pro_ename" type="text" name="" id="" /></div>
+          <div>
+            <select name="" id="" ref="category1" @change="selectCate()" v-model="cate1">
+              <option value="">선택</option>
+              <option v-for="(cate, idx) in category.cateList1" :value="idx" :key="idx">{{ cate }}</option>
+            </select>
+            <select name="" id="" ref="category2" @change="selectCate()" v-model="cate2">
+              <option value="">선택</option>
+              <option v-for="(cate, idx) in category.cateList2[cate1]" :key="idx">{{ cate }}</option>
+            </select>
+          </div>
+          <div><label for="">가격</label><input v-model="pro_price" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">용량</label><input v-model="pro_volume" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">재고수량</label><input v-model="pro_stock" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">해쉬태그1</label><input v-model="pro_tag1" type="text" ref="product_tag1" name="" id="" /></div>
+          <div><label for="">해쉬태그2</label><input v-model="pro_tag2" type="text" ref="product_tag1" name="" id="" /></div>
+          <div><label for="">상품설명</label><textarea v-model="pro_explain" ref="product_ctnt" name="" id="" cols="30" rows="10"></textarea></div>
+          <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" name="" id="" /></div>
+          <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" multiple name="" id="" /></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button type="submit" class="btn btn-primary" @click="productInsert">등록하기</button>
         </div>
       </div>
     </div>
@@ -60,6 +60,16 @@ import ChatView from '@/components/ChatView.vue';
 export default {
   components: {
     ChatView,
+    product: {
+      pro_name: '',
+      pro_ename: '',
+      pro_stock: '',
+      pro_explain: '',
+      pro_tag1: '#',
+      pro_tag2: '#',
+      pro_price: 0,
+      pro_volume: 0,
+    },
   },
   data() {
     return {
@@ -87,6 +97,7 @@ export default {
     selectCate() {
       console.log(this.cate1);
     },
+    productInsert() {},
   },
 };
 </script>
