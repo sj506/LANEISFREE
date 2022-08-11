@@ -22,13 +22,31 @@
       </div>
     </li>
   </ul>
+  <div class="pagination">
+    <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span class="a11y">이전 페이지</span></button>
+    <button v-for="(item, idx) in pagingCount.cnt" :key="idx" type="button" class="page">
+      <span :data-page="item" @click="changPage" class="page__text current">{{ item }}</span>
+    </button>
+    <button type="button" class="page page--next"><span class="a11y">다음페이지</span></button>
+  </div>
 </template>
 <script>
 export default {
-  name: '',
+  name: 'Params',
   components: {},
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
-    return {};
+    return {
+      pagingCount: 0,
+      page: 1,
+      rowCount: 8,
+      startIdx: 0,
+    };
   },
   computed: {
     loginToggle: function () {
@@ -47,6 +65,7 @@ export default {
 
   beforeCreate() {},
   created() {
+    this.getPagingCount();
     this.getProductList();
   },
 
@@ -60,7 +79,7 @@ export default {
   unmounted() {},
   methods: {
     async getProductList() {
-      const getProductList = await this.$get('/product/getProductList', {});
+      const getProductList = await this.$get(`/product/getProductList/${this.startIdx}/${this.rowCount}`, {});
       this.$store.commit('selectProduct', getProductList);
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
@@ -125,6 +144,19 @@ export default {
         heart.classList.remove('fa-solid');
         heart.classList.remove('bigHeartIcon');
       });
+    },
+
+    // 페이징
+
+    changPage(e) {
+      this.page = e.target.dataset.page;
+      this.startIdx = (this.page - 1) * this.rowCount;
+      this.getProductList();
+    },
+
+    async getPagingCount() {
+      this.pagingCount = await this.$get(`/product/getPagingCount/${this.rowCount}`, {});
+      console.log(this.pagingCount);
     },
   },
 };

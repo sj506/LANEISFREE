@@ -6,13 +6,15 @@ use PDO;
 
 class ProductModel extends Model
 {
-    public function getProductList()
+    public function getProductList(&$param)
     {
         $sql = "SELECT a.*, b.cate_type , b.cate_class 
                 FROM t_product a 
                 INNER JOIN t_category b 
-                ON a.pro_num = b.pro_num";
+                ON a.pro_num = b.pro_num ORDER BY a.created_at DESC LIMIT :startIdx, :rowCount";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":startIdx", $param["startIdx"]);
+        $stmt->bindValue(":rowCount", $param["rowCount"]);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -147,5 +149,15 @@ class ProductModel extends Model
         $stmt->bindValue(":ba_stock", $param["ba_stock"]);
         $stmt->execute();
         return $stmt->rowCount();
+    }
+
+    public function getPagingCount(&$param)
+    {
+        $sql = 'SELECT CEIL(COUNT(*) / :rowCount) as cnt 
+                FROM t_product';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":rowCount", $param["rowCount"]);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }

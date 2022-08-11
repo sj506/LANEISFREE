@@ -76,6 +76,7 @@ export default {
     };
   },
   beforeCreate() {},
+
   created() {
     this.$store.state.getProductList.forEach((item) => {
       if (item.pro_num == this.$route.params.productId) {

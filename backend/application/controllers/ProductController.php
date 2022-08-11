@@ -10,7 +10,13 @@ class ProductController extends Controller
 {
     public function getProductList()
     {
-        return $this->model->getProductList();
+        $urlPaths = getUrlPaths();
+        $param = [
+            "startIdx" => intval($urlPaths[2]),
+            "rowCount" => intval($urlPaths[3])
+        ];
+
+        return $this->model->getProductList($param);
     }
     public function getProductImg()
     {
@@ -25,6 +31,7 @@ class ProductController extends Controller
     public function productBuy()
     {
         $json = getJson();
+
         foreach ($json as $item) {
             $param = [
                 'm_num' => $item['m_num'],
@@ -126,5 +133,17 @@ class ProductController extends Controller
         ];
         $result = $this->model->updbasket($param);
         return [_RESULT => $result];
+    }
+
+    public function getPagingCount()
+    {
+        $urlPaths = getUrlPaths();
+        if (!isset($urlPaths)) {
+            exit();
+        }
+        $param = [
+            "rowCount" => intval($urlPaths[2]),
+        ];
+        return $this->model->getPagingCount($param);
     }
 }
