@@ -106,4 +106,8 @@ class ReviewController extends Controller
         ];
         return $this->model->getPagingReviewData($param);
     }
+
+    public function getReviewAvg() {
+        return $this->model->getReviewAvg();
+    }
 }
