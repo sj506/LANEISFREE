@@ -104,7 +104,7 @@
             </div>
             <div class="w_review">{{ item.re_ctnt }}</div>
             <div class="w_btn d-flex justify-content-end pt-2">
-              <div><button class="btn btn-outline-dark">수정</button></div>
+              <div><router-link :to="{ path: `/ReviewWrite`, query: { pro_num: item.pro_num } }"><button class="btn btn-outline-dark">수정</button></router-link></div>
               <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
             </div>
           </div>

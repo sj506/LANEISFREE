@@ -396,8 +396,10 @@
           <header class="border_bottom">
             <div class="centerCol">
               <em class="">AMORE MALL REVIEWS</em>
-              <h3 class="h4">481개의 소중한 상품 리뷰</h3>
+              <h3 class="h4">{{ reviewAvg.re_count }}개의 소중한 상품 리뷰</h3>
+              <span class="">{{ reviewAvg.re_avg }} / 5.0</span>
             </div>
+
             <div class="centerRow justify-content-between">
               <div class="text-center centerRow">
                 <span>전체</span> |
@@ -472,6 +474,7 @@ export default {
       page: 1,
       rowCount: 15,
       startIdx: 0,
+      reviewAvg: {},
     };
   },
   methods: {
@@ -493,6 +496,10 @@ export default {
     async getPagingReviewData() {
       this.reviewData = await this.$get(`/review/getPagingReviewData/${this.rowCount}/${this.startIdx}`, {});
       console.log(this.reviewData);
+    },
+    async getReviewAvg() {
+      this.reviewAvg = await this.$get(`/review/getReviewAvg`, {});
+      console.log(this.reviewAvg);
     },
     getPage() {
       if (typeof this.$route.query.page != undefined) {
@@ -517,6 +524,7 @@ export default {
     this.getPagingCount();
     this.getPage();
     this.getPagingReviewData();
+    this.getReviewAvg();
   },
   // computed: {
   //   isactive: function(n) {
