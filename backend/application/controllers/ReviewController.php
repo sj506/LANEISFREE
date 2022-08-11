@@ -45,13 +45,22 @@ class ReviewController extends Controller
             $dirPath = _IMG_PATH . "/" . "review/" . $m_num . "/" . $pro_num; //이미지폴더경로
             $fileNm = uniqid() . "." . $image_type;
             $filePath = $dirPath . "/" . $fileNm; //이미지경로파일
-            $result = file_put_contents($filePath, $image_base64); //파일경로이름에 파일을 넣어줌
         } else {
+            $image_parts = explode(";base64,", $json["pic"]);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $dirPath = _IMG_PATH . "/" . "review/" . $m_num . "/" . $pro_num;
             $fileNm = null;
+            $filePath = $dirPath . "/" . $fileNm;
+        }
+        if (isset($json['re_num'])) {
+            rmdir_all($dirPath);
         }
         if (!is_dir($dirPath)) {
             mkdir($dirPath, 0777, true);
         }
+        $result = file_put_contents($filePath, $image_base64); //파일경로이름에 파일을 넣어줌
         $param = [
             "re_star" => $json['star'],
             "re_ctnt" => $json['ctnt'],
@@ -59,7 +68,12 @@ class ReviewController extends Controller
             "pro_num" => $pro_num,
             "m_num" => $m_num
         ];
-        $this->model->insertReview($param);
+        if (isset($json['re_num'])) {
+            $param["re_num"] = $json['re_num'];
+            $this->model->updateReview($param);
+        } else {
+            $this->model->insertReview($param);
+        }
     }
 
     public function getUserReview()

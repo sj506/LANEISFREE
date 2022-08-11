@@ -104,7 +104,7 @@
             </div>
             <div class="w_review">{{ item.re_ctnt }}</div>
             <div class="w_btn d-flex justify-content-end pt-2">
-              <div><router-link :to="{ path: `/ReviewWrite`, query: { pro_num: item.pro_num } }"><button class="btn btn-outline-dark">수정</button></router-link></div>
+              <div><router-link :to="{ path: `/ReviewWrite`, query: { pro_num: item.pro_num, re_num: item.re_num } }"><button class="btn btn-outline-dark">수정</button></router-link></div>
               <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
             </div>
           </div>
@@ -166,10 +166,12 @@ export default {
       this.isActive1 = true;
       this.isActive2 = false;
       console.log(e.target);
+      this.$store.commit('userProductList', this.userProductList);
     },
     displayW() {
       this.isActive1 = false;
       this.isActive2 = true;
+      this.$store.commit('userProductList', this.writenReview);
     },
     async getPurchase(m_num) {
       this.purchaseData = await this.$get(`/review/getPurchase/${m_num}`, {});

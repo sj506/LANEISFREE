@@ -38,4 +38,23 @@ function rmdirAll($delete_path)
     $dirs->close();
     @rmdir($delete_path);
 }
+function rmdir_all($dir) {
+    if (!file_exists($dir)) {
+      return;
+    }
+    $dhandle = opendir($dir);
+    if ($dhandle) {
+      while (false !== ($fname = readdir($dhandle))) {
+         if (is_dir( "{$dir}/{$fname}" )) {
+            if (($fname != '.') && ($fname != '..')) {
+               $this->rmdir_all("$dir/$fname");
+            }
+         } else {
+            unlink("{$dir}/{$fname}");
+         }
+      }
+      closedir($dhandle);
+    }
+    rmdir($dir);
+}
 // 파일,폴더 삭제하는 재귀함수
