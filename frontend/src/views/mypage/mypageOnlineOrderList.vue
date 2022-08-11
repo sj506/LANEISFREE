@@ -55,6 +55,20 @@
             </div>
             <div class="tabs__content">
               <searchDate />
+              <div class="middleTab">
+                <div>
+                  <p>전체주문체결내역</p>
+                </div>
+                <div>
+                  <p>주문취소내역</p>
+                </div>
+                <div>
+                  <p>반품처리내역</p>
+                </div>
+                <div>
+                  <p>교환처리내역</p>
+                </div>
+              </div>
             </div>
             <div class="tabs__content">
               <searchDate />
@@ -173,18 +187,6 @@ button {
   display: block;
 }
 
-.tabs__title {
-  font-size: var(--text-lg);
-  color: #000;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.tabs__text {
-  font-size: 14px;
-  color: #000;
-}
-
 /* header */
 
 #container {
@@ -203,11 +205,6 @@ button {
 
 .dNone {
   display: none;
-}
-
-.bgGreen {
-  background-color: var(--bg-main);
-  color: #fff;
 }
 
 /* header category */
@@ -276,27 +273,11 @@ button {
   background: none;
 }
 
-/* main */
-.orderDiv {
-  display: flex;
+/* 중간 탭 */
+.middleTab {
+  margin-bottom: 36px;
+  border-bottom: 1px solid #222;
 }
 
-.orderA {
-  width: 14.28%;
-  height: 62px;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.orderB {
-  width: 14.28%;
-  height: 62px;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 </style>
