@@ -117,7 +117,7 @@
             </div>
           </div>
           <div
-            class="main-box2"
+            class="main-box1"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="2000"
@@ -341,6 +341,9 @@ h4 {
   color: var(--text-light-gray);
 }
 @media (max-width: 960px) {
+  .main-box img {
+    width: 100vw;
+  }
   .main-box1 img{
     width: 100vw;
   }
@@ -349,6 +352,16 @@ h4 {
     justify-content: center;
     flex-direction: column;
     align-items: flex-start
+  }
+  .main-box1 {
+  position: relative;
+}
+  .txt1 {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    z-index: 2;
+    text-align: right;
   }
 } ;
 </style>
