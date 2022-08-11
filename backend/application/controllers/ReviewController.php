@@ -87,4 +87,23 @@ class ReviewController extends Controller
     public function getReviewData() {
         return $this->model->getReviewData();
     }
+
+    public function getPagingCount() {
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ 
+            "rowCount" => intval($urlPaths[2]),
+        ];
+        return $this->model->getPagingCount($param);
+    }
+
+    public function getPagingReviewData() {
+        $urlPaths = getUrlPaths();
+        if(!isset($urlPaths)){ exit(); }
+        $param = [ 
+            "rowCount" => intval($urlPaths[2]),
+            "startIdx" => intval($urlPaths[3])
+        ];
+        return $this->model->getPagingReviewData($param);
+    }
 }
