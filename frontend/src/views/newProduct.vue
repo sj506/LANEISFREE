@@ -320,7 +320,7 @@ main {
   .container_2 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 /* 미디어 쿼리 800부터 한줄로 변경 */

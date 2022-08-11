@@ -10,7 +10,7 @@
         data-aos-anchor-placement="top-bottom"
       >
         <div class="main-box" v-for="(best, idx) in bestProduct" :key="idx">
-          <img :src="this.$getSrc(best.imgSrc)" alt="크림스킨" />
+          <img class="changeImg" :src="this.$getSrc(best.imgSrc)" alt="크림스킨" />
           <div class="txt">
             <h3>{{ best.productNm }}</h3>
             <h4>{{ best.engNm }}</h4>
@@ -37,7 +37,7 @@
             v-for="(best1, idx) in bestProduct_1"
             :key="idx"
           >
-            <img :src="this.$getSrc(best1.imgSrc)" alt="네오쿠션" />
+            <img class="changeImg1" :src="this.$getSrc(best1.imgSrc)" alt="네오쿠션" />
             <div class="txt1">
               <h3>{{ best1.productNm }}</h3>
               <h4>{{ best1.engNm }}</h4>
@@ -67,6 +67,7 @@
             :key="idx"
           >
             <img
+              class="changeImg2"
               :src="this.$getSrc(best2.imgSrc)"
               alt="래디언C크림"
             />
@@ -97,6 +98,7 @@
             v-for="(best3, idx) in bestProduct_3" :key="idx"
           >
             <img
+              class="changeImg3"
               :src="this.$getSrc(best3.imgSrc)"
               alt="워터슬리핑마스크EX"
             />
@@ -122,6 +124,7 @@
             v-for="(best4,idx) in bestProduct_4" :key="idx"
           >
             <img
+              class="changeImg4"
               :src="this.$getSrc(best4.imgSrc)"
               alt="워터뱅크블루히알루로닉크림"
             />
@@ -227,11 +230,33 @@ export default {
           review_id: "@dolma****",
         }
       ],
+       windowWidth: window.innerWidth,
     };
   },
   mounted() {
     AOS.init();
+
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    });
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+      const img = document.querySelector(".changeImg");
+      const img1 = document.querySelector(".changeImg1");
+      if (this.windowWidth < 960) {
+        img.src = this.$getSrc("/bsetProduct/크림스킨세로.jpg");
+        img1.src = this.$getSrc("/bsetProduct/네오쿠션세로.jpg");
+      } else {
+        img.src = this.$getSrc("/bsetProduct/크림스킨가로.jpg");
+        img1.src = this.$getSrc("/bsetProduct/네오쿠션가로.jpg");
+      }
+    },
+  }
 };
 </script>
 
@@ -316,10 +341,14 @@ h4 {
   color: var(--text-light-gray);
 }
 @media (max-width: 960px) {
+  .main-box1 img{
+    width: 100vw;
+  }
   .flexbox_1 {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: flex-start
   }
 } ;
 </style>
