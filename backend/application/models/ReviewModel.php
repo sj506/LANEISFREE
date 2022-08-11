@@ -96,4 +96,28 @@ class ReviewModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getPagingCount($param) {
+        $sql = 'SELECT CEIL(COUNT(*) / :rowCount) as cnt 
+                FROM t_review';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":rowCount", $param["rowCount"]);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getPagingReviewData($param) {
+        $sql = 'SELECT A.re_star, A.re_ctnt, A.re_img, DATE_FORMAT(A.re_time, "%Y-%m-%d") as re_time, 
+                insert(B.m_email, 5 , LENGTH(m_email) - 4, REPEAT("*", LENGTH(SUBSTRING(B.m_email, 1, instr(B.m_email, "@")-1)) - 4 )) AS m_email, 
+                A.m_num, A.pro_num
+                FROM t_review A
+                INNER JOIN t_member B
+                ON A.m_num = B.m_num
+                LIMIT :startIdx, :rowCount';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":rowCount", $param["rowCount"]);
+        $stmt->bindValue(":startIdx", $param["startIdx"]);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }
