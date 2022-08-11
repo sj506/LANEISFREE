@@ -5,11 +5,11 @@ module.exports = defineConfig({
   outputDir: path.resolve('../nodeback/public'),
   transpileDependencies: true,
   lintOnSave: false,
-  // devServer: {
-  //   proxy: {
-  //     '/': {
-  //       target: 'http://localhost',
-  //     },
-  //   },
-  // },
+  devServer: {
+    proxy: {
+      '/': {
+        target: 'http://localhost',
+      },
+    },
+  },
 });
