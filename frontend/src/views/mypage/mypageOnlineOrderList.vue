@@ -49,45 +49,93 @@
               <span class="tabs__name">정기구독내역</span>
             </div>
           </div>
+
           <div class="tabs__body">
             <div class="tabs__content is-active">
               <searchDate />
-            </div>
-            <div class="tabs__content">
-              <searchDate />
+
               <div class="middleTab">
-                <div>
-                  <p>전체주문체결내역</p>
+                <div class="middleTabs">
+                  <a @click="activetab=1" :class="[ activetab === 1 ? 'active' : '' ]">전체주문체결내역</a>
+                  <a @click="activetab=2" :class="[ activetab === 2 ? 'active' : '' ]">주문취소내역</a>
+                  <a @click="activetab=3" :class="[ activetab === 3 ? 'active' : '' ]">반품처리내역</a>
+                  <a @click="activetab=4" :class="[ activetab === 4 ? 'active' : '' ]">교환처리내역</a>
                 </div>
-                <div>
-                  <p>주문취소내역</p>
-                </div>
-                <div>
-                  <p>반품처리내역</p>
-                </div>
-                <div>
-                  <p>교환처리내역</p>
+
+                <div class="content">
+                  <div v-if="activetab === 1" class="middelCtnt">
+                    <div class="orderDiv">
+                      <p>총 <strong>0</strong> 건</p>
+                      <div class="orderTableDiv">
+                        <table class="orderTable">
+                          <thead>
+                            <th style="width:120px;">주문일자</th>
+                            <th style="width:115px;">주문번호</th>
+                            <th>대표제품 명</th>
+                            <th style="width:110px;">결제금액</th>
+                            <th style="width:110px;">처리현황</th>
+                            <th style="width:110px;">배송조회</th>
+                            <th style="width:110px;">수취확인</th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="7">현재 전체주문체결내역이 없습니다.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="orderText">
+                        <p>※ 주문번호와 제품명을 클릭 하시면 주문 상세 내역을 보실 수 있습니다.</p>
+                        <p>※ 배송정보는 처리현황이 배송 중, 배송완료 상태에서 조회가 가능합니다.</p>
+                        <p>※ 이상없이 제품을 받으셨다면 수취확인을 해주세요. 확인하지 않으실 경우 배송시작일 부터 7일이후에 자동으로 배송완료상태로 변경됩니다.</p>
+                        <p>※ 온라인에서 구매내역 표기시 제품의 정상가로 표기 됩니다. (단, 등급 반영시 실제 결제가 기준으로 반영됩니다.)</p>
+                        <p>※ 등급 반영시 반품내역, 포인트 구매내역은 제외 됩니다.</p>
+                      </div>
+                      <div class="orderIcon">
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div v-if="activetab === 2" class="middelCtnt">
+                    2
+                  </div>
+                  <div v-if="activetab === 3" class="middelCtnt">
+                    3
+                  </div>
+                  <div v-if="activetab === 4" class="middelCtnt">
+                    4
+                  </div>
                 </div>
               </div>
             </div>
             <div class="tabs__content">
               <searchDate />
+              <h1>취소신청</h1>
             </div>
             <div class="tabs__content">
               <searchDate />
+              <h1>반품신청</h1>
             </div>
             <div class="tabs__content">
               <searchDate />
+              <h1>교환신청</h1>
             </div>
             <div class="tabs__content">
               <searchDate />
+              <h1>증빙서류발급</h1>
             </div>
             <div class="tabs__content">
               <searchDate />
+              <h1>구매내역</h1>
             </div>
-          </div>
-        </div>
+            <div class="tabs__content">
+              <searchDate />
+              <h1>정기구독내역</h1>
+            </div>
 
+          </div>
+
+        </div>
       </div>
     </section>
   </div>
@@ -103,7 +151,7 @@ export default {
   components: { myPageHeader, myPageSide, searchDate },
   data() {
     return {
-
+      activetab: 1
     };
   },
   methods: {
@@ -123,13 +171,31 @@ export default {
           tabs[index].classList.add('is-active');
         });
       });
-
     }
   },
 };
 </script>
 
 <style scoped>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 p {
   color: #777;
   padding: 3px;
@@ -179,7 +245,6 @@ button {
 }
 
 .tabs__content {
-  padding: 30px;
   display: none;
 }
 
@@ -274,10 +339,101 @@ button {
 }
 
 /* 중간 탭 */
-.middleTab {
-  margin-bottom: 36px;
-  border-bottom: 1px solid #222;
+.middleTabs {
+  overflow: hidden;
+  margin-bottom: -2px;
 }
 
+.middleTabs a {
+  width: 25%;
+  height: 48px;
+  line-height: 47px;
+  float: left;
+  font-size: 18px;
+  background-color: #f8f8f8;
+  color: var(--bg-light-gray);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1px solid #dcdcdc;
+  border-bottom: 1px solid;
+}
+
+.middleTabs ul {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+.middleTabs a:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.middleTabs a.active {
+  background-color: #fff;
+  color: #484848;
+  border-color: #222;
+  border-bottom: 2px solid #fff;
+  cursor: default;
+}
+
+.middelCtnt {
+  padding: 30px 0;
+}
+
+/* 전체주문결제내역 탭 */
+.orderDiv p {
+  margin-bottom: 14px;
+  color: var(--text-black);
+}
+.orderTableDiv {
+  position: relative;
+  border-top: 2px solid var(--text-black);
+}
+.orderTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.orderTable thead {
+  vertical-align: middle;
+}
+
+.orderTable th, td {
+  padding: 17px 14px;
+  text-align: center;
+  color: var(--text-black);
+  border-bottom: 1px solid var(--text-black);
+  border-left: 1px solid #dcdcdc;
+}
+
+.orderTable td {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.orderTable th:first-child,
+.orderTable td:first-child {
+  border-left: 0;
+}
+
+.orderTable th:last-child
+.orderTable td:last-child {
+  border-right: 0;
+}
+
+.orderText {
+  margin-top: 15px;
+}
+
+.orderText p {
+  color: var(--text-light-gray);
+  padding-left: 16px;
+  margin-bottom: 0;
+}
+
+.orderIcon {
+  margin-top: 80px;
+  text-align: center;
+}
 
 </style>

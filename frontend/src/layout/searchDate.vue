@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dateSearchDiv">
     <table class="dateSearchTable">
       <tr>
         <th>기간별 조회</th>
@@ -39,6 +39,12 @@
 </script>
 
 <style scoped>
+
+
+.dateSearchDiv{
+  margin: 0 0 14px;
+  padding: 16px 0;
+}
 .dateSearchTable {
   border-collapse: collapse;
   table-layout: fixed;
