@@ -228,21 +228,6 @@ export default {
   padding-top: 50px;
   margin-bottom: 40px;
 }
-.top_link {
-  font-size: 15px;
-  color: var(--text-gray);
-}
-.breadcrumb {
-  position: absolute;
-  top: 8%;
-  left: 5%;
-  padding-top: 10px;
-  padding-left: 20px;
-}
-li {
-  display: inline;
-  color: var(--text-black);
-}
 main {
   padding-bottom: 120px;
   line-height: 1.6;
@@ -321,6 +306,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .prodWide_img_wrap img{
+    width: 100vw;
+  }
+  .prodWide_img_wrap1 img {
+    width: 100vw;
+  }
+  .product-item__thumb img {
+    width: 50vw;
   }
 }
 /* 미디어 쿼리 800부터 한줄로 변경 */
