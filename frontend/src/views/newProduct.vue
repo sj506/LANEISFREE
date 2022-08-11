@@ -1,20 +1,5 @@
 <template>
   <main id="main" class="main">
-    <ol class="breadcrumb">
-      <li>
-        <router-link to="/index" class="top_link">
-          <!-- 링크주소 넣기-->
-          <span>Main</span>
-        </router-link>
-      </li>
-      <span> > </span>
-      <li class="liList">
-        <router-link to="/new" class="top_link">
-          <!-- 링크주소 넣기-->
-          <span>신상품</span>
-        </router-link>
-      </li>
-    </ol>
     <div class="mainTitle">
       <header class="page-header">
         <h1 class="page_heading">신상품</h1>
