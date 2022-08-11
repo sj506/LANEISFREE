@@ -32,6 +32,21 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function getBestSeller()
+    {
+        $sql = "SELECT A.*, B.count FROM t_product A
+                LEFT JOIN 
+                (
+                  SELECT pro_num,COUNT(pro_num) count 
+                  FROM t_like 
+                  GROUP BY pro_num 
+                ) AS B
+                ON A.pro_num = B.pro_num
+                ORDER BY COUNT DESC LIMIT 0, 6";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     public function productBuy(&$param)
     {
         $sql = "INSERT INTO t_purchase

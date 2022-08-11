@@ -58,10 +58,25 @@ class ReviewModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
+    public function getBestReview() {
+      $sql = 'SELECT a.*, c.m_nm 
+              FROM t_review a
+              INNER JOIN (
+                  SELECT pro_num, MAX(re_star) re_star
+                  FROM t_review
+                  GROUP BY pro_num
+              ) b ON a.pro_num = b.pro_num AND a.re_star = b.re_star
+              INNER JOIN (
+              SELECT m_nm, m_num FROM t_member
+              ) c ON a.m_num = c.m_num
+              GROUP BY pro_num';
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     public function getWritenReview($param) {
         $sql = 'SELECT A.pro_num, A.pro_name, A.pro_mainimg, A.pro_price,
-                       B.re_star, DATE_FORMAT(B.re_time, "%Y-%m-%d") as re_time, B.re_ctnt, C.m_email, C.m_gender
+                        B.re_star, DATE_FORMAT(B.re_time, "%Y-%m-%d") as re_time, B.re_ctnt, C.m_email, C.m_gender
                 FROM t_product A
                 INNER JOIN t_review B
                 ON A.pro_num = B.pro_num
