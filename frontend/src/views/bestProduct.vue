@@ -342,10 +342,10 @@ h4 {
 }
 @media (max-width: 960px) {
   .main-box img {
-    width: 100vw;
+    width: 95vw;
   }
   .main-box1 img{
-    width: 100vw;
+    width: 95vw;
   }
   .flexbox_1 {
     display: flex;
