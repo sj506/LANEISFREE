@@ -10,7 +10,7 @@
           <div class="circle-img">
             <img src="@/assets/img/logo-nobg.png" alt="" />
           </div>
-          <div class="chat-content">
+          <div class="chat-content" :class="{ sent: item.name === userNm ? true : false }">
             <div class="user-name">{{ item.name }}</div>
             <div class="message" :class="{ sent: item.name === userNm ? true : false }">
               {{ item.msg }}
@@ -132,6 +132,11 @@ export default {
 }
 .chat-box {
   margin: 5px 0;
+}
+.chat-content.sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .btnClose {
   position: absolute;
