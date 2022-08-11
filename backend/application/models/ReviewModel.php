@@ -60,7 +60,7 @@ class ReviewModel extends Model
     }
 
     public function getWritenReview($param) {
-        $sql = 'SELECT A.pro_num, A.pro_name, A.pro_mainimg, A.pro_price,
+        $sql = 'SELECT A.pro_num, A.pro_name, A.pro_mainimg, A.pro_price, B.re_num,
                        B.re_star, DATE_FORMAT(B.re_time, "%Y-%m-%d") as re_time, B.re_ctnt, C.m_email, C.m_gender
                 FROM t_product A
                 INNER JOIN t_review B
@@ -108,7 +108,7 @@ class ReviewModel extends Model
 
     public function getPagingReviewData($param) {
         $sql = 'SELECT A.re_star, A.re_ctnt, A.re_img, DATE_FORMAT(A.re_time, "%Y-%m-%d") as re_time, 
-                insert(B.m_email, 5 , LENGTH(m_email) - 4, REPEAT("*", LENGTH(SUBSTRING(B.m_email, 1, instr(B.m_email, "@")-1)) - 4 )) AS m_email, 
+                insert(B.m_email, 5 , LENGTH(m_email) - 4, REPEAT("*", LENGTH(SUBSTRING(B.m_email, 1, instr(B.m_email, "@")-1)) - 4 )) AS m_email,
                 A.m_num, A.pro_num
                 FROM t_review A
                 INNER JOIN t_member B
@@ -119,5 +119,13 @@ class ReviewModel extends Model
         $stmt->bindValue(":startIdx", $param["startIdx"]);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getReviewAvg() {
+        $sql = 'SELECT COUNT(re_star) AS re_count, round(AVG(re_star),1) AS re_avg
+                FROM t_review';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);        
     }
 }
