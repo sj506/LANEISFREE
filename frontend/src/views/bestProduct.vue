@@ -15,7 +15,7 @@
             <h3>{{ best.productNm }}</h3>
             <h4>{{ best.engNm }}</h4>
             <p class="desc" v-html="best.ctnt"></p>
-            <router-link to="/detail" class="link">
+            <router-link to="/hommeProductDetail/12" class="link">
               <!-- 어디로 링크할지 정해야 함 -->
               <span class="btn__text">자세히 보기 ></span>
             </router-link>
