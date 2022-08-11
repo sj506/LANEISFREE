@@ -122,6 +122,7 @@ export default {
         star: '',
         ctnt: '',
         pic: '',
+        re_num: null
       },
       user: {},
       pro_num: '',
@@ -153,6 +154,10 @@ export default {
       }
     },
     getUserProduct() {
+      if(this.$route.query.re_num){
+        this.review_ctnt.re_num = this.$route.query.re_num;
+      }
+      console.log(this.review_ctnt.re_num);
       this.UserProduct = this.userProductList.filter((element) => {
         return element.pro_num == this.$route.query.pro_num;
       });

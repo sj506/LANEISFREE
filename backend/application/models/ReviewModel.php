@@ -49,6 +49,20 @@ class ReviewModel extends Model
         return intval($this->pdo->lastInsertId());
     }
 
+    public function updateReview($param)
+    {
+        $sql = "UPDATE t_review
+                SET re_star = :re_star, re_ctnt = :re_ctnt, re_img = :re_img
+                WHERE re_num = :re_num";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":re_star", $param["re_star"]);
+        $stmt->bindValue(":re_ctnt", $param["re_ctnt"]);
+        $stmt->bindValue(":re_img", $param["re_img"]);
+        $stmt->bindValue(":re_num", $param["re_num"]);
+        $stmt->execute();
+        return intval($this->pdo->lastInsertId());
+    }
+
     public function getUserReview($param) {
         $sql = 'SELECT pro_num
                 FROM t_review
