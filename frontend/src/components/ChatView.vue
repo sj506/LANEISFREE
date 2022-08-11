@@ -99,7 +99,7 @@ export default {
 }
 .chat-container {
   position: fixed;
-  z-index: 3;
+  z-index: 20;
   bottom: 30px;
   right: 30px;
   width: 360px;
