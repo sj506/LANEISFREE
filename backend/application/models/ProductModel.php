@@ -16,6 +16,15 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function newProductList()
+    {
+        $sql = "SELECT * FROM t_product
+                ORDER BY created_at DESC
+                LIMIT 0, 8";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     public function getProductImg()
     {
         $sql = "SELECT * FROM t_productimg";

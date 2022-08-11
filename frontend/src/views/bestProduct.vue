@@ -21,7 +21,7 @@
             </router-link>
             <p class="review-desc">
               <!-- 리뷰 데이터 베이스 자료 당겨 와야함 -->
-              <i>“</i>
+              <i class="fa-solid fa-quote-left icon"></i>
               <span v-html="best.review"></span>
               <span>{{ best.review_id }}</span>
             </p>
@@ -47,7 +47,7 @@
               </router-link>
               <p class="review-desc">
                 <!-- 리뷰 데이터 베이스 자료 당겨 와야함 -->
-                <i>“</i>
+                <i class="fa-solid fa-quote-left icon"></i>
                 <span v-html="best1.review"></span>
                 <span>{{ best1.review_id }}</span>
               </p>
@@ -78,7 +78,7 @@
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
-                <i>“</i>
+                <i class="fa-solid fa-quote-left icon"></i>
                 <span v-html="best2.review"></span>
                 <span>{{ best2.review_id }}</span>
               </p>
@@ -108,7 +108,7 @@
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
-                <i>“</i>
+                <i class="fa-solid fa-quote-left icon"></i>
                 <span v-html="best3.review"></span>
                 <span>{{best3.review_id}}</span>
               </p>
@@ -133,7 +133,7 @@
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
-                <i>“</i>
+                <i class="fa-solid fa-quote-left icon"></i>
                 <span v-html="best4.review"></span>
                 <span>{{best4.review_id}}</span>
               </p>
