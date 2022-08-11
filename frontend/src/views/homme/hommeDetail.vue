@@ -394,8 +394,7 @@
       <div class="review centerCol">
         <div class="c_review">
           <header class="border_bottom">
-            <div class="centerCol ">
-
+            <div class="centerCol">
               <em class="">AMORE MALL REVIEWS</em>
               <h3 class="h4">481개의 소중한 상품 리뷰</h3>
             </div>
@@ -425,7 +424,7 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <div class="stars-inner" :class="'star'+ item.re_star" >
+                        <div class="stars-inner" :class="'star' + item.re_star">
                           <i class="fa-solid fa-star"></i>
                           <i class="fa-solid fa-star"></i>
                           <i class="fa-solid fa-star"></i>
@@ -439,7 +438,7 @@
                 <li>{{ item.m_email }}</li>
                 <li>{{ item.re_time }}</li>
                 <li>{{ item.re_ctnt }}</li>
-                <li><img class="review_img" :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt=""></li>
+                <li><img class="review_img" :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt="" /></li>
               </ul>
             </div>
           </main>
@@ -460,13 +459,14 @@
 
 <script>
 export default {
+  props: ['pro_num'],
   data() {
     return {
       navurl: this.geturl(),
       isActive1: false,
       isActive2: false,
       isActive3: false,
-      reviewData: {}
+      reviewData: {},
     };
   },
   methods: {
@@ -480,7 +480,7 @@ export default {
     async getReviewData() {
       this.reviewData = await this.$get(`/review/getReviewData`, {});
       console.log(this.reviewData);
-    }
+    },
   },
   created() {
     this.getReviewData();
@@ -1245,26 +1245,25 @@ MARQUEE {
 .c_review {
   width: 100%;
 }
-.border_bottom{
+.border_bottom {
   border-bottom: 1px solid rgb(88, 87, 87);
-
 }
 .review {
   max-width: 980px;
   width: 100%;
 }
-.review_container{
+.review_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   gap: 20px;
   padding: 10px;
 }
-.review_box{
+.review_box {
   background-color: #fff;
   padding: 15px;
 }
-.review_img{
+.review_img {
   height: 150px;
 }
 /* 리뷰별점 */
@@ -1298,7 +1297,7 @@ MARQUEE {
   font-weight: 900;
   color: #ccc;
 }
-.star--container{
+.star--container {
   width: 92px;
 }
 .stars-inner i {

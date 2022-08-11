@@ -48,8 +48,13 @@
                   <tbody class="_tbody">
                     <tr class="product_box" v-for="(likeProduct, idx) in likeList" :key="idx">
                       <td class="_flex">
-                        <input class="SelectBox onceSelectBox" type="checkbox" :checked="checkboxSelect"
-                          :data-pro_num="likeProduct.pro_num" ref="buyProduct" />
+                        <input
+                          class="SelectBox onceSelectBox"
+                          type="checkbox"
+                          :checked="checkboxSelect"
+                          :data-pro_num="likeProduct.pro_num"
+                          ref="buyProduct"
+                        />
                         <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
                           <img class="product_img" :src="this.$getSrc(likeProduct.pro_mainimg)" />
                         </router-link>
@@ -115,10 +120,10 @@ export default {
     async getHeart() {
       const param = { m_num: this.$store.state.user.result.m_num };
       const getHeart = await this.$post('product/getHeart', param);
-      if (getHeart.result) {
+      console.log(getHeart.result);
+      if (getHeart.result.length !== 0) {
         this.purchaseCheck = true;
       }
-      console.log(getHeart.result);
       this.likeList = getHeart.result;
       this.likeList.forEach((likeProduct) => {
         likeProduct.pro_count = 1;
@@ -166,10 +171,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-
 /* default */
 .dNone {
   display: none;

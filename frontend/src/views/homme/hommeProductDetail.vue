@@ -55,7 +55,7 @@
       </div>
     </div>
   </header>
-  <HommeDetail />
+  <HommeDetail :pro_num="this.$route.params.productId" />
 </template>
 <script>
 import HommeDetail from '../homme/hommeDetail.vue';
