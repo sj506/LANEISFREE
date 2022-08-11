@@ -218,7 +218,7 @@ export default {
 
     // 비밀번호 유효성
     isPassword(asValue) {
-      const regExp = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{6,16}$/;
+      const regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+\\\/\[\]{};:\`,.<>\/?"'.|])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
       return regExp.test(asValue);
     },

@@ -191,7 +191,9 @@
                 <tr>
                   <th colspan="2" class="siteMoveBtn">뷰티포인트 수신여부는 뷰티포인트 사이트에서 수정이 가능합니다.</th>
                   <td>
-                    <input type="button" class="noConnectBtn" value="뷰티포인트 사이트 이동" />
+                    <router-link to="/signin">
+                      <button class="noConnectBtn">뷰티포인트 사이트 이동</button>
+                    </router-link>
                   </td>
                 </tr>
               </table>
@@ -218,6 +220,7 @@
             <p class="mb-1">타인에게 비밀번호가 노출되지 않도록 주의해 주세요.</p>
             <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
           </div>
+
           <form class="column-center">
             <div class="noticeForm">
               <div class="notice">
@@ -225,7 +228,7 @@
                   <p>비밀번호 입력 시 유의사항</p>
                 </div>
                 <div class="noticeList">
-                  <p>* 영문 소문자, 숫자, 특수문자 중 최소 2가지 조합으로 8~16자</p>
+                  <p>* 영문 소문자, 숫자, 특수문자 조합으로 6~16자</p>
                   <p>- 사용 가능한 특수문자: !”#$%&’()+,-./:;=>?@[ ]^_`{|}~</p>
                   <p>- 공백 사용 불가</p>
                   <p>* 아이디와 동일한 비밀번호 사용불가</p>
@@ -236,25 +239,38 @@
                 <table>
                   <tr>
                     <th>현재 비밀번호</th>
-                    <td><input type="text" /></td>
+                    <td>
+                      <input @keyup="checkcurrentPw" v-model="currentPw" type="password" />
+                      <p class="check">{{ currentPwChk }}</p>
+                    </td>
                   </tr>
                   <tr>
                     <th>새 비밀번호</th>
-                    <td><input type="text" /></td>
+                    <td>
+                      <input @keyup="checknewPw" v-model="newPw" type="password" />
+                      <p class="check">{{ newPwChk }}</p>
+                    </td>
                   </tr>
                   <tr>
                     <th>새 비밀번호 확인</th>
-                    <td><input type="text" /></td>
+                    <td>
+                      <input @keyup="checknewPw2" v-model="newPw2" type="password" />
+                      <p class="check">{{ newPw2Chk }}</p>
+                    </td>
                   </tr>
                 </table>
               </div>
             </div>
 
             <div class="my-5 d-flex submitBtnDiv update">
-              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인" />
-              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
+              <button type="submit" class="btn btn-dark my-5 submitBtn"
+                v-bind:disabled="currentPw === '' || newPw === '' || newPw2 === ''">확인</button>
+              <router-link to="/myPageMemberCheck">
+                <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
+              </router-link>
             </div>
           </form>
+
         </div>
       </div>
     </section>
@@ -271,6 +287,9 @@ export default {
     return {
       isActive1: true,
       isActive2: false,
+      currentPw: '',
+      newPw: '',
+      newPw2: ''
     };
   },
   methods: {
@@ -284,13 +303,24 @@ export default {
       this.isActive2 = true;
       console.log(e.target);
     },
+
+    // 비밀번호 유효성
+    isPassword(asValue) {
+      const regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+\\\/\[\]{};:\`,.<>\/?"'.|])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+      return regExp.test(asValue);
+    },
+    checknewPw() {
+      this.isPassword(this.newPw) || this.newPw === '' ? this.newPwChk = '' : this.newPwChk = '비밀번호 입력 시 유의사항을 확인해주세요.'
+    },
+    checknewPw2() {
+      this.isPassword(this.newPw === this.newPw2 || this.newPw2 === '' ? this.newPw2Chk = '' : this.newPw2Chk ='비밀번호가 일치하지 않습니다.')
+    }
   },
 };
 </script>
 
 <style scoped>
-
-
 
 p {
   color: #777;
@@ -639,5 +669,10 @@ thead th {
   padding: 0 8px;
   border: 1px solid #dcdcdc;
   font-size: 16px;
+}
+
+.check {
+  color: red;
+  margin-bottom: 10px;
 }
 </style>
