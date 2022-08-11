@@ -56,10 +56,10 @@
 
               <div class="middleTab">
                 <div class="middleTabs">
-                  <a @click="activetab=1" :class="[ activetab === 1 ? 'active' : '' ]">전체주문체결내역</a>
-                  <a @click="activetab=2" :class="[ activetab === 2 ? 'active' : '' ]">주문취소내역</a>
-                  <a @click="activetab=3" :class="[ activetab === 3 ? 'active' : '' ]">반품처리내역</a>
-                  <a @click="activetab=4" :class="[ activetab === 4 ? 'active' : '' ]">교환처리내역</a>
+                  <a @click="activetab = 1" :class="[activetab === 1 ? 'active' : '']">전체주문체결내역</a>
+                  <a @click="activetab = 2" :class="[activetab === 2 ? 'active' : '']">주문취소내역</a>
+                  <a @click="activetab = 3" :class="[activetab === 3 ? 'active' : '']">반품처리내역</a>
+                  <a @click="activetab = 4" :class="[activetab === 4 ? 'active' : '']">교환처리내역</a>
                 </div>
 
                 <div class="content">
@@ -91,50 +91,233 @@
                         <p>※ 온라인에서 구매내역 표기시 제품의 정상가로 표기 됩니다. (단, 등급 반영시 실제 결제가 기준으로 반영됩니다.)</p>
                         <p>※ 등급 반영시 반품내역, 포인트 구매내역은 제외 됩니다.</p>
                       </div>
-                      <div class="orderIcon">
-                        
+                      <div class="orderProcess">
+                        <div class="icons icon1">
+                          <span class="orderTitle">결제대기</span>
+                        </div>
+                        <div class="icons icon2">
+                          <span class="orderTitle">결제완료</span>
+                          <div class="orderTxt">
+                            결제가 완료되어 관리자가 <br>
+                            주문내역을 확인 중입니다 <br>
+                            취소가 가능합니다
+                          </div>
+                        </div>
+                        <div class="icons icon3">
+                          <span class="orderTitle">제품준비중</span>
+                          <div class="orderTxt">
+                            결제 확인 후 택배사에서 <br>
+                            제품을 포장하고 있습니다.
+                          </div>
+                        </div>
+                        <div class="icons icon4">
+                          <span class="orderTitle">배송중</span>
+                          <div class="orderTxt">
+                            제품을 포장 후 배송중입니다. <br>
+                            송장번호를 통해 현 배송상태를 <br>
+                            확인하실 수 있습니다.
+                          </div>
+                        </div>
+                        <div class="icons icon5">
+                          <span class="orderTitle">배송완료</span>
+                        </div>
                       </div>
                     </div>
                   </div>
+
                   <div v-if="activetab === 2" class="middelCtnt">
-                    2
+                    <div class="orderDiv">
+                      <p>총 <strong>0</strong> 건</p>
+                      <div class="orderTableDiv">
+                        <table class="orderTable">
+                          <thead>
+                            <th style="width:120px;">주문일자</th>
+                            <th style="width:115px;">주문번호</th>
+                            <th>대표제품 명</th>
+                            <th style="width:110px;">결제금액</th>
+                            <th style="width:110px;">처리현황</th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="5">주문취소 내역이 없습니다.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="orderText">
+                        <p>※ 주문번호나 제품명을 클릭 하시면 주문 상세 내역을 보실 수 있습니다.</p>
+                        <p>※ 취소가 완료된 경우 취소완료로 상태가 표시됩니다.</p>
+                      </div>
+                      <div class="orderProcess">
+                        <div class="icons icon6">
+                          <span class="orderTitle">취소접수</span>
+                          <div class="orderTxt">
+                            취소일과 결제일의 해당 월이 <br>
+                            다른 휴대폰결제와 가상계좌 <br>
+                            결제인 경우 환불이 <br>
+                            완료되기 전까지 <br>
+                            취소접수로 표시 됩니다.
+                          </div>
+                        </div>
+                        <div class="icons icon7">
+                          <span class="orderTitle">취소완료</span>
+                          <div class="orderTxt">
+                            관리자가 취소 접수내역을 <br>
+                            확인 후 환불해 드리고 <br>
+                            취소 승인 시 <br>
+                            취소 완료 상태가 됩니다.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
                   <div v-if="activetab === 3" class="middelCtnt">
-                    3
+                    <div class="orderDiv">
+                      <p>총 <strong>0</strong> 건</p>
+                      <div class="orderTableDiv">
+                        <table class="orderTable">
+                          <thead>
+                            <th style="width:120px;">주문일자</th>
+                            <th style="width:115px;">주문번호</th>
+                            <th>대표제품 명</th>
+                            <th style="width:110px;">결제금액</th>
+                            <th style="width:110px;">처리현황</th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="5">반품 내역이 없습니다.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="orderText">
+                        <p>※ 주문번호나 제품명을 클릭 하시면 주문 상세 내역을 보실 수 있습니다.</p>
+                        <p>※ 취소가 완료된 경우 취소완료로 상태가 표시됩니다.</p>
+                      </div>
+                      <div class="orderProcess">
+                        <div class="icons icon6">
+                          <span class="orderTitle">반품접수</span>
+                          <div class="orderTxt">
+                            반품신청을 한 상태입니다.
+                          </div>
+                        </div>
+                        <div class="icons icon8">
+                          <span class="orderTitle">반품불가</span>
+                          <div class="orderTxt">
+                            반품 사유 분석 및 통화 후, <br>
+                            반품 불가로 승인 날 경우 입니다.
+                          </div>
+                        </div>
+                        <div class="icons icon4">
+                          <span class="orderTitle">반품중</span>
+                          <div class="orderTxt">
+                            모든 결제방법 공통으로, <br>
+                            반품승인 후 제품을 수령 해, <br>
+                            올 때 까지의 단계 입니다.
+                          </div>
+                        </div>
+                        <div class="icons icon9">
+                          <span class="orderTitle">환불진행</span>
+                          <div class="orderTxt">
+                            무통장입금 결제의 경우만 <br>
+                            존재하는 단계로 반품제품 수량 <br>
+                            확인 후 관리자가 환불 <br>
+                            계좌로 입금하는 단계입니다.
+                          </div>
+                        </div>
+                        <div class="icons icon10">
+                          <span class="orderTitle">반품완료</span>
+                          <div class="orderTxt">
+                            환불이 완료된 상태입니다. <br>
+                            (입금확인에는 반품 완료 후 <br>
+                            2,3일의 시간이 소요될 수 <br>
+                            있습니다.)
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
                   <div v-if="activetab === 4" class="middelCtnt">
-                    4
+                    <div class="orderDiv">
+                      <p>총 <strong>0</strong> 건</p>
+                      <div class="orderTableDiv">
+                        <table class="orderTable">
+                          <thead>
+                            <th style="width:120px;">주문일자</th>
+                            <th style="width:115px;">교환번호</th>
+                            <th>대표제품 명</th>
+                            <th style="width:110px;">결제금액</th>
+                            <th style="width:110px;">처리현황</th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="5">교환 내역이 없습니다.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="orderText">
+                        <p>※ 씨드 내역 반영 시 씨드 쿠폰 발급, 등급산정에 대한 씨드 차감개수는 제외 됩니다.</p>
+                      </div>
+                      <div class="orderProcess">
+                        <div class="icons icon6">
+                          <span class="orderTitle">교환접수</span>
+                          <div class="orderTxt">
+                            교환을 신청하신 <br>
+                            상태 입니다.
+                          </div>
+                        </div>
+                        <div class="icons icon11">
+                          <span class="orderTitle">교환불가</span>
+                          <div class="orderTxt">
+                            교환이 불가능한 제품인 경우 <br>
+                            교환불가상태로 변경됩니다. <br>
+                            상담은 고객센터를 <br>
+                            이용해 주시기 바랍니다. <br>
+                          </div>
+                        </div>
+                        <div class="icons icon12">
+                          <span class="orderTitle">교환안내</span>
+                          <div class="orderTxt">
+                            반품하신 제품이 <br>
+                            확인된 상태입니다. <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>취소신청</h1>
+                </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>반품신청</h1>
+                </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>교환신청</h1>
+                </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>증빙서류발급</h1>
+                </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>구매내역</h1>
+                </div>
+                <div class="tabs__content">
+                  <searchDate />
+                  <h1>정기구독내역</h1>
+                </div>
+
               </div>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>취소신청</h1>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>반품신청</h1>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>교환신청</h1>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>증빙서류발급</h1>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>구매내역</h1>
-            </div>
-            <div class="tabs__content">
-              <searchDate />
-              <h1>정기구독내역</h1>
-            </div>
 
+            </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -179,23 +362,6 @@ export default {
 <style scoped>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 p {
   color: #777;
   padding: 3px;
@@ -217,7 +383,7 @@ button {
 }
 
 .r_border {
-  min-height: 1200px;
+  min-height: 1050px;
   border-left: 1px solid #ccc;
 }
 
@@ -385,10 +551,12 @@ button {
   margin-bottom: 14px;
   color: var(--text-black);
 }
+
 .orderTableDiv {
   position: relative;
   border-top: 2px solid var(--text-black);
 }
+
 .orderTable {
   width: 100%;
   border-collapse: collapse;
@@ -399,7 +567,8 @@ button {
   vertical-align: middle;
 }
 
-.orderTable th, td {
+.orderTable th,
+td {
   padding: 17px 14px;
   text-align: center;
   color: var(--text-black);
@@ -416,8 +585,7 @@ button {
   border-left: 0;
 }
 
-.orderTable th:last-child
-.orderTable td:last-child {
+.orderTable th:last-child .orderTable td:last-child {
   border-right: 0;
 }
 
@@ -431,9 +599,94 @@ button {
   margin-bottom: 0;
 }
 
-.orderIcon {
+.orderProcess {
   margin-top: 80px;
   text-align: center;
 }
 
+.icons {
+  position: relative;
+  display: inline-block;
+  width: 20%;
+  font-size: 14px;
+  line-height: 1.4;
+  vertical-align: top;
+}
+
+.icons::before {
+  content: '';
+  display: block;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.icons+.icons::after {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 11px;
+  height: 19px;
+  background: url("@/assets/img/mypage/arw_process.png") no-repeat;
+}
+
+.icon1::before {
+  background: url("@/assets/img/mypage/icon_process1.png") no-repeat 50% 50%;
+}
+
+.icon2::before {
+  background: url("@/assets/img/mypage/icon_process2.png") no-repeat 50% 50%;
+}
+
+.icon3::before {
+  background: url("@/assets/img/mypage/icon_process3.png") no-repeat 50% 50%;
+}
+
+.icon4::before {
+  background: url("@/assets/img/mypage/icon_process4.png") no-repeat 50% 50%;
+}
+
+.icon5::before {
+  background: url("@/assets/img/mypage/icon_process5.png") no-repeat 50% 50%;
+}
+
+.icon6::before {
+  background: url("@/assets/img/mypage/icon_process6.png") no-repeat 50% 50%;
+}
+
+.icon7::before {
+  background: url("@/assets/img/mypage/icon_process7.png") no-repeat 50% 50%;
+}
+
+.icon8::before {
+  background: url("@/assets/img/mypage/icon_process8.png") no-repeat 50% 50%;
+}
+
+.icon9::before {
+  background: url("@/assets/img/mypage/icon_process9.png") no-repeat 50% 50%;
+}
+
+.icon10::before {
+  background: url("@/assets/img/mypage/icon_process10.png") no-repeat 50% 50%;
+}
+
+.icon11::before {
+  background: url("@/assets/img/mypage/icon_process11.png") no-repeat 50% 50%;
+}
+
+.icon12::before {
+  background: url("@/assets/img/mypage/icon_process12.png") no-repeat 50% 50%;
+}
+
+.orderTitle {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-black);
+}
+
+.orderTxt {
+  color: var(--text-light-gray);
+}
 </style>
