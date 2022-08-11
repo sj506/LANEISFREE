@@ -16,10 +16,12 @@ class ProductController extends Controller
     {
         return $this->model->getProductImg();
     }
+    // 찜하기 많이 받은 상위 6개 제품 가져오기
     public function getBestSeller()
     {
         return $this->model->getBestSeller();
     }
+
     public function productBuy()
     {
         $json = getJson();

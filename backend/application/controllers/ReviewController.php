@@ -62,7 +62,11 @@ class ReviewController extends Controller
         $param = [ "m_num" => intval($urlPaths[2])];
         return $this->model->getUserReview($param);
     }
-
+    // 제품별 최고 점수 리뷰하나씩 들고 오기
+    public function getBestReview()
+    {
+        return $this->model->getBestReview();
+    }
     public function getWritenReview() {
         $urlPaths = getUrlPaths();
         if(!isset($urlPaths)){ exit(); }

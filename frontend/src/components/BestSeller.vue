@@ -19,8 +19,8 @@
                 </div>
                 <div class="review-box">
                   <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, quidem?</div>
-                  <div class="review-user">@abcd*****</div>
+                  <div class="review">{{ bestReviews[idx] }}</div>
+                  <div class="review-user">{{ reviewNm[idx] }}</div>
                 </div>
               </div>
             </div>
@@ -70,6 +70,9 @@ export default {
           engName: 'WATER BANK BLUE HYALURONIC CREAM',
         },
       ],
+      productPk: [12, 13, 14, 15, 16, 17],
+      bestReviews: [],
+      reviewNm: [],
       slidesPerView: 3,
       windowWidth: window.innerWidth,
     };
@@ -82,6 +85,9 @@ export default {
     return {
       modules: [Navigation],
     };
+  },
+  created() {
+    this.getBestReview();
   },
   mounted() {
     this.$nextTick(() => {
@@ -104,6 +110,19 @@ export default {
     changeBg() {
       let percentHeight = Math.floor(($(window).scrollTop() / ($(document).height() - $(window).height())) * 100);
       console.log(percentHeight);
+    },
+
+    async getBestReview() {
+      const bestReviews = await this.$get('/review/getBestReview', {});
+      // console.log(bestReviews);
+
+      bestReviews.forEach((element) => {
+        if (this.productPk.includes(element.pro_num)) {
+          this.bestReviews.push(element.re_ctnt);
+          this.reviewNm.push(element.m_nm);
+        }
+      });
+      console.log(this.bestReviews);
     },
   },
 };
