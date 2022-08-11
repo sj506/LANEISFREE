@@ -54,8 +54,8 @@
                     <li>{{ item.pro_price }}</li>
                     <li>{{ item.pur_deadline }}</li>
                     <li>
-                      <button>
-                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"> 리뷰쓰기 </router-link>
+                      <button class="btn btn-secondary">
+                        <router-link :to="{ path: '/ReviewWrite', query: { pro_num: item.pro_num } }"><span style="color:white">리뷰쓰기</span></router-link>
                       </button>
                     </li>
                   </ul>
