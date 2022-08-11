@@ -47,7 +47,7 @@
         </div>
         <!-- 구매 및 구매사이트 방문 버튼-->
         <router-link :to="{ name: 'buyPage', params: { productId: productDetail.pro_num } }">
-          <div class="buyButton _btn">AMORE MALL 에서 구매하기</div>
+          <div @click="getBasket" class="buyButton _btn">AMORE MALL 에서 구매하기</div>
         </router-link>
         <div class="visitButton _btn">
           <a href="https://www.laneige.com/kr/ko/brand/flagship-store/introduction/"> 라네즈 명동 쇼룸 방문하기</a>
@@ -55,7 +55,7 @@
       </div>
     </div>
   </header>
-  <HommeDetail />
+  <HommeDetail :pro_num="this.$route.params.productId" />
 </template>
 <script>
 import HommeDetail from '../homme/hommeDetail.vue';
@@ -77,8 +77,11 @@ export default {
   },
   beforeCreate() {},
   created() {
-    console.log(this.$store.state.getProductList);
-    this.productDetail = this.$store.state.getProductList[this.$route.params.productId - 1];
+    this.$store.state.getProductList.forEach((item) => {
+      if (item.pro_num == this.$route.params.productId) {
+        this.productDetail = item;
+      }
+    });
     this.productId = this.$route.params.productId;
     // this를 붙여줘야 route가 돌아감
     this.getProductImg();
@@ -111,6 +114,22 @@ export default {
           this.productImg.push(product);
         }
       });
+    },
+    async getBasket() {
+      if (!this.$store.state.user.result.m_num) {
+        alert('로그인 한 유저만 구매할 수 있습니다.');
+        return;
+      }
+      const param = [
+        {
+          m_num: this.$store.state.user.result.m_num,
+          pro_num: this.productId,
+          ba_stock: '1',
+        },
+      ];
+      console.log(param);
+      const result = await this.$post('/product/insbasket', param);
+      console.log(result);
     },
   },
 };

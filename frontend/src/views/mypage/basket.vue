@@ -3,27 +3,23 @@
     <div class="location headerCate">
       <div class="header">
         <router-link to="/">
-          <div class="depth"><button href="/" class="btn_h">홈</button></div>
+          <div class="depth"><button href="/" class="btn">홈</button></div>
         </router-link>
 
         <div class="depth">
-          <button type="button" class="btn_h">마이페이지</button>
+          <button type="button" class="btn">마이페이지</button>
         </div>
 
         <div class="depth">
-          <button type="button" class="btn_h">찜한 제품</button>
+          <button type="button" class="btn">장바구니</button>
         </div>
       </div>
     </div>
     <myPageHeader />
     <section class="contents d-flex row align-items-baseline justify-content-between">
-      <myPageSide activeLink="/myPageWishList" />
-      <div class="col-10 p-5 r_border">
-        <h3>찜한 제품</h3>
-        <!-- <div class="reviewDiv">
-          <div class="reviewP" @click="displayP" :class="{ bgGreen: isActive1 }">작성 가능한 리뷰</div>
-          <div class="reviewW" @click="displayW" :class="{ bgGreen: isActive2 }">내가 작성한 리뷰</div>
-        </div> -->
+      <myPageSide activeLink="/basket" />
+      <div class="col-10 p-5">
+        <h3>장바구니</h3>
         <div class="reviewP_ctnt" :class="{ dNone: isActive2 }">
           <div class="p_container">
             <div class="p_header">
@@ -36,10 +32,10 @@
                 <table>
                   <thead>
                     <tr class="p_ctnt_header">
-                      <th class="_th allSelect">
-                        <label><input class="SelectBox" type="checkbox" @click="selectAll" />전체선택</label>
-                      </th>
                       <th class="_th"></th>
+                      <th class="_th allSelect">
+                        <label>상품명</label>
+                      </th>
                       <th class="_th"></th>
                       <th class="_th selPrice">판매가</th>
                       <th class="_th"></th>
@@ -48,7 +44,7 @@
                   <tbody class="_tbody">
                     <tr class="product_box" v-for="(likeProduct, idx) in likeList" :key="idx">
                       <td class="_flex">
-                        <input class="SelectBox onceSelectBox" type="checkbox" :checked="checkboxSelect" :data-pro_num="likeProduct.pro_num" ref="buyProduct" />
+                        <div class="SelectBox onceSelectBox"></div>
                         <router-link :to="{ name: 'hommeProductDetail', params: { productId: likeProduct.pro_num } }">
                           <img class="product_img" :src="this.$getSrc(likeProduct.pro_mainimg)" />
                         </router-link>
@@ -64,15 +60,15 @@
                           <i class="fa-solid fa-sort-up"></i>
                           <i class="fa-solid fa-sort-down"></i>
                         </span> -->
-                        <!-- <input type="number" class="form-control pro_count" v-model="likeProduct.pro_count" min="0" /> -->
+                        <!-- <input type="number" class="form-control pro_count" v-model="likeProduct.ba_stock" min="0" /> -->
                       </td>
-                      <td>{{ this.$addComma(likeProduct.pro_count * likeProduct.pro_price) }}원</td>
+                      <td>{{ this.$addComma(likeProduct.ba_stock * likeProduct.pro_price) }}원</td>
                       <td><i :data-pro_num="likeProduct.pro_num" @click="delLike" class="fa-solid fa-x pointer"></i></td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="btnBox">
-                  <button class="buyBtn" @click="clickBuy">장바구니에 담기</button>
+                  <button class="buyBtn" @click="clickBuy">구매하기</button>
                 </div>
               </div>
             </div>
@@ -108,20 +104,17 @@ export default {
     },
   },
   created() {
-    this.getHeart();
+    this.getBasket();
   },
   methods: {
-    async getHeart() {
+    async getBasket() {
       const param = { m_num: this.$store.state.user.result.m_num };
-      const getHeart = await this.$post('product/getHeart', param);
-      if (getHeart.result) {
+      const selbasket = await this.$post('product/selbasket', param);
+      if (selbasket.result) {
         this.purchaseCheck = true;
       }
-      console.log(getHeart.result);
-      this.likeList = getHeart.result;
-      this.likeList.forEach((likeProduct) => {
-        likeProduct.pro_count = 1;
-      });
+      console.log(selbasket);
+      this.likeList = selbasket.result;
     },
     selectAll() {
       this.checkboxSelect = !this.checkboxSelect;
@@ -132,33 +125,17 @@ export default {
         this.$router.push('signin');
       }
     },
-    async clickBuy() {
-      const param = [];
-      this.$refs.buyProduct.forEach((ele) => {
-        if (ele.checked) {
-          // console.log(ele.dataset.pro_num);
-          // 체크박스 인풋에서 true인 상품들만 리스트를 가져온다
-          this.likeList.forEach((likeProduct) => {
-            if (likeProduct.pro_num == ele.dataset.pro_num) {
-              // 체크박스가 true인 상품번호와 찜목록에 상품번호가 일치한 상품만
-              // 수량과 상품번호를 param값에 전달한다 여기서 param을 만들면 param이 여러개가 만들어져서 밖으로 뺐다.
-              const basketList = { m_num: this.$store.state.user.result.m_num, pro_num: ele.dataset.pro_num, ba_stock: likeProduct.pro_count };
-              param.push(basketList);
-            }
-          });
-        }
-      });
-      const basketList = await this.$post('product/insbasket', param);
-      this.$router.push('/basket');
+    clickBuy() {
+      this.$router.push('/buyPage');
     },
     async delLike(e) {
       const param = {
         m_num: this.$store.state.user.result.m_num,
         pro_num: e.target.dataset.pro_num,
       };
-      const delHeart = await this.$post('product/delHeart', param);
-      console.log(delHeart);
-      this.getHeart();
+      const delLike = await this.$post('product/delLike', param);
+      console.log(delLike);
+      this.getBasket();
     },
   },
 };
@@ -178,20 +155,11 @@ a {
   color: var(--text-black);
   font-style: none;
 }
-button {
-  border: none;
-}
-
-.r_border {
-  min-height: 1200px;
-  border-left: 1px solid #ccc;
-}
-
 /* header */
 #container {
   width: 100vw;
   min-height: 500px;
-  /* padding-bottom: 110px; */
+  padding-bottom: 110px;
   border-top: 1px solid transparent;
 }
 
@@ -334,18 +302,18 @@ td {
   background: none;
 }
 
-.btn_h {
+.btn {
   margin: 0 0 0 15px;
   padding-right: 25px;
   color: #777;
   background: url('@/assets/img/mypage/arw_loc_btn.png') no-repeat 99% 50%;
 }
 
-.depth:last-child .btn_h {
+.depth:last-child .btn {
   color: #222;
 }
 
-.depth:first-child .btn_h {
+.depth:first-child .btn {
   color: #777;
 }
 /* header category */
