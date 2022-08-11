@@ -131,7 +131,7 @@ export default {
       // console.log(this.$store.state.setUser);
       // console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
-      if (this.user.m_email === signIn.result.m_email && this.user.m_pw === signIn.result.m_pw) {
+      if (this.user.m_email === signIn.result.m_email ) {
         this.$store.commit('setUser', 1);
         this.$store.commit('user', signIn);
         this.$router.push('/');
