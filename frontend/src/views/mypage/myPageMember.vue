@@ -39,7 +39,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <th class="col"><img src="@/assets/img/mypage/icon_facebook.jpg" alt="페이스북 아이콘" /><span>페이스북</span></th>
+                  <th class="col"><img src="@/assets/img/mypage/icon_facebook.jpg" alt="페이스북 아이콘" /><span>페이스북</span>
+                  </th>
                   <td class="noConnect">연결 정보 없음</td>
                 </tr>
                 <tr>
@@ -144,15 +145,18 @@
               <table class="table">
                 <tr>
                   <th>이메일 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="emailAgree1" /> 수신 <input type="radio" name="emailAgree1" class="ms-4"
+                      checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>문자 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="messageAgree1" /> 수신 <input type="radio" name="messageAgree1"
+                      class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>우편물 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="postAgree1" /> 수신 <input type="radio" name="postAgree1" class="ms-4"
+                      checked /> 미수신</td>
                 </tr>
               </table>
             </div>
@@ -166,19 +170,23 @@
               <table class="table bPoint">
                 <tr>
                   <th>이메일 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="emailAgree2" /> 수신 <input type="radio" name="emailAgree2" class="ms-4"
+                      checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>문자 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="messageAgree2" /> 수신 <input type="radio" name="messageAgree2"
+                      class="ms-4" checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>우편물 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="postAgree2" /> 수신 <input type="radio" name="postAgree2" class="ms-4"
+                      checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th>TM 수신동의</th>
-                  <td><input type="radio" /> 수신 <input type="radio" class="ms-4" checked /> 미수신</td>
+                  <td><input type="radio" name="TMAgree" /> 수신 <input type="radio" name="TMAgree" class="ms-4"
+                      checked /> 미수신</td>
                 </tr>
                 <tr>
                   <th colspan="2" class="siteMoveBtn">뷰티포인트 수신여부는 뷰티포인트 사이트에서 수정이 가능합니다.</th>
@@ -281,6 +289,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 p {
   color: #777;
   padding: 3px;
@@ -472,6 +483,7 @@ thead th {
   border-left: 1px solid #dcdcdc;
   text-align: center;
   padding: 17px 14px;
+  vertical-align: middle;
 }
 
 .thirdT th:first-child,
@@ -528,6 +540,7 @@ thead th {
 .agreeCheckBox {
   height: 20px;
   width: 20px;
+  vertical-align: middle;
 }
 
 .siteMoveBtn {
