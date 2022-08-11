@@ -390,7 +390,7 @@
         </div>
       </div>
     </section>
-    <section class="pdp-review centerCol">
+    <section class="pdp-review centerCol" id="review">
       <div class="review centerCol">
         <div class="c_review">
           <header class="border_bottom">
@@ -446,11 +446,7 @@
         </div>
         <div class="pagination">
           <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span class="a11y">이전 페이지</span></button>
-          <button type="button" class="page"><span class="page__text current">1</span></button>
-          <button type="button" class="page"><span class="page__text">2</span></button>
-          <button type="button" class="page"><span class="page__text">3</span></button>
-          <button type="button" class="page"><span class="page__text">4</span></button>
-          <button type="button" class="page"><span class="page__text">5</span></button>
+          <button  v-for="(item, idx) in pagingCount.cnt" :key="idx" type="button" class="page"><router-link :to="{ path: `/hommeProductDetail/${pro_num}`, query: { page: item }, hash: '#review' }"><span class="page__text current">{{item}}</span></router-link></button>
           <button type="button" class="page page--next"><span class="a11y">다음페이지</span></button>
         </div>
       </div>
@@ -460,13 +456,19 @@
 
 <script>
 export default {
+  props: ['pro_num'],
+
   data() {
     return {
       navurl: this.geturl(),
       isActive1: false,
       isActive2: false,
       isActive3: false,
-      reviewData: {}
+      reviewData: {},
+      pagingCount: 0,
+      page: 1,
+      rowCount: 15,
+      startIdx: 0
     };
   },
   methods: {
@@ -477,13 +479,42 @@ export default {
       this[activeNm] = !this[activeNm];
       ele.classList.toggle('collapsed');
     },
-    async getReviewData() {
-      this.reviewData = await this.$get(`/review/getReviewData`, {});
+    // async getReviewData() {
+    //   this.reviewData = await this.$get(`/review/getReviewData`, {});
+    //   console.log(this.reviewData);
+    // },
+    async getPagingCount() {
+      this.pagingCount = await this.$get(`/review/getPagingCount/${this.rowCount}`, {});
+      console.log(this.pagingCount);
+    },
+    async getPagingReviewData() {
+      this.reviewData = await this.$get(`/review/getPagingReviewData/${this.rowCount}/${this.startIdx}`, {});
       console.log(this.reviewData);
+    },
+    getPage() {
+      if(typeof this.$route.query.page != undefined){
+        this.page = this.$route.query.page;
+      };
+      this.startIdx = (this.page - 1) * this.rowCount
+      console.log(this.page);
     }
+  
+  },
+  computed: {
+    selPage: function () {
+      return this.$route.query.page;
+    },
+  },
+  watch: {
+    selPage: function () {
+      this.getPage();
+      this.getPagingReviewData();
+    },
   },
   created() {
-    this.getReviewData();
+    this.getPagingCount();
+    this.getPage();
+    this.getPagingReviewData();
   },
   // computed: {
   //   isactive: function(n) {
