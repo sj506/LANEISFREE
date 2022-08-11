@@ -16,6 +16,10 @@ class ProductController extends Controller
     {
         return $this->model->getProductImg();
     }
+    public function getBestSeller()
+    {
+        return $this->model->getBestSeller();
+    }
     public function productBuy()
     {
         $json = getJson();
