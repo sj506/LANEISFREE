@@ -23,11 +23,7 @@
     </li>
   </ul>
   <div class="pagination">
-    <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span class="a11y">이전 페이지</span></button>
-    <button v-for="(item, idx) in pagingCount.cnt" :key="idx" type="button" class="page">
-      <span :data-page="item" @click="changPage" class="page__text current">{{ item }}</span>
-    </button>
-    <button type="button" class="page page--next"><span class="a11y">다음페이지</span></button>
+    <span v-for="(item, idx) in pagingCount.cnt" :key="idx" :data-page="item" @click="changPage" class="page__text current">{{ item }}</span>
   </div>
 </template>
 <script>
@@ -222,6 +218,12 @@ img:hover {
 
 img:not(:hover) {
   animation: blink-effect2 0.4s;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 @keyframes blink-effect {

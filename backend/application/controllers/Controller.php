@@ -5,7 +5,10 @@ namespace application\controllers;
 class Controller
 {
     protected $model;
-    private static $needLoginUrlArr = [];
+    private static $needLoginUrlArr = [
+        'basket', 'buyPage'
+        // 이거 해석필요함 ㅠㅠ
+    ];
 
     public function __construct($action, $model)
     {
