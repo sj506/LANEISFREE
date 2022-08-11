@@ -123,9 +123,10 @@ export default {
       this.hommeShow = false;
       this.isShow = false;
     },
-    logOut() {
+    async logOut() {
       this.$store.commit('user', null);
-      this.$store.commit('setUser', 0);
+      this.$store.commit('session_id', '');
+      await this.$get('user/logout', {});
     },
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
