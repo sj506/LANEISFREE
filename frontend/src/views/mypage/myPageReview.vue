@@ -102,11 +102,11 @@
                 </ul>
               </div>
             </div>
-              <div class="w_review">{{item.re_ctnt}}</div>
-              <div class="w_btn d-flex justify-content-end pt-2">
-                <div><button class="btn btn-outline-dark">수정</button></div>
-                <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
-              </div>
+            <div class="w_review">{{ item.re_ctnt }}</div>
+            <div class="w_btn d-flex justify-content-end pt-2">
+              <div><button class="btn btn-outline-dark">수정</button></div>
+              <div><button class="btn btn-outline-dark" @click="reviewDel(item.pro_num, this.user.result.m_num)">삭제</button></div>
+            </div>
           </div>
         </div>
       </div>
@@ -212,7 +212,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* default */
 .dNone {
   display: none;
@@ -223,7 +222,7 @@ h3 {
   padding-bottom: 20px;
 }
 .bgGreen {
-  background-color: #17342f;
+  background-color: var(--bg-main);
   color: #fff;
 }
 a {
@@ -283,7 +282,7 @@ button {
   margin-top: 50px;
   justify-content: space-between;
   padding-bottom: 15px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--text-main);
 }
 .review_point::after {
   content: '';
@@ -325,8 +324,7 @@ button {
   justify-content: space-around;
   padding: 20px 0;
   font-weight: 600;
-  border-bottom: 1px solid var(--text-light-gray);
-  background-color: rgba(226, 223, 223, 0.712);
+  border-bottom: 1px solid var(--text-main);
 }
 .p_ctnt_header li:first-child {
   width: 150px;
