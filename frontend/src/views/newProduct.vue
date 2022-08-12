@@ -1,20 +1,5 @@
 <template>
   <main id="main" class="main">
-    <ol class="breadcrumb">
-      <li>
-        <router-link to="/index" class="top_link">
-          <!-- 링크주소 넣기-->
-          <span>Main</span>
-        </router-link>
-      </li>
-      <span> > </span>
-      <li class="liList">
-        <router-link to="/new" class="top_link">
-          <!-- 링크주소 넣기-->
-          <span>신상품</span>
-        </router-link>
-      </li>
-    </ol>
     <div class="mainTitle">
       <header class="page-header">
         <h1 class="page_heading">신상품</h1>
@@ -24,10 +9,12 @@
     <div class="container">
       <div class="container_1">
         <div class="prod_wide">
-          <router-link to="/best">
+          <router-link to="hommeProductDetail/17">
             <!-- 상세페이지 연결 -->
             <div class="prodWide_cont">
-              <span class="prodWide_brow">WATER BANK BLUE HYALURONIC CREAM</span>
+              <span class="prodWide_brow"
+                >WATER BANK BLUE HYALURONIC CREAM</span
+              >
               <h2 class="prodWide_title h3">
                 워터뱅크 블루
                 <br />
@@ -45,94 +32,66 @@
               </span>
             </div>
             <div class="prodWide_img_wrap">
-              <img src="../assets/img/newImage/워터뱅크.jpg" alt="워터뱅크 블루히알루로닉 크림" class="prodWide_img" />
+              <img
+                src="../assets/img/newImage/워터뱅크.jpg"
+                alt="워터뱅크 블루히알루로닉 크림"
+                class="prodWide_img"
+              />
             </div>
           </router-link>
         </div>
 
-        <div class="prod_box column-center">
-          <div class="prod_box1 flex-center">
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+        <!-- 첫번째 v-for문 -->
+        <div class="prod_box">
+          <div class="prod1">
+            <div class="prod_box1" v-for="arr1 in arr1" :key="arr1.pro_num">
+              <div class="product_item">
+                <div class="product-item__badge-wrap">
+                  <span class="product-item__badge badge badge--new"
+                    ><NEW></NEW
+                  ></span>
+                </div>
+                <router-link :to="`hommeProductDetail/${arr1.pro_num}`" class="product-item__link">
+                  <!-- 링크연결 -->
+                  <div class="product-item__thumb">
+                    <img
+                      class="product-item__img"
+                      :src="this.$getSrc(arr1.pro_mainimg)"
+                      alt="액티브2종세트"
+                    />
+                  </div>
+                  <div class="product-item__hash-wrap">
+                    <span class="product-item__hash">{{ arr1.pro_tag1 }}</span>
+                    <div></div>
+                    <span class="product-item__name">{{ arr1.pro_name }}</span>
+                  </div>
+                </router-link>
               </div>
-              <a href="#" class="product-item__link">
-                <!-- 링크연결 -->
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/액티브2종세트.jpg" alt="액티브2종세트" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남성스킨로션</span>
-                  <div></div>
-                  <span class="product-item__name">액티브 워터 2종 세트</span>
-                </div>
-              </a>
-            </div>
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
-              </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_Neo Foundation Brush"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/모이스처.jpg" alt="모이스처" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남자수분로션</span>
-                  <div></div>
-                  <span class="product-item__name">액티브 워터 모이스처라이저</span>
-                </div>
-              </a>
             </div>
           </div>
-
-          <div class="prod_box2 flex-center">
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+          <div class="prod2">
+            <div class="prod_box2" v-for="arr2 in arr2" :key="arr2.pro_num">
+              <div class="product_item">
+                <div class="product-item__badge-wrap">
+                  <span class="product-item__badge badge badge--new"
+                    ><NEW></NEW
+                  ></span>
+                </div>
+                <router-link :to="`hommeProductDetail/${arr2.pro_num}`" class="product-item__link">
+                  <div class="product-item__thumb">
+                    <img
+                      class="product-item__img"
+                      :src="this.$getSrc(arr2.pro_mainimg)"
+                      alt="워터스킨"
+                    />
+                  </div>
+                  <div class="product-item__hash-wrap">
+                    <span class="product-item__hash">{{ arr2.pro_tag1 }}</span>
+                    <div></div>
+                    <span class="product-item__name">{{ arr2.pro_name }}</span>
+                  </div>
+                </router-link>
               </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/워터스킨.jpg" alt="워터스킨" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남자수분스킨</span>
-                  <div></div>
-                  <span class="product-item__name">액티브 워터 스킨</span>
-                </div>
-              </a>
-            </div>
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
-              </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_water-bank-blue-hyaluronic-serum"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/워터폼클렌저.jpg" alt="워터폼클렌저" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#촉촉클렌저</span>
-                  <div></div>
-                  <span class="product-item__name">액티브 워터 폼 클렌저</span>
-                </div>
-              </a>
             </div>
           </div>
         </div>
@@ -141,7 +100,7 @@
 
       <div class="container_2">
         <div class="prod_wide2">
-          <router-link to="/best">
+          <router-link to="hommeProductDetail/12">
             <!-- 상세페이지 연결 -->
             <div class="prodWide_cont1">
               <span class="prodWide_brow">CREAM SKIN REFINER</span>
@@ -164,94 +123,65 @@
               </span>
             </div>
             <div class="prodWide_img_wrap1">
-              <img src="../assets/img/newImage/크림스킨세로.jpg" alt="크림스킨" class="prodWide_img" />
+              <img
+                src="../assets/img/newImage/크림스킨세로.jpg"
+                alt="크림스킨"
+                class="prodWide_img"
+              />
             </div>
           </router-link>
         </div>
-
-        <div class="prod_box column-center">
-          <div class="prod_box1 flex-center">
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+        <!-- 두번째 v-for문 -->
+        <div class="prod_box">
+          <div class="prod1">
+            <div class="prod_box1" v-for="arr3 in arr3" :key="arr3.pro_num">
+              <div class="product_item">
+                <div class="product-item__badge-wrap">
+                  <span class="product-item__badge badge badge--new"
+                    ><NEW></NEW
+                  ></span>
+                </div>
+                <router-link :to="`hommeProductDetail/${arr3.pro_num}`" class="product-item__link">
+                  <!-- 링크연결 -->
+                  <div class="product-item__thumb">
+                    <img
+                      class="product-item__img"
+                      :src="this.$getSrc(arr3.pro_mainimg)"
+                      alt="액티브2종세트"
+                    />
+                  </div>
+                  <div class="product-item__hash-wrap">
+                    <span class="product-item__hash">{{ arr3.pro_tag1 }}</span>
+                    <div></div>
+                    <span class="product-item__name">{{ arr3.pro_name }}</span>
+                  </div>
+                </router-link>
               </div>
-              <a href="#" class="product-item__link">
-                <!-- 링크연결 -->
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/블루에너지스킨.jpg" alt="블루에너지스킨" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#애프터 쉐이빙</span>
-                  <div></div>
-                  <span class="product-item__name">블루에너지 스킨 토너 EX</span>
-                </div>
-              </a>
-            </div>
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
-              </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_Neo Foundation Brush"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/블루에너지에센스.jpg" alt="블루에너지에센스" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남자탄력에센스</span>
-                  <div></div>
-                  <span class="product-item__name">블루에너지 에센스 인 로션 EX</span>
-                </div>
-              </a>
             </div>
           </div>
-
-          <div class="prod_box2 flex-center">
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
+          <div class="prod2">
+            <div class="prod_box2" v-for="arr4 in arr4" :key="arr4.pro_num">
+              <div class="product_item">
+                <div class="product-item__badge-wrap">
+                  <span class="product-item__badge badge badge--new"
+                    ><NEW></NEW
+                  ></span>
+                </div>
+                <router-link :to="`hommeProductDetail/${arr4.pro_num}`" class="product-item__link">
+                  <div class="product-item__thumb">
+                    <img
+                      class="product-item__img"
+                      :src="this.$getSrc(arr4.pro_mainimg)"
+                      alt="워터스킨"
+                    />
+                  </div>
+                  <div class="product-item__hash-wrap">
+                    <span class="product-item__hash">{{ arr4.pro_tag1 }}</span>
+                    <div></div>
+                    <span class="product-item__name">{{ arr4.pro_name }}</span>
+                  </div>
+                </router-link>
               </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_hello-blossom-tinted-lip-balm-cherry-blossom"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/블루에너지세트.jpg" alt="블루에너지세트" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남성스킨로션</span>
-                  <div></div>
-                  <span class="product-item__name">블루에너지 EX 2종세트</span>
-                </div>
-              </a>
-            </div>
-            <div class="product_item">
-              <div class="product-item__badge-wrap">
-                <span class="product-item__badge badge badge--new"><NEW></NEW></span>
-              </div>
-              <a
-                href="#"
-                class="product-item__link"
-                ap-click-area="Product"
-                ap-click-name="Click - Product Detail Link"
-                ap-click-data="신제품_water-bank-blue-hyaluronic-serum"
-              >
-                <div class="product-item__thumb">
-                  <img class="product-item__img" src="../assets/img/newImage/크림스킨.jpg" alt="크림 스킨 옴므 올인원" />
-                </div>
-                <div class="product-item__hash-wrap">
-                  <span class="product-item__hash">#남자 올인원</span>
-                  <div></div>
-                  <span class="product-item__name">크림 스킨 옴므 올인원</span>
-                </div>
-              </a>
             </div>
           </div>
         </div>
@@ -261,9 +191,31 @@
 </template>
 
 <script>
-import NEW from '../components/NEW.vue';
+import NEW from "../components/NEW.vue";
 export default {
   components: { NEW },
+  data() {
+    return {
+      productList: [],
+      arr1: [],
+      arr2: [],
+      arr3: [],
+      arr4: [],
+    };
+  },
+  methods: {
+    async newProductList() {
+      this.productList = await this.$get("/product/newProductList", {});
+      console.log(this.productList);
+      this.arr1.push(this.productList[0], this.productList[1]);
+      this.arr2.push(this.productList[2], this.productList[3]);
+      this.arr3.push(this.productList[4], this.productList[5]);
+      this.arr4.push(this.productList[6], this.productList[7]);
+    },
+  },
+  created() {
+    this.newProductList();
+  },
 };
 </script>
 
@@ -275,19 +227,6 @@ export default {
 .page-header {
   padding-top: 50px;
   margin-bottom: 40px;
-}
-.top_link {
-  font-size: 15px;
-  color: var(--text-gray);
-}
-.breadcrumb {
-  display: flex;
-  padding-top: 10px;
-  padding-left: 20px;
-}
-li {
-  display: inline;
-  color: var(--text-black);
 }
 main {
   padding-bottom: 120px;
@@ -346,10 +285,6 @@ main {
   justify-content: space-between;
   width: 45%;
 }
-.product-item {
-  position: relative;
-  width: 45%;
-}
 .product-item__img {
   width: 100%;
   height: 100%;
@@ -370,7 +305,16 @@ main {
   .container_2 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+  }
+  .prodWide_img_wrap img{
+    width: 100vw;
+  }
+  .prodWide_img_wrap1 img {
+    width: 100vw;
+  }
+  .product-item__thumb img {
+    width: 50vw;
   }
 }
 /* 미디어 쿼리 800부터 한줄로 변경 */
