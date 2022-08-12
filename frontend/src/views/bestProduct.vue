@@ -42,7 +42,7 @@
               <h3>{{ best1.productNm }}</h3>
               <h4>{{ best1.engNm }}</h4>
               <p class="desc" v-html="best1.ctnt"></p>
-              <router-link to="/detail" class="link">
+              <router-link to="/hommeProductDetail/13" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
@@ -75,7 +75,7 @@
               <h3>{{best2.productNm}}</h3>
               <h4>{{best2.engNm}}</h4>
               <p class="desc" v-html="best2.review"></p>
-              <router-link to="/detail" class="link">
+              <router-link to="/hommeProductDetail/14" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <p class="review-desc">
