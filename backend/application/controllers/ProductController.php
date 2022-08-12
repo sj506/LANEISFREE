@@ -60,8 +60,8 @@ class ProductController extends Controller
     {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
-            'pro_num' => $json['pro_num'],
+          'm_num' => $json['m_num'],
+          'pro_num' => $json['pro_num'],
         ];
         $result = $this->model->delHeart($param);
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
     { 
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+          'm_num' => $json['m_num'],
         ];
         $result = $this->model->getHeart($param);
 
@@ -83,15 +83,15 @@ class ProductController extends Controller
         $json = getJson();
         foreach ($json as $item) {
             $param = [
-                'm_num' => $item['m_num'],
-                'pro_num' => $item['pro_num'],
-                'ba_stock' => $item['ba_stock'],
+              'm_num' => $item['m_num'],
+              'pro_num' => $item['pro_num'],
+              'ba_stock' => $item['ba_stock'],
             ];
 
             $overlapCheck = $this->model->selbasket($param);
             if ($overlapCheck) {
-                $param += ['pro_check' => 2,];
-                $this->model->updbasket($param);
+              $param += ['pro_check' => 2,];
+              $this->model->updbasket($param);
             }
             $result = $this->model->insbasket($param);
         }

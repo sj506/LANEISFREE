@@ -200,8 +200,8 @@
             </div>
 
             <div class="my-5 d-flex submitBtnDiv">
-              <input type="submit" class="btn btn-dark my-5 submitBtn" value="확인" />
-              <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
+              <input type="submit" class="btn btn-dark my-5 submitBtn btnOk" value="확인" />
+              <input type="reset" class="btn btn-light border my-5 submitBtn btnNo" value="취소" />
             </div>
 
             <div class="secessionDiv">
@@ -221,7 +221,7 @@
             <p class="mb-1">비밀번호 변경시, 뷰티포인트ID로 로그인 된 모든 서비스에서 로그아웃됩니다.(자동 로그인 포함)</p>
           </div>
 
-          <form class="column-center">
+          <form @submit.prevent="submitForm" class="column-center">
             <div class="noticeForm">
               <div class="notice">
                 <div class="noticeTitle">
@@ -240,7 +240,7 @@
                   <tr>
                     <th>현재 비밀번호</th>
                     <td>
-                      <input @keyup="checkcurrentPw" v-model="currentPw" type="password" />
+                      <input @keypress="checkcurrentPw" v-model="currentPw" type="password" />
                       <p class="check">{{ currentPwChk }}</p>
                     </td>
                   </tr>
@@ -263,10 +263,10 @@
             </div>
 
             <div class="my-5 d-flex submitBtnDiv update">
-              <button type="submit" class="btn btn-dark my-5 submitBtn"
+              <button type="submit" class="my-5 submitBtn btnOk"
                 v-bind:disabled="currentPw === '' || newPw === '' || newPw2 === ''">확인</button>
               <router-link to="/myPageMemberCheck">
-                <input type="reset" class="btn btn-light border my-5 submitBtn" value="취소" />
+                <button class="my-5 submitBtn btnNo">취소</button>
               </router-link>
             </div>
           </form>
@@ -304,6 +304,20 @@ export default {
       console.log(e.target);
     },
 
+    async submitForm() {
+      const signIn = await this.$post('user/signIn', this.user);
+      // if (this.currentPw === signIn.result.m_pw) {
+      //   this.$router.push('/signin');
+      // } else {
+      //   alert('현재 비밀번호를 확인해주세요.');
+      //   this.currentPw = '';
+      //   this.newPw = '';
+      //   this.newPw2 = '';
+      // };
+      console.log(signIn);
+      // console.log('click');
+    },
+
     // 비밀번호 유효성
     isPassword(asValue) {
       const regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+\\\/\[\]{};:\`,.<>\/?"'.|])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
@@ -321,7 +335,6 @@ export default {
 </script>
 
 <style scoped>
-
 p {
   color: #777;
   padding: 3px;
@@ -588,6 +601,27 @@ thead th {
 .submitBtn {
   height: 48px;
   padding: 0 55px;
+}
+
+.btnOk {
+  color: var(--text-white);
+  border: solid 1px var(--bg-main);
+  background-color: var(--bg-main);
+  border-top: 1px solid #f0f0f0;
+}
+
+.btnOk:disabled,
+.btnOk[disabled] {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #c6c6c6;
+  cursor: none;
+}
+
+.btnNo {
+  color: var(--text-point);
+  border: solid 1px var(--bg-main);
+  background-color: var(--bg-white);
 }
 
 .secessionDiv {

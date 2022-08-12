@@ -170,18 +170,23 @@ export default {
         success: (res) => {
           const acc = res.kakao_account.email;
           const tempEmail = acc.split('@');
-          const param = {
+          const params = {
             m_email: tempEmail[0],
             m_email2: tempEmail[1],
           };
-          console.log(param);
-          this.login(param);
+          console.log(params);
+          this.login(params);
         },
         fail: (e) => {
           console.error(e);
         },
       });
     },
+    async login(param) {
+      const data = await this.$post('/user/signUp', param);
+      param.m_num = data.result;
+      this.$store.commit('user', param);
+    }
   },
 };
 </script>
