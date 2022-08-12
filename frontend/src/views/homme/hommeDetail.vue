@@ -1424,6 +1424,9 @@ MARQUEE {
   --bs-accordion-btn-focus-border-color: none !important;
   --bs-accordion-btn-active-icon: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSap8dmKEV8NR0lqMJ3xAwRROiA5efyUlDos_5wFIRTfA1l4FyX4xQuMbiy38SAHS1lTqA&usqp=CAU) !important;
   color: var(--text-gray) !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-color: none !important;
+  --bs-accordion-active-bg: none !important;
 }
 .accordion-item{
   border: none !important;
