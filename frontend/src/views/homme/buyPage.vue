@@ -229,7 +229,7 @@ export default {
 
   computed: {
     loginToggle: function () {
-      return this.$store.state.setUser;
+      return this.$store.state.session_id;
     },
   },
   watch: {
