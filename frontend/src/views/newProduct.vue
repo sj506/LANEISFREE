@@ -9,7 +9,7 @@
     <div class="container">
       <div class="container_1">
         <div class="prod_wide">
-          <router-link to="/best">
+          <router-link to="hommeProductDetail/17">
             <!-- 상세페이지 연결 -->
             <div class="prodWide_cont">
               <span class="prodWide_brow"
@@ -51,7 +51,7 @@
                     ><NEW></NEW
                   ></span>
                 </div>
-                <router-link to="/" class="product-item__link">
+                <router-link :to="`hommeProductDetail/${arr1.pro_num}`" class="product-item__link">
                   <!-- 링크연결 -->
                   <div class="product-item__thumb">
                     <img
@@ -77,7 +77,7 @@
                     ><NEW></NEW
                   ></span>
                 </div>
-                <router-link to="/" class="product-item__link">
+                <router-link :to="`hommeProductDetail/${arr2.pro_num}`" class="product-item__link">
                   <div class="product-item__thumb">
                     <img
                       class="product-item__img"
@@ -100,7 +100,7 @@
 
       <div class="container_2">
         <div class="prod_wide2">
-          <router-link to="/best">
+          <router-link to="hommeProductDetail/12">
             <!-- 상세페이지 연결 -->
             <div class="prodWide_cont1">
               <span class="prodWide_brow">CREAM SKIN REFINER</span>
@@ -141,7 +141,7 @@
                     ><NEW></NEW
                   ></span>
                 </div>
-                <router-link to="/" class="product-item__link">
+                <router-link :to="`hommeProductDetail/${arr3.pro_num}`" class="product-item__link">
                   <!-- 링크연결 -->
                   <div class="product-item__thumb">
                     <img
@@ -167,7 +167,7 @@
                     ><NEW></NEW
                   ></span>
                 </div>
-                <router-link to="/" class="product-item__link">
+                <router-link :to="`hommeProductDetail/${arr4.pro_num}`" class="product-item__link">
                   <div class="product-item__thumb">
                     <img
                       class="product-item__img"
