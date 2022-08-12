@@ -9,8 +9,50 @@
     <div class="toTop flex-center" @click="toTop">
       <i class="fa-solid fa-angle-up"></i>
     </div>
+    <div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-ins_product" data-bs-toggle="modal" data-bs-target="#exampleModal">상품등록</button>
+    </div>
   </aside>
   <chat-view />
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">상품등록</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div><label for="" ref="product_kname">상품이름[한글]</label><input v-model="pro_name" type="text" name="" id="" /></div>
+          <div><label for="" ref="product_ename">상품이름[영어]</label><input v-model="pro_ename" type="text" name="" id="" /></div>
+          <div>
+            <select name="" id="" ref="category1" @change="selectCate()" v-model="cate1">
+              <option value="">선택</option>
+              <option v-for="(cate, idx) in category.cateList1" :value="idx" :key="idx">{{ cate }}</option>
+            </select>
+            <select name="" id="" ref="category2" @change="selectCate()" v-model="cate2">
+              <option value="">선택</option>
+              <option v-for="(cate, idx) in category.cateList2[cate1]" :key="idx">{{ cate }}</option>
+            </select>
+          </div>
+          <div><label for="">가격</label><input v-model="pro_price" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">용량</label><input v-model="pro_volume" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">재고수량</label><input v-model="pro_stock" type="number" ref="product_stoke" name="" id="" /></div>
+          <div><label for="">해쉬태그1</label><input v-model="pro_tag1" type="text" ref="product_tag1" name="" id="" /></div>
+          <div><label for="">해쉬태그2</label><input v-model="pro_tag2" type="text" ref="product_tag1" name="" id="" /></div>
+          <div><label for="">상품설명</label><textarea v-model="pro_explain" ref="product_ctnt" name="" id="" cols="30" rows="10"></textarea></div>
+          <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" name="" id="" /></div>
+          <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" multiple name="" id="" /></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button type="submit" class="btn btn-primary" @click="productInsert">등록하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -18,10 +60,30 @@ import ChatView from '@/components/ChatView.vue';
 export default {
   components: {
     ChatView,
+    product: {
+      pro_name: '',
+      pro_ename: '',
+      pro_stock: '',
+      pro_explain: '',
+      pro_tag1: '#',
+      pro_tag2: '#',
+      pro_price: 0,
+      pro_volume: 0,
+    },
   },
   data() {
     return {
       dNone: true,
+      cate1: '',
+      cate2: '',
+      category: {
+        cateList1: ['유형별', '고민별', '라인별'],
+        cateList2: [
+          ['스킨/미스트', '기프트세트', '클렌징', '로션/에멀젼'],
+          ['주름/탄력/보습', '수분/보습'],
+          ['블루에너지', '크림 스킨', '엑티브워터', '기타'],
+        ],
+      },
     };
   },
   methods: {
@@ -32,6 +94,10 @@ export default {
       const chatContainer = document.querySelector('.chat-container');
       chatContainer.classList.toggle('dNone');
     },
+    selectCate() {
+      console.log(this.cate1);
+    },
+    productInsert() {},
   },
 };
 </script>
@@ -44,7 +110,7 @@ aside {
   position: fixed;
   bottom: 300px;
   right: 0;
-  z-index: 3;
+  z-index: 10;
   width: 80px;
 }
 .chat-circle {
@@ -71,5 +137,13 @@ aside {
 .toTop i {
   font-size: 30px;
   color: var(--text-light-gray);
+}
+.btn-ins_product {
+  width: 100%;
+  margin-top: 20px;
+  color: var(--text-white);
+  background-color: var(--bg-main);
+  border: none;
+  padding: 10px;
 }
 </style>

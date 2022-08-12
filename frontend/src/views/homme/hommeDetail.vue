@@ -7,6 +7,7 @@
         <a v-bind:class="{ bottomLine: this.geturl() == 'info' }" href="#info" class="nav-item">전성분/주의사항</a>
       </div>
     </div>
+    <div id="feature"></div>
     <section id="main" class="">
       <div class="c_recommend">
         <dl class="recommend">
@@ -456,6 +457,51 @@
         </div>
       </div>
     </section>
+    <!-- 주의사항/전성분 -->
+    <div class="accordion accordion-flush c_precautions" id="accordionFlushExample">
+      <div class="accordion-item" id="info">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+          >
+            주의사항
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            1. 화장품 사용 시 또는 사용 후 직사광선에 의하여 사용부위가 붉은 반점, 부어오름 또는 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의
+            등과 상담할 것 2. 상처가 있는 부위 등에는 사용을 자제할 것 3. 보관 및 취급 시의 주의사항 가) 어린이의 손이 닿지 않는 곳에 보관할 것 나)
+            직사광선을 피해서 보관할 것
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            전성분
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            정제수, 에탄올, 디프로필렌글라이콜,글리세린, 피이지/피피지-17/6코폴리머, 해수, 바이오사카라이드검-1, 징크글루코네이트,
+            마그네슘아스파테이트, 칼슘글루코네이트, 카퍼글루코네이트, 부틸렌글라이콜, 옥틸도데세스-16, 피이지-60하이드로제네이티드캐스터오일,
+            디소듐이디티에이, 에칠헥실글리세린, 향료, 알파-아이소메틸 아이오논, 부틸페닐메틸프로피오날, 헥실신남알, 리날룰, 리모넨
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1278,6 +1324,9 @@ MARQUEE {
 }
 
 /* 리뷰 */
+#review {
+  margin-top: 40px;
+}
 .pdp-review {
   padding: 5rem 0;
   background-color: #f7f7f7;
@@ -1363,6 +1412,10 @@ MARQUEE {
 .stars-inner.star0 {
   width: 0% !important;
 }
+/* 리뷰페이지 */
+.pagination {
+  margin-top: 20px;
+}
 
 /* 공용 */
 .centerCol {
@@ -1420,6 +1473,40 @@ MARQUEE {
 .selectBox .select:focus + .icoArrow img {
   transform: rotate(180deg);
 }
+
+/* 주의사항, 전성분 */
+.c_precautions {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  width: 780px;
+}
+.accordion {
+  --bs-accordion-btn-icon: url(https://static.vecteezy.com/ti/vetor-gratis/p1/613847-vector-plus-icon-gr%C3%A1tis-vetor.jpg);
+  --bs-accordion-btn-focus-border-color: none !important;
+  --bs-accordion-btn-active-icon: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSap8dmKEV8NR0lqMJ3xAwRROiA5efyUlDos_5wFIRTfA1l4FyX4xQuMbiy38SAHS1lTqA&usqp=CAU) !important;
+  color: var(--text-gray) !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-color: none !important;
+  --bs-accordion-active-bg: none !important;
+}
+.accordion-item {
+  border: none !important;
+  border-top: 1px solid #dee2e6 !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--text-gray) !important;
+}
+.accordion-button {
+  color: var(--text-gray) !important;
+}
+.accordion-button:focus {
+  border: none !important;
+}
+.accordion-body {
+  color: var(--text-gray);
+}
+
 @media (max-width: 575.98px) {
   .proof__bg {
     width: 370px;

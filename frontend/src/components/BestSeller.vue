@@ -122,7 +122,6 @@ export default {
           this.reviewNm.push(element.m_nm);
         }
       });
-      console.log(this.bestReviews);
     },
   },
 };

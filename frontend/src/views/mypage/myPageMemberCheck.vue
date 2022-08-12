@@ -74,6 +74,7 @@ export default {
 </script>
 
 <style scoped>
+
 #container {
   width: 100vw;
   min-height: 500px;
@@ -123,6 +124,12 @@ export default {
 .r_border{ 
   min-height: 1200px;
   border-left: 1px solid #ccc;
+}
+
+.r_border h3 {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
 }
 
 .btn {
