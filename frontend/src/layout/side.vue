@@ -25,25 +25,25 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div><label for="" ref="product_kname">상품이름[한글]</label><input v-model="pro_name" type="text" name="" id="" /></div>
-          <div><label for="" ref="product_ename">상품이름[영어]</label><input v-model="pro_ename" type="text" name="" id="" /></div>
+          <div><label for="" ref="pro_name">상품이름[한글]</label><input v-model="product.pro_name" type="text" name="" id="" /></div>
+          <div><label for="" ref="pro_ename">상품이름[영어]</label><input v-model="product.pro_ename" type="text" name="" id="" /></div>
           <div>
-            <select name="" id="" ref="category1" @change="selectCate()" v-model="cate1">
+            <select name="" id="" ref="category1" @change="selectCate()" v-model="cate_type">
               <option value="">선택</option>
-              <option v-for="(cate, idx) in category.cateList1" :value="idx" :key="idx">{{ cate }}</option>
+              <option v-for="(cate, idx) in category.cateList1" :value="idx + 1" :key="idx">{{ cate }}</option>
             </select>
-            <select name="" id="" ref="category2" @change="selectCate()" v-model="cate2">
+            <select name="" id="" ref="category2" @change="selectCate()" v-model="cate_class">
               <option value="">선택</option>
-              <option v-for="(cate, idx) in category.cateList2[cate1]" :key="idx">{{ cate }}</option>
+              <option v-for="(cate, idx) in category.cateList2[cate_type]" :value="idx + 1" :key="idx">{{ cate }}</option>
             </select>
           </div>
-          <div><label for="">가격</label><input v-model="pro_price" type="number" ref="product_stoke" name="" id="" /></div>
-          <div><label for="">용량</label><input v-model="pro_volume" type="number" ref="product_stoke" name="" id="" /></div>
-          <div><label for="">재고수량</label><input v-model="pro_stock" type="number" ref="product_stoke" name="" id="" /></div>
-          <div><label for="">해쉬태그1</label><input v-model="pro_tag1" type="text" ref="product_tag1" name="" id="" /></div>
-          <div><label for="">해쉬태그2</label><input v-model="pro_tag2" type="text" ref="product_tag1" name="" id="" /></div>
-          <div><label for="">상품설명</label><textarea v-model="pro_explain" ref="product_ctnt" name="" id="" cols="30" rows="10"></textarea></div>
-          <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" name="" id="" /></div>
+          <div><label for="">가격</label><input v-model="product.pro_price" type="number" ref="pro_price" name="" id="" /></div>
+          <div><label for="">용량</label><input v-model="product.pro_volume" type="number" ref="pro_volume" name="" id="" /></div>
+          <div><label for="">재고수량</label><input v-model="product.pro_stock" type="number" ref="pro_stock" name="" id="" /></div>
+          <div><label for="">해쉬태그1</label><input v-model="product.pro_tag1" type="text" ref="pro_tag1" name="" id="" /></div>
+          <div><label for="">해쉬태그2</label><input v-model="product.pro_tag2" type="text" ref="pro_tag2" name="" id="" /></div>
+          <div><label for="">상품설명</label><textarea v-model="product.pro_explain" ref="pro_explain" name="" id="" cols="30" rows="10"></textarea></div>
+          <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" @change="mainImg" name="" id="" /></div>
           <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" multiple name="" id="" /></div>
         </div>
         <div class="modal-footer">
@@ -60,22 +60,12 @@ import ChatView from '@/components/ChatView.vue';
 export default {
   components: {
     ChatView,
-    product: {
-      pro_name: '',
-      pro_ename: '',
-      pro_stock: '',
-      pro_explain: '',
-      pro_tag1: '#',
-      pro_tag2: '#',
-      pro_price: 0,
-      pro_volume: 0,
-    },
   },
   data() {
     return {
       dNone: true,
-      cate1: '',
-      cate2: '',
+      cate_type: '',
+      cate_class: '',
       category: {
         cateList1: ['유형별', '고민별', '라인별'],
         cateList2: [
@@ -83,6 +73,18 @@ export default {
           ['주름/탄력/보습', '수분/보습'],
           ['블루에너지', '크림 스킨', '엑티브워터', '기타'],
         ],
+      },
+
+      product: {
+        pro_name: '',
+        pro_ename: '',
+        pro_stock: '',
+        pro_explain: '',
+        pro_tag1: '#',
+        pro_tag2: '#',
+        pro_price: 0,
+        pro_volume: 0,
+        pro_mainimg: '',
       },
     };
   },
@@ -95,9 +97,46 @@ export default {
       chatContainer.classList.toggle('dNone');
     },
     selectCate() {
-      console.log(this.cate1);
+      console.log(this.cate_type);
+      console.log(this.cate_class);
     },
-    productInsert() {},
+    async productInsert() {
+      console.log('aaa');
+
+      // if (this.product.pro_name.trim() === '') {
+      //   this.$refs.pro_name.focus();
+      //   return alert('상품이름[한글]은 필수 입력값입니다.');
+      // }
+      // if (this.product.pro_ename.trim() === '') {
+      //   this.$refs.pro_ename.focus();
+      //   return alert('상품이름[영어]은 필수 입력값입니다.');
+      // }
+      // if (this.product.pro_price === '' || this.product.pro_price === 0) {
+      //   this.$refs.pro_price.focus();
+      //   return alert('제품 가격을 입력하세요.');
+      // }
+      // if (this.product.pro_volume === '' || this.product.pro_volume === 0) {
+      //   return alert('제품 용량을 입력하세요.');
+      // }
+      // if (this.product.pro_tag1.trim() === '') {
+      //   this.$refs.pro_tag1.focus();
+      //   return alert('해쉬태그1은 필수 입력값입니다.');
+      // }
+      // if (this.product.pro_tag2.trim() === '') {
+      //   this.$refs.pro_tag2.focus();
+      //   return alert('해쉬태그2는 필수 입력값입니다.');
+      // }
+      // if (this.product.pro_explain.trim() === '') {
+      //   this.$refs.pro_explain.focus();
+      //   return alert('상품설명은 필수 입력값입니다.');
+      // }
+      // if (this.product.pro_stock.trim() === '') {
+      //   this.$refs.pro_stock.focus();
+      //   return alert('재고수량은 필수 입력값입니다.');
+      // }
+      const res = await this.$post('/product/insProduct', this.product);
+      console.log(res);
+    },
   },
 };
 </script>

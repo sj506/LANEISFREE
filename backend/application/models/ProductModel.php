@@ -6,6 +6,25 @@ use PDO;
 
 class ProductModel extends Model
 {
+  public function insProduct(&$param)
+  {
+      $sql = "INSERT INTO t_product
+          (pro_name, pro_ename,pro_mainimg, pro_stock, pro_explain, pro_tag1, pro_tag2, pro_price, pro_volume)
+          VALUES
+          (:pro_name ,:pro_ename,:pro_mainimg, :pro_stock,:pro_explain,:pro_tag1, :pro_tag2, :pro_price, :pro_volume)";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(":pro_name", $param["pro_name"]);
+      $stmt->bindValue(":pro_ename", $param["pro_ename"]);
+      $stmt->bindValue(":pro_stock", $param["pro_stock"]);
+      $stmt->bindValue(":pro_mainimg", $param["pro_mainimg"]);
+      $stmt->bindValue(":pro_explain", $param["pro_explain"]);
+      $stmt->bindValue(":pro_tag1", $param["pro_tag1"]);
+      $stmt->bindValue(":pro_tag2", $param["pro_tag2"]);
+      $stmt->bindValue(":pro_price", $param["pro_price"]);
+      $stmt->bindValue(":pro_volume", $param["pro_volume"]);
+      $stmt->execute();
+      return intval($this->pdo->lastInsertId());
+  }
     public function getProductList()
     {
         $sql = "SELECT a.*, b.cate_type , b.cate_class 

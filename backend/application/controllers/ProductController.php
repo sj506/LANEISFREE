@@ -21,7 +21,22 @@ class ProductController extends Controller
     {
         return $this->model->getBestSeller();
     }
-
+    public function insProduct()
+    {
+        $json = getJson();
+        $param = [
+          'pro_name' => $json['pro_name'],
+          'pro_ename' => $json['pro_ename'],
+          'pro_stock' => $json['pro_stock'],
+          'pro_explain' => $json['pro_explain'],
+          'pro_tag1' => $json['pro_tag1'],
+          'pro_tag2' => $json['pro_tag2'],
+          'pro_price' => $json['pro_price'],
+          'pro_volume' => $json['pro_volume'],
+          'pro_mainimg' => $json['pro_mainimg'],
+        ];
+        return $this->model->insProduct($param);
+    }
     public function productBuy()
     {
         $json = getJson();
