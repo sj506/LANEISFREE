@@ -357,7 +357,7 @@ h4 {
   position: relative;
 }
   .txt1 {
-    position: absolute;
+    position: absolute !important;
     right: 0%;
     bottom: 0%;
     z-index: 2;
