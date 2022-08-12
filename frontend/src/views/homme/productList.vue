@@ -23,7 +23,17 @@
     </li>
   </ul>
   <div class="pagination">
-    <span v-for="(item, idx) in pagingCount.cnt" :key="idx" :data-page="item" @click="changPage" class="page__text current">{{ item }}</span>
+    <span class="page_text" :data-page="page - 1" @click="changPage"><i class="fa-solid fa-angle-left"></i></span>
+    <span
+      v-for="(item, idx) in pagingCount.cnt"
+      :key="idx"
+      :data-page="item"
+      @click="changPage"
+      class="page_text"
+      :class="{ page_text_active: item == page }"
+      >{{ item }}</span
+    >
+    <span :data-page="page + 1" @click="changPage"><i class="fa-solid fa-angle-right"></i></span>
   </div>
 </template>
 <script>
@@ -101,7 +111,7 @@ export default {
 
       if (e.target.classList[5] === 'bigHeartIcon') {
         setTimeout(() => {
-          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const param = { pro_num: e.target.dataset.pro_num };
           this.$post('product/delHeart', param);
 
           e.target.classList.remove('bigHeartIcon');
@@ -109,7 +119,7 @@ export default {
         }, 400);
       } else {
         setTimeout(() => {
-          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const param = { pro_num: e.target.dataset.pro_num };
           const insHeart = this.$post('product/insHeart', param);
 
           e.target.classList.add('fa-solid');
@@ -124,8 +134,7 @@ export default {
     },
 
     async getHeart() {
-      const param = { m_num: this.$store.state.user.result.m_num };
-      const getHeart = await this.$post('product/getHeart', param);
+      const getHeart = await this.$post('product/getHeart', {});
       getHeart.result.forEach((heartNum) => {
         this.$refs.heart.forEach((heart) => {
           if (heart.dataset.pro_num == heartNum.pro_num) {
@@ -226,6 +235,17 @@ img:not(:hover) {
   flex-direction: row;
 }
 
+.page_text {
+  margin-right: 1rem;
+}
+
+.page_text:active {
+  color: var(--bg-main);
+}
+
+.page_text_active {
+  color: var(--bg-main);
+}
 @keyframes blink-effect {
   0% {
     opacity: 0.3;

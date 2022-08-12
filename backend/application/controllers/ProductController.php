@@ -35,10 +35,13 @@ class ProductController extends Controller
     public function productBuy()
     {
         $json = getJson();
+        if (isset($_SESSION[_LOGINUSER])) {
+            return 0;
+        }
 
         foreach ($json as $item) {
             $param = [
-                'm_num' => $item['m_num'],
+                'm_num' => $_SESSION[_LOGINUSER]->m_num,
                 'pro_num' => $item['pro_num'],
                 'pur_nm' => $item['m_nm'],
                 'pur_addr' => $item['m_addr'] . ' ' . $item['detailAddr'] . ' ' . $item['extraAddr'],
@@ -61,7 +64,7 @@ class ProductController extends Controller
     {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+            'm_num' => $_SESSION[_LOGINUSER]->m_num,
             'pro_num' => $json['pro_num'],
         ];
         $result = $this->model->insHeart($param);
@@ -73,7 +76,7 @@ class ProductController extends Controller
     {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+            'm_num' => $_SESSION[_LOGINUSER]->m_num,
             'pro_num' => $json['pro_num'],
         ];
         $result = $this->model->delHeart($param);
@@ -81,10 +84,10 @@ class ProductController extends Controller
         return [_RESULT => $result];
     }
     public function getHeart()
-    { 
+    {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+            'm_num' => $_SESSION[_LOGINUSER]->m_num,
         ];
         $result = $this->model->getHeart($param);
 
@@ -96,7 +99,7 @@ class ProductController extends Controller
         $json = getJson();
         foreach ($json as $item) {
             $param = [
-                'm_num' => $item['m_num'],
+                'm_num' => $_SESSION[_LOGINUSER]->m_num,
                 'pro_num' => $item['pro_num'],
                 'ba_stock' => $item['ba_stock'],
             ];
@@ -117,7 +120,7 @@ class ProductController extends Controller
     {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+            'm_num' => $_SESSION[_LOGINUSER]->m_num,
 
         ];
         if (isset($json['pro_num'])) {
@@ -131,7 +134,7 @@ class ProductController extends Controller
     {
         $json = getJson();
         $param = [
-            'm_num' => $json['m_num'],
+            'm_num' => $_SESSION[_LOGINUSER]->m_num,
             'pro_num' => $json['pro_num'],
             'pro_check' => 2,
         ];
@@ -149,5 +152,9 @@ class ProductController extends Controller
             "rowCount" => intval($urlPaths[2]),
         ];
         return $this->model->getPagingCount($param);
+    }
+    public function loginCheck()
+    {
+        return ['state' => 0];
     }
 }

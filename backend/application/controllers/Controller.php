@@ -6,8 +6,7 @@ class Controller
 {
     protected $model;
     private static $needLoginUrlArr = [
-        'basket', 'buyPage'
-        // 이거 해석필요함 ㅠㅠ
+        'product/loginCheck'
     ];
 
     public function __construct($action, $model)
@@ -23,8 +22,11 @@ class Controller
         $urlPaths = getUrl();
         foreach (static::$needLoginUrlArr as $url) {
             if (strpos($urlPaths, $url) === 0 && !isset($_SESSION[_LOGINUSER])) {
-                echo "권한이 없습니다.";
+                // echo "권한이 없습니다.";
+                $res = ['state' => 0];
+                echo json_encode($res);
                 exit();
+                // $this->getView(`redirect:$url`);
             }
         }
 

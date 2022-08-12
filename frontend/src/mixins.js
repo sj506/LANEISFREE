@@ -8,6 +8,12 @@ export default {
     $addComma(price) {
       return price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
     },
+    async $loginCheck() {
+      const loginVal = await this.$post('/product/loginCheck', {});
+      if (loginVal.state == 0) {
+        this.$router.push('/signin');
+      }
+    },
     async $post(url, param) {
       return (
         await axios({
@@ -42,5 +48,4 @@ export default {
       });
     },
   },
-
 };
