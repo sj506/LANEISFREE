@@ -50,4 +50,18 @@ class UserController extends Controller
     }
     return [_RESULT => 0];
   }
+
+  public function profile()
+  {
+    $json = getJson();
+    $param = [
+      "m_pw" => $json['m_pw']
+    ];
+    $result = $this->model->updateUser($param);
+    if ($result) {
+      $this->flash(_LOGINUSER, $result);
+      return [_RESULT => $result];
+    }
+    return [_RESULT => 0];
+  }
 }

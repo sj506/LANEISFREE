@@ -235,26 +235,26 @@
                   <p>* 개인정보와 관련되거나 연속된 숫자, 반복된 문자는 사용하지 않도록 주의</p>
                 </div>
               </div>
-              <div class="changePw">
+              <div class="newPw">
                 <table>
                   <tr>
                     <th>현재 비밀번호</th>
                     <td>
-                      <input @keypress="checkcurrentPw" v-model="currentPw" type="password" />
-                      <p class="check">{{ currentPwChk }}</p>
+                      <input @keypress="checknowPw" v-model="user.nowPw" ref="nowPw" type="password" />
+                      <p class="check">{{ nowPwChk }}</p>
                     </td>
                   </tr>
                   <tr>
                     <th>새 비밀번호</th>
                     <td>
-                      <input @keyup="checknewPw" v-model="newPw" type="password" />
+                      <input @keyup="checknewPw" v-model="user.newPw" ref="newPw" type="password" />
                       <p class="check">{{ newPwChk }}</p>
                     </td>
                   </tr>
                   <tr>
                     <th>새 비밀번호 확인</th>
                     <td>
-                      <input @keyup="checknewPw2" v-model="newPw2" type="password" />
+                      <input @keyup="checknewPw2" v-model="user.newPw2" ref="newPw2" type="password" />
                       <p class="check">{{ newPw2Chk }}</p>
                     </td>
                   </tr>
@@ -263,8 +263,7 @@
             </div>
 
             <div class="my-5 d-flex submitBtnDiv update">
-              <button type="submit" class="my-5 submitBtn btnOk"
-                v-bind:disabled="currentPw === '' || newPw === '' || newPw2 === ''">확인</button>
+              <button type="submit" class="my-5 submitBtn btnOk">확인</button>
               <router-link to="/myPageMemberCheck">
                 <button class="my-5 submitBtn btnNo">취소</button>
               </router-link>
@@ -287,9 +286,16 @@ export default {
     return {
       isActive1: true,
       isActive2: false,
-      currentPw: '',
-      newPw: '',
-      newPw2: ''
+      user: {
+        m_email: '',
+        m_pw: '',
+        nowPw: '',
+        newPw: '',
+        newPw2: ''
+      },
+      nowPwChk: '',
+      newPwChk: '',
+      newPw2Chk: '',
     };
   },
   methods: {
@@ -304,32 +310,44 @@ export default {
       console.log(e.target);
     },
 
-    async submitForm() {
-      const signIn = await this.$post('user/signIn', this.user);
-      // if (this.currentPw === signIn.result.m_pw) {
-      //   this.$router.push('/signin');
-      // } else {
-      //   alert('현재 비밀번호를 확인해주세요.');
-      //   this.currentPw = '';
-      //   this.newPw = '';
-      //   this.newPw2 = '';
-      // };
-      console.log(signIn);
-      // console.log('click');
-    },
-
-    // 비밀번호 유효성
     isPassword(asValue) {
       const regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+\\\/\[\]{};:\`,.<>\/?"'.|])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
       return regExp.test(asValue);
     },
-    checknewPw() {
-      this.isPassword(this.newPw) || this.newPw === '' ? this.newPwChk = '' : this.newPwChk = '비밀번호 입력 시 유의사항을 확인해주세요.'
+
+    async submitForm() {
+      this.user.m_email = this.$store.state.user.result.m_email;
+      const signIn = await this.$post('user/signIn', this.user);
+
+      if (this.user.nowPw === '') {
+        this.nowPwChk = '현재 비밀번호를 입력해 주세요.';
+        this.$refs.nowPw.focus();
+      } else if (this.user.nowPw !== signIn.result.m_pw) {
+        this.nowPwChk = '현재 비밀번호를 확인해주세요.';
+        // this.$refs.nowPw.focus();
+      } else {
+        this.nowPwChk = '';
+      }
+
+      if (this.user.newPw === '') {
+        this.newPwChk = '새 비밀번호를 입력해 주세요.';
+        // this.$refs.newPw.focus();
+      } else if (!this.isPassword(this.user.newPw)) {
+        this.newPwChk = '비밀번호는 숫자와 영문자 특수문자 중 최소 2 가지 조합으로 8~16자자리를 사용해야 합니다.';
+        // this.$refs.newPw.focus();
+      }
+
+      if (this.user.newPw2 === '') {
+        this.newPw2Chk = '새 비밀번호 확인을 입력해 주세요.';
+        // this.$refs.newPw2.focus();
+      } else if (this.user.newPw !== this.user.newPw2) {
+        this.newPw2Chk = '새 비밀번호 확인이 일치하지 않습니다.';
+        // this.$refs.newPw2.focus();
+      } else {
+        this.newPw2Chk = '';
+      }
     },
-    checknewPw2() {
-      this.isPassword(this.newPw === this.newPw2 || this.newPw2 === '' ? this.newPw2Chk = '' : this.newPw2Chk ='비밀번호가 일치하지 않습니다.')
-    }
   },
 };
 </script>
@@ -670,12 +688,12 @@ thead th {
   background: url('@/assets/img/mypage/icon_alert.png') no-repeat 50% 40px;
 }
 
-.changePw {
+.newPw {
   float: left;
   width: 50%;
 }
 
-.changePw table {
+.newPw table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
@@ -683,7 +701,7 @@ thead th {
   margin-top: 35px;
 }
 
-.changePw th {
+.newPw th {
   width: 170px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -692,12 +710,12 @@ thead th {
   vertical-align: top;
 }
 
-.changePw td {
+.newPw td {
   padding: 4px 0;
   color: #222;
 }
 
-.changePw input {
+.newPw input {
   height: 40px;
   width: 234px;
   padding: 0 8px;

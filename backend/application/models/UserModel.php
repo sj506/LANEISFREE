@@ -25,6 +25,7 @@ class UserModel extends Model
     $stmt->execute();
     return intval($this->pdo->lastInsertId());
   }
+
   public function signIn(&$param)
   {
     $sql = "SELECT m_num, m_email, m_pw, m_nm, m_gender, m_tel, m_postcode, m_addr
@@ -34,5 +35,19 @@ class UserModel extends Model
     $stmt->bindValue(":m_email", $param["m_email"]);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+  public function updateUser(&$param)
+  {
+    $sql = "UPDATE t_member SET ";
+    if (isset($param['m_pw']) && $param['m_pw'] !== "") {
+      $sql .= "m_pw = '{$param['m_pw']}', ";
+    }
+    $sql .= " m_changedate = NOW() 
+        WHERE m_num = :m_num";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':m_num', $param["m_num"]);
+    $stmt->execute();
+    return $stmt->rowCount();
   }
 }
