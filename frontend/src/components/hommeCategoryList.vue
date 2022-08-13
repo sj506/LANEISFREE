@@ -57,7 +57,7 @@ export default {
       this.$emit('changeCateNm', e.target.innerText);
 
       this.productList.forEach((productList) => {
-        if (!e.target.dataset.catetype) {
+        if (e.target.innerText === '전체보기') {
           this.selectProductNum.push(productList.pro_num);
         }
         for (const key in this.cateList) {
