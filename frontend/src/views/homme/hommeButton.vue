@@ -32,7 +32,7 @@ export default {
       cateBtnNm: '카테고리',
       dNone: true,
       cateNm: '옴므',
-      proCount: 8,
+      proCount: 14,
     };
   },
   methods: {

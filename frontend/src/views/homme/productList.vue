@@ -134,15 +134,17 @@ export default {
     },
 
     async getHeart() {
-      const getHeart = await this.$post('product/getHeart', {});
-      getHeart.result.forEach((heartNum) => {
-        this.$refs.heart.forEach((heart) => {
-          if (heart.dataset.pro_num == heartNum.pro_num) {
-            heart.classList.add('fa-solid');
-            heart.classList.add('bigHeartIcon');
-          }
+      const getHeartList = await this.$post('product/getHeart', {});
+      if (Array.isArray(getHeartList)) {
+        getHeartList.result.forEach((heartNum) => {
+          this.$refs.heart.forEach((heart) => {
+            if (heart.dataset.pro_num == heartNum.pro_num) {
+              heart.classList.add('fa-solid');
+              heart.classList.add('bigHeartIcon');
+            }
+          });
         });
-      });
+      }
     },
     heartClear() {
       this.$refs.heart.forEach((heart) => {
