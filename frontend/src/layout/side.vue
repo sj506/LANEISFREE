@@ -44,7 +44,7 @@
           <div><label for="">해쉬태그2</label><input v-model="product.pro_tag2" type="text" ref="pro_tag2" name="" id="" /></div>
           <div><label for="">상품설명</label><textarea v-model="product.pro_explain" ref="pro_explain" name="" id="" cols="30" rows="10"></textarea></div>
           <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" @change="mainImg" name="" id="" /></div>
-          <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" multiple name="" id="" /></div>
+          <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" @change="subImgs" multiple name="" id="" /></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -101,41 +101,13 @@ export default {
       console.log(this.cate_class);
     },
     async productInsert() {
-      console.log('aaa');
-
-      // if (this.product.pro_name.trim() === '') {
-      //   this.$refs.pro_name.focus();
-      //   return alert('상품이름[한글]은 필수 입력값입니다.');
-      // }
-      // if (this.product.pro_ename.trim() === '') {
-      //   this.$refs.pro_ename.focus();
-      //   return alert('상품이름[영어]은 필수 입력값입니다.');
-      // }
-      // if (this.product.pro_price === '' || this.product.pro_price === 0) {
-      //   this.$refs.pro_price.focus();
-      //   return alert('제품 가격을 입력하세요.');
-      // }
-      // if (this.product.pro_volume === '' || this.product.pro_volume === 0) {
-      //   return alert('제품 용량을 입력하세요.');
-      // }
-      // if (this.product.pro_tag1.trim() === '') {
-      //   this.$refs.pro_tag1.focus();
-      //   return alert('해쉬태그1은 필수 입력값입니다.');
-      // }
-      // if (this.product.pro_tag2.trim() === '') {
-      //   this.$refs.pro_tag2.focus();
-      //   return alert('해쉬태그2는 필수 입력값입니다.');
-      // }
-      // if (this.product.pro_explain.trim() === '') {
-      //   this.$refs.pro_explain.focus();
-      //   return alert('상품설명은 필수 입력값입니다.');
-      // }
-      // if (this.product.pro_stock.trim() === '') {
-      //   this.$refs.pro_stock.focus();
-      //   return alert('재고수량은 필수 입력값입니다.');
-      // }
       const res = await this.$post('/product/insProduct', this.product);
       console.log(res);
+    },
+    async mainImg(e) {
+      const image = await this.$base64(e.target.files[0]);
+      this.product.pro_mainimg = image;
+      console.log(this.product);
     },
   },
 };
