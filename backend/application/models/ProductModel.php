@@ -9,9 +9,9 @@ class ProductModel extends Model
   public function insProduct(&$param)
   {
       $sql = "INSERT INTO t_product
-          (pro_name, pro_ename,pro_mainimg, pro_stock, pro_explain, pro_tag1, pro_tag2, pro_price, pro_volume)
+          (pro_name, pro_ename, pro_mainimg, pro_stock, pro_explain, pro_tag1, pro_tag2, pro_price, pro_volume)
           VALUES
-          (:pro_name ,:pro_ename,:pro_mainimg, :pro_stock,:pro_explain,:pro_tag1, :pro_tag2, :pro_price, :pro_volume)";
+          (:pro_name ,:pro_ename, :pro_mainimg, :pro_stock,:pro_explain,:pro_tag1, :pro_tag2, :pro_price, :pro_volume)";
       $stmt = $this->pdo->prepare($sql);
       $stmt->bindValue(":pro_name", $param["pro_name"]);
       $stmt->bindValue(":pro_ename", $param["pro_ename"]);
@@ -24,6 +24,33 @@ class ProductModel extends Model
       $stmt->bindValue(":pro_volume", $param["pro_volume"]);
       $stmt->execute();
       return intval($this->pdo->lastInsertId());
+  }
+  public function insCategory(&$param)
+  {
+      $sql = "INSERT INTO t_category
+          (pro_num, cate_type, cate_class)
+          VALUES
+          (:pro_num ,:cate_type, :cate_class)";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(":pro_num", $param["pro_num"]);
+      $stmt->bindValue(":cate_type", $param["cate_type"]);
+      $stmt->bindValue(":cate_class", $param["cate_class"]);
+      $stmt->execute();
+      return $stmt->rowCount();
+  }
+
+  public function insProductImg(&$param)
+  {
+    $sql = "INSERT INTO t_productimg
+    (pro_num, op_detailimg)
+    VALUES
+    (:pro_num ,:op_detailimg)";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(":pro_num", $param["pro_num"]);
+      $stmt->bindValue(":op_detailimg", $param["op_detailimg"]);
+
+      $stmt->execute();
+      return $stmt->rowCount();
   }
     public function getProductList()
     {

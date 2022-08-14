@@ -45,23 +45,56 @@ class ProductController extends Controller
         $image_parts = explode(";base64,", $image);
         $image_type_aux = explode("image/", $image_parts[0]);      
         $image_type = $image_type_aux[1];
+
         // 문자열을 디코딩
         $image_base64 = base64_decode($image_parts[1]);
         $randomNm = uniqid();
         $filePath = $dirPath . "/" . $randomNm . "." . $image_type;
-        // 파일있으면 폴더 삭제하기
         $param['pro_mainimg'] = "/hommeproduct" . "/" . $randomNm . '.' . $image_type;
-        if(!is_dir($dirPath)) {
-            mkdir($dirPath, 0777, true);
-        }  
+
         // 해당경로에 이미지를 생성
         $result = file_put_contents($filePath, $image_base64);
         // insert 한 후 결과 값으로 pk 값 리턴
         $pro_num =  $this->model->insProduct($param);
+
+
         // category 테이블 insert 하기
         $param2 = [
-          
+          'pro_num' => $pro_num,
+          'cate_type' => $json['cate_type'],
+          'cate_class' => $json['cate_class'],
         ];
+        $result_cate = $this->model->insCategory($param2);
+
+        //sub img insert 하기 여러개
+        
+        $sub_images = $json['pro_subimgs'];
+        $dirPath = $dirPath . "/" . "details/" . $pro_num;
+
+        foreach($sub_images as $sub_image){
+          $param3 = [
+          'pro_num' => $pro_num,
+          'op_detailimg' => '',
+        ];
+          $image_parts = explode(";base64,", $sub_image);
+          $image_type_aux = explode("image/", $image_parts[0]);      
+          $image_type = $image_type_aux[1];
+          // 문자열을 디코딩
+          $image_base64 = base64_decode($image_parts[1]);
+          $randomNm = uniqid();
+          $filePath = $dirPath . "/" . $randomNm . "." . $image_type;
+
+          // 파일있으면 폴더 삭제하기
+          $param3['op_detailimg'] = $randomNm . '.' . $image_type;
+          
+          $result_productimg = $this->model->insProductImg($param3);
+          if(!is_dir($dirPath)) {
+            mkdir($dirPath, 0777, true);
+          }
+          // 해당경로에 이미지를 생성
+          $result = file_put_contents($filePath, $image_base64); 
+        };
+        
         return $this->model->insProduct($param);
     }
     public function productBuy()

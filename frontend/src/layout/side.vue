@@ -34,7 +34,7 @@
             </select>
             <select name="" id="" ref="category2" @change="selectCate()" v-model="cate_class">
               <option value="">선택</option>
-              <option v-for="(cate, idx) in category.cateList2[cate_type]" :value="idx + 1" :key="idx">{{ cate }}</option>
+              <option v-for="(cate, idx) in category.cateList2[cate_type - 1]" :value="idx + 1" :key="idx">{{ cate }}</option>
             </select>
           </div>
           <div><label for="">가격</label><input v-model="product.pro_price" type="number" ref="pro_price" name="" id="" /></div>
@@ -44,7 +44,7 @@
           <div><label for="">해쉬태그2</label><input v-model="product.pro_tag2" type="text" ref="pro_tag2" name="" id="" /></div>
           <div><label for="">상품설명</label><textarea v-model="product.pro_explain" ref="pro_explain" name="" id="" cols="30" rows="10"></textarea></div>
           <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" @change="mainImg" name="" id="" /></div>
-          <div><label for="">서브사진</label><input type="file" accept="image/png,image/jpeg" @change="subImgs" multiple name="" id="" /></div>
+          <div><label for="">서브사진[최대5개]</label><input type="file" accept="image/png,image/jpeg" @change="subImgs" multiple name="" id="" /></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -85,6 +85,7 @@ export default {
         pro_price: 0,
         pro_volume: 0,
         pro_mainimg: '',
+        pro_subimgs: [],
       },
     };
   },
@@ -101,6 +102,8 @@ export default {
       console.log(this.cate_class);
     },
     async productInsert() {
+      this.product.cate_type = this.cate_type;
+      this.product.cate_class = this.cate_class;
       const res = await this.$post('/product/insProduct', this.product);
       console.log(res);
     },
@@ -108,6 +111,17 @@ export default {
       const image = await this.$base64(e.target.files[0]);
       this.product.pro_mainimg = image;
       console.log(this.product);
+    },
+    async subImgs(e) {
+      const files = e.target.files;
+
+      if (files.length <= 5) {
+        for (let i = 0; i < files.length; i++) {
+          this.product.pro_subimgs.push(await this.$base64(files[i]));
+        }
+      } else {
+        alert('5개를 초과하였습니다[최대 4개]');
+      }
     },
   },
 };
