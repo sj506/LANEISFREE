@@ -27,6 +27,7 @@ class ProductController extends Controller
     }
     public function insProduct()
     {
+        // product 테이블 insert 하기
         $json = getJson();
         $param = [
           'pro_name' => $json['pro_name'],
@@ -37,7 +38,29 @@ class ProductController extends Controller
           'pro_tag2' => $json['pro_tag2'],
           'pro_price' => $json['pro_price'],
           'pro_volume' => $json['pro_volume'],
-          'pro_mainimg' => $json['pro_mainimg'],
+        ];
+        $dirPath = _FRONTEND_IMG_PATH . "/hommeProduct";
+
+        $image = $json['pro_mainimg'];
+        $image_parts = explode(";base64,", $image);
+        $image_type_aux = explode("image/", $image_parts[0]);      
+        $image_type = $image_type_aux[1];
+        // 문자열을 디코딩
+        $image_base64 = base64_decode($image_parts[1]);
+        $randomNm = uniqid();
+        $filePath = $dirPath . "/" . $randomNm . "." . $image_type;
+        // 파일있으면 폴더 삭제하기
+        $param['pro_mainimg'] = "/hommeproduct" . "/" . $randomNm . '.' . $image_type;
+        if(!is_dir($dirPath)) {
+            mkdir($dirPath, 0777, true);
+        }  
+        // 해당경로에 이미지를 생성
+        $result = file_put_contents($filePath, $image_base64);
+        // insert 한 후 결과 값으로 pk 값 리턴
+        $pro_num =  $this->model->insProduct($param);
+        // category 테이블 insert 하기
+        $param2 = [
+          
         ];
         return $this->model->insProduct($param);
     }
