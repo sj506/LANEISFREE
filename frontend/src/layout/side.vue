@@ -104,8 +104,13 @@ export default {
     async productInsert() {
       this.product.cate_type = this.cate_type;
       this.product.cate_class = this.cate_class;
+      // 해쉬태그가 #으로 시작 하지 않을 때 앞에 #추가
+      this.product.pro_tag1.startsWith('#') ? true : (this.product.pro_tag1 = '#' + this.product.pro_tag1);
+      this.product.pro_tag2.startsWith('#') ? true : (this.product.pro_tag2 = '#' + this.product.pro_tag2);
       const res = await this.$post('/product/insProduct', this.product);
-      console.log(res);
+      const btnClose = document.querySelector('.btn-close');
+      btnClose.click();
+      alert('상품이 등록되었습니다.');
     },
     async mainImg(e) {
       const image = await this.$base64(e.target.files[0]);
@@ -114,7 +119,6 @@ export default {
     },
     async subImgs(e) {
       const files = e.target.files;
-
       if (files.length <= 5) {
         for (let i = 0; i < files.length; i++) {
           this.product.pro_subimgs.push(await this.$base64(files[i]));
