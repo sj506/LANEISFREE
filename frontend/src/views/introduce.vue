@@ -45,8 +45,7 @@
                   INDEX <br>
                   Header & Footer <br>
                   Brand Story <br>
-                  지도 <br>
-                  채팅 <br>
+                  지도 & 채팅 <br>
                   제품등록 <br>
                 </p>
               </div>

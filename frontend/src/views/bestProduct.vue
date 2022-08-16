@@ -21,8 +21,8 @@
             </router-link>
             <div class="review-box">
                   <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review1">{{ bestReviews[idx] }}</div>
-                  <div class="review-user">{{ reviewNm[idx] }}</div>
+                  <div class="review1">{{ bestReviews[0] }}</div>
+                  <div class="review-user">{{ reviewNm[0] }}</div>
             </div>
           </div>
         </div>
@@ -41,13 +41,13 @@
               <h3>{{ best1.productNm }}</h3>
               <h4>{{ best1.engNm }}</h4>
               <p class="desc" v-html="best1.ctnt"></p>
-              <router-link to="/hommeProductDetail/13" class="link">
+              <router-link :to="`${best1.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
                   <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[idx] }}</div>
-                  <div class="review-user">{{ reviewNm[idx] }}</div>
+                  <div class="review">{{ bestReviews[1] }}</div>
+                  <div class="review-user">{{ reviewNm[1] }}</div>
               </div>
             </div>
           </div>
@@ -73,13 +73,13 @@
               <h3>{{best2.productNm}}</h3>
               <h4>{{best2.engNm}}</h4>
               <p class="desc" v-html="best2.ctnt"></p>
-              <router-link to="/hommeProductDetail/14" class="link">
+              <router-link :to="`${best2.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
                   <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[idx] }}</div>
-                  <div class="review-user">{{ reviewNm[idx] }}</div>
+                  <div class="review">{{ bestReviews[2] }}</div>
+                  <div class="review-user">{{ reviewNm[2] }}</div>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
               <h3 style="color: white">{{best3.productNm}}</h3>
               <h4>{{best3.engNm}}</h4>
               <p style="color: white" class="desc" v-html="best3.ctnt"></p>
-              <router-link to="/detail" class="link">
+              <router-link :to="`${best3.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
@@ -130,13 +130,13 @@
               <h3 v-html="best4.productNm"></h3>
               <h4>{{best4.engNm}}</h4>
               <p class="desc" v-html="best4.ctnt"></p>
-              <router-link to="/detail" class="link">
+              <router-link :to="`${best4.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
                   <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[idx] }}</div>
-                  <div class="review-user">{{ reviewNm[idx] }}</div>
+                  <div class="review">{{ bestReviews[4] }}</div>
+                  <div class="review-user">{{ reviewNm[4] }}</div>
               </div>
             </div>
           </div>
@@ -156,7 +156,6 @@ export default {
           engNm: "CREAM SKIN REFINER",
           imgSrc: "/bsetProduct/크림스킨가로.jpg",
           ctnt: `크림 한 통을 그대로 녹여내어<br> 스킨만으로도 크림을 바른 듯<br> 피부를 촉촉하게 채워주는 스킨`,
-          link: "hommeProductDetail/12",
         },
       ],
       bestProduct_1: [
@@ -165,6 +164,7 @@ export default {
           engNm: "NEO CUSHION",
           imgSrc: "/bsetProduct/네오쿠션가로.jpg",
           ctnt: `한 번의 터치만으로 타고난 듯 <br> 24시간 완벽하게 커버해주는 쿠션`,
+          link: "hommeProductDetail/13"
         },
         {
           productNm: "네오 파운데이션_매트",
@@ -173,6 +173,7 @@ export default {
           ctnt: ` 바쁜 도시 생활 속 스트레스로 변덕스러운 <br>
                 피부에도 맑은 날의 구름과 햇살처럼 예쁜 자연광 피부로 만들어주는
                 네오 파운데이션`,
+          link: "hommeProductDetail/12"
         },
       ],
       bestProduct_2: [
@@ -181,6 +182,7 @@ export default {
           engNm: "RADIAN - C CREAM",
           imgSrc: "/bsetProduct/래디언C크림가로.jpg",
           ctnt: ` 듀얼비타민의 강력한 파워로 단 2주만에 <br /> 빛나는 피부, 빛톤피부로 바꾸어주는 크림`,
+          link: "hommeProductDetail/14"
         },
         {
           productNm: "립 슬리핑 마스크 EX",
@@ -189,6 +191,7 @@ export default {
           ctnt: `밤 사이 입술 각질을 부드럽게 녹여주고 <br />
                 매끈 탱탱한 입술로 가꿔주는 립 전용 <br />
                 슬리핑 마스크`,
+          link: "hommeProductDetail/16"
         },
       ],
       bestProduct_3: [
@@ -199,6 +202,7 @@ export default {
           ctnt: `프로바이오틱스 콤플렉스가 함유되어 <br />
                 푹 잔 듯 맑고 생기 있는 <br />
                 피부로 가꿔주는 수분 마스크`,
+          link: "hommeProductDetail/15"
         }
       ],
       bestProduct_4: [
@@ -209,6 +213,7 @@ export default {
           ctnt: `1/2000 사이즈의 초소형 블루 히알루산이<br />
                 피부 깊은 곳부터 빈틈없이<br />
                 건강하게 풀 리페어 보습을 해주는 크림`,
+          link: "hommeProductDetail/17"
         }
       ],
       productPk: [12, 13, 14, 15, 16, 17],
@@ -219,6 +224,7 @@ export default {
   },
   created() {
     this.getBestReview();
+    this.getProductImg();
   },
   mounted() {
     AOS.init();
@@ -242,7 +248,7 @@ export default {
     },
     async getBestReview() {
       const bestReviews = await this.$get('/review/getBestReview', {});
-      // console.log(bestReviews);
+      console.log(bestReviews);
 
       bestReviews.forEach((element) => {
         if (this.productPk.includes(element.pro_num)) {
@@ -250,6 +256,10 @@ export default {
           this.reviewNm.push(element.m_nm);
         }
       });
+    },
+    async getProductImg() {
+      const getProductImg = await this.$get('/product/getProductImg', {});
+      this.$store.commit('getProductImg', getProductImg);
     },
   }
 };
