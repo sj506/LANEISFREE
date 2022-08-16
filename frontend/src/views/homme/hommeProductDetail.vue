@@ -114,7 +114,6 @@ export default {
       });
     },
     async getBasket() {
-      this.$loginCheck();
       // if (!this.$store.state.user.result.m_num) {
       //   alert('로그인 한 유저만 구매할 수 있습니다.');
       //   return;
