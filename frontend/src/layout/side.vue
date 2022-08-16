@@ -90,20 +90,6 @@ export default {
       },
     };
   },
-  // created() {
-  //   this.showUser();
-  // },
-  // updated() {
-  //   this.showUser();
-  // },
-  computed: {
-    loginLevel: function () {
-      this.user = this.$store.state.user;
-      console.log(this.user);
-
-      return this.user.result.m_level;
-    },
-  },
   methods: {
     showUser() {
       this.user = this.$store.state.user;
