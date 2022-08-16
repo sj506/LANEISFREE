@@ -50,7 +50,7 @@ class ProductController extends Controller
         $image_base64 = base64_decode($image_parts[1]);
         $randomNm = uniqid();
         $filePath = $dirPath . "/" . $randomNm . "." . $image_type;
-        $param['pro_mainimg'] = "/hommeproduct" . "/" . $randomNm . '.' . $image_type;
+        $param['pro_mainimg'] = "/hommeProduct" . "/" . $randomNm . '.' . $image_type;
 
         // 해당경로에 이미지를 생성
         $result = file_put_contents($filePath, $image_base64);
