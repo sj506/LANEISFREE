@@ -64,11 +64,11 @@ class ProductModel extends Model
     }
     public function newProductList()
     {
-        $sql = "SELECT a. * ,  b. *
-                FROM t_product a
-                INNER JOIN t_productimg b
-                ON a.pro_num = b.pro_num
-                ORDER BY a.created_at DESC
+        $sql = "SELECT *
+                FROM t_product
+                -- INNER JOIN t_productimg b
+                -- ON a.pro_num = b.pro_num
+                ORDER BY created_at DESC
                 LIMIT 0, 8";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();

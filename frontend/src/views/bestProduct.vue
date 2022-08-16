@@ -234,7 +234,6 @@ export default {
     onResize() {
       this.windowWidth = window.innerWidth;
       const img = document.querySelector(".changeImg");
-      const img1 = document.querySelector(".changeImg1");
       if (this.windowWidth < 960) {
         img.src = this.$getSrc("/bsetProduct/크림스킨세로.jpg");
       } else {
