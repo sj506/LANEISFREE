@@ -15,7 +15,6 @@ import basket from '../views/mypage/basket.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
-import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
@@ -77,11 +76,6 @@ const routes = [
     path: '/story',
     name: 'story',
     component: story,
-  },
-  {
-    path: '/meetsart',
-    name: 'meetsart',
-    component: meetsArt,
   },
   {
     path: '/myPageMember',
@@ -165,13 +159,13 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
-  if(savedPosition) {
-    return savedPosition;
-  }
-  if(to.hash) {
-    return { el: to.hash };
-  }
-  return { top: 0 };
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { el: to.hash };
+    }
+    return { top: 0 };
   },
 });
 export default router;
