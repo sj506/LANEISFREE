@@ -68,6 +68,9 @@ export default {
     loginToggle: function () {
       this.heartClear();
     },
+    selectProduct: function () {
+      this.getPagingCount();
+    },
   },
 
   beforeCreate() {},
@@ -88,8 +91,6 @@ export default {
     async getProductList() {
       const pageProduct = [];
       const getProductList = await this.$get(`/product/getProductList/${this.startIdx}/${this.rowCount}`, {});
-      console.log(getProductList.length);
-      console.log(this.page * this.rowCount);
       const lastPage = this.page * this.rowCount > getProductList.length ? getProductList.length : this.page * this.rowCount;
       for (let i = this.startIdx; i < lastPage; i++) {
         pageProduct.push(getProductList[i]);
@@ -171,8 +172,12 @@ export default {
     },
 
     async getPagingCount() {
-      this.pagingCount = await this.$get(`/product/getPagingCount/${this.rowCount}`, {});
-      console.log(this.pagingCount);
+      if (this.$store.state.selectProduct.length < this.rowCount) {
+        this.pagingCount.cnt = 1;
+      } else {
+        this.pagingCount = await this.$get(`/product/getPagingCount/${this.rowCount}`, {});
+      }
+      console.log(this.pagingCount.cnt);
     },
   },
 };

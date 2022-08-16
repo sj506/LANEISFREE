@@ -59,23 +59,39 @@ export default {
       if (e.target.innerText === '전체보기') {
         for (let i = 0; i < 8; i++) {
           this.selectProductNum.push(this.productList[i].pro_num);
+          this.$emit('productCount', this.productList.length);
         }
-      }
-
-      this.productList.forEach((productList) => {
-        for (const key in this.cateList) {
-          if (this.cateList.hasOwnProperty.call(this.cateList, key)) {
-            if (key == e.target.dataset.catetype) {
-              const bigCate = this.cateList[key];
-              bigCate.forEach((cateclass, idx) => {
-                if (cateclass == e.target.dataset.cateclass && productList.cate_class == idx) {
-                  this.selectProductNum.push(productList.pro_num);
-                }
-              });
+        this.productList.forEach((product) => {
+          this.selectProductNum.forEach((productNum) => {
+            if (product.pro_num === productNum) {
+              this.selectProduct.push(product);
+            }
+          });
+        });
+      } else {
+        this.productList.forEach((productList) => {
+          for (const key in this.cateList) {
+            if (this.cateList.hasOwnProperty.call(this.cateList, key)) {
+              if (key == e.target.dataset.catetype) {
+                const bigCate = this.cateList[key];
+                bigCate.forEach((cateclass, idx) => {
+                  if (cateclass == e.target.dataset.cateclass && productList.cate_class == idx) {
+                    this.selectProductNum.push(productList.pro_num);
+                  }
+                });
+              }
             }
           }
-        }
-      });
+        });
+        this.productList.forEach((product) => {
+          this.selectProductNum.forEach((productNum) => {
+            if (product.pro_num === productNum) {
+              this.selectProduct.push(product);
+            }
+          });
+        });
+        this.$emit('productCount', this.selectProduct.length);
+      }
 
       // this.productList.forEach((productList) => {
       //   if (!e.target.dataset.catetype) {
@@ -137,16 +153,8 @@ export default {
       //   }
       // });
 
-      this.productList.forEach((product) => {
-        this.selectProductNum.forEach((productNum) => {
-          if (product.pro_num === productNum) {
-            this.selectProduct.push(product);
-          }
-        });
-      });
-
       this.$store.commit('selectProduct', this.selectProduct);
-      this.$emit('productCount', this.selectProduct.length);
+      console.log(this.selectProduct.length);
     },
   },
 };

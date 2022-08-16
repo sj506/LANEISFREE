@@ -59,14 +59,11 @@ class ProductModel extends Model
                 FROM t_product a 
                 INNER JOIN t_category b 
                 ON a.pro_num = b.pro_num";
-
-        // ON a.pro_num = b.pro_num ORDER BY a.created_at DESC LIMIT :startIdx, :rowCount";
         $stmt = $this->pdo->prepare($sql);
-        // $stmt->bindValue(":startIdx", $param["startIdx"]);
-        // $stmt->bindValue(":rowCount", $param["rowCount"]);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function newProductList()
     {
         $sql = "SELECT * FROM t_product
