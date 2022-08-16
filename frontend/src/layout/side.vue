@@ -11,7 +11,7 @@
     </div>
     <div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-ins_product" data-bs-toggle="modal" data-bs-target="#exampleModal">상품등록</button>
+      <button v-show="loginLevel > 0" type="button" class="btn btn-primary btn-ins_product" data-bs-toggle="modal" data-bs-target="#exampleModal">상품등록</button>
     </div>
   </aside>
   <chat-view />
@@ -63,6 +63,7 @@ export default {
   },
   data() {
     return {
+      user: {},
       dNone: true,
       cate_type: '',
       cate_class: '',
@@ -89,7 +90,25 @@ export default {
       },
     };
   },
+  // created() {
+  //   this.showUser();
+  // },
+  // updated() {
+  //   this.showUser();
+  // },
+  computed: {
+    loginLevel: function () {
+      this.user = this.$store.state.user;
+      console.log(this.user);
+
+      return this.user.result.m_level;
+    },
+  },
   methods: {
+    showUser() {
+      this.user = this.$store.state.user;
+      console.log(this.user.result.m_level);
+    },
     toTop() {
       window.scrollTo(0, 0);
     },
