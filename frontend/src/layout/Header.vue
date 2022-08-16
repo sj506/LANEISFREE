@@ -121,13 +121,12 @@ export default {
     logOut() {
       this.$store.commit('user', null);
       this.$store.commit('setUser', 0);
+      const btnInsPro = document.querySelector('.btn-ins_product');
+      btnInsPro.style.display = 'none';
     },
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
     },
-    // menuToggle() {
-    //   this.isShow = !this.isShow;
-    // },
   },
 };
 </script>
@@ -242,6 +241,9 @@ ul {
   right: 10px;
   font-size: 24px;
   color: var(--text-main);
+}
+.btn-ins_product {
+  display: none;
 }
 @media screen and (max-width: 975px) {
   .navbar {
