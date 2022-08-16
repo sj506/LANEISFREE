@@ -25,16 +25,15 @@
         </div>
 
         <form @submit.prevent="submitForm">
-
           <!-- input 이메일 -->
           <div class="mb-3 inputForm">
-            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" required>
+            <input type="email" id="loginId" v-model="user.m_email" placeholder="이메일 입력" required />
             <div type="button" class="delBtn" @click="eDelBtn()"><span class="none">삭제</span></div>
           </div>
 
           <!-- input 비밀번호 -->
           <div class="mb-3 inputForm">
-            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" required>
+            <input type="password" id="loginPw" v-model="user.m_pw" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)" required />
             <div type=" button" class="delBtn" @click="pDelBtn()"><span class="none">삭제</span></div>
           </div>
 
@@ -48,8 +47,7 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn submitBtn blueBtn" @click="submitBtn"
-              v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
+            <button type="submit" class="btn submitBtn blueBtn" @click="submitBtn" v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
           </div>
         </form>
 
@@ -131,20 +129,24 @@ export default {
       // console.log(this.$store.state.setUser);
       // console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
-      if (this.user.m_email === signIn.result.m_email ) {
+      if (this.user.m_email === signIn.result.m_email) {
         this.$store.commit('setUser', 1);
         this.$store.commit('user', signIn);
         this.$router.push('/');
+        const btnInsPro = document.querySelector('.btn-ins_product');
+        if (signIn.result.m_level > 0) {
+          btnInsPro.style.display = 'flex';
+        }
       } else {
         alert('이메일 또는 비밀번호를 확인해주세요.');
         this.user.m_email = '';
         this.user.m_pw = '';
-      };
+      }
       // console.log(this.$store.state.user);
       // console.log(signIn.result.m_email);
     },
 
-    // ' X ' 버튼 
+    // ' X ' 버튼
     eDelBtn() {
       this.user.m_email = '';
     },
@@ -192,7 +194,6 @@ export default {
 </script>
 
 <style scoped>
-
 .container {
   max-width: 520px;
   padding: 10px 20px 40px;
