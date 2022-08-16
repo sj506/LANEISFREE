@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container" :class="{ dNone: dNone }">
     <div class="chat-header">
-      <h3 class="chat-title">LALESFREE</h3>
+      <h3 class="chat-title">LANEISFREE</h3>
       <button class="btnClose" @click="closeChat"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="chat-body">
