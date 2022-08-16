@@ -15,7 +15,6 @@ import basket from '../views/mypage/basket.vue';
 import signIn from '../views/user/signIn.vue';
 import signUp from '../views/user/signUp.vue';
 import story from '../views/story.vue';
-import meetsArt from '../views/meetsArt.vue';
 import hommeProductDetail from '../views/homme/hommeProductDetail.vue';
 import buyPage from '../views/homme/buyPage.vue';
 import store from '@/store';
@@ -78,11 +77,6 @@ const routes = [
     path: '/story',
     name: 'story',
     component: story,
-  },
-  {
-    path: '/meetsart',
-    name: 'meetsart',
-    component: meetsArt,
   },
   {
     path: '/myPageMember',

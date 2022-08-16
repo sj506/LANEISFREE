@@ -34,3 +34,4 @@ define("_GET", "GET");
 define("_PUT", "PUT");
 define("_DELETE", "DELETE");
 define("_IMG_PATH", "static/img");
+define("_FRONTEND_IMG_PATH", "../frontend/src/assets/img");
