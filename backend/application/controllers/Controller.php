@@ -6,7 +6,7 @@ class Controller
 {
     protected $model;
     private static $needLoginUrlArr = [
-        'product/loginCheck'
+        'product/insHeart'
     ];
 
     public function __construct($action, $model)

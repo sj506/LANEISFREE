@@ -52,11 +52,12 @@ export default {
       page: 1,
       rowCount: 8,
       startIdx: 0,
+      proCount: 1,
     };
   },
   computed: {
     loginToggle: function () {
-      return this.$store.state.setUser;
+      return this.$store.state.session_id;
     },
     selectProduct() {
       return this.$store.state.selectProduct;
@@ -85,8 +86,16 @@ export default {
   unmounted() {},
   methods: {
     async getProductList() {
+      const pageProduct = [];
       const getProductList = await this.$get(`/product/getProductList/${this.startIdx}/${this.rowCount}`, {});
-      this.$store.commit('selectProduct', getProductList);
+      console.log(getProductList.length);
+      console.log(this.page * this.rowCount);
+      const lastPage = this.page * this.rowCount > getProductList.length ? getProductList.length : this.page * this.rowCount;
+      for (let i = this.startIdx; i < lastPage; i++) {
+        pageProduct.push(getProductList[i]);
+      }
+      // console.log(getProductList[this.page-1 ~ this.rowCount-1]);
+      this.$store.commit('selectProduct', pageProduct);
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
     },
@@ -104,7 +113,7 @@ export default {
       target.src = require('@/assets/img' + mainImg);
     },
     async likeUp(e) {
-      if (this.loginToggle === 0) {
+      if (!this.loginToggle) {
         alert('로그인 후 찜을 할 수 있습니다');
         return;
       }

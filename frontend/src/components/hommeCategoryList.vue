@@ -56,10 +56,13 @@ export default {
       e.target.classList.add('active');
       this.$emit('changeCateNm', e.target.innerText);
 
-      this.productList.forEach((productList) => {
-        if (e.target.innerText === '전체보기') {
-          this.selectProductNum.push(productList.pro_num);
+      if (e.target.innerText === '전체보기') {
+        for (let i = 0; i < 8; i++) {
+          this.selectProductNum.push(this.productList[i].pro_num);
         }
+      }
+
+      this.productList.forEach((productList) => {
         for (const key in this.cateList) {
           if (this.cateList.hasOwnProperty.call(this.cateList, key)) {
             if (key == e.target.dataset.catetype) {

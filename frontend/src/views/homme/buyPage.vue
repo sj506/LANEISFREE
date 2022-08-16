@@ -280,7 +280,7 @@ export default {
       this.basketList.m_tel1 = e.target.value;
     },
     loginCheck() {
-      if (!this.$store.state.user) {
+      if (!this.$store.state.session_id) {
         alert('로그인 한 유저만 구매가 가능합니다.');
         this.$router.push('signin');
       }
