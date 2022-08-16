@@ -43,7 +43,7 @@ class ProductController extends Controller
 
         $image = $json['pro_mainimg'];
         $image_parts = explode(";base64,", $image);
-        $image_type_aux = explode("image/", $image_parts[0]);      
+        $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
 
         // 문자열을 디코딩
