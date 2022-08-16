@@ -43,14 +43,14 @@ class ProductController extends Controller
 
         $image = $json['pro_mainimg'];
         $image_parts = explode(";base64,", $image);
-        $image_type_aux = explode("image/", $image_parts[0]);      
+        $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
 
         // 문자열을 디코딩
         $image_base64 = base64_decode($image_parts[1]);
         $randomNm = uniqid();
         $filePath = $dirPath . "/" . $randomNm . "." . $image_type;
-        $param['pro_mainimg'] = "/hommeproduct" . "/" . $randomNm . '.' . $image_type;
+        $param['pro_mainimg'] = "/hommeProduct" . "/" . $randomNm . '.' . $image_type;
 
         // 해당경로에 이미지를 생성
         $result = file_put_contents($filePath, $image_base64);

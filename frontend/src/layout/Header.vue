@@ -7,7 +7,6 @@
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">브랜드</li>
         <li data-to="/intro" @click="routerPush" @mouseover="showContentsBox('소개', '/intro')" @mouseout="closeContentsBox()">팀소개</li>
-        <li data-to="/meetsart" @click="routerPush" @mouseover="showContentsBox('사그마이스터 앤 월시', '/meetsart')" @mouseout="closeContentsBox()">미츠아트</li>
         <li data-to="/best" @click="routerPush" @mouseover="showContentsBox('베스트 상품', '/best')" @mouseout="closeContentsBox()">베스트</li>
         <li data-to="/new" @click="routerPush" @mouseover="showContentsBox('NEW 신상품', '/new')" @mouseout="closeContentsBox()">신상품</li>
         <li data-to="/homme" @click="routerPush" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">옴므</li>
