@@ -173,7 +173,7 @@ export default {
           ctnt: ` 바쁜 도시 생활 속 스트레스로 변덕스러운 <br>
                 피부에도 맑은 날의 구름과 햇살처럼 예쁜 자연광 피부로 만들어주는
                 네오 파운데이션`,
-          link: "hommeProductDetail/12"
+          link: "hommeProductDetail/44"
         },
       ],
       bestProduct_2: [
