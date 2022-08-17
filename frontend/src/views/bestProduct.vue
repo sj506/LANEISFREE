@@ -10,7 +10,11 @@
         data-aos-anchor-placement="top-bottom"
       >
         <div class="main-box" v-for="(best, idx) in bestProduct" :key="idx">
-          <img class="changeImg" :src="this.$getSrc(best.imgSrc)" alt="크림스킨" />
+          <img
+            class="changeImg"
+            :src="this.$getSrc(best.imgSrc)"
+            alt="크림스킨"
+          />
           <div class="txt">
             <h3>{{ best.productNm }}</h3>
             <h4>{{ best.engNm }}</h4>
@@ -20,9 +24,9 @@
               <span class="btn__text">자세히 보기 ></span>
             </router-link>
             <div class="review-box">
-                  <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review1">{{ bestReviews[0] }}</div>
-                  <div class="review-user">{{ reviewNm[0] }}</div>
+              <div><i class="fa-solid fa-quote-left"></i></div>
+              <div class="review1">{{ bestReviews[1] }}</div>
+              <div class="review-user">{{ reviewNm[1] }}</div>
             </div>
           </div>
         </div>
@@ -33,10 +37,14 @@
             class="main-box1"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
-            v-for="(best1, idx) in bestProduct_1"
+            v-for="(best1, idx) in bestProduct1"
             :key="idx"
           >
-            <img class="changeImg1" :src="this.$getSrc(best1.imgSrc)" alt="네오쿠션" />
+            <img
+              class="changeImg1"
+              :src="this.$getSrc(best1.imgSrc)"
+              alt="네오쿠션"
+            />
             <div class="txt1">
               <h3>{{ best1.productNm }}</h3>
               <h4>{{ best1.engNm }}</h4>
@@ -45,15 +53,42 @@
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
-                  <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[1] }}</div>
-                  <div class="review-user">{{ reviewNm[1] }}</div>
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[2] }}</div>
+                <div class="review-user">{{ reviewNm[2] }}</div>
               </div>
             </div>
           </div>
 
+          <div
+            class="main-box1"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            v-for="(best_1, idx) in bestProduct_1"
+            :key="idx"
+          >
+            <img
+              class="changeImg1"
+              :src="this.$getSrc(best_1.imgSrc)"
+              alt="네오매트"
+            />
+            <div class="txt1">
+              <h3>{{ best_1.productNm }}</h3>
+              <h4>{{ best_1.engNm }}</h4>
+              <p class="desc" v-html="best_1.ctnt"></p>
+              <router-link :to="`${best_1.link}`" class="link">
+                <span class="btn__text">자세히 보기 ></span>
+              </router-link>
+              <div class="review-box">
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[0] }}</div>
+                <div class="review-user">{{ reviewNm[0] }}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="flexWrap1 section">
         <div class="flexbox_1 between-center">
           <div
@@ -61,7 +96,7 @@
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="1000"
-            v-for="(best2, idx) in bestProduct_2"
+            v-for="(best2, idx) in bestProduct2"
             :key="idx"
           >
             <img
@@ -70,22 +105,50 @@
               alt="래디언C크림"
             />
             <div class="txt1">
-              <h3>{{best2.productNm}}</h3>
-              <h4>{{best2.engNm}}</h4>
+              <h3>{{ best2.productNm }}</h3>
+              <h4>{{ best2.engNm }}</h4>
               <p class="desc" v-html="best2.ctnt"></p>
               <router-link :to="`${best2.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
-                  <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[2] }}</div>
-                  <div class="review-user">{{ reviewNm[2] }}</div>
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[3] }}</div>
+                <div class="review-user">{{ reviewNm[3] }}</div>
               </div>
             </div>
           </div>
-         
+
+          <div
+            class="main-box1"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="1000"
+            v-for="(best_2, idx) in bestProduct_2"
+            :key="idx"
+          >
+            <img
+              class="changeImg2"
+              :src="this.$getSrc(best_2.imgSrc)"
+              alt="립슬리핑"
+            />
+            <div class="txt1">
+              <h3>{{ best_2.productNm }}</h3>
+              <h4>{{ best_2.engNm }}</h4>
+              <p class="desc" v-html="best_2.ctnt"></p>
+              <router-link :to="`${best_2.link}`" class="link">
+                <span class="btn__text">자세히 보기 ></span>
+              </router-link>
+              <div class="review-box">
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[5] }}</div>
+                <div class="review-user">{{ reviewNm[5] }}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="flexWrap1 section">
         <div class="flexbox_1 between-center">
           <div
@@ -93,7 +156,8 @@
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="1000"
-            v-for="(best3, idx) in bestProduct_3" :key="idx"
+            v-for="(best3, idx) in bestProduct_3"
+            :key="idx"
           >
             <img
               class="changeImg3"
@@ -101,16 +165,16 @@
               alt="워터슬리핑마스크EX"
             />
             <div class="txt1">
-              <h3 style="color: white">{{best3.productNm}}</h3>
-              <h4>{{best3.engNm}}</h4>
+              <h3 style="color: white">{{ best3.productNm }}</h3>
+              <h4>{{ best3.engNm }}</h4>
               <p style="color: white" class="desc" v-html="best3.ctnt"></p>
               <router-link :to="`${best3.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
-                  <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[idx] }}</div>
-                  <div class="review-user">{{ reviewNm[idx] }}</div>
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[4] }}</div>
+                <div class="review-user">{{ reviewNm[4] }}</div>
               </div>
             </div>
           </div>
@@ -119,7 +183,8 @@
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="2000"
-            v-for="(best4,idx) in bestProduct_4" :key="idx"
+            v-for="(best4, idx) in bestProduct_4"
+            :key="idx"
           >
             <img
               class="changeImg4"
@@ -128,15 +193,15 @@
             />
             <div class="txt1">
               <h3 v-html="best4.productNm"></h3>
-              <h4>{{best4.engNm}}</h4>
+              <h4>{{ best4.engNm }}</h4>
               <p class="desc" v-html="best4.ctnt"></p>
               <router-link :to="`${best4.link}`" class="link">
                 <span class="btn__text">자세히 보기 ></span>
               </router-link>
               <div class="review-box">
-                  <div><i class="fa-solid fa-quote-left"></i></div>
-                  <div class="review">{{ bestReviews[4] }}</div>
-                  <div class="review-user">{{ reviewNm[4] }}</div>
+                <div><i class="fa-solid fa-quote-left"></i></div>
+                <div class="review">{{ bestReviews[6] }}</div>
+                <div class="review-user">{{ reviewNm[6] }}</div>
               </div>
             </div>
           </div>
@@ -158,14 +223,16 @@ export default {
           ctnt: `크림 한 통을 그대로 녹여내어<br> 스킨만으로도 크림을 바른 듯<br> 피부를 촉촉하게 채워주는 스킨`,
         },
       ],
-      bestProduct_1: [
+      bestProduct1: [
         {
           productNm: "네오쿠션",
           engNm: "NEO CUSHION",
           imgSrc: "/bsetProduct/네오쿠션가로.jpg",
           ctnt: `한 번의 터치만으로 타고난 듯 <br> 24시간 완벽하게 커버해주는 쿠션`,
-          link: "hommeProductDetail/13"
+          link: "hommeProductDetail/13",
         },
+      ],
+      bestProduct_1: [
         {
           productNm: "네오 파운데이션_매트",
           engNm: "NEO FOUNDATION _ MATTE",
@@ -173,17 +240,19 @@ export default {
           ctnt: ` 바쁜 도시 생활 속 스트레스로 변덕스러운 <br>
                 피부에도 맑은 날의 구름과 햇살처럼 예쁜 자연광 피부로 만들어주는
                 네오 파운데이션`,
-          link: "hommeProductDetail/44"
+          link: "hommeProductDetail/44",
         },
       ],
-      bestProduct_2: [
+      bestProduct2: [
         {
           productNm: "래디언-C 크림",
           engNm: "RADIAN - C CREAM",
           imgSrc: "/bsetProduct/래디언C크림가로.jpg",
           ctnt: ` 듀얼비타민의 강력한 파워로 단 2주만에 <br /> 빛나는 피부, 빛톤피부로 바꾸어주는 크림`,
-          link: "hommeProductDetail/14"
+          link: "hommeProductDetail/14",
         },
+      ],
+      bestProduct_2: [
         {
           productNm: "립 슬리핑 마스크 EX",
           engNm: "LIP SLEEPING MASK EX",
@@ -191,7 +260,7 @@ export default {
           ctnt: `밤 사이 입술 각질을 부드럽게 녹여주고 <br />
                 매끈 탱탱한 입술로 가꿔주는 립 전용 <br />
                 슬리핑 마스크`,
-          link: "hommeProductDetail/16"
+          link: "hommeProductDetail/16",
         },
       ],
       bestProduct_3: [
@@ -202,8 +271,8 @@ export default {
           ctnt: `프로바이오틱스 콤플렉스가 함유되어 <br />
                 푹 잔 듯 맑고 생기 있는 <br />
                 피부로 가꿔주는 수분 마스크`,
-          link: "hommeProductDetail/15"
-        }
+          link: "hommeProductDetail/15",
+        },
       ],
       bestProduct_4: [
         {
@@ -213,10 +282,10 @@ export default {
           ctnt: `1/2000 사이즈의 초소형 블루 히알루산이<br />
                 피부 깊은 곳부터 빈틈없이<br />
                 건강하게 풀 리페어 보습을 해주는 크림`,
-          link: "hommeProductDetail/17"
-        }
+          link: "hommeProductDetail/17",
+        },
       ],
-      productPk: [12, 13, 14, 15, 16, 17],
+      productPk: [3, 12, 13, 14, 15, 16, 17],
       bestReviews: [],
       reviewNm: [],
       windowWidth: window.innerWidth,
@@ -230,11 +299,11 @@ export default {
     AOS.init();
 
     this.$nextTick(() => {
-      window.addEventListener('resize', this.onResize);
+      window.addEventListener("resize", this.onResize);
     });
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
     onResize() {
@@ -247,7 +316,7 @@ export default {
       }
     },
     async getBestReview() {
-      const bestReviews = await this.$get('/review/getBestReview', {});
+      const bestReviews = await this.$get("/review/getBestReview", {});
       console.log(bestReviews);
 
       bestReviews.forEach((element) => {
@@ -258,10 +327,10 @@ export default {
       });
     },
     async getProductImg() {
-      const getProductImg = await this.$get('/product/getProductImg', {});
-      this.$store.commit('getProductImg', getProductImg);
+      const getProductImg = await this.$get("/product/getProductImg", {});
+      this.$store.commit("getProductImg", getProductImg);
     },
-  }
+  },
 };
 </script>
 
@@ -313,18 +382,17 @@ main {
 .review {
   width: 600px;
   overflow: hidden;
-  word-break:break-all;
+  word-break: break-all;
   color: var(--text-light-gray);
 }
 .review1 {
   width: 300px;
   overflow: hidden;
-  word-break:break-all;
+  word-break: break-all;
   color: var(--text-light-gray);
 }
 i {
   color: var(--text-light-gray);
-
 }
 .review-user {
   color: var(--text-light-gray);
@@ -362,18 +430,18 @@ h4 {
   .main-box img {
     width: 95vw;
   }
-  .main-box1 img{
+  .main-box1 img {
     width: 95vw;
   }
   .flexbox_1 {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
   }
   .main-box1 {
-  position: relative;
-}
+    position: relative;
+  }
   .txt1 {
     position: absolute !important;
     right: -85%;
