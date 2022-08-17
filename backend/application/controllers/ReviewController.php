@@ -31,23 +31,13 @@ class ReviewController extends Controller
         $m_num = intval($urlPaths[2]);
         $pro_num = intval($urlPaths[3]);
         $json = getJson();
-        if($json["pic"] !== ""){
-            $image_parts = explode(";base64,", $json["pic"]); //;base64기분으로 둘로나눔
-            $image_type_aux = explode("image/", $image_parts[0]);      
-            $image_type = $image_type_aux[1];      //jpeg,png등 이미지타입
-            $image_base64 = base64_decode($image_parts[1]); //이미지문자열을 이미지파일로디코딩
-            $dirPath = _IMG_PATH . "/" . "review/" . $m_num . "/" . $pro_num; //이미지폴더경로
-            $fileNm = uniqid() . "." . $image_type;
-            $filePath = $dirPath . "/" . $fileNm; //이미지경로파일
-        } else {
-            $image_parts = explode(";base64,", $json["pic"]); 
-            $image_type_aux = explode("image/", $image_parts[0]);      
-            $image_type = $image_type_aux[1];     
-            $image_base64 = base64_decode($image_parts[1]); 
-            $dirPath = _IMG_PATH . "/" . "review/" . $m_num . "/" . $pro_num; 
-            $fileNm = null;
-            $filePath = $dirPath . "/" . $fileNm;
-        }
+        $image_parts = explode(";base64,", $json["pic"]); //;base64기분으로 둘로나눔
+        $image_type_aux = explode("image/", $image_parts[0]);      
+        $image_type = $image_type_aux[1];      //jpeg,png등 이미지타입
+        $image_base64 = base64_decode($image_parts[1]); //이미지문자열을 이미지파일로디코딩
+        $dirPath = _IMG_PATH . "/" . "review/" . $m_num . "/" . $pro_num; //이미지폴더경로
+        $json["pic"] !== "" ? $fileNm = uniqid() . "." . $image_type : $fileNm = null;
+        $filePath = $dirPath . "/" . $fileNm; //이미지경로파일
         if(isset($json['re_num'])){
             rmdir_all($dirPath);
         }
@@ -124,4 +114,15 @@ class ReviewController extends Controller
     public function getReviewAvg() {
         return $this->model->getReviewAvg();
     }
+
+
+    // public function getReviewImgData() {
+    //     $urlPaths = getUrlPaths();
+    //     if(!isset($urlPaths)){ exit(); }
+    //     $param = [ 
+    //         "rowCount" => intval($urlPaths[2]),
+    //         "startIdx" => intval($urlPaths[3])
+    //     ];
+    //     return $this->model->getReviewImgData($param);
+    // }
 }
