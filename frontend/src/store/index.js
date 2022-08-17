@@ -13,6 +13,7 @@ export default createStore({
       고민별: ['주름/탄력/보습', '수분/보습'],
       라인별: ['블루에너지', '크림 스킨', '액티브워터', '기타'],
     },
+    bigCateList: ['유형별', '라인별', '라인별'],
     userProductList: [],
   },
   getters: {},

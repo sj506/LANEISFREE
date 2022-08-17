@@ -72,14 +72,17 @@ export default {
         this.productList.forEach((productList) => {
           for (const key in this.cateList) {
             if (this.cateList.hasOwnProperty.call(this.cateList, key)) {
-              if (key == e.target.dataset.catetype) {
-                const bigCate = this.cateList[key];
-                bigCate.forEach((cateclass, idx) => {
-                  if (cateclass == e.target.dataset.cateclass && productList.cate_class == idx) {
-                    this.selectProductNum.push(productList.pro_num);
-                  }
-                });
-              }
+              this.$store.state.bigCateList.forEach((bigCateList, i) => {
+                if (key == e.target.dataset.catetype && bigCateList == key) {
+                  const bigCate = this.cateList[key];
+                  bigCate.forEach((cateclass, idx) => {
+                    if (cateclass == e.target.dataset.cateclass && productList.cate_type == i + 1 && productList.cate_class == idx + 1) {
+                      console.log(productList);
+                      this.selectProductNum.push(productList.pro_num);
+                    }
+                  });
+                }
+              });
             }
           }
         });
@@ -154,7 +157,6 @@ export default {
       // });
 
       this.$store.commit('selectProduct', this.selectProduct);
-      console.log(this.selectProduct.length);
     },
   },
 };
