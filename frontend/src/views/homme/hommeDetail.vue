@@ -3,7 +3,7 @@
     <div class="nav-box">
       <div class="nav justify-content-center d-flex">
         <a v-bind:class="{ bottomLine: this.geturl() == 'feature' }" href="#feature" class="nav-item">상품 특징</a>
-        <a v-bind:class="{ bottomLine: this.geturl() == 'review' }" href="#review" class="nav-item">사용 리뷰(479)</a>
+        <a v-bind:class="{ bottomLine: this.geturl() == 'review' }" href="#review" class="nav-item">사용 리뷰({{ reviewAvg.re_count }})</a>
         <a v-bind:class="{ bottomLine: this.geturl() == 'info' }" href="#info" class="nav-item">전성분/주의사항</a>
       </div>
     </div>
@@ -403,8 +403,8 @@
 
             <div class="centerRow justify-content-between">
               <div class="text-center centerRow">
-                <span>전체</span> |
-                <span>포토리뷰</span>
+                <a href=""><span>전체</span></a> |
+                <a href=""><span>포토리뷰</span></a>
               </div>
               <div class="selectBox">
                 <select class="select">
@@ -521,6 +521,7 @@ export default {
       rowCount: 15,
       startIdx: 0,
       reviewAvg: {},
+      // img: ''
     };
   },
   methods: {
@@ -547,6 +548,10 @@ export default {
       this.reviewAvg = await this.$get(`/review/getReviewAvg`, {});
       console.log(this.reviewAvg);
     },
+    // async getReviewImgData() {
+    //   this.reviewData = await this.$get(`/review/getReviewImgData/${this.rowCount}/${this.startIdx}`, {});
+    //   console.log(this.reviewData);
+    // },
     getPage() {
       if (typeof this.$route.query.page != undefined) {
         this.page = this.$route.query.page;
@@ -558,6 +563,9 @@ export default {
   computed: {
     selPage: function () {
       return this.$route.query.page;
+    },
+    selImg: function () {
+      return this.$route.query.img;
     },
   },
   watch: {
@@ -1352,6 +1360,9 @@ MARQUEE {
 .review_box {
   background-color: #fff;
   padding: 15px;
+}
+.review_box li {
+  margin: 6px 0px;
 }
 .review_img {
   height: 150px;
