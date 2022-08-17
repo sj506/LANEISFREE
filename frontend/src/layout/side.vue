@@ -11,7 +11,7 @@
     </div>
     <div>
       <!-- Button trigger modal -->
-      <button v-show="loginLevel > 0" type="button" class="btn btn-primary btn-ins_product" data-bs-toggle="modal" data-bs-target="#exampleModal">상품등록</button>
+      <button type="button" class="btn btn-primary btn-ins_product" data-bs-toggle="modal" data-bs-target="#exampleModal">상품등록</button>
     </div>
   </aside>
   <chat-view />
@@ -28,6 +28,7 @@
           <div><label for="" ref="pro_name">상품이름[한글]</label><input v-model="product.pro_name" type="text" name="" id="" /></div>
           <div><label for="" ref="pro_ename">상품이름[영어]</label><input v-model="product.pro_ename" type="text" name="" id="" /></div>
           <div>
+            <label for="">카테고리 선택</label>
             <select name="" id="" ref="category1" @change="selectCate()" v-model="cate_type">
               <option value="">선택</option>
               <option v-for="(cate, idx) in category.cateList1" :value="idx + 1" :key="idx">{{ cate }}</option>
@@ -42,7 +43,7 @@
           <div><label for="">재고수량</label><input v-model="product.pro_stock" type="number" ref="pro_stock" name="" id="" /></div>
           <div><label for="">해쉬태그1</label><input v-model="product.pro_tag1" type="text" ref="pro_tag1" name="" id="" /></div>
           <div><label for="">해쉬태그2</label><input v-model="product.pro_tag2" type="text" ref="pro_tag2" name="" id="" /></div>
-          <div><label for="">상품설명</label><textarea v-model="product.pro_explain" ref="pro_explain" name="" id="" cols="30" rows="10"></textarea></div>
+          <div class="product-ctnt"><label for="">상품설명</label><textarea v-model="product.pro_explain" ref="pro_explain" name="" id="" cols="30" rows="10"></textarea></div>
           <div><label for="">메인사진</label><input type="file" accept="image/png,image/jpeg" @change="mainImg" name="" id="" /></div>
           <div><label for="">서브사진[최대5개]</label><input type="file" accept="image/png,image/jpeg" @change="subImgs" multiple name="" id="" /></div>
         </div>
@@ -179,5 +180,16 @@ aside {
   background-color: var(--bg-main);
   border: none;
   padding: 10px;
+}
+.modal-body label {
+  width: 150px;
+  margin-right: 20px;
+}
+.product-ctnt {
+  display: flex;
+  justify-content: flex-start;
+}
+.modal-body input {
+  width: 200px;
 }
 </style>

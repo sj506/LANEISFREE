@@ -22,17 +22,42 @@
       </div>
     </li>
   </ul>
+  <div class="pagination">
+    <span class="page_text" :data-page="page - 1" @click="changPage"><i class="fa-solid fa-angle-left"></i></span>
+    <span
+      v-for="(item, idx) in pagingCount.cnt"
+      :key="idx"
+      :data-page="item"
+      @click="changPage"
+      class="page_text"
+      :class="{ page_text_active: item == page }"
+      >{{ item }}</span
+    >
+    <span :data-page="page + 1" @click="changPage"><i class="fa-solid fa-angle-right"></i></span>
+  </div>
 </template>
 <script>
 export default {
-  name: '',
+  name: 'Params',
   components: {},
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
-    return {};
+    return {
+      pagingCount: 0,
+      page: 1,
+      rowCount: 8,
+      startIdx: 0,
+      proCount: 1,
+    };
   },
   computed: {
     loginToggle: function () {
-      return this.$store.state.setUser;
+      return this.$store.state.session_id;
     },
     selectProduct() {
       return this.$store.state.selectProduct;
@@ -43,10 +68,14 @@ export default {
     loginToggle: function () {
       this.heartClear();
     },
+    selectProduct: function () {
+      this.getPagingCount();
+    },
   },
 
   beforeCreate() {},
   created() {
+    this.getPagingCount();
     this.getProductList();
   },
 
@@ -60,8 +89,14 @@ export default {
   unmounted() {},
   methods: {
     async getProductList() {
-      const getProductList = await this.$get('/product/getProductList', {});
-      this.$store.commit('selectProduct', getProductList);
+      const pageProduct = [];
+      const getProductList = await this.$get(`/product/getProductList/${this.startIdx}/${this.rowCount}`, {});
+      const lastPage = this.page * this.rowCount > getProductList.length ? getProductList.length : this.page * this.rowCount;
+      for (let i = this.startIdx; i < lastPage; i++) {
+        pageProduct.push(getProductList[i]);
+      }
+      // console.log(getProductList[this.page-1 ~ this.rowCount-1]);
+      this.$store.commit('selectProduct', pageProduct);
       this.$store.commit('getProductList', getProductList);
       //상품 리스트 가져오는 통신
     },
@@ -79,14 +114,14 @@ export default {
       target.src = require('@/assets/img' + mainImg);
     },
     async likeUp(e) {
-      if (this.loginToggle === 0) {
+      if (!this.loginToggle) {
         alert('로그인 후 찜을 할 수 있습니다');
         return;
       }
 
       if (e.target.classList[5] === 'bigHeartIcon') {
         setTimeout(() => {
-          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const param = { pro_num: e.target.dataset.pro_num };
           this.$post('product/delHeart', param);
 
           e.target.classList.remove('bigHeartIcon');
@@ -94,7 +129,7 @@ export default {
         }, 400);
       } else {
         setTimeout(() => {
-          const param = { pro_num: e.target.dataset.pro_num, m_num: this.$store.state.user.result.m_num };
+          const param = { pro_num: e.target.dataset.pro_num };
           const insHeart = this.$post('product/insHeart', param);
 
           e.target.classList.add('fa-solid');
@@ -109,22 +144,40 @@ export default {
     },
 
     async getHeart() {
-      const param = { m_num: this.$store.state.user.result.m_num };
-      const getHeart = await this.$post('product/getHeart', param);
-      getHeart.result.forEach((heartNum) => {
-        this.$refs.heart.forEach((heart) => {
-          if (heart.dataset.pro_num == heartNum.pro_num) {
-            heart.classList.add('fa-solid');
-            heart.classList.add('bigHeartIcon');
-          }
+      const getHeartList = await this.$post('product/getHeart', {});
+      if (Array.isArray(getHeartList)) {
+        getHeartList.result.forEach((heartNum) => {
+          this.$refs.heart.forEach((heart) => {
+            if (heart.dataset.pro_num == heartNum.pro_num) {
+              heart.classList.add('fa-solid');
+              heart.classList.add('bigHeartIcon');
+            }
+          });
         });
-      });
+      }
     },
     heartClear() {
       this.$refs.heart.forEach((heart) => {
         heart.classList.remove('fa-solid');
         heart.classList.remove('bigHeartIcon');
       });
+    },
+
+    // 페이징
+
+    changPage(e) {
+      this.page = e.target.dataset.page;
+      this.startIdx = (this.page - 1) * this.rowCount;
+      this.getProductList();
+    },
+
+    async getPagingCount() {
+      if (this.$store.state.selectProduct.length < this.rowCount) {
+        this.pagingCount.cnt = 1;
+      } else {
+        this.pagingCount = await this.$get(`/product/getPagingCount/${this.rowCount}`, {});
+      }
+      console.log(this.pagingCount.cnt);
     },
   },
 };
@@ -192,6 +245,23 @@ img:not(:hover) {
   animation: blink-effect2 0.4s;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.page_text {
+  margin-right: 1rem;
+}
+
+.page_text:active {
+  color: var(--bg-main);
+}
+
+.page_text_active {
+  color: var(--bg-main);
+}
 @keyframes blink-effect {
   0% {
     opacity: 0.3;

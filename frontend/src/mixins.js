@@ -8,6 +8,13 @@ export default {
     $addComma(price) {
       return price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
     },
+    // async $loginCheck() {
+    //   const loginVal = await this.$post('/product/loginCheck', {});
+    //   if (loginVal.state == 0) {
+    //     alert('로그인필요', this.$router.push('signin'));
+    //     return;
+    //   }
+    // },
     async $post(url, param) {
       return (
         await axios({
