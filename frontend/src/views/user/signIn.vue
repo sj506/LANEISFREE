@@ -47,7 +47,14 @@
 
           <!-- button 로그인 -->
           <div>
-            <button type="submit" class="btn submitBtn blueBtn" @click="submitBtn" v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''">로그인</button>
+            <button
+              type="submit"
+              class="btn submitBtn blueBtn"
+              @click="submitBtn"
+              v-bind:disabled="this.user.m_email === '' || this.user.m_pw === ''"
+            >
+              로그인
+            </button>
           </div>
         </form>
 
@@ -129,8 +136,8 @@ export default {
       // console.log(this.$store.state.setUser);
       // console.log(this.user);
       const signIn = await this.$post('user/signIn', this.user);
-      if (this.user.m_email === signIn.result.m_email) {
-        this.$store.commit('setUser', 1);
+      if (this.user.m_email === signIn.result.m_email && this.user.m_pw === signIn.result.m_pw) {
+        this.$store.commit('session_id', signIn.session_id);
         this.$store.commit('user', signIn);
         this.$router.push('/');
         const btnInsPro = document.querySelector('.btn-ins_product');
