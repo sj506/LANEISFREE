@@ -27,7 +27,7 @@
               <!-- <div class="review_policy">찜한 제품</div> -->
             </div>
             <div class="p_ctnt">
-              <div class="nonList" v-show="!purchaseCheck">찜한제품이 없습니다.</div>
+              <div class="nonList" v-show="!purchaseCheck">장바구니에 담긴 상품이 없습니다.</div>
               <div v-show="purchaseCheck">
                 <table>
                   <thead>
@@ -110,7 +110,7 @@ export default {
     async getBasket() {
       const param = { m_num: this.$store.state.user.result.m_num };
       const selbasket = await this.$post('product/selbasket', param);
-      if (selbasket.result) {
+      if (selbasket.result.length !== 0) {
         this.purchaseCheck = true;
       }
       console.log(selbasket);
