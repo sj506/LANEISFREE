@@ -1,7 +1,7 @@
 <template>
   <main id="best_main">
     <div class="best_title">
-      <h2 class="best_seller">BEST SELLER</h2>
+      <h1 class="best_seller">BEST SELLER</h1>
     </div>
     <div class="container">
       <div

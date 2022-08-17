@@ -1,9 +1,7 @@
 <template>
   <main id="main" class="main">
     <div class="mainTitle">
-      <header class="page-header">
         <h1 class="page_heading">신상품</h1>
-      </header>
     </div>
 
     <div class="container">
