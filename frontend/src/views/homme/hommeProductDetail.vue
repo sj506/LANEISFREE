@@ -43,7 +43,7 @@
         <!-- 용량 + 가격 -->
         <div class="flexCol mb-20 sm-font">
           <div class="mL-20">{{ productDetail.pro_volume }}ml</div>
-          <div>{{ addComma(productDetail.pro_price) }}원</div>
+          <div>{{ this.$addComma(productDetail.pro_price) }}원</div>
         </div>
         <!-- 구매 및 구매사이트 방문 버튼-->
         <router-link :to="{ name: 'buyPage', params: { productId: productDetail.pro_num } }">
@@ -76,6 +76,7 @@ export default {
     };
   },
   beforeCreate() {},
+
   created() {
     this.$store.state.getProductList.forEach((item) => {
       if (item.pro_num == this.$route.params.productId) {
@@ -104,9 +105,6 @@ export default {
     getSubImgSrc(subImg) {
       return require('@/assets/img/hommeProduct/details/' + this.productDetail.pro_num + '/' + subImg);
     },
-    addComma(price) {
-      return price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-    },
     getProductImg() {
       // store에서 받아온 getProductImg 중
       this.$store.state.getProductImg.forEach((product) => {
@@ -116,20 +114,17 @@ export default {
       });
     },
     async getBasket() {
-      if (!this.$store.state.user.result.m_num) {
-        alert('로그인 한 유저만 구매할 수 있습니다.');
-        return;
-      }
+      // if (!this.$store.state.user.result.m_num) {
+      //   alert('로그인 한 유저만 구매할 수 있습니다.');
+      //   return;
+      // }
       const param = [
         {
-          m_num: this.$store.state.user.result.m_num,
           pro_num: this.productId,
           ba_stock: '1',
         },
       ];
-      console.log(param);
-      const result = await this.$post('/product/insbasket', param);
-      console.log(result);
+      await this.$post('/product/insbasket', param);
     },
   },
 };

@@ -1,15 +1,15 @@
 <template>
   <div class="containers">
     <div class="nav-box">
-      <div class="nav justify-content-center d-flex" >
+      <div class="nav justify-content-center d-flex">
         <a v-bind:class="{ bottomLine: this.geturl() == 'feature' }" href="#feature" class="nav-item">상품 특징</a>
-        <a v-bind:class="{ bottomLine: this.geturl() == 'review' }" href="#review" class="nav-item">사용 리뷰({{reviewAvg.re_count}})</a>
+        <a v-bind:class="{ bottomLine: this.geturl() == 'review' }" href="#review" class="nav-item">사용 리뷰({{ reviewAvg.re_count }})</a>
         <a v-bind:class="{ bottomLine: this.geturl() == 'info' }" href="#info" class="nav-item">전성분/주의사항</a>
       </div>
     </div>
     <div id="feature"></div>
     <section id="main" class="">
-      <div class="c_recommend" >
+      <div class="c_recommend">
         <dl class="recommend">
           <dt class="recommend_t h4">이런 피부 고민에 추천해요!</dt>
           <dd class="recommend_d">
@@ -30,7 +30,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
-                d="M96 224C84.72 224 74.05 226.3 64 229.9V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32S145.7 96 128 96C57.42 96 0 153.4 0 224v96c0 53.02 42.98 96 96 96s96-42.98 96-96S149 224 96 224zM352 224c-11.28 0-21.95 2.305-32 5.879V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32s-14.33-32-32-32c-70.58 0-128 57.42-128 128v96c0 53.02 42.98 96 96 96s96-42.98 96-96S405 224 352 224z" />
+                d="M96 224C84.72 224 74.05 226.3 64 229.9V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32S145.7 96 128 96C57.42 96 0 153.4 0 224v96c0 53.02 42.98 96 96 96s96-42.98 96-96S149 224 96 224zM352 224c-11.28 0-21.95 2.305-32 5.879V224c0-35.3 28.7-64 64-64c17.67 0 32-14.33 32-32s-14.33-32-32-32c-70.58 0-128 57.42-128 128v96c0 53.02 42.98 96 96 96s96-42.98 96-96S405 224 352 224z"
+              />
             </svg>
           </div>
           <p class="quote_text">
@@ -47,18 +48,22 @@
         <div class="viral_box">
           <img
             src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_top-visuals-banner_pc.jpg"
-            class="ft-viral__img" alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지" />
+            class="ft-viral__img"
+            alt="라네즈 크림 스킨 옴므 올인원 제품 연출 이미지"
+          />
         </div>
       </div>
       <div class="c_mood_img">
         <div class="c_c_mood_img">
           <div class="img_box1">
             <img
-              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg" />
+              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_01_pc.jpg"
+            />
           </div>
           <div class="img_box2">
             <img
-              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg" />
+              src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_mood-cut_03_pc.jpg"
+            />
           </div>
         </div>
       </div>
@@ -72,13 +77,15 @@
             <li class="proof col">
               <div class="proof__bg">
                 <img
-                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_01_pc.jpg" />
+                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_01_pc.jpg"
+                />
               </div>
               <div class="proof__inner" :class="{ isactive: isActive1 }">
                 <p class="proof__desc">크림 한 통을 그대로 녹여낸 스킨 제형으로 로션, 크림이 따로 필요 없는 즉각 수분 충전되는 제품입니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 1.</em>
-                  <span class="proof__t">스킨+로션+크림을 한 단계로! <br />
+                  <span class="proof__t"
+                    >스킨+로션+크림을 한 단계로! <br />
                     간편한 올인원 스킨
                   </span>
                   <button class="proofBtn">
@@ -90,7 +97,8 @@
             <li class="proof col">
               <div class="proof__bg">
                 <video
-                  src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"></video>
+                  src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_the-proof_02_pc.mp4"
+                ></video>
               </div>
               <div class="proof__inner" :class="{ isactive: isActive2 }">
                 <p class="proof__desc">
@@ -98,24 +106,27 @@
                 </p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 2.</em>
-                  <span class="proof__t">물 스킨 제형으로 <br />
+                  <span class="proof__t"
+                    >물 스킨 제형으로 <br />
                     번들거림 없이 빠르게
                   </span>
-                  <button @click="collapsedToggle($event.target, 'isActive2')"
-                    class="plus-minus-toggle collapsed"></button>
+                  <button @click="collapsedToggle($event.target, 'isActive2')" class="plus-minus-toggle collapsed"></button>
                 </div>
               </div>
             </li>
             <li class="proof col">
               <div class="proof__bg">
-                <img class="proof_img"
-                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg" />
+                <img
+                  class="proof_img"
+                  src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/20200427_final_cream-skin-refiner-all-in-one_the-proof_03_pc.jpg"
+                />
               </div>
               <div class="proof__inner" v-bind:class="{ isactive: isActive3 }">
                 <p class="proof__desc">과다 분비된 피지 조절 효능이 있는 어성초 성분으로 모공 및 피지를 컨트롤해줍니다.</p>
                 <div class="proof__cont">
                   <em class="proof__cap">SECRET 3.</em>
-                  <span class="proof__t">어성초 성분으로 <br />
+                  <span class="proof__t"
+                    >어성초 성분으로 <br />
                     과다 분비된 피지 조절 및 모공케어
                   </span>
                   <button class="proofBtn">
@@ -129,11 +140,18 @@
       </div>
       <div class="mainImgBox">
         <div class="c_long-video">
-          <img class="longImg"
-            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_detail-PDP_pc.jpg" />
-          <video class="longVideo"
+          <img
+            class="longImg"
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_detail-PDP_pc.jpg"
+          />
+          <video
+            class="longVideo"
             src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
-            loop="" autoplay="" muted="" playsinline=""></video>
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
         </div>
         <div></div>
       </div>
@@ -149,8 +167,10 @@
           </MARQUEE>
         </div>
         <div class="data">
-          <img class="data_img"
-            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png" />
+          <img
+            class="data_img"
+            src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_clinical-data_pc.png"
+          />
           <div class="data_cnt_box1 data_cnt_box left-after">
             <div>사용 후 피부가 촉촉해진 느낌이다.</div>
             <div>96.6%</div>
@@ -193,9 +213,14 @@
         <div class="texture_title1">
           <div class="h4 texture_stitle">TEXTURE</div>
           <div class="h2 texture_stitle2">우윳빛 물 타입의 스킨</div>
-          <video class="texture_video1"
+          <video
+            class="texture_video1"
             src="https://www.laneige.com//kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_01_pc.mp4"
-            loop="" autoplay="" muted="" playsinline=""></video>
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
           <div class="texture_ctnt">촉촉하고는 싶지만 번들거림은 부담스러웠던 남자 피부를 위해,</div>
           <div class="texture_ctnt">물 같은 스킨 제형이라 번들거림 없이 바르는 즉시 흡수돼요!</div>
         </div>
@@ -203,7 +228,12 @@
           <div class="texture_stitle3">&lt 자사 올인원 제품과 끈적임 비교 TEST &gt</div>
           <video
             src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_texture_02_pc.mp4"
-            class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+            class="pdp__video"
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
           <div class="texture_stitle4">
             <div>올인원이지만 스킨 제형이라</div>
             <div>피부에 끈적임은 남지 않아 산뜻해요!</div>
@@ -220,7 +250,12 @@
           <li>
             <video
               src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_01_pc.mp4"
-              class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+              class="pdp__video"
+              loop=""
+              autoplay=""
+              muted=""
+              playsinline=""
+            ></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 1.</div>
               <div class="how-cnt">
@@ -232,7 +267,12 @@
           <li>
             <video
               src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_how-to_02.mp4"
-              class="pdp__video" loop="" autoplay="" muted="" playsinline=""></video>
+              class="pdp__video"
+              loop=""
+              autoplay=""
+              muted=""
+              playsinline=""
+            ></video>
             <div class="how-cnt-box">
               <div class="h4">STEP 2.</div>
               <div class="how-cnt">
@@ -259,9 +299,7 @@
             <div>
               <a class="line" href="">
                 <div>
-                  <img
-                    src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/bs-active-water-foam-cleanser-200427.png"
-                    alt="" />
+                  <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2021/10/05/bs-active-water-foam-cleanser-200427.png" alt="" />
                 </div>
                 <b>Step 1</b>
                 <div class="step3_title">Cleansing</div>
@@ -275,7 +313,8 @@
                 <div>
                   <img
                     src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/20200427_final_cream-skin-refiner-all-in-one_best-step_pc.png"
-                    alt="" />
+                    alt=""
+                  />
                 </div>
                 <b>Step 2</b>
                 <div class="step3_title">Morning Care</div>
@@ -287,9 +326,7 @@
             <div>
               <a class="line" href="">
                 <div>
-                  <img
-                    src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/bs-homme-air-light-sun-stick-200427.png"
-                    alt="" />
+                  <img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/bs-homme-air-light-sun-stick-200427.png" alt="" />
                 </div>
                 <b>Step 3</b>
                 <div class="step3_title">Day Care</div>
@@ -300,9 +337,7 @@
           <div>
             <div>
               <a class="line" href="">
-                <div><img
-                    src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/cs-qsp-best-step-01_1.png"
-                    alt="" /></div>
+                <div><img src="https://www.laneige.com/kr/ko/homme/__icsFiles/afieldfile/2020/04/28/cs-qsp-best-step-01_1.png" alt="" /></div>
                 <b>Step 4</b>
                 <div class="step3_title">Night Care</div>
                 <div class="step3_ctnt">크림 스킨 퀵 스킨 팩</div>
@@ -322,12 +357,22 @@
           <div class="c_tips_ctnt">토너로 사용하는 것 처럼 화장솜으로 #닦토 해보세요!</div>
         </div>
         <div class="c_tips3 centerRow pb-3">
-          <video class="bt_pdp__video"
+          <video
+            class="bt_pdp__video"
             src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_01_pc.mp4"
-            loop="" autoplay="" muted="" playsinline=""></video>
-          <video class="bt_pdp__video"
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
+          <video
+            class="bt_pdp__video"
             src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_02_pc.mp4"
-            loop="" autoplay="" muted="" playsinline=""></video>
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
         </div>
         <div class="c_tips4 centerCol pt-3">
           <b>#스킨팩으로 사용</b>
@@ -335,9 +380,14 @@
           <div class="c_tips_ctnt pb-5">화장솜에 듬뿍 적셔 #스킨팩 해보세요!</div>
         </div>
         <div class="c_tips5">
-          <video class="bt_pdp__video"
+          <video
+            class="bt_pdp__video"
             src="https://www.laneige.com/kr/ko/assets/pdp/homme/201911/20200427_final_cream-skin-refiner-all-in-one_beauty-tips_03_pc.mp4"
-            loop="" autoplay="" muted="" playsinline=""></video>
+            loop=""
+            autoplay=""
+            muted=""
+            playsinline=""
+          ></video>
         </div>
       </div>
     </section>
@@ -345,11 +395,10 @@
       <div class="review centerCol">
         <div class="c_review">
           <header class="border_bottom">
-            <div class="centerCol ">
-
+            <div class="centerCol">
               <em class="">AMORE MALL REVIEWS</em>
               <h3 class="h4">{{ reviewAvg.re_count }}개의 소중한 상품 리뷰</h3>
-              <span class="">{{ reviewAvg.re_avg}} / 5.0</span>
+              <span class="">{{ reviewAvg.re_avg }} / 5.0</span>
             </div>
 
             <div class="centerRow justify-content-between">
@@ -362,9 +411,7 @@
                   <option value="" selected>작성일순</option>
                   <option value="">베스트순</option>
                 </select>
-                <span class="icoArrow"><img
-                    src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png"
-                    alt="" /></span>
+                <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt="" /></span>
               </div>
             </div>
           </header>
@@ -380,7 +427,7 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <div class="stars-inner" :class="'star'+ item.re_star">
+                        <div class="stars-inner" :class="'star' + item.re_star">
                           <i class="fa-solid fa-star"></i>
                           <i class="fa-solid fa-star"></i>
                           <i class="fa-solid fa-star"></i>
@@ -394,51 +441,67 @@
                 <li>{{ item.m_email }}</li>
                 <li>{{ item.re_time }}</li>
                 <li>{{ item.re_ctnt }}</li>
-                <li><img class="review_img" :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`"
-                    alt=""></li>
+                <li><img class="review_img" :src="`/static/img/review/${item.m_num}/${item.pro_num}/${item.re_img}`" alt="" /></li>
               </ul>
             </div>
           </main>
         </div>
         <div class="pagination">
-          <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span
-              class="a11y">이전 페이지</span></button>
+          <button type="button" class="page page--prev is-disabled"><span class="page__text"></span><span class="a11y">이전 페이지</span></button>
           <button v-for="(item, idx) in pagingCount.cnt" :key="idx" type="button" class="page">
-            <router-link :to="{ path: `/hommeProductDetail/${pro_num}`, query: { page: item }, hash: '#review' }"><span
-                class="page__text current">{{item}}</span></router-link>
+            <router-link :to="{ path: `/hommeProductDetail/${pro_num}`, query: { page: item }, hash: '#review' }"
+              ><span class="page__text current">{{ item }}</span></router-link
+            >
           </button>
           <button type="button" class="page page--next"><span class="a11y">다음페이지</span></button>
         </div>
       </div>
     </section>
-<!-- 주의사항/전성분 -->
-<div class="accordion accordion-flush c_precautions" id="accordionFlushExample">
-  <div class="accordion-item" id="info">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        주의사항
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">1. 화장품 사용 시 또는 사용 후 직사광선에 의하여 사용부위가 붉은 반점, 부어오름 또는 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담할 것
-2. 상처가 있는 부위 등에는 사용을 자제할 것
-3. 보관 및 취급 시의 주의사항
-가) 어린이의 손이 닿지 않는 곳에 보관할 것
-나) 직사광선을 피해서 보관할 것</div>
+    <!-- 주의사항/전성분 -->
+    <div class="accordion accordion-flush c_precautions" id="accordionFlushExample">
+      <div class="accordion-item" id="info">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+          >
+            주의사항
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            1. 화장품 사용 시 또는 사용 후 직사광선에 의하여 사용부위가 붉은 반점, 부어오름 또는 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의
+            등과 상담할 것 2. 상처가 있는 부위 등에는 사용을 자제할 것 3. 보관 및 취급 시의 주의사항 가) 어린이의 손이 닿지 않는 곳에 보관할 것 나)
+            직사광선을 피해서 보관할 것
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            전성분
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            정제수, 에탄올, 디프로필렌글라이콜,글리세린, 피이지/피피지-17/6코폴리머, 해수, 바이오사카라이드검-1, 징크글루코네이트,
+            마그네슘아스파테이트, 칼슘글루코네이트, 카퍼글루코네이트, 부틸렌글라이콜, 옥틸도데세스-16, 피이지-60하이드로제네이티드캐스터오일,
+            디소듐이디티에이, 에칠헥실글리세린, 향료, 알파-아이소메틸 아이오논, 부틸페닐메틸프로피오날, 헥실신남알, 리날룰, 리모넨
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        전성분
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">정제수, 에탄올, 디프로필렌글라이콜,글리세린, 피이지/피피지-17/6코폴리머, 해수, 바이오사카라이드검-1, 징크글루코네이트, 마그네슘아스파테이트, 칼슘글루코네이트, 카퍼글루코네이트, 부틸렌글라이콜, 옥틸도데세스-16, 피이지-60하이드로제네이티드캐스터오일, 디소듐이디티에이, 에칠헥실글리세린, 향료, 알파-아이소메틸 아이오논, 부틸페닐메틸프로피오날, 헥실신남알, 리날룰, 리모넨</div>
-    </div>
-  </div>
-</div>
-
   </div>
 </template>
 
@@ -490,13 +553,12 @@ export default {
     //   console.log(this.reviewData);
     // },
     getPage() {
-      if(typeof this.$route.query.page != undefined){
+      if (typeof this.$route.query.page != undefined) {
         this.page = this.$route.query.page;
-      };
-      this.startIdx = (this.page - 1) * this.rowCount
+      }
+      this.startIdx = (this.page - 1) * this.rowCount;
       console.log(this.page);
-    }
-  
+    },
   },
   computed: {
     selPage: function () {
@@ -504,7 +566,7 @@ export default {
     },
     selImg: function () {
       return this.$route.query.img;
-    }
+    },
   },
   watch: {
     selPage: function () {
@@ -1270,7 +1332,7 @@ MARQUEE {
 }
 
 /* 리뷰 */
-#review{
+#review {
   margin-top: 40px;
 }
 .pdp-review {
@@ -1281,30 +1343,28 @@ MARQUEE {
 .c_review {
   width: 100%;
 }
-.border_bottom{
+.border_bottom {
   border-bottom: 1px solid rgb(88, 87, 87);
-
 }
 .review {
   max-width: 980px;
   width: 100%;
 }
-.review_container{
+.review_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   gap: 20px;
   padding: 10px;
 }
-.review_box{
+.review_box {
   background-color: #fff;
   padding: 15px;
 }
 .review_box li {
   margin: 6px 0px;
-
 }
-.review_img{
+.review_img {
   height: 150px;
 }
 /* 리뷰별점 */
@@ -1338,7 +1398,7 @@ MARQUEE {
   font-weight: 900;
   color: #ccc;
 }
-.star--container{
+.star--container {
   width: 92px;
 }
 .stars-inner i {
@@ -1364,7 +1424,7 @@ MARQUEE {
   width: 0% !important;
 }
 /* 리뷰페이지 */
-.pagination{
+.pagination {
   margin-top: 20px;
 }
 
@@ -1426,12 +1486,12 @@ MARQUEE {
 }
 
 /* 주의사항, 전성분 */
-.c_precautions{
+.c_precautions {
   margin-top: 40px;
   margin-bottom: 100px;
   width: 780px;
 }
-.accordion{
+.accordion {
   --bs-accordion-btn-icon: url(https://static.vecteezy.com/ti/vetor-gratis/p1/613847-vector-plus-icon-gr%C3%A1tis-vetor.jpg);
   --bs-accordion-btn-focus-border-color: none !important;
   --bs-accordion-btn-active-icon: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSap8dmKEV8NR0lqMJ3xAwRROiA5efyUlDos_5wFIRTfA1l4FyX4xQuMbiy38SAHS1lTqA&usqp=CAU) !important;
@@ -1440,21 +1500,21 @@ MARQUEE {
   --bs-accordion-active-color: none !important;
   --bs-accordion-active-bg: none !important;
 }
-.accordion-item{
+.accordion-item {
   border: none !important;
   border-top: 1px solid #dee2e6 !important;
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
   color: var(--text-gray) !important;
 }
-.accordion-button{
+.accordion-button {
   color: var(--text-gray) !important;
 }
-.accordion-button:focus{
+.accordion-button:focus {
   border: none !important;
 }
-.accordion-body{
+.accordion-body {
   color: var(--text-gray);
 }
 

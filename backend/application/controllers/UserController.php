@@ -46,8 +46,10 @@ class UserController extends Controller
     $result = $this->model->signIn($param);
     if ($result) {
       $this->flash(_LOGINUSER, $result);
-      return [_RESULT => $result];
+      $sess_id = session_id();
+      return [_RESULT => $result, 'session_id' => $sess_id];
     }
+
     return [_RESULT => 0];
   }
 }

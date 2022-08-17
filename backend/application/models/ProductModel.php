@@ -6,55 +6,56 @@ use PDO;
 
 class ProductModel extends Model
 {
-  public function insProduct(&$param)
-  {
-      $sql = "INSERT INTO t_product
+    public function insProduct(&$param)
+    {
+        $sql = "INSERT INTO t_product
           (pro_name, pro_ename, pro_mainimg, pro_stock, pro_explain, pro_tag1, pro_tag2, pro_price, pro_volume)
           VALUES
           (:pro_name ,:pro_ename, :pro_mainimg, :pro_stock,:pro_explain,:pro_tag1, :pro_tag2, :pro_price, :pro_volume)";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->bindValue(":pro_name", $param["pro_name"]);
-      $stmt->bindValue(":pro_ename", $param["pro_ename"]);
-      $stmt->bindValue(":pro_stock", $param["pro_stock"]);
-      $stmt->bindValue(":pro_mainimg", $param["pro_mainimg"]);
-      $stmt->bindValue(":pro_explain", $param["pro_explain"]);
-      $stmt->bindValue(":pro_tag1", $param["pro_tag1"]);
-      $stmt->bindValue(":pro_tag2", $param["pro_tag2"]);
-      $stmt->bindValue(":pro_price", $param["pro_price"]);
-      $stmt->bindValue(":pro_volume", $param["pro_volume"]);
-      $stmt->execute();
-      return intval($this->pdo->lastInsertId());
-  }
-  public function insCategory(&$param)
-  {
-      $sql = "INSERT INTO t_category
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":pro_name", $param["pro_name"]);
+        $stmt->bindValue(":pro_ename", $param["pro_ename"]);
+        $stmt->bindValue(":pro_stock", $param["pro_stock"]);
+        $stmt->bindValue(":pro_mainimg", $param["pro_mainimg"]);
+        $stmt->bindValue(":pro_explain", $param["pro_explain"]);
+        $stmt->bindValue(":pro_tag1", $param["pro_tag1"]);
+        $stmt->bindValue(":pro_tag2", $param["pro_tag2"]);
+        $stmt->bindValue(":pro_price", $param["pro_price"]);
+        $stmt->bindValue(":pro_volume", $param["pro_volume"]);
+        $stmt->execute();
+        return intval($this->pdo->lastInsertId());
+    }
+    public function insCategory(&$param)
+    {
+        $sql = "INSERT INTO t_category
           (pro_num, cate_type, cate_class)
           VALUES
           (:pro_num ,:cate_type, :cate_class)";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->bindValue(":pro_num", $param["pro_num"]);
-      $stmt->bindValue(":cate_type", $param["cate_type"]);
-      $stmt->bindValue(":cate_class", $param["cate_class"]);
-      $stmt->execute();
-      return $stmt->rowCount();
-  }
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":cate_type", $param["cate_type"]);
+        $stmt->bindValue(":cate_class", $param["cate_class"]);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
 
-  public function insProductImg(&$param)
-  {
-    $sql = "INSERT INTO t_productimg
+    public function insProductImg(&$param)
+    {
+        $sql = "INSERT INTO t_productimg
     (pro_num, op_detailimg)
     VALUES
     (:pro_num ,:op_detailimg)";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->bindValue(":pro_num", $param["pro_num"]);
-      $stmt->bindValue(":op_detailimg", $param["op_detailimg"]);
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":op_detailimg", $param["op_detailimg"]);
 
-      $stmt->execute();
-      return $stmt->rowCount();
-  }
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
     public function getProductList()
     {
-        $sql = "SELECT a.*, b.cate_type , b.cate_class 
+        $sql =
+            "SELECT a.*, b.cate_type , b.cate_class 
                 FROM t_product a 
                 INNER JOIN t_category b 
                 ON a.pro_num = b.pro_num";
@@ -62,6 +63,7 @@ class ProductModel extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function newProductList()
     {
         $sql = "SELECT *
@@ -111,6 +113,18 @@ class ProductModel extends Model
         $stmt->bindValue(":pur_count", $param["pur_count"]);
         $stmt->execute();
         return intval($this->pdo->lastInsertId());
+    }
+
+    public function updProStock(&$param)
+    {
+        $sql = "UPDATE t_product
+                set pro_stock = pro_stock - :pur_count
+                WHERE pro_num = :pro_num";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":pro_num", $param["pro_num"]);
+        $stmt->bindValue(":pur_count", $param["pur_count"]);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
 
     public function insHeart(&$param)
@@ -173,7 +187,7 @@ class ProductModel extends Model
     {
         $sql = "UPDATE t_basket 
                 set pro_check = :pro_check
-                WHERE m_num = :m_num and pro_num = :pro_num";
+                WHERE m_num = :m_num and pro_num = :pro_num and pro_check = '0'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
         $stmt->bindValue(":pro_num", $param["pro_num"]);
@@ -193,5 +207,15 @@ class ProductModel extends Model
         $stmt->bindValue(":ba_stock", $param["ba_stock"]);
         $stmt->execute();
         return $stmt->rowCount();
+    }
+
+    public function getPagingCount(&$param)
+    {
+        $sql = 'SELECT CEIL(COUNT(*) / :rowCount) as cnt 
+                FROM t_product';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":rowCount", $param["rowCount"]);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }

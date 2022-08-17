@@ -12,7 +12,7 @@
         <li data-to="/homme" @click="routerPush" @mouseover="showHommeBox()" @mouseout="closeHommeBox()">옴므</li>
       </ul>
       <ul class="navbar__icons" :class="{ active: isActive }">
-        <li v-show="loginToggle === 1">
+        <li v-show="loginToggle !== ''">
           <div class="dropdown">
             <router-link to="/mypage" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-user"></i>
@@ -37,10 +37,10 @@
           </div>
         </li>
         <li>
-          <router-link to="/signin" v-show="loginToggle === 0">
+          <router-link to="/signin" v-show="loginToggle == ''">
             <i class="fa-solid fa-user"></i>
           </router-link>
-          <div v-show="loginToggle === 1" @click="logOut()">
+          <div v-show="loginToggle !== ''" @click="logOut()">
             <i class="fa-solid fa-right-to-bracket"></i>
           </div>
         </li>
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     loginToggle: function () {
-      return this.$store.state.setUser;
+      return this.$store.state.session_id;
     },
   },
   created() {
@@ -118,11 +118,10 @@ export default {
       this.hommeShow = false;
       this.isShow = false;
     },
-    logOut() {
+    async logOut() {
       this.$store.commit('user', null);
-      this.$store.commit('setUser', 0);
-      const btnInsPro = document.querySelector('.btn-ins_product');
-      btnInsPro.style.display = 'none';
+      this.$store.commit('session_id', '');
+      await this.$get('user/logout', {});
     },
     routerPush(e) {
       this.$router.push(e.target.dataset.to);

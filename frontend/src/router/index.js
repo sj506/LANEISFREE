@@ -23,7 +23,7 @@ import map from '@/views/map.vue';
 
 //네비게이션 가드
 const requireAuth = () => (to, from, next) => {
-  if (store.state.setUser === 0) {
+  if (!store.state.session_id) {
     alert('로그인 후에 이용해주시길 바랍니다.', '', 'warning');
     next('/signin');
     return;
@@ -56,6 +56,7 @@ const routes = [
     path: '/homme',
     name: 'homme',
     component: homme,
+    props: true,
   },
   {
     path: '/detail',
@@ -81,36 +82,37 @@ const routes = [
     path: '/myPageMember',
     name: 'myPageMember',
     component: myPageMember,
-    // beforeEnter: requireAuth(),
+    beforeEnter: requireAuth(),
   },
   {
     path: '/myPageMemberCheck',
     name: 'myPageMemberCheck',
     component: myPageMemberCheck,
-    // beforeEnter: requireAuth(),
+    beforeEnter: requireAuth(),
   },
   {
     path: '/mypageOnlineOrderList',
     name: 'mypageOnlineOrderList',
     component: mypageOnlineOrderList,
-    // beforeEnter: requireAuth(),
+    beforeEnter: requireAuth(),
   },
   {
     path: '/myPageReview',
     name: 'myPageReview',
     component: myPageReview,
-    // beforeEnter: requireAuth(),
+    beforeEnter: requireAuth(),
   },
   {
     path: '/myPageWishList',
     name: 'myPageWishList',
     component: myPageWishList,
-    // beforeEnter: requireAuth(),
+    beforeEnter: requireAuth(),
   },
   {
     path: '/ReviewWrite',
     name: 'ReviewWrite',
     component: ReviewWrite,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/hommeProductDetail/:productId',
@@ -129,6 +131,7 @@ const routes = [
     path: '/chat',
     name: 'chat',
     component: ChatView,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/map',
@@ -139,6 +142,7 @@ const routes = [
     path: '/basket',
     name: 'basket',
     component: basket,
+    beforeEnter: requireAuth(),
   },
   // {
   //   path: '/',
