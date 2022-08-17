@@ -2,9 +2,7 @@
   <header>
     <nav class="navbar" @click="toggleNav">
       <div class="navbar__logo">
-        <router-link to="/" class="flex-center"
-          ><img class="logo-img" src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg" alt=""
-        /></router-link>
+        <router-link to="/" class="flex-center"><img class="logo-img" src="@/assets/img/laneisfree.svg" alt="" /></router-link>
       </div>
       <ul class="navbar__menu flex-center" :class="{ active: isActive }">
         <li data-to="/story" @click="routerPush" @mouseover="showContentsBox('브랜드 스토리', '/story')" @mouseout="closeContentsBox()">브랜드</li>
@@ -128,9 +126,6 @@ export default {
     routerPush(e) {
       this.$router.push(e.target.dataset.to);
     },
-    // menuToggle() {
-    //   this.isShow = !this.isShow;
-    // },
   },
 };
 </script>
@@ -245,6 +240,9 @@ ul {
   right: 10px;
   font-size: 24px;
   color: var(--text-main);
+}
+.btn-ins_product {
+  display: none;
 }
 @media screen and (max-width: 975px) {
   .navbar {

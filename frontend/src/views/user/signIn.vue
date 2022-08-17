@@ -140,6 +140,10 @@ export default {
         this.$store.commit('session_id', signIn.session_id);
         this.$store.commit('user', signIn);
         this.$router.push('/');
+        const btnInsPro = document.querySelector('.btn-ins_product');
+        if (signIn.result.m_level > 0) {
+          btnInsPro.style.display = 'flex';
+        }
       } else {
         alert('이메일 또는 비밀번호를 확인해주세요.');
         this.user.m_email = '';
