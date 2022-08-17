@@ -195,7 +195,7 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 400px;
+  height: 300px;
 }
 
 /* .profile_red {
