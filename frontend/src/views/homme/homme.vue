@@ -14,8 +14,14 @@ import hommeButton from './hommeButton';
 import productList from './productList.vue';
 
 export default {
-  name: '',
+  name: 'Params',
   components: { hommeBanner, hommeButton, productList },
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       example: '',
