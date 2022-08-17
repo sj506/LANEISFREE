@@ -626,10 +626,10 @@ nav-item:focus::before {
   transform: translateY(0);
 }
 
-.bottomLine::before {
+/* .bottomLine::before {
   transform: translateY(0);
   color: #000;
-}
+} */
 
 .c_recommend {
   display: flex;
