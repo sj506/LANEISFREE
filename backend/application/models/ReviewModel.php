@@ -24,6 +24,7 @@ class ReviewModel extends Model
                 INNER JOIN t_product B
                 ON A.pro_num = B.pro_num
                 WHERE A.m_num = :m_num
+                AND DATE_FORMAT(NOW(), "%Y-%m-%d") <= date_add(DATE_FORMAT(A.pur_date, "%Y-%m-%d"),INTERVAL 7 DAY)
                 AND A.pro_num not in (SELECT pro_num FROM t_review WHERE m_num = :m_num2)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":m_num", $param["m_num"]);
