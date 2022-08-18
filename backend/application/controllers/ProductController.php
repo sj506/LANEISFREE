@@ -33,7 +33,7 @@ class ProductController extends Controller
     }
     public function insProduct()
     {
-        // product 테이블 insert 하기
+        // product 테이블 insert 하기.
         $json = getJson();
         $param = [
             'pro_name' => $json['pro_name'],
