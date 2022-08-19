@@ -179,6 +179,7 @@ aside {
   color: var(--text-white);
   background-color: var(--bg-main);
   border: none;
+  display: none;
   padding: 10px;
 }
 .modal-body label {

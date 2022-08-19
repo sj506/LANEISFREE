@@ -1,3 +1,4 @@
+<!-- 추후 추가할 기능 룸사용 및 채팅왔을때 알림기능 -->
 <template>
   <div class="chat-container" :class="{ dNone: dNone }">
     <div class="chat-header">
