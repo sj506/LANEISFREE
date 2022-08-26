@@ -114,6 +114,7 @@ export default {
       this.product.pro_tag1.startsWith('#') ? true : (this.product.pro_tag1 = '#' + this.product.pro_tag1);
       this.product.pro_tag2.startsWith('#') ? true : (this.product.pro_tag2 = '#' + this.product.pro_tag2);
       const res = await this.$post('/product/insProduct', this.product);
+
       const btnClose = document.querySelector('.btn-close');
       btnClose.click();
       alert('상품이 등록되었습니다.');
