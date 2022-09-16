@@ -210,7 +210,7 @@ export default {
       this.arr3.push(this.productList[4], this.productList[5]);
       this.arr4.push(this.productList[6], this.productList[7]);
     },
-     async getProductImg() {
+    async getProductImg() {
       const getProductImg = await this.$get('/product/getProductImg', {});
       this.$store.commit('getProductImg', getProductImg);
     },

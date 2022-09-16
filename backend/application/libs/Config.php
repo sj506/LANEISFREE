@@ -2,10 +2,10 @@
 define('_ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('_DBTYPE', 'mysql'); //mysql, mariadb 등
 
- define('_DBHOST', 'localhost'); //DB접속 주소
- define('_DBNAME', 'laneisfree'); //DB명
- define('_DBUSER', 'root'); //아이디
- define('_DBPASSWORD', '506greendg@'); //비번
+define('_DBHOST', 'localhost'); //DB접속 주소
+define('_DBNAME', 'laneisfree'); //DB명
+define('_DBUSER', 'root'); //아이디
+define('_DBPASSWORD', '506greendg@'); //비번
 
 define('_CHARSET', 'utf8');
 define("_VIEW", "application/views/");
